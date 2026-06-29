@@ -33,4 +33,7 @@ def atm_strike(spot, step):
 
 
 STRIKE_STEP = {"NIFTY": 50, "BANKNIFTY": 100, "SENSEX": 100}
-LOT_SIZE = {"NIFTY": 75, "BANKNIFTY": 35, "SENSEX": 20}  # confirm against Dhan's contract specs before going live - these change periodically
+# Verified 2026-06-29 against Dhan's published instrument master (api-scrip-master-detailed.csv) -
+# these were guesses before (75/35/20) and were wrong for NIFTY/BANKNIFTY. Re-verify periodically;
+# lot sizes get revised by the exchange from time to time.
+LOT_SIZE = {"NIFTY": 65, "BANKNIFTY": 30, "SENSEX": 20}

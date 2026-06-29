@@ -33,3 +33,35 @@ for the adopted structure and guardrails.
 **Open question, not yet answered by backtest:** the 2-year backtest window had no true tail/crisis
 event. Watch live/paper performance closely on any day VIX spikes hard or the underlying gaps —
 that's exactly the scenario the backtest couldn't validate.
+
+## 2026-06-29 — scripts/dhan.py corrected against a real Dhan Sandbox account
+
+`scripts/dhan.py` was originally written without live credentials (pure guesswork from general
+DhanHQ knowledge). Tested end-to-end against a real sandbox account the same day and found/fixed
+several real bugs - don't repeat these:
+
+- **Orders need `securityId` (numeric) + `dhanClientId` in the body, not `tradingSymbol`.** The
+  original script guessed `tradingSymbol` - wrong, every order would have failed.
+- **Lot sizes were wrong.** Guessed NIFTY=75/BANKNIFTY=35; real values (verified against Dhan's
+  published instrument master) are NIFTY=65/BANKNIFTY=30/SENSEX=20. Backtest re-run with corrected
+  sizes - conclusion unchanged (win rate/robustness identical, P&L magnitude barely moved).
+- **BANKNIFTY has no weekly options anymore - monthly only.** memory/strategy.md said "weekly" for
+  all three instruments; corrected. The backtest's DTE=1-6 range does not represent BANKNIFTY's
+  real expiry cycle - don't trust that instrument's backtest numbers without a dedicated re-test.
+- **Market data (option chain, quotes) is NOT available in the free sandbox** - confirmed 404 on
+  every path tried (`/optionchain`, `/optionchain/expirylist`, `/marketfeed/ltp`,
+  `/marketfeed/quote`). Needs a real account + the paid Data API subscription (~Rs499/month).
+  Sandbox only covers order/fund/position management.
+- **Closing orders are not reliably fast.** A test BUY filled in ~3 seconds; the matching closing
+  SELL on the same contract sat `PENDING` with `filledQty: 0` for over a minute and was eventually
+  cancelled rather than waited out further - its `drvExpiryDate` field oddly showed a date 4 days
+  before the test date, which may be why. **Never trust a `TRANSIT` response as confirmation -
+  poll `order-status` until `TRADED`.** This is now baked into `.claude/commands/squareoff.md` and
+  `monitor.md`.
+- **`/positions` returned `[]` even right after a confirmed `TRADED` fill.** Track open positions
+  by filtering `/orders` for `orderStatus == "TRADED"` and netting BUY/SELL qty per `securityId`
+  instead - this is what `square-off-all` and the monitor command now do.
+
+If live trading later behaves differently from these sandbox findings (e.g. closing orders fill
+fast, `/positions` populates correctly), that's worth a new dated entry here too - don't assume
+sandbox quirks automatically carry over to live, only that they're confirmed *in sandbox*.

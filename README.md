@@ -18,11 +18,13 @@ backtest_spreads.py --strategy strategy_spread_v1` (data/ is gitignored — rege
 
 ## Setup
 
-1. **Dhan Sandbox account.** Sign up for DhanHQ API sandbox access (no funded live account
-   required for sandbox) and get `DHAN_CLIENT_ID` / `DHAN_ACCESS_TOKEN`. Before relying on
-   `scripts/dhan.py`, cross-check its endpoint paths against
-   [the current DhanHQ v2 docs](https://dhanhq.co/docs/v2/) — that script was written without
-   live credentials to test against, so treat its specifics as a draft, not gospel.
+1. **Dhan Sandbox account.** Sign up at developer.dhanhq.co (no funded live account or KYC
+   required for sandbox) and get `DHAN_CLIENT_ID` / `DHAN_ACCESS_TOKEN` (30-day validity — you'll
+   need to regenerate and update the env var monthly until this is automated).
+   `scripts/dhan.py`'s order/fund/position functions were verified end-to-end against a real
+   sandbox account on 2026-06-29 (see `memory/signals-learnings.md` for what got fixed along the
+   way). Its `option-chain`/`quote` functions are still untested — the sandbox returns 404 on all
+   market-data paths; those need a live account + the paid Data API subscription (~₹499/month).
 2. **Telegram bot.** Same steps as documented in `scripts/telegram.py`'s docstring.
 3. **Set environment variables** in the Claude Code routine's cloud environment (see
    `.env.example` for the full list) — never in a committed `.env` file.
@@ -36,7 +38,7 @@ backtest_spreads.py --strategy strategy_spread_v1` (data/ is gitignored — rege
 ## Local testing (no live credentials needed)
 
 ```
-python3 scripts/risk.py size-spread --capital 100000 --width 200 --credit 130 --lot-size 75
+python3 scripts/risk.py size-spread --capital 100000 --width 200 --credit 130 --lot-size 65
 python3 scripts/dhan.py --help
 ```
 
@@ -44,6 +46,6 @@ Once sandbox credentials are set:
 
 ```
 python3 scripts/dhan.py funds
-python3 scripts/dhan.py option-chain NIFTY <expiry>
+python3 scripts/dhan.py lookup NIFTY 2026-06-30 24000 CE
 python3 scripts/telegram.py "test message"
 ```

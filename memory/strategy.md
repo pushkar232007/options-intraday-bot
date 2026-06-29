@@ -1,6 +1,7 @@
 # Strategy & Guardrails
 
-_Last updated: 2026-06-29 — initial strategy, validated via backtest before any live/paper trade._
+_Last updated: 2026-06-29 — initial strategy, validated via backtest, then cross-checked against
+a real Dhan Sandbox account (funds/orders/positions tested end-to-end; see corrections below)._
 
 ## Mode
 
@@ -37,12 +38,26 @@ but that protection is untested in backtest, not proven.
 
 ## Hard guardrails (never violate these)
 
-- **Instruments:** NIFTY, BANKNIFTY, SENSEX — nearest weekly expiry only. No individual stock
-  options until this file says otherwise (revisit only once this strategy has a real paper-trading
-  track record).
+- **Instruments:** NIFTY, BANKNIFTY, SENSEX. No individual stock options until this file says
+  otherwise (revisit only once this strategy has a real paper-trading track record).
+  **Correction (verified 2026-06-29 against Dhan's real instrument master): BANKNIFTY no longer
+  has weekly options — it's monthly-only now.** NIFTY and SENSEX still have weekly expiries. The
+  backtest's 1-6 DTE range is representative for NIFTY/SENSEX but NOT for BANKNIFTY, which will
+  almost always be trading with many more days to expiry than the backtest covered. Treat
+  BANKNIFTY trades as unvalidated by the DTE sweep until specifically re-backtested against its
+  real monthly cycle — don't assume the same edge transfers.
 - **Structure:** iron condor — sell a put 2 strikes OTM + sell a call 2 strikes OTM, buy a put 4
-  strikes OTM + buy a call 4 strikes OTM (strike step: NIFTY 50, BANKNIFTY 100, SENSEX 100 — confirm
-  against Dhan's actual current contract specs before the first live order, these change periodically).
+  strikes OTM + buy a call 4 strikes OTM. Strike step and lot size (verified 2026-06-29 against
+  Dhan's instrument master, re-verify periodically as these get revised by the exchange):
+  | Instrument | Strike step | Lot size | Index securityId (segment IDX_I) |
+  |---|---|---|---|
+  | NIFTY | 50 | 65 | 13 |
+  | BANKNIFTY | 100 | 30 | 25 |
+  | SENSEX | 100 | 20 | 51 |
+  Per-contract option securityIds are NOT static like the index IDs above — look them up fresh via
+  `python3 scripts/dhan.py lookup <underlying> <expiry> <strike> <CE|PE>` each time, which reads
+  Dhan's published instrument master (`scripts/dhan.py` caches it locally; pass `--refresh` if a
+  contract isn't found, e.g. after a new expiry has listed).
 - **Entry trigger:** only enter when ADX(14) on the entry timeframe reads **below 18** (range-bound/
   chop reading) shortly after the open, once the opening range has printed. Do not enter on a day
   ADX reads as trending — that's exactly the regime this strategy is not designed for.
@@ -66,6 +81,16 @@ but that protection is untested in backtest, not proven.
      "rare carry-forward" exception is not expected to apply here. If a routine ever has a specific,
      logged reason to consider it anyway, the same 3-condition test from the original spec still
      applies: (a) currently profitable, (b) original thesis intact, (c) stop tightened before holding.
+  **Sandbox-verified quirk, do not skip this:** a closing order is NOT guaranteed to fill quickly.
+  In testing, a BUY filled in ~3 seconds but the matching closing SELL on the same contract sat in
+  `PENDING` (filledQty 0) for over a minute and never filled — the order's own `drvExpiryDate` field
+  showed a date 4 days in the past relative to the test date, which may be why. **After placing any
+  square-off order, poll `python3 scripts/dhan.py order-status <id>` and confirm `orderStatus` is
+  actually `TRADED` before considering the position closed — do not assume a `TRANSIT` response
+  means done.** If a square-off order is still stuck after a couple of checks, alert via Telegram
+  rather than silently moving on. Also: `/positions` returned empty even right after a confirmed
+  fill in testing — track open positions from `orders` (filter `orderStatus == TRADED`, net BUY/SELL
+  qty per securityId), not from `/positions`.
 - **Expected trade frequency:** ~8-9 trades/month combined across all three instruments in backtest
   (roughly 1 every 3-4 trading days) — NOT daily. This is intentional selectivity, not a bug; don't
   loosen the ADX threshold to manufacture more trades without re-backtesting the change first.
