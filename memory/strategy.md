@@ -38,14 +38,25 @@ but that protection is untested in backtest, not proven.
 
 ## Hard guardrails (never violate these)
 
-- **Instruments:** NIFTY, BANKNIFTY, SENSEX. No individual stock options until this file says
-  otherwise (revisit only once this strategy has a real paper-trading track record).
-  **Correction (verified 2026-06-29 against Dhan's real instrument master): BANKNIFTY no longer
-  has weekly options — it's monthly-only now.** NIFTY and SENSEX still have weekly expiries. The
-  backtest's 1-6 DTE range is representative for NIFTY/SENSEX but NOT for BANKNIFTY, which will
-  almost always be trading with many more days to expiry than the backtest covered. Treat
-  BANKNIFTY trades as unvalidated by the DTE sweep until specifically re-backtested against its
-  real monthly cycle — don't assume the same edge transfers.
+- **Instruments:** NIFTY, BANKNIFTY, SENSEX all trade. No individual stock options until this
+  file says otherwise (revisit only once this strategy has a real paper-trading track record).
+  **NIFTY and SENSEX are validated** (large backtest sample, robust across every DTE 1-6 and
+  timeframe tested — see `memory/signals-learnings.md`). **BANKNIFTY is NOT validated and trades
+  in a data-gathering capacity, not a proven-edge one** — re-backtested 2026-06-29 against its
+  real monthly expiry calendar (it no longer has weekly options, confirmed against Dhan's
+  instrument master) and came back roughly breakeven (+₹1,166 over ~10 months, 31 trades), with
+  the trade-level detail showing that's mostly noise (29 of 31 trades drift to EOD with tiny P&L;
+  the only two trades with real magnitude were both right before expiry and nearly cancelled each
+  other out). A tighter near-the-money structure tuned for its slower long-dated decay was tested
+  and made it slightly *worse*, not better — so this isn't a quick-fix situation, it's a data
+  problem: there's only a couple of genuine near-expiry data points in the whole window.
+  **Decision: trade BANKNIFTY anyway since this is paper money (`TRADING_MODE: paper`), using the
+  same structure as NIFTY/SENSEX below, specifically to accumulate real near-expiry data points
+  over time.** Tag every BANKNIFTY entry in `memory/trade-log.md` with its DTE-at-entry, and in
+  weekly/monthly reviews assess BANKNIFTY's results separately from NIFTY/SENSEX — don't blend them
+  into one combined win-rate figure, since BANKNIFTY's sample is known-thin and shouldn't quietly
+  inflate or deflate confidence in the validated pair. Revisit whether BANKNIFTY has earned a
+  "validated" status once it has accumulated enough of its own near-expiry (≤7 DTE) trades to judge.
 - **Structure:** iron condor — sell a put 2 strikes OTM + sell a call 2 strikes OTM, buy a put 4
   strikes OTM + buy a call 4 strikes OTM. Strike step and lot size (verified 2026-06-29 against
   Dhan's instrument master, re-verify periodically as these get revised by the exchange):

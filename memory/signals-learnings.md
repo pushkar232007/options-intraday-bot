@@ -65,3 +65,32 @@ several real bugs - don't repeat these:
 If live trading later behaves differently from these sandbox findings (e.g. closing orders fill
 fast, `/positions` populates correctly), that's worth a new dated entry here too - don't assume
 sandbox quirks automatically carry over to live, only that they're confirmed *in sandbox*.
+
+## 2026-06-29 — BankNifty backtested against its real monthly cycle: roughly breakeven, mostly noise
+
+Re-ran the validated iron-condor strategy against BANKNIFTY's actual monthly expiry calendar
+(see `backtest_banknifty_monthly.py` - it no longer has weekly options, see the correction above).
+Result: 31 trades over ~10 months (the only window with a stable expiry-day convention), 61.3% win
+rate, but total P&L only +₹1,166 - essentially flat.
+
+Looked at the trade-level detail before concluding anything: **29 of 31 trades exit at EOD with
+tiny P&L (mostly ±100-300)** regardless of win/loss - consistent with far-from-expiry options
+barely moving in one day (slow theta, low gamma that far out), so the strategy's 50%-target/2x-
+stop thresholds almost never trigger and the outcome is just incidental drift, not a real signal.
+**The only two trades with real magnitude were both right before expiry** (DTE 1 and 0.2) - a
++1,681 win immediately followed by a -1,377 loss, which nearly cancel out and are far too few data
+points (n=2) to call either a win or a loss pattern.
+
+Tried fixing it with `strategy_spread_banknifty_v1.py` (near-the-money strikes 1/3 instead of 2/4,
+smaller 15% profit target instead of 50%, reasoning that long-dated options need more gamma/a more
+realistic single-day target) - made it slightly worse (-₹1,722), not better. **This was not a
+quick-fix-the-parameters situation - the real issue is there's only a couple of genuine
+near-expiry data points in the whole window, not that the structure is wrong.** Don't keep
+iterating on synthetic backtests trying to manufacture more BankNifty edge from a window that
+just doesn't have enough near-expiry days in it.
+
+**Decision:** trade BANKNIFTY in paper mode anyway (alongside the validated NIFTY/SENSEX) since
+real money isn't at risk yet, specifically to accumulate real near-expiry data points over the
+coming months. Track its results separately in reviews - don't blend into the NIFTY/SENSEX
+win-rate figure. See the BANKNIFTY guardrail note in `memory/strategy.md` for the exact tracking
+requirement.
