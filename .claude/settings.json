@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 scripts/dhan.py:*)",
+      "Bash(python3 scripts/telegram.py:*)",
+      "Bash(python3 scripts/risk.py:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "WebSearch",
+      "WebFetch"
+    ]
+  }
+}
