@@ -22,9 +22,15 @@ Default mode is **paper trading via Dhan Sandbox** until the human explicitly fl
      that burns context budget)
    - `memory/research-log.md` (today's entry, written by the pre-market routine)
 2. **Do the job** for whichever routine triggered you (see `routines/*.md` for what each covers).
-3. **Use the scripts, not raw curl, for Dhan and Telegram.** They already handle auth and base URLs:
-   - `python3 scripts/dhan.py <command>` — funds, positions, option-chain, quotes, place/modify/
-     cancel order (sandbox by default — see Credentials below)
+3. **Use the scripts, not raw curl, for Dhan, Telegram, and market data.** They already handle
+   auth and base URLs:
+   - `python3 scripts/dhan.py <command>` — funds, orders, lookup, place-order/place-spread,
+     square-off-all (sandbox by default — see Credentials below). Its `option-chain`/`quote`
+     subcommands are UNTESTED and will 404 against the sandbox — use `market_data.py` instead
+     until a live Data API subscription exists (see memory/signals-learnings.md).
+   - `python3 scripts/market_data.py <command>` — real spot price, India VIX, and ADX(14) via
+     Yahoo Finance, plus a Black-Scholes premium estimate for sizing/exit decisions. This is the
+     actual market-data source right now, not Dhan, because of the sandbox limitation above.
    - `python3 scripts/telegram.py "<message>"` — send a Telegram notification
    - `python3 scripts/risk.py <command>` — position sizing, daily-loss circuit breaker check
    - Run any script with `--help` if you forget the exact subcommand syntax.
