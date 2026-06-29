@@ -16,4 +16,7 @@ Force-close every open position, end of day.
    profitable, original thesis intact, stop tightened), message the human via scripts/telegram.py
    describing exactly what and why, and wait for confirmation rather than deciding alone - this
    should be rare enough that asking is correct.
-6. Log the day's final state (confirmed via `orders`, not `positions`) to memory/trade-log.md.
+6. Log the day's final state (confirmed via `orders`, not `positions`) to memory/trade-log.md. For
+   P&L on each closed trade while `TRADING_MODE: paper`: use the `market_data.py estimate-premium`
+   cost-to-close from monitor.md, not the real fill price — Dhan's sandbox fills every order at a
+   flat fake price of 100 regardless of real market price (see memory/signals-learnings.md).

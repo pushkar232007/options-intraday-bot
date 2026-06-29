@@ -94,3 +94,37 @@ real money isn't at risk yet, specifically to accumulate real near-expiry data p
 coming months. Track its results separately in reviews - don't blend into the NIFTY/SENSEX
 win-rate figure. See the BANKNIFTY guardrail note in `memory/strategy.md` for the exact tracking
 requirement.
+
+## 2026-06-29 — real Dhan account onboarding: F&O activation, sandbox token source, fill-price quirk
+
+Onboarding a real Dhan account (needed for sandbox use too) surfaced several things worth knowing
+before the next setup or any debugging session:
+
+- **F&O segment activation is a separate step from KYC**, gated by SEBI regulation, not a Dhan
+  quirk. "Account ready for trading" emails / general KYC completion does NOT imply F&O is active -
+  check Profile > Segments for `F&O` explicitly. Activation needs one income proof: bank statement
+  (6 months/180 days, end date within 35 days), ITR (latest AY, income >= Rs1,20,000), or holdings
+  statement (>= Rs10,000, latest month). Apply via Profile > Segment Activated > Apply for F&O
+  (app) or My Profile > Apply for Investment Products (web). Usually verified within a few hours.
+- **Sandbox credentials are NOT the same as the live "DhanHQ Trading APIs" token.** The
+  `web.dhan.co` Profile > "DhanHQ Trading APIs" page generates a token for `api.dhan.co` (live) -
+  it will fail with `Invalid Token` (DH-906) against `sandbox.dhan.co`. The correct source is the
+  **separate DevPortal** at `developer.dhanhq.co` > log in (this requires connecting/linking your
+  real Dhan account once - can have OTP/PIN friction the first time, retry in an incognito window
+  if repeated "correct" OTP+PIN attempts fail) > **Sandbox** tab > generates its own
+  **sandbox Client ID** (different number from your live Client ID) and sandbox access token. Use
+  the sandbox Client ID/token pair together - mixing a live Client ID with a sandbox token (or vice
+  versa) is the `Invalid Token` failure mode.
+- **Dhan's sandbox fills every order at a flat simulated price of 100, regardless of real market
+  price** (per Dhan's own sandbox docs). This means even a "real" `averageTradedPrice` read back
+  from a sandbox fill is meaningless for credit/P&L tracking - keep using
+  `scripts/market_data.py estimate-premium` for all sizing/exit-threshold decisions in sandbox, the
+  same as already documented above for the missing-market-data reason, just for a different reason
+  now (fills are real numbers but fake economics, not 404s).
+- **Order reads (`/orders`, `/orders/{id}`, `/fundlimit`) return confusing generic 500 errors
+  (`FUND_LIMIT_ERROR`, `DH-906 "Incorrect request..."`) when called outside actual NSE F&O trading
+  hours (9:15 AM-3:30 PM IST, Mon-Fri)**, even though order *placement* itself was accepted (got a
+  real orderId, sat at `TRANSIT`). Confirmed via community reports of the same DH-906 message
+  actually meaning "market is closed," not an account problem. **Don't conclude something is broken
+  from a sandbox API error without first checking whether it's actually market hours** - retest
+  during market hours before treating any read-endpoint failure as a real bug.

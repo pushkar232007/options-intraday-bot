@@ -7,8 +7,12 @@ Check every open position against the exit rules in memory/strategy.md.
    estimate-premium <X> <strike> <CE|PE> --dte <days remaining>` for each of the 4 legs (Dhan's
    sandbox has no live option-chain to read real prices from - see memory/signals-learnings.md;
    this BS-based estimate off real spot+VIX is the same approach the backtest validated). Compare
-   the estimated cost-to-close to the REAL credit received at entry (logged from actual fill
-   prices in trade-log.md, not an estimate):
+   the estimated cost-to-close to the entry credit logged in trade-log.md. **While
+   `TRADING_MODE: paper`, that logged entry credit is itself the step-5 estimate from trade.md, not
+   a real fill price** — Dhan's sandbox fills every order at a flat fake price of 100 regardless of
+   real market price (see memory/signals-learnings.md), so trusting `averageTradedPrice` here would
+   be wrong. Both sides of this comparison are consistently estimate-based until `TRADING_MODE`
+   flips to `live`, which is expected and fine.
    - Cost-to-close <= 50% of entry credit → close now, log as `PROFIT_TARGET`.
    - Cost-to-close >= 2x entry credit → close now, log as `SL`.
    - Otherwise → leave it open, but note its current status in memory/trade-log.md if it's

@@ -16,6 +16,23 @@ Known sandbox quirk: `/v2/positions` returned `[]` even immediately after a trad
 (`/v2/orders` showed `orderStatus: "TRADED"` for the same order). Don't assume `positions`
 reflects reality in sandbox - cross-check against `orders` if something looks off.
 
+Known sandbox quirk: every order fills at a flat simulated price of 100 regardless of real market
+price (confirmed in Dhan's own sandbox docs). `averageTradedPrice` is therefore NOT usable as a
+real premium/credit while paper trading - use `market_data.py estimate-premium` for all
+credit/cost-to-close tracking instead (see memory/signals-learnings.md and the trade/monitor/
+squareoff command docs, which already account for this).
+
+Known quirk: sandbox credentials (DHAN_CLIENT_ID/DHAN_ACCESS_TOKEN) come from the separate
+DevPortal at developer.dhanhq.co > Sandbox tab, NOT from web.dhan.co's "DhanHQ Trading APIs" page
+(that page issues a token for the live api.dhan.co host - it will 400 with "Invalid Token" against
+sandbox.dhan.co). The sandbox Client ID is also a different number from the live account's
+Client ID - use the sandbox pair together.
+
+Known quirk: `/orders`, `/orders/{id}`, and `/fundlimit` can return confusing generic 500 errors
+(`FUND_LIMIT_ERROR`, `DH-906 "Incorrect request..."`) when called outside actual NSE F&O trading
+hours (9:15 AM-3:30 PM IST, Mon-Fri), even though order *placement* itself is accepted. Don't
+conclude something is broken from one of these errors without checking the time first.
+
 Usage:
   python3 scripts/dhan.py funds
   python3 scripts/dhan.py positions
