@@ -9,11 +9,12 @@ documenting the cron schedule + prompt pasted into Claude Desktop's Routines UI.
 ## Why credit spreads, not naked option buying
 
 The original idea was buying cheap options for big quick payoffs. Six backtested versions of that
-(in the sibling [`options-backtest`](../options-backtest) repo) all failed once tested on a large
-enough sample. Selling defined-risk spreads on range-bound days (ADX < 18) backtested profitably
-across every timeframe and expiry tested instead. Full account in
-[`memory/signals-learnings.md`](memory/signals-learnings.md) and the strategy itself in
-[`memory/strategy.md`](memory/strategy.md) — read those before changing anything.
+(in [`backtest/`](backtest/)) all failed once tested on a large enough sample. Selling defined-risk
+spreads on range-bound days (ADX < 18) backtested profitably across every timeframe and expiry
+tested instead. Full account in [`memory/signals-learnings.md`](memory/signals-learnings.md) and
+the strategy itself in [`memory/strategy.md`](memory/strategy.md) — read those before changing
+anything. To rerun or extend the backtest: `cd backtest && python3 fetch_data.py && python3
+backtest_spreads.py --strategy strategy_spread_v1` (data/ is gitignored — regenerate it locally).
 
 ## Setup
 

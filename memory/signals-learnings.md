@@ -3,7 +3,7 @@
 ## 2026-06-29 — naked option buying rejected, credit spreads adopted (pre-launch backtest)
 
 Before this bot ever placed a paper trade, six versions of naked directional option-buying were
-backtested (in `~/Projects/options-backtest`) and rejected:
+backtested (in `backtest/` in this repo) and rejected:
 
 - v1: opening-range breakout + EMA9/21 + RSI — lost money, 30% win rate.
 - v2: + ATR range filter, fixed 2:1 reward:risk — P&L flips sign across nearby days-to-expiry

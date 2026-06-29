@@ -8,7 +8,7 @@ _Last updated: 2026-06-29 — initial strategy, validated via backtest before an
   for it here.
 - Broker: Dhan (DhanHQ), Sandbox mode. ₹1,00,000 starting virtual balance.
 
-## Thesis (validated by backtest — see `~/Projects/options-backtest`)
+## Thesis (validated by backtest — see `backtest/` in this repo)
 
 **Sell defined-risk credit spreads (iron condors) on Nifty/BankNifty/Sensex weekly options,
 on days that read as range-bound/low-volatility — do not buy naked options for direction.**
