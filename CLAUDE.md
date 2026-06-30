@@ -46,9 +46,15 @@ Default mode is **paper trading via Dhan Sandbox** until the human explicitly fl
    - `memory/trade-log.md` if you placed, closed, or skipped a trade (and why)
    - `memory/research-log.md` if you did research
    - `memory/signals-learnings.md` if you learned something worth remembering next time
-8. **Commit and push.** This repo is cloned fresh for every remote routine run — if you don't
-   commit and push your memory file changes back to `main`, the next routine wakes up with no
-   memory of what you just did.
+8. **Commit and push directly to `main` — never a feature branch, never a PR.** This repo is
+   cloned fresh for every remote routine run — if your memory file changes aren't on `main` itself
+   (not a side branch, not an open PR awaiting merge) by the time you finish, the next routine
+   wakes up with no memory of what you just did. **This has actually happened**: one routine run
+   defaulted to pushing to a session-specific branch instead of `main` (a generic safe-git habit
+   that does NOT apply here), silently leaving that day's memory updates off `main` until a human
+   noticed and merged it manually. There is no PR review step in this project's workflow - you are
+   the only one operating on this repo, `main` is the single source of truth, and your last action
+   every run must leave `main` itself updated, confirmed via `git log origin/main` after pushing.
 
    If the built-in GitHub integration's `git push` fails with 403 / "Resource not accessible by
    integration" (same known issue as the `trading-routine` repo), don't retry it — push using the
