@@ -127,4 +127,15 @@ before the next setup or any debugging session:
   real orderId, sat at `TRANSIT`). Confirmed via community reports of the same DH-906 message
   actually meaning "market is closed," not an account problem. **Don't conclude something is broken
   from a sandbox API error without first checking whether it's actually market hours** - retest
-  during market hours before treating any read-endpoint failure as a real bug.
+  during market hours before treating any read-endpoint failure as a real bug. Confirmed fixed:
+  re-checked at 2026-06-29 ~10:35 AM IST (markets open) and the exact same order that errored the
+  night before now reads back cleanly with `orderStatus: "TRADED"`, `averageTradedPrice: 100.0`
+  (the flat sandbox fill price, as expected).
+- **Correction to the "closing orders are slow" note above:** the stuck `PENDING`/`TRANSIT` closing
+  SELL orders from that earlier test were not a generic slowness quirk - they were attempts to
+  close a position in **NIFTY-Jun2026-24000-CE, whose expiry (2026-06-25) had already passed** by
+  test time. You cannot trade an expired contract; that's why `drvExpiryDate` looked wrong and why
+  the order never filled. These stuck orders also can't be cancelled (`DELETE /orders/{id}` returns
+  `DH-906 "Order is in Transit state"` - you can't even cancel a TRANSIT order, only wait it out or
+  let it lapse). Lesson: **always confirm the expiry date being traded is still in the future**
+  before testing close/SL behavior, not just before opening a position.
