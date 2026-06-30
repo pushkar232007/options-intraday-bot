@@ -60,6 +60,11 @@ Default mode is **paper trading via Dhan Sandbox** until the human explicitly fl
    git push https://${GH_TOKEN}@github.com/pushkar232007/options-intraday-bot.git HEAD:main
    ```
    If that also fails, that's a real, urgent problem — notify via `scripts/telegram.py` and stop.
+
+   A push via the PAT will show an "Unverified" badge on GitHub since it bypasses the integration's
+   signature verification. **Leave it as-is — do not amend the commit or force-push to "fix" this.**
+   It's cosmetic, the content is what matters, and force-pushing `main` is not worth the risk for a
+   cosmetic badge.
 9. **Notify sparingly, and only via Telegram.** `scripts/telegram.py` is the only notification
    channel confirmed to reach the human. Only send a message when:
    - A trade was actually placed or closed, or
