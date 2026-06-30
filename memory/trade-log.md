@@ -39,3 +39,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 - **Strategy positions to carry/close:** none. Zero bot trades placed today (all three instruments
   SKIP'd at ADX>18 all day). Carry-forward 3-condition test N/A — nothing held.
 - **Final state (from `orders`):** cash ₹1,00,000 (paper), all-time realized P&L ₹0, today's P&L ₹0.
+
+## 2026-06-30 EOD square-off (re-fire, ~11:57 AM IST)
+
+`2026-06-30 ~11:57 IST | — | — | NO-OP (re-verified, no strategy positions) | nothing to close`
+- **Why this entry exists:** the EOD routine fired again at ~11:57 AM IST — the *second* premature
+  fire today (first was ~11:40 AM, commit 6a0f39b). The routine's documented schedule is `45 9 *
+  * 1-5` = 3:15 PM IST (routines/eod-squareoff.md), so both of today's EOD fires ran ~3.5h early,
+  mid-session. Likely a manual/test trigger or a misconfigured platform schedule — worth checking
+  the cron if unintended. Harmless today (no positions to mishandle), but a real EOD at noon would
+  miss any afternoon entry, so flag it.
+- **Re-verified broker state:** ran `square-off-all` again → one closing SELL on sid=71472
+  (NIFTY-Jun2026-24000-CE, +130 long) → order 72260630106081 REJECTED ("Fund Limit Insufficient",
+  expired contract drvExpiryDate 2026-06-25). Same known sandbox test artifact, clean terminal
+  rejection (not stuck TRANSIT) — will lapse on its own, no escalation. Confirmed via `order-status`.
+- **Strategy positions:** none (zero bot trades today; all three SKIP'd at ADX>18). Carry-forward
+  test N/A. Final state unchanged: cash ₹1,00,000, all-time realized P&L ₹0, today's P&L ₹0.
