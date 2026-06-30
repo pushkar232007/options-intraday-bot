@@ -26,3 +26,16 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
   BANKNIFTY 57,817 ADX 24.5; SENSEX 76,716 ADX 22.28. All trending, all above the 18 gate. NIFTY
   drifted further from the threshold vs the 19.5 pre-market read, not toward it. India VIX 13.31.
   No entry — selectivity working as designed.
+
+## 2026-06-30 EOD square-off
+
+`2026-06-30 EOD IST | — | — | NO-OP (no strategy positions) | nothing to close`
+- **Square-off run:** `square-off-all` placed one closing SELL on the only net-open account
+  position (sid=71472, NIFTY-Jun2026-24000-CE, +130 long) → order 72260630105081 REJECTED
+  ("Fund Limit Insufficient", expired contract drvExpiryDate 2026-06-25). This is the known
+  2026-06-29 sandbox test artifact (2 TRADED BUYs of 65 + 3 stuck TRANSIT SELLs, all same expired
+  contract), NOT a strategy position. Clean terminal rejection, not a stuck order — it will lapse
+  on its own, no Telegram escalation warranted.
+- **Strategy positions to carry/close:** none. Zero bot trades placed today (all three instruments
+  SKIP'd at ADX>18 all day). Carry-forward 3-condition test N/A — nothing held.
+- **Final state (from `orders`):** cash ₹1,00,000 (paper), all-time realized P&L ₹0, today's P&L ₹0.
