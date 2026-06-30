@@ -6,6 +6,22 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-06-30 — pre-market scan (egress restored): all three trending, no setup
+
+Egress is working again — the Yahoo Finance block from the earlier run today (see entry below)
+has cleared; `scripts/market_data.py scan` returned clean data. India VIX **13.67** (low, the
+kind of low-vol backdrop credit spreads like). But the ADX<18 entry gate isn't met anywhere:
+
+- **NIFTY** — spot 23,897, ADX(14) 19.5 → not range-bound (just above the 18 threshold). No entry.
+- **BANKNIFTY** — spot 57,703.5, ADX(14) 27.7 → clearly trending. No entry.
+- **SENSEX** — spot 76,626.2, ADX(14) 22.8 → trending. No entry.
+
+**Conclusion:** no instrument reads range-bound; none qualify for the iron-condor entry. No draft
+to carry into market-open. NIFTY is closest (19.5) — worth re-checking at the open once the
+opening range prints, since ADX can settle below 18 intraday. No positions open, nothing to manage.
+
+---
+
 ## 2026-06-30 — pre-market scan BLOCKED: egress policy denies Yahoo Finance (and Telegram)
 
 No scan data today. `python3 scripts/market_data.py scan` failed before returning any
