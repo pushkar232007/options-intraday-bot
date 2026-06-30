@@ -27,6 +27,17 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
   drifted further from the threshold vs the 19.5 pre-market read, not toward it. India VIX 13.31.
   No entry — selectivity working as designed.
 
+## 2026-06-30 intraday-monitor (~12:32 IST)
+
+`2026-06-30 ~12:32 IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three`
+- **Positions to manage:** none. Only TRADED net position is sid=71472 (NIFTY-Jun2026-24000-CE,
+  +130 long), the expired-2026-06-25 sandbox test artifact — not a strategy position, no exit rule
+  applies. Zero bot trades in log.
+- **Circuit breaker:** not tripped (day P&L ₹0, capital ₹1,00,000).
+- **Fresh-setup check:** no qualifying ADX<18 setup. Scan — NIFTY spot 23,916 ADX 24.39;
+  BANKNIFTY 57,643 ADX 24.67; SENSEX 76,633 ADX 24.68. All trending. India VIX 13.42. NIFTY now
+  further from the gate than the 19.5 pre-market read (and the 23.88 earlier-intraday read). No entry.
+
 ## 2026-06-30 EOD square-off
 
 `2026-06-30 EOD IST | — | — | NO-OP (no strategy positions) | nothing to close`

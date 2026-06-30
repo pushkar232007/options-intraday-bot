@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-06-30 ~11:57 IST (EOD square-off re-fire; state re-verified against broker, unchanged)._
+_Last updated: 2026-06-30 ~12:32 IST (intraday-monitor; state re-verified against broker, unchanged)._
 
 - **Mode:** paper (Dhan Sandbox)
 - **Cash:** ₹1,00,000.00
