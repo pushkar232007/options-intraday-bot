@@ -66,3 +66,15 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
   rejection (not stuck TRANSIT) — will lapse on its own, no escalation. Confirmed via `order-status`.
 - **Strategy positions:** none (zero bot trades today; all three SKIP'd at ADX>18). Carry-forward
   test N/A. Final state unchanged: cash ₹1,00,000, all-time realized P&L ₹0, today's P&L ₹0.
+
+## 2026-06-30 intraday-monitor (~13:32 IST)
+
+`2026-06-30 ~13:32 IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three`
+- **Positions to manage:** none. Only net TRADED position is sid=71472 (NIFTY-Jun2026-24000-CE,
+  +130 long) — the expired-2026-06-25 single-leg sandbox test artifact (strategy never buys naked/
+  single-leg), no exit rule applies. Zero bot trades in log.
+- **Circuit breaker:** not tripped (day P&L ₹0, capital ₹1,00,000).
+- **Fresh-setup check:** no qualifying ADX<18 setup. Scan — NIFTY spot 23,937 ADX 25.26;
+  BANKNIFTY 57,658 ADX 28.7; SENSEX 76,675 ADX 25.08. All trending, all above the 18 gate.
+  India VIX 13.36 (low-vol backdrop, but the ADX gate is the binding constraint). No entry —
+  selectivity working as designed. NIFTY remains well above the gate (was 19.5 pre-market).
