@@ -12,5 +12,17 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
-_(No trades yet — bot has not run live/paper. First entry will be written by the first routine
-that actually evaluates a setup.)_
+## 2026-06-30 intraday-monitor
+
+`2026-06-30 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three`
+- **Positions to manage:** none. The only TRADED orders in the Dhan account (sid=71472,
+  NIFTY-Jun2026-24000-CE, net +130 long) are leftover sandbox end-to-end test artifacts from
+  2026-06-29 — a single naked CALL leg (strategy never buys naked / never single-leg), with all
+  matching closing SELLs stuck in TRANSIT (the exact quirk documented in strategy.md L95-104), on a
+  contract that expired 2026-06-25. Not a strategy position; trade-log shows zero bot trades. Cost-
+  to-close estimate N/A (expired contract). Nothing for the 50%/2x exit rules to act on.
+- **Circuit breaker:** not tripped (day P&L ₹0, capital ₹1,00,000).
+- **Fresh-setup check:** no qualifying ADX<18 setup. Scan — NIFTY spot 23,958 ADX 23.88;
+  BANKNIFTY 57,817 ADX 24.5; SENSEX 76,716 ADX 22.28. All trending, all above the 18 gate. NIFTY
+  drifted further from the threshold vs the 19.5 pre-market read, not toward it. India VIX 13.31.
+  No entry — selectivity working as designed.
