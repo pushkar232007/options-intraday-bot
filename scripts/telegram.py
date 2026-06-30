@@ -47,7 +47,7 @@ def send(message: str) -> str:
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 2 or sys.argv[1] in ("-h", "--help"):
         sys.exit('Usage: python3 scripts/telegram.py "<message>"')
     print(send(sys.argv[1]))
 
