@@ -1,8 +1,9 @@
 # Routine: Intraday Monitor — Entries & Position Management
 
-**Cron:** `0,30 4-9 * * 1-5` (every 30 min from 4:00 AM-9:30 AM UTC = 9:30 AM-3:00 PM IST,
-Monday-Friday). Skip the very first 15 min after open (9:15-9:30 IST) so the opening range has
-actually printed before the first check.
+**Cron:** `0 4-9 * * 1-5` (top of each hour, 4:00 AM-9:00 AM UTC = 9:30 AM-2:30 PM IST,
+Monday-Friday - the platform's routine scheduler only supports hourly-or-slower triggers, so this
+replaces the originally-intended 30 min cadence). Skip the very first 15 min after open
+(9:15-9:30 IST) so the opening range has actually printed before the first check.
 
 **Notifications:** Telegram only if a trade is actually placed or closed, or if the daily loss
 circuit breaker trips.
