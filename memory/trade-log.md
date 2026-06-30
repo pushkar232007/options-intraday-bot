@@ -12,6 +12,23 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-06-30 EOD square-off (final, ~15:15 IST)
+
+`2026-06-30 EOD IST | — | — | NO-OP (no strategy positions) | nothing to close`
+- **Square-off run:** `square-off-all` placed one closing SELL on the only net-open account
+  position (sid=71472, NIFTY-Jun2026-24000-CE, +130 long) → order 72260630107081 REJECTED
+  ("Fund Limit Insufficient", expired contract drvExpiryDate 2026-06-25), confirmed via
+  `order-status`. Same known 2026-06-29 sandbox test artifact — clean terminal rejection, not a
+  stuck order; it will lapse on its own, no Telegram escalation warranted.
+- **Strategy positions to carry/close:** none. Zero bot trades placed today — all three
+  instruments SKIP'd at ADX>18 the entire session (NIFTY/BANKNIFTY/SENSEX never crossed below the
+  18 gate; India VIX ~13.3 low-vol but ADX was the binding constraint). Carry-forward 3-condition
+  test N/A — nothing held.
+- **Final state (from `orders`):** cash ₹1,00,000 (paper), all-time realized P&L ₹0, today's P&L ₹0.
+- **Note:** EOD routine fired several times today (~11:40, ~11:57, and again now); all no-ops since
+  there were never any strategy positions. Schedule drift flagged in earlier entries — worth a cron
+  check if unintended, but harmless on a no-trade day.
+
 ## 2026-06-30 intraday-monitor
 
 `2026-06-30 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three`
