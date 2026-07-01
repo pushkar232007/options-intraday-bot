@@ -87,11 +87,20 @@ but that protection is untested in backtest, not proven.
   1. Profit target: close once the cost to close the spread has decayed to 50% of the credit
      received (lock in half the max profit, don't try to ride it to expiry intraday).
   2. Stop-loss: close if the cost to close grows to 2x the credit received.
-  3. Forced EOD square-off: close everything by ~3:15-3:20 PM IST regardless, no exceptions for
-     this strategy — a defined-risk spread has no real reason to carry overnight, so the original
-     "rare carry-forward" exception is not expected to apply here. If a routine ever has a specific,
-     logged reason to consider it anyway, the same 3-condition test from the original spec still
-     applies: (a) currently profitable, (b) original thesis intact, (c) stop tightened before holding.
+  3. EOD review (~3:15-3:20 PM IST): the **default** is to close everything intraday, but
+     carry-forward is a valid autonomous decision when all 3 conditions are met:
+     (a) position is currently in profit (cost-to-close < entry credit),
+     (b) original thesis is intact — ADX still reading <18 on the next day's pre-market, or
+         a clear continuation setup visible in the data,
+     (c) stop is tightened to at least breakeven (entry credit) before holding overnight — this
+         is non-negotiable, protects against overnight gap risk.
+     **Do NOT carry forward losers** — a position at a loss should be closed at EOD unless there
+     is an unusually strong, logged technical reason (and even then, the tightened-stop rule still
+     applies: cap the downside before holding). When in doubt, close it. Protecting capital beats
+     hoping for a recovery overnight.
+     The bot decides carry-forward autonomously — no need to message Pushkar for confirmation on
+     clear-cut cases. Send the EOD Telegram summary noting what was closed and what (if anything)
+     was carried forward and why.
   **Sandbox-verified quirk, do not skip this:** a closing order is NOT guaranteed to fill quickly.
   In testing, a BUY filled in ~3 seconds but the matching closing SELL on the same contract sat in
   `PENDING` (filledQty 0) for over a minute and never filled — the order's own `drvExpiryDate` field
