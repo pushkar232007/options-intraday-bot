@@ -1,12 +1,12 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-01 (command files restructured — portfolio.md is now the source of truth
-for all paper positions, not the broker. Broker orders are best-effort only in TRADING_MODE: paper)._
+_Last updated: 2026-07-01 ~12:36 IST (first paper iron condor opened under the portfolio-first
+restructure — NIFTY IC, broker best-effort)._
 
 - **Mode:** paper (broker: Dhan Sandbox → migrating to Upstox)
 - **Cash (tracked virtual):** ₹1,00,000.00
 - **Realized P&L (all-time):** ₹0.00
-- **Today's P&L:** ₹0.00
+- **Today's P&L:** ₹0.00 (open position unrealized; P&L booked at close)
 
 ---
 
@@ -14,9 +14,11 @@ for all paper positions, not the broker. Broker orders are best-effort only in T
 
 | # | Instrument | Expiry | Short Put | Long Put | Short Call | Long Call | Lots | Entry Credit | Entry Date | DTE at Entry | Broker Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| — | — | — | — | — | — | — | — | — | — | — | — |
+| 1 | NIFTY | 2026-07-07 | 23950 | 23850 | 24150 | 24250 | 2 | 72.01/unit | 2026-07-01 | 6 | see trade-log |
 
-_No open positions._
+Entry: net credit ₹72.01/unit × 130 units = ₹9,361 collected. Width 100, max loss
+2×(100−72.01)×65 = ₹3,639 (≤5% cap). Exit rules: PROFIT_TARGET at cost-to-close ≤ ₹36.01/unit
+(50% of credit), SL at cost-to-close ≥ ₹144.02/unit (2× credit), else forced EOD square-off.
 
 ---
 
