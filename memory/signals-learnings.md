@@ -1,5 +1,29 @@
 # Signals & Learnings
 
+## 2026-07-01 — FIRST live-sandbox spread attempt blocked: naked-leg margin + un-clearable artifact
+
+The very first time this bot hit a qualifying setup and tried to place a real iron condor
+(SENSEX, ADX 17.09), the order was **rejected by Dhan sandbox (400 DH-906)** before any leg
+filled. Two compounding causes, both now known so future routines don't re-derive them:
+
+1. **`place-spread` is margined as a naked short at leg 1.** It places legs sequentially in the
+   order `[short-put SELL, long-put BUY, short-call SELL, long-call BUY]` — so the very first
+   order is a *naked* short put, which the broker margins at full naked-short requirement
+   (several lakh for SENSEX) before the protective long wing exists. A defined-risk condor's real
+   margin (≈ its ₹5k max loss) is never reached because it never gets past leg 1. **Fix to
+   consider: reorder to place BUY (long) legs first, or submit as a margin-benefit basket.**
+2. **Sandbox `availableBalance` is only ₹65,301** — `utilizedAmount` ₹934,698 (of the ~₹10L
+   sandbox notional) is locked by the leftover expired sid=71472 test-artifact positions, whose
+   closing SELLs keep getting REJECTED ("Fund Limit Insufficient") and can't be cleared because
+   the contract expired 2026-06-25. So even the correctly-margined ₹5k condor may not fit until
+   the sandbox is reset/topped up.
+
+**Lesson:** "validated end-to-end against the sandbox" (strategy.md) covered funds/orders/position
+*reads* and a single naked test order — it never actually placed a full 4-leg condor. First real
+placement surfaced this. Until (1) place-spread leg ordering and/or (2) the sandbox margin state
+is fixed, qualifying setups will keep getting rejected at entry. Flagged to Pushkar via Telegram +
+routine push on 2026-07-01.
+
 ## 2026-06-29 — naked option buying rejected, credit spreads adopted (pre-launch backtest)
 
 Before this bot ever placed a paper trade, six versions of naked directional option-buying were

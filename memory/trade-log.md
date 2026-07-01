@@ -12,6 +12,34 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-01 intraday-monitor (~09:34 IST) — first qualifying setup, but ENTRY BLOCKED by sandbox margin
+
+`2026-07-01 09:34 IST | SENSEX | 1 | ENTRY REJECTED (insufficient sandbox margin) | IC 76200/76400/76800/77000 | est net credit 116.98 | intended 3 lots (60 qty) | DH-906 order rejected`
+- **Positions to manage:** none. Only net TRADED position is the expired-2026-06-25 sandbox
+  artifact sid=71472 (NIFTY-Jun2026-24000-CE, +130 long) — no strategy exit rule applies.
+- **Circuit breaker:** not tripped (day P&L ₹0, capital ₹1,00,000).
+- **Fresh setup — SENSEX QUALIFIED (first time in days):** scan NIFTY spot 23,929.9 ADX 18.58
+  (no), BANKNIFTY 57,554 ADX 31.52 (no), **SENSEX spot 76,580–76,600 ADX(14) 17.09 → range-bound,
+  below the 18 gate.** India VIX 13.94. Re-confirmed ADX 17.09 before acting.
+- **Sized OK:** IC short 76400PE/76800CE, long 76200PE/77000CE (2/4 strikes OTM, step 100),
+  width 200, est net credit ₹116.98/unit, lot size 20. `risk.py size-spread` → 3 lots; max loss
+  3×(200−116.98)×20 = ₹4,981 ≤ 5% cap (₹5,000). Expiry 2026-07-02 (1 DTE; nearest listed, within
+  validated DTE 1-6, closest to the ~2-DTE preference — 8-DTE 07-09 is outside tested range).
+- **BLOCKED at placement:** `place-spread` → **Dhan 400 DH-906 "Transaction has Failed"** on the
+  first leg. Root cause: sandbox `availableBalance` is only **₹65,301** (`utilizedAmount` ₹934,698
+  of the ~₹10L sandbox notional is locked by the leftover expired sid=71472 test-artifact
+  positions, whose closing SELLs keep getting REJECTED "Fund Limit Insufficient" and can't be
+  cleared — contract expired 2026-06-25). `place-spread` places legs sequentially leading with the
+  naked short-put SELL, whose standalone naked margin far exceeds ₹65,301 → rejected. **Verified 0
+  SENSEX legs filled — clean failure on leg 1, no partial/naked position left on.** No-trade.
+- **Action needed (flagged via Telegram + routine push):** this is an execution blocker, not a
+  strategy skip — a valid setup could not be traded because the sandbox account's margin is locked
+  by an un-clearable artifact. Two fixes to consider before the next qualifying setup: (a) reset/
+  top-up the Dhan sandbox account so `availableBalance` reflects the intended ₹1,00,000 free, and/
+  or (b) make `place-spread` place the protective long (BUY) legs first, or use a margin-benefit
+  basket, so a defined-risk condor isn't margined as a naked short at leg 1. Logged here so the
+  next routine doesn't re-derive this from scratch.
+
 ## 2026-06-30 EOD square-off (final, ~15:15 IST)
 
 `2026-06-30 EOD IST | — | — | NO-OP (no strategy positions) | nothing to close`
