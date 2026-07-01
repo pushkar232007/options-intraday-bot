@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-01 intraday-monitor (mid-session re-fire; broker-verified via funds/orders)._
+_Last updated: 2026-07-01 ~11:43 IST intraday-monitor (broker-verified via funds/orders)._
 
 - **Mode:** paper (Dhan Sandbox)
 - **Cash (tracked virtual):** ₹1,00,000.00
@@ -10,10 +10,15 @@ _Last updated: 2026-07-01 intraday-monitor (mid-session re-fire; broker-verified
   simply lapses. See trade-log.)
 - **Realized P&L (all-time):** ₹0.00
 - **Today's P&L:** ₹0.00
-- **⚠️ Sandbox margin blocker (new, 2026-07-01):** Dhan sandbox `availableBalance` is only
-  **₹65,301.12** (`utilizedAmount` ₹934,698 locked by the un-clearable expired sid=71472 artifact).
-  This is far below what a naked short leg needs, so `place-spread` (which leads with the naked
-  SELL leg) gets rejected DH-906 — the first qualifying setup (SENSEX, 2026-07-01) could NOT be
-  entered because of this. Needs a sandbox account reset/top-up and/or a place-spread leg-ordering
-  fix (long legs first) before the next qualifying setup can actually execute. See trade-log
-  2026-07-01.
+- **⚠️ TWO stacked sandbox blockers preventing ALL execution (2026-07-01):** a valid qualifying setup
+  (NIFTY, ADX 16.08, sized 2 lots / ₹3,637 max loss) could NOT be entered at ~11:43 IST. Both must be
+  cleared by a **Dhan sandbox account reset** before any setup can execute:
+  1. **DH-906 margin:** `availableBalance` only **₹65,301.12** (`utilizedAmount` ₹934,698 locked by the
+     un-clearable expired sid=71472 artifact). The place-spread leg-ordering fix (long legs first) is
+     now in `dhan.py`, but margin is still short.
+  2. **DH-905 unknown contracts (NEW, the deeper blocker):** the sandbox OMS rejects the newly-listed
+     NIFTY 2026-07-07 securityIds (valid in Dhan's published master, but "bad values" to the sandbox) —
+     both BUY and SELL, all 4 legs. The expired sid=71472 by contrast passes input validation. The
+     sandbox's tradable instrument universe appears frozen and excludes current weekly expiries.
+     **Margin top-up alone will NOT fix this — a full sandbox reset (fresh instrument set) is needed.**
+  See trade-log 2026-07-01 ~11:43 IST.

@@ -12,6 +12,41 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-01 intraday-monitor (~11:43 IST) — NIFTY QUALIFIED & SIZED, but ENTRY BLOCKED by NEW sandbox blocker (DH-905, unknown securityIds)
+
+`2026-07-01 11:43 IST | NIFTY | 6 | ENTRY REJECTED (sandbox OMS rejects contract, DH-905) | IC 23800/23900/24100/24200 | est net credit 72.02 | intended 2 lots (130 qty) | all 4 legs DH-905 input-validation reject`
+- **Positions to manage:** none. Only TRADED orders are the two 2026-06-29 artifact BUYs (sid=71472,
+  NIFTY-Jun2026-24000-CE, expired 2026-06-25) — no strategy exit rule applies. Zero bot positions open.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100000 --day-pnl 0` → tripped=False).
+- **Fresh setup — NIFTY QUALIFIED:** scan NIFTY spot ~23,992–23,998 **ADX(14) 16.08 (re-confirmed
+  twice, well clear of the 18 gate — not a boundary flicker)** → range-bound. BANKNIFTY ADX 21.39 (no),
+  SENSEX ADX 18.55 (no). India VIX ~13.45. First clean qualifier in days.
+- **Sized OK (2 lots):** IC short 23900PE/24100CE, long 23800PE/24200CE (2/4 strikes OTM, step 50),
+  width 100, est net credit ₹72.02/unit (110.73+129.13 short − 76.62+91.22 long), lot 65.
+  `risk.py size-spread --capital 100000 --width 100 --credit 72.02 --lot-size 65` → 2 lots;
+  max loss 2×(100−72.02)×65 = ₹3,637 ≤ 5% cap (₹5,000). Expiry **2026-07-07 (6 DTE**; nearest listed —
+  NIFTY weeklies are Tue, today is Wed 07-01, so 07-07 is the closest; within validated DTE 1-6).
+- **BLOCKED at placement — NEW distinct failure, DH-905 (not the morning's DH-906 margin issue):**
+  `place-spread` failed on its first (long-put BUY) leg with **Dhan 400 DH-905 "Input_Exception:
+  Missing required fields, bad values for parameters."** Isolated it: a single `place-order` on every
+  one of the four 07-07 NIFTY securityIds (44613/44617/44633/44640, all valid in Dhan's published
+  instrument master, re-confirmed after `--refresh`) fails DH-905 for **both BUY and SELL**. By
+  contrast a `place-order` on the expired artifact sid=71472 passes input validation and reaches the
+  RMS margin check (DH-906 fund-limit reject). **Conclusion: the Dhan sandbox OMS does not recognize
+  the newly-listed NIFTY 2026-07-07 contract securityIds — its tradable instrument universe appears
+  frozen/stale and excludes recently-listed expiries.** This is a *deeper* blocker than the margin one:
+  even with margin freed and the place-spread leg-ordering fix (long legs first, already in dhan.py)
+  in place, these contracts can't be traded until the sandbox refreshes its instrument set.
+- **Verified 0 legs filled** — clean failure at input validation, no partial/naked position left on
+  (re-checked `orders`: only the two 2026-06-29 artifact BUYs are TRADED; nothing new today). During
+  isolation a stray BUY on the expired sid=71472 was placed and cleanly REJECTED (Fund Limit), 0 filled.
+- **Action needed (flagged via Telegram + routine push):** two stacked sandbox blockers now prevent
+  trading valid setups — (1) DH-906 margin locked by the un-clearable expired sid=71472 artifact
+  (`availableBalance` ₹65,301, `utilizedAmount` ₹934,698), and (2) DH-905 sandbox OMS doesn't know the
+  current NIFTY weekly contracts. **A full Dhan sandbox account reset (fresh instrument set + margin
+  restored to ₹1,00,000 free) is required** before any qualifying setup can actually execute. Margin
+  top-up alone will NOT fix (2). Logged so the next routine doesn't re-derive from scratch.
+
 ## 2026-07-01 intraday-monitor (~later, mid-session) — SKIP (no setup clears gate; margin blocker persists)
 
 `2026-07-01 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX not cleanly <18`
