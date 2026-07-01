@@ -53,6 +53,8 @@ import urllib.request
 import urllib.error
 
 BASE_URL = os.environ.get("DHAN_BASE_URL", "https://sandbox.dhan.co")
+if BASE_URL and not BASE_URL.startswith("http"):
+    BASE_URL = "https://" + BASE_URL
 API_PREFIX = "/v2"
 
 # Verified 2026-06-29 against Dhan's published instrument master
@@ -175,7 +177,7 @@ def cmd_place_spread(args):
             ("PE", "SELL", args.short_put), ("CE", "SELL", args.short_call)]
     results = []
     for option_type, txn, strike in legs:
-        security_id, exch, lot_size = find_security_id(args.instrument, args.expiry, strike, option_type)
+        security_id, exch, lot_size = find_security_id(args.instrument, args.expiry, strike, option_type, refresh=getattr(args, 'refresh', False))
         if security_id is None:
             print(f"SKIPPED {txn} {args.instrument} {strike}{option_type}: no matching contract found")
             results.append(None)
@@ -265,6 +267,7 @@ if __name__ == "__main__":
     p.add_argument("--short-call", type=float, required=True)
     p.add_argument("--long-call", type=float, required=True)
     p.add_argument("--lots", type=int, default=1)
+    p.add_argument("--refresh", action="store_true", help="re-download instrument master before lookup")
     p.set_defaults(func=cmd_place_spread)
 
     sub.add_parser("square-off-all").set_defaults(func=cmd_square_off_all)

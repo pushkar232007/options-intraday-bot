@@ -1,22 +1,27 @@
-Force-close every open position, end of day.
+Force-close every open position at end of day.
 
-1. `python3 scripts/dhan.py square-off-all` to place closing market orders for every net open
-   position (computed from `orders`, not `positions` — see the sandbox quirk below).
-2. **Do not assume placing the order means it closed.** For each order placed, poll
-   `python3 scripts/dhan.py order-status <orderId>` (wait a few seconds between checks, a couple
-   of tries) until `orderStatus` reads `TRADED`. In testing, a closing order sat in `PENDING` with
-   `filledQty: 0` for over a minute — confirm the actual fill, don't trust the immediate `TRANSIT`
-   response.
-3. If an order is still stuck after a few checks, do NOT silently move on — message the human via
-   scripts/telegram.py describing exactly which position is stuck and why, this is the urgent/
-   abnormal case worth interrupting for.
-4. `python3 scripts/dhan.py positions` is known to return empty even right after a confirmed fill
-   in sandbox testing — don't use it to verify square-off success, use `orders` instead.
-5. If anything genuinely passes all three carry-forward conditions in memory/strategy.md (currently
-   profitable, original thesis intact, stop tightened), message the human via scripts/telegram.py
-   describing exactly what and why, and wait for confirmation rather than deciding alone - this
-   should be rare enough that asking is correct.
-6. Log the day's final state (confirmed via `orders`, not `positions`) to memory/trade-log.md. For
-   P&L on each closed trade while `TRADING_MODE: paper`: use the `market_data.py estimate-premium`
-   cost-to-close from monitor.md, not the real fill price — Dhan's sandbox fills every order at a
-   flat fake price of 100 regardless of real market price (see memory/signals-learnings.md).
+1. Read all open positions from memory/portfolio.md "Open Paper Positions" table. **While
+   TRADING_MODE: paper, this is the only source that matters — do NOT rely on
+   `python3 scripts/dhan.py square-off-all` to discover what's open (broker may be broken).**
+2. For each open paper position, estimate the cost-to-close at current prices:
+   `python3 scripts/market_data.py estimate-premium <X> <strike> <CE|PE> --dte <days remaining>`
+   for each of the 4 legs. Realized P&L = entry credit (from trade-log.md) - cost-to-close.
+3. Check carry-forward conditions (all 3 must be true to NOT square off):
+   - Position is currently in unrealized profit (cost-to-close < entry credit)
+   - Original setup thesis still intact (ADX still < 18, no reversal signal)
+   - You are willing to tighten stop before holding overnight
+   If ANY position qualifies for carry-forward, message the human via scripts/telegram.py and
+   wait for confirmation — do not decide alone.
+4. For every position NOT carried forward:
+   - **TRADING_MODE: paper**: move the row from "Open Paper Positions" to "Closed Paper
+     Positions" in portfolio.md with exit date, cost-to-close, realized P&L, reason: `EOD_SQUAREOFF`.
+     Also attempt broker close via `python3 scripts/dhan.py place-order` for each leg —
+     broker result is logged but does NOT affect the paper close.
+   - **TRADING_MODE: live**: place market closing orders via dhan.py, poll until TRADED, then
+     update portfolio.md.
+5. Update portfolio.md: clear "Open Paper Positions", add to realized P&L total, update "Today's
+   P&L" and "Cash (tracked virtual)".
+6. Log the day's final state to memory/trade-log.md: all closed trades with entry credit,
+   cost-to-close, realized P&L, reason.
+7. Always send an EOD Telegram summary via `python3 scripts/telegram.py` with: date, positions
+   closed, total day P&L, cumulative P&L, capital remaining.
