@@ -169,8 +169,10 @@ def cmd_place_spread(args):
     """Places all 4 legs of an iron condor. NOT atomic - if a later leg fails, you can be
     left with a partial position. Check `orders` immediately after (not `positions` - see
     the sandbox quirk noted at the top of this file) and square off manually if any leg failed."""
-    legs = [("PE", "SELL", args.short_put), ("PE", "BUY", args.long_put),
-            ("CE", "SELL", args.short_call), ("CE", "BUY", args.long_call)]
+    # BUY legs first: once the long legs are on, the exchange treats the subsequent SELL
+    # legs as spreads (capped risk) rather than naked shorts, requiring far less margin.
+    legs = [("PE", "BUY", args.long_put), ("CE", "BUY", args.long_call),
+            ("PE", "SELL", args.short_put), ("CE", "SELL", args.short_call)]
     results = []
     for option_type, txn, strike in legs:
         security_id, exch, lot_size = find_security_id(args.instrument, args.expiry, strike, option_type)
