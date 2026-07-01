@@ -2,7 +2,7 @@
 
 _Last updated: 2026-07-01 ~15:15 IST (EOD square-off: NIFTY IC #1 force-closed for +₹30; flat, no open positions)._
 
-- **Mode:** paper (broker: Dhan Sandbox → migrating to Upstox)
+- **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹1,00,029.90
 - **Realized P&L (all-time):** ₹29.90
 - **Today's P&L:** +₹29.90 realized (NIFTY IC #1 closed at cost-to-close 71.78 vs 72.01 entry credit).
@@ -45,8 +45,9 @@ possible (DH-905 blocks current weekly securityIds) — paper close is authorita
 
 **Broker status (Dhan sandbox):** Two stacked blockers as of 2026-07-01 make sandbox unusable
 — DH-906 margin locked (₹934k utilizedAmount) AND DH-905 unknown securityIds for current
-weekly contracts. Migrating to Upstox. Until migration completes, broker column will show
-REJECTED but paper positions will be tracked here regardless.
+weekly contracts. Broker column will show REJECTED but paper positions are tracked here
+regardless — broker is best-effort only in paper mode. When switching to real trading,
+live Dhan credentials (Client ID 1112363387, api.dhan.co) replace sandbox credentials.
 
 From the next qualifying setup onward, portfolio.md is written FIRST and broker order is
 best-effort only.
