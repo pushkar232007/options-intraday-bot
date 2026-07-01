@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-01 intraday-monitor (~09:34 IST; broker-verified via funds/orders)._
+_Last updated: 2026-07-01 intraday-monitor (mid-session re-fire; broker-verified via funds/orders)._
 
 - **Mode:** paper (Dhan Sandbox)
 - **Cash (tracked virtual):** ₹1,00,000.00

@@ -12,6 +12,27 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-01 intraday-monitor (~later, mid-session) — SKIP (no setup clears gate; margin blocker persists)
+
+`2026-07-01 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX not cleanly <18`
+- **Positions to manage:** none. Only net TRADED position is the expired-2026-06-25 sandbox
+  artifact sid=71472 (NIFTY-Jun2026-24000-CE, +130 long) — no strategy exit rule applies. Zero bot
+  trades open. Nothing for the 50%/2x exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100000 --day-pnl 0` →
+  tripped=False; day P&L ₹0).
+- **Fresh-setup check — SENSEX flickered at the gate, did not clear on re-confirm:** scan read
+  NIFTY spot 23,992.85 ADX 18.22 (no), BANKNIFTY 57,793.3 ADX 24.05 (no), SENSEX 76,931.22 ADX
+  ~18.0 — `range_bound: true` (raw just under 18). Re-confirmed SENSEX directly per the "re-confirm
+  ADX before acting" rule → **raw ADX 18.05, NOT below the 18 gate.** ADX is oscillating right on
+  the 18.0 boundary intraday; the binding re-check reads above it. NIFTY re-check 18.22, also above.
+  India VIX 13.52 (low-vol backdrop, but ADX is the binding constraint). **No entry** — not cleanly
+  range-bound; don't force a trade on a boundary flicker.
+- **Margin blocker still unresolved (context, not the reason for skip):** `funds` still shows
+  availableBalance ₹65,301.12, utilizedAmount ₹934,698 locked by the un-clearable expired sid=71472
+  artifact. So even had SENSEX cleared the gate, `place-spread` would again hit DH-906 as it did at
+  ~09:34 today. No sandbox reset/top-up has happened yet — flag remains open for the human.
+- **No Telegram** (no trade placed/closed, no circuit-breaker trip).
+
 ## 2026-07-01 intraday-monitor (~09:34 IST) — first qualifying setup, but ENTRY BLOCKED by sandbox margin
 
 `2026-07-01 09:34 IST | SENSEX | 1 | ENTRY REJECTED (insufficient sandbox margin) | IC 76200/76400/76800/77000 | est net credit 116.98 | intended 3 lots (60 qty) | DH-906 order rejected`
