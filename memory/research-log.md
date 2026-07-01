@@ -6,6 +6,22 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-01 — pre-market scan: all three trending, no setup
+
+India VIX **13.6** (low — the low-vol backdrop credit spreads like), but the ADX<18 entry gate
+isn't met anywhere; every instrument reads trending:
+
+- **NIFTY** — spot 23,865.75, ADX(14) 20.23 → not range-bound. No entry.
+- **BANKNIFTY** — spot 57,542.9, ADX(14) 30.42 → clearly trending. No entry.
+- **SENSEX** — spot 76,478.67, ADX(14) 19.98 → just above threshold, trending. No entry.
+
+**Conclusion:** no instrument reads range-bound; none qualify for the iron-condor entry. No draft
+to carry into market-open. SENSEX (19.98) and NIFTY (20.23) are closest — worth a re-check at the
+open once the opening range prints, since ADX can settle below 18 intraday. No positions open,
+nothing to manage. (Second consecutive session with all three trending; VIX has sat low ~13.6-13.7.)
+
+---
+
 ## 2026-06-30 — pre-market scan (egress restored): all three trending, no setup
 
 Egress is working again — the Yahoo Finance block from the earlier run today (see entry below)
