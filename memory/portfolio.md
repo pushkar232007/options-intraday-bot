@@ -1,12 +1,12 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-01 ~12:36 IST (first paper iron condor opened under the portfolio-first
-restructure — NIFTY IC, broker best-effort)._
+_Last updated: 2026-07-01 ~13:36 IST (intraday-monitor: NIFTY IC held, near flat; no fresh setup)._
 
 - **Mode:** paper (broker: Dhan Sandbox → migrating to Upstox)
 - **Cash (tracked virtual):** ₹1,00,000.00
 - **Realized P&L (all-time):** ₹0.00
-- **Today's P&L:** ₹0.00 (open position unrealized; P&L booked at close)
+- **Today's P&L:** ≈ −₹117 unrealized (NIFTY IC mark-to-market cost-to-close 72.91 vs 72.01 credit;
+  booked at close). Circuit breaker not tripped.
 
 ---
 

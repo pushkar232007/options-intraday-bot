@@ -12,6 +12,23 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-01 intraday-monitor (~13:36 IST) — HOLD open NIFTY IC (near flat); no fresh setup
+
+`2026-07-01 13:36 IST | NIFTY | 6 | HOLD (paper position #1) | IC SP23950/LP23850/SC24150/LC24250 | cost-to-close 72.91/unit | 2 lots (130 qty) | neither 50% target nor 2× SL hit`
+- **Position managed — NIFTY IC (opened 12:36, entry credit 72.01/unit):** priced all four legs via
+  Black-Scholes (spot 24,029.6, VIX 13.32, DTE 6). SP23950PE 115.39 + SC24150CE 123.49 −
+  LP23850PE 78.70 − LC24250CE 87.27 = **cost-to-close 72.91/unit**. Exit gates: PROFIT_TARGET ≤ 36.01
+  (not hit), SL ≥ 144.02 (not hit) → **HOLD**. Spot barely moved from ~24,034 entry, so the spread
+  sits essentially at entry value; unrealized ≈ (72.01−72.91)×130 = **−₹117** (theta hasn't bitten
+  same-day). Exit levels unchanged for next run.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100000 --day-pnl -117` → False;
+  −₹117 is nowhere near the −₹10,000 / −10% trip line).
+- **Fresh-setup check:** NIFTY ADX(14) **14.57** does qualify (<18) but already holds position #1 —
+  no stacking. BANKNIFTY spot 58,024.95 ADX 25.24 (trending, no), SENSEX spot 77,035.62 ADX 20.22
+  (trending, no). India VIX 13.34. **No new entry.**
+- **Broker:** paper position tracked in portfolio.md (source of truth); no broker action this run
+  (open order still blocked by DH-905/DH-906, unchanged). No trade placed or closed → no Telegram.
+
 ## 2026-07-01 intraday-monitor (~12:36 IST) — NIFTY IRON CONDOR OPENED (paper position #1, broker best-effort DH-905 rejected)
 
 `2026-07-01 12:36 IST | NIFTY | 6 | OPEN (paper) | IC SP23950/LP23850/SC24150/LC24250 | net credit 72.01/unit | 2 lots (130 qty) | ADX 16.18 range-bound, cleared all guardrails`
