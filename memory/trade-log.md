@@ -12,6 +12,29 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-01 EOD square-off (~15:15 IST) — NIFTY IC #1 CLOSED for +₹30; flat into the close
+
+`2026-07-01 EOD IST | NIFTY | 6 | CLOSE (paper position #1) | IC SP23950/LP23850/SC24150/LC24250 | cost-to-close 71.78/unit vs 72.01 credit | 2 lots (130 qty) | forced EOD square-off, realized +₹29.90`
+- **Position closed — NIFTY IC (entry credit 72.01/unit):** priced all four legs via Black-Scholes
+  (spot ~24,008, VIX 13.3, DTE 6). Buy-back SP23950PE 125.50 + SC24150CE 111.20 − sell LP23850PE
+  87.72 − LC24250CE 77.20 = **cost-to-close 71.78/unit**. Realized = (72.01−71.78)×130 = **+₹29.90**.
+- **Carry-forward test N/A by design:** strategy.md is explicit that a defined-risk spread has no
+  reason to carry overnight → forced EOD square-off, no exception. (Even so, note the position was
+  only marginally green and ADX still <18 — none of that overrides the forced-close rule.)
+- **Broker (best-effort):** `square-off-all` only saw the expired sid=71472 artifact → SELL
+  72260701103081 **REJECTED** ("Fund Limit Insufficient", expired 2026-06-25), confirmed via
+  `order-status`. Known clean terminal rejection, will lapse on its own — no escalation. The strategy
+  IC itself can't be broker-closed (DH-905 blocks current weekly securityIds) → paper close in
+  portfolio.md is authoritative.
+- **Final state:** cash ₹1,00,029.90, all-time realized P&L +₹29.90, today's P&L +₹29.90. No open
+  positions. EOD Telegram summary sent.
+- **Note on the day:** first paper trade under the portfolio-first restructure ran its full lifecycle
+  (open 12:36 → held through 13:36/14:36 monitors → EOD close) — the paper-position accounting worked
+  end-to-end even though the sandbox broker stayed unusable all day. Nothing contradicted backtest
+  expectations: a low-vol (VIX ~13.3), ADX<18 range-bound NIFTY day let a 2-strike-OTM iron condor
+  sit essentially at entry value with theta only just starting to bite same-day — a small green close
+  is exactly the modest, high-probability outcome the credit-spread thesis predicts on a quiet day.
+
 ## 2026-07-01 intraday-monitor (~14:36 IST) — HOLD open NIFTY IC (near flat, slight +); no fresh setup
 
 `2026-07-01 14:36 IST | NIFTY | 6 | HOLD (paper position #1) | IC SP23950/LP23850/SC24150/LC24250 | cost-to-close 71.58/unit | 2 lots (130 qty) | neither 50% target nor 2× SL hit`
