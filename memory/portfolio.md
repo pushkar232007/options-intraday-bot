@@ -1,11 +1,11 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-02 ~intraday IST (SENSEX IC #2 OPENED, 6 lots, entry credit 161.12/unit; 1 open position)._
+_Last updated: 2026-07-02 ~later intraday IST (SENSEX IC #2 HELD — cost-to-close 161.63/unit ≈ flat; 1 open position)._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹1,00,029.90 (unchanged — paper cash updates on close with realized P&L)
 - **Realized P&L (all-time):** ₹29.90
-- **Today's P&L:** ₹0 realized so far (SENSEX IC #2 opened, still open). Circuit breaker not tripped.
+- **Today's P&L:** ₹0 realized so far (SENSEX IC #2 open, unrealized ≈ −₹61 at cost-to-close 161.63/unit). Circuit breaker not tripped.
 
 ---
 

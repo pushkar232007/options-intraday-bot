@@ -12,6 +12,14 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD open SENSEX IC (flat); no fresh setup
+
+`2026-07-02 intraday IST | SENSEX | 7 | HOLD (paper position #2) | IC SP77100/LP76900/SC77500/LC77700 | cost-to-close 161.63/unit | 6 lots (120 qty) | neither 50% target nor 2× SL hit`
+- **Position managed — SENSEX IC (entry credit 161.12/unit):** priced all four legs via Black-Scholes (spot ~77,232, VIX 12.72, DTE 7). Buy-back SP77100PE 434.19 + SC77500CE 459.18 − sell LP76900PE 354.71 − LC77700CE 377.03 = **cost-to-close 161.63/unit**. Exit gates: PROFIT_TARGET ≤ 80.56 (not hit), SL ≥ 322.24 (not hit) → **HOLD**. Spot 77,232 sits comfortably inside the 77100/77500 short strikes; spread ≈ at entry, unrealized ≈ (161.12−161.63)×120 = **−₹61** (theta hasn't bitten same-day). Exit levels unchanged.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100029 --day-pnl -61` → False).
+- **Fresh-setup check:** none qualifies. Scan — NIFTY spot 24,102.25 ADX 18.4 (above gate, no), BANKNIFTY 58,155.55 ADX 26.37 (trending, no), SENSEX 77,231.92 ADX 20.14 (above gate, no). India VIX 12.72. Already hold SENSEX #2 regardless — no stacking. **No new entry.**
+- **Broker:** paper position tracked in portfolio.md (source of truth); no broker action (open order blocked by DH-906 BSE connectivity, unchanged). No trade placed or closed → no Telegram.
+
 ## 2026-07-02 intraday-monitor (~intraday IST) — SENSEX IRON CONDOR OPENED (paper position #2, broker best-effort DH-906 BSE rejected)
 
 `2026-07-02 intraday IST | SENSEX | 7 | OPEN (paper) | IC SP77100/LP76900/SC77500/LC77700 | net credit 161.12/unit | 6 lots (120 qty) | ADX 17.09→17.38 range-bound, cleared all guardrails`
