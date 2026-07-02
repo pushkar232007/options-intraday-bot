@@ -1,11 +1,11 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-02 ~later intraday IST (both ICs HELD — SENSEX #2 ≈ −₹584, NIFTY #3 ≈ −₹65; 2 open positions; BANKNIFTY qualified on ADX but skipped — 26 DTE)._
+_Last updated: 2026-07-02 ~later intraday IST (both ICs HELD — SENSEX #2 ≈ −₹436, NIFTY #3 ≈ −₹64; 2 open positions; BANKNIFTY qualified on ADX but skipped again — 26 DTE)._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹1,00,029.90 (unchanged — paper cash updates on close with realized P&L)
 - **Realized P&L (all-time):** ₹29.90
-- **Today's P&L:** ₹0 realized so far (2 open ICs; unrealized ≈ −₹584 SENSEX #2 at cost-to-close 165.99/unit, ≈ −₹65 NIFTY #3 at cost-to-close 68.25/unit → combined ≈ −₹649). Circuit breaker not tripped.
+- **Today's P&L:** ₹0 realized so far (2 open ICs; unrealized ≈ −₹436 SENSEX #2 at cost-to-close 164.75/unit, ≈ −₹64 NIFTY #3 at cost-to-close 68.24/unit → combined ≈ −₹500). Circuit breaker not tripped.
 
 ---
 
