@@ -1,26 +1,17 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-02 ~later intraday IST (both ICs HELD — SENSEX #2 ≈ −₹436, NIFTY #3 ≈ −₹64; 2 open positions; BANKNIFTY qualified on ADX but skipped again — 26 DTE)._
+_Last updated: 2026-07-02 EOD square-off (~15:15 IST) — both ICs force-closed: SENSEX #2 −₹568.80, NIFTY #3 −₹61.10; flat into the close; 0 open positions. Day P&L −₹629.90._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
-- **Cash (tracked virtual):** ₹1,00,029.90 (unchanged — paper cash updates on close with realized P&L)
-- **Realized P&L (all-time):** ₹29.90
-- **Today's P&L:** ₹0 realized so far (2 open ICs; unrealized ≈ −₹436 SENSEX #2 at cost-to-close 164.75/unit, ≈ −₹64 NIFTY #3 at cost-to-close 68.24/unit → combined ≈ −₹500). Circuit breaker not tripped.
+- **Cash (tracked virtual):** ₹99,400.00 (100,029.90 − 629.90 realized today)
+- **Realized P&L (all-time):** −₹600.00 (was +₹29.90; −₹629.90 today)
+- **Today's P&L:** −₹629.90 realized (SENSEX #2 −₹568.80 + NIFTY #3 −₹61.10; both forced EOD square-off). Circuit breaker not tripped (nowhere near −₹10,000).
 
 ---
 
 ## Open Paper Positions
 
-| # | Instrument | Expiry | Short Put | Long Put | Short Call | Long Call | Lots | Entry Credit | Entry Date | DTE at Entry | Broker Status |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2 | SENSEX | 2026-07-09 | 77100 | 76900 | 77500 | 77700 | 6 (120 qty) | 161.12/unit | 2026-07-02 | 7 | REJECTED (DH-906 BSE conn.) |
-| 3 | NIFTY | 2026-07-07 | 24000 | 23900 | 24200 | 24300 | 2 (130 qty) | 67.75/unit | 2026-07-02 | 5 | REJECTED (DH-905 unknown sid) |
-
-**Exit levels for IC #2:** PROFIT_TARGET cost-to-close ≤ 80.56/unit; SL ≥ 322.24/unit; else forced EOD square-off.
-Max defined loss 6×(200−161.12)×20 = ₹4,665.60 (≤5% cap). Credit collected 161.12×120 = ₹19,334.40.
-
-**Exit levels for IC #3:** PROFIT_TARGET cost-to-close ≤ 33.88/unit; SL ≥ 135.50/unit; else forced EOD square-off.
-Max defined loss 2×(100−67.75)×65 = ₹4,192.50 (≤5% cap). Credit collected 67.75×130 = ₹8,807.50.
+_None — flat into the close (both intraday ICs squared off at EOD 2026-07-02)._
 
 ---
 
@@ -29,6 +20,21 @@ Max defined loss 2×(100−67.75)×65 = ₹4,192.50 (≤5% cap). Credit collecte
 | # | Instrument | Expiry | Strikes (SP/LP/SC/LC) | Lots | Entry Credit | Exit Cost | Realized P&L | Entry Date | Exit Date | Reason |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | NIFTY | 2026-07-07 | 23950/23850/24150/24250 | 2 | 72.01/unit | 71.78/unit | +₹29.90 | 2026-07-01 | 2026-07-01 | EOD_SQUAREOFF |
+| 2 | SENSEX | 2026-07-09 | 77100/76900/77500/77700 | 6 | 161.12/unit | 165.86/unit | −₹568.80 | 2026-07-02 | 2026-07-02 | EOD_SQUAREOFF |
+| 3 | NIFTY | 2026-07-07 | 24000/23900/24200/24300 | 2 | 67.75/unit | 68.22/unit | −₹61.10 | 2026-07-02 | 2026-07-02 | EOD_SQUAREOFF |
+
+Position #2 close (2026-07-02 EOD): cost-to-close 165.86/unit via Black-Scholes (spot ~77,511,
+VIX 12.26, DTE 7): buy-back SP77100PE 313.73 + SC77500CE 572.17 − sell LP76900PE 247.89 −
+LC77700CE 472.15 = 165.86/unit. Realized = (161.12−165.86)×120 = **−₹568.80**. Spot drifted to
+77,511, just above the 77500 upper short (call side went slightly ITM). Neither profit target
+(≤80.56) nor SL (≥322.24) hit → forced EOD square-off. Broker close not possible (DH-906 BSE
+connectivity / DH-905) — paper close is authoritative.
+
+Position #3 close (2026-07-02 EOD): cost-to-close 68.22/unit via Black-Scholes (spot ~24,175,
+VIX 12.26, DTE 5): buy-back SP24000PE 61.03 + SC24200CE 137.64 − sell LP23900PE 36.95 −
+LC24300CE 93.50 = 68.22/unit. Realized = (67.75−68.22)×130 = **−₹61.10**. Spot 24,175 sat just
+above the 24200 upper short. Neither profit target (≤33.88) nor SL (≥135.50) hit → forced EOD
+square-off. Broker close not possible (DH-905) — paper close is authoritative.
 
 Position #1 close (2026-07-01 EOD): cost-to-close 71.78/unit via Black-Scholes (spot ~24,008,
 VIX 13.3, DTE 6): buy-back SP23950PE 125.50 + SC24150CE 111.20 − sell LP23850PE 87.72 −

@@ -163,3 +163,22 @@ before the next setup or any debugging session:
   `DH-906 "Order is in Transit state"` - you can't even cancel a TRANSIT order, only wait it out or
   let it lapse). Lesson: **always confirm the expiry date being traded is still in the future**
   before testing close/SL behavior, not just before opening a position.
+- **First paper losing day (2026-07-02): ADX<18 at entry does not rule out a slow directional
+  grind that walks price up to the short strike.** Both ICs opened today on clean ADX<18 reads
+  (SENSEX 17.09→17.38, NIFTY 15.55) and both finished marginally red at EOD (SENSEX −₹568.80,
+  NIFTY −₹61.10, combined −₹629.90) for the *same* reason: spot drifted steadily upward all
+  session (NIFTY 24,081→24,175; SENSEX 77,262→77,511) and closed right at / just above each
+  upper short (24200 / 77500), so the call side went marginally ITM and the credit didn't decay.
+  This is NOT a thesis break and not a reason to change the strategy: VIX stayed low (12.8→12.26),
+  the moves were small and grinding (well under the 2-strike OTM buffer's worst case), and the
+  defined-risk structure capped exposure — the max-loss cap (~₹4.7k/₹4.2k) was never remotely
+  approached; the actual loss was ~₹630, i.e. the shorts just happened to sit where a quiet drift
+  landed. The real lesson is calibration, not correction: **a low ADX reading means "not strongly
+  trending," it does NOT mean "won't drift" — a slow one-way grind inside a low-ADX regime can
+  still pin an at-worst outcome at a near-ATM short.** SENSEX's structure is especially exposed to
+  this: 2 strikes = 200 pts ≈ 0.26% OTM on a 77k index, so its shorts sit near-ATM and a ~0.3%
+  drift is enough to touch them (this is why SENSEX's loss was ~9× NIFTY's on a similar % move).
+  One day is noise vs. the 70-79% backtest win rate — log it, keep the strategy unchanged, and
+  watch in the weekly review whether SENSEX's near-ATM shorts underperform NIFTY's structurally
+  (if so, a wider SENSEX short offset — 3 strikes OTM — may be worth backtesting, but not on one
+  data point).

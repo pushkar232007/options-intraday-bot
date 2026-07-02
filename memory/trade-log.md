@@ -12,6 +12,20 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-02 EOD square-off (~15:15 IST) — BOTH ICs force-closed: SENSEX #2 −₹568.80, NIFTY #3 −₹61.10; day P&L −₹629.90; flat into the close
+
+`2026-07-02 EOD IST | SENSEX | 7 | CLOSE (paper position #2) | IC SP77100/LP76900/SC77500/LC77700 | cost-to-close 165.86/unit vs 161.12 credit | 6 lots (120 qty) | forced EOD square-off, realized −₹568.80`
+- **Position closed — SENSEX IC (entry credit 161.12/unit):** priced all four legs via Black-Scholes (spot ~77,511, VIX 12.26, DTE 7). Buy-back SP77100PE 313.73 + SC77500CE 572.17 − sell LP76900PE 247.89 − LC77700CE 472.15 = **cost-to-close 165.86/unit**. Realized = (161.12−165.86)×120 = **−₹568.80**. Spot drifted up to 77,511 through the session, closing just *above* the 77500 upper short → call side went marginally ITM, so the spread cost slightly more to close than the credit collected.
+- **Carry-forward test:** FAILS on condition (a) — position is at a loss (cost-to-close 165.86 > entry credit 161.12). Strategy.md is explicit: do NOT carry forward losers. Forced EOD close, no exception. (Also: neither profit target ≤80.56 nor SL ≥322.24 was hit intraday.)
+
+`2026-07-02 EOD IST | NIFTY | 5 | CLOSE (paper position #3) | IC SP24000/LP23900/SC24200/LC24300 | cost-to-close 68.22/unit vs 67.75 credit | 2 lots (130 qty) | forced EOD square-off, realized −₹61.10`
+- **Position closed — NIFTY IC (entry credit 67.75/unit):** priced all four legs via Black-Scholes (spot ~24,175, VIX 12.26, DTE 5). Buy-back SP24000PE 61.03 + SC24200CE 137.64 − sell LP23900PE 36.95 − LC24300CE 93.50 = **cost-to-close 68.22/unit**. Realized = (67.75−68.22)×130 = **−₹61.10**. Spot 24,175 closed just above the 24200 upper short — essentially flat, a rounding-level loss.
+- **Carry-forward test:** FAILS on condition (a) — marginal loss (68.22 > 67.75). Losers don't carry. Forced EOD close. (Neither profit target ≤33.88 nor SL ≥135.50 hit.)
+
+- **Day totals:** realized −₹568.80 + −₹61.10 = **−₹629.90**. Cash 100,029.90 → **₹99,400.00**. All-time realized +₹29.90 → **−₹600.00**. Circuit breaker not tripped (−₹629.90 vs −₹10,000 trip line).
+- **Broker (best-effort):** `square-off-all` only saw the expired sid=71472 artifact → SELL 72260702102081 **REJECTED** ("Fund Limit Insufficient", expired 2026-06-25), confirmed via `order-status`. Known clean terminal rejection, will lapse on its own — no escalation. The strategy ICs can't be broker-closed (DH-905/DH-906 block current weekly securityIds) → paper close in portfolio.md is authoritative.
+- **Note on the day:** both ICs drifted the *same* way — NIFTY and SENSEX both crept up through their upper short strikes intraday (NIFTY 24,081→24,175 through the 24200 short region; SENSEX 77,262→77,511 through the 77500 short), so both finished marginally red rather than collecting theta. Not a thesis break: VIX stayed low (12.26) and moves were small/grinding, exactly the low-vol regime the credit spread wants — the shorts just happened to sit right where price drifted to. A −₹630 combined loss on ~₹28k credit at risk across two near-ATM condors is a modest, in-line outcome, not a tail event. EOD Telegram summary sent.
+
 ## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD both ICs (#2 −₹436, #3 −₹64); BANKNIFTY qualified on ADX but SKIPPED again (26 DTE, not near-expiry)
 
 **Position management — both open ICs held (spot NIFTY 24,157 / SENSEX 77,363, VIX 12.51):**
