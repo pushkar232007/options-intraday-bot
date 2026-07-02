@@ -1,12 +1,11 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-01 ~15:15 IST (EOD square-off: NIFTY IC #1 force-closed for +₹30; flat, no open positions)._
+_Last updated: 2026-07-02 ~intraday IST (SENSEX IC #2 OPENED, 6 lots, entry credit 161.12/unit; 1 open position)._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
-- **Cash (tracked virtual):** ₹1,00,029.90
+- **Cash (tracked virtual):** ₹1,00,029.90 (unchanged — paper cash updates on close with realized P&L)
 - **Realized P&L (all-time):** ₹29.90
-- **Today's P&L:** +₹29.90 realized (NIFTY IC #1 closed at cost-to-close 71.78 vs 72.01 entry credit).
-  Circuit breaker not tripped.
+- **Today's P&L:** ₹0 realized so far (SENSEX IC #2 opened, still open). Circuit breaker not tripped.
 
 ---
 
@@ -14,9 +13,10 @@ _Last updated: 2026-07-01 ~15:15 IST (EOD square-off: NIFTY IC #1 force-closed f
 
 | # | Instrument | Expiry | Short Put | Long Put | Short Call | Long Call | Lots | Entry Credit | Entry Date | DTE at Entry | Broker Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| — | — | — | — | — | — | — | — | — | — | — | — |
+| 2 | SENSEX | 2026-07-09 | 77100 | 76900 | 77500 | 77700 | 6 (120 qty) | 161.12/unit | 2026-07-02 | 7 | REJECTED (DH-906 BSE conn.) |
 
-_No open positions — all squared off at EOD._
+**Exit levels for IC #2:** PROFIT_TARGET cost-to-close ≤ 80.56/unit; SL ≥ 322.24/unit; else forced EOD square-off.
+Max defined loss 6×(200−161.12)×20 = ₹4,665.60 (≤5% cap). Credit collected 161.12×120 = ₹19,334.40.
 
 ---
 

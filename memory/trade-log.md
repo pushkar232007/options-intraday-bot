@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-02 intraday-monitor (~intraday IST) — SENSEX IRON CONDOR OPENED (paper position #2, broker best-effort DH-906 BSE rejected)
+
+`2026-07-02 intraday IST | SENSEX | 7 | OPEN (paper) | IC SP77100/LP76900/SC77500/LC77700 | net credit 161.12/unit | 6 lots (120 qty) | ADX 17.09→17.38 range-bound, cleared all guardrails`
+- **Positions to manage first:** none open in portfolio.md at start of run → nothing for the 50%/2× exit rules to act on. Flat coming in (NIFTY IC #1 closed at 07-01 EOD).
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100029 --day-pnl 0` → False).
+- **Setup — SENSEX QUALIFIED:** scan NIFTY spot 24,134.7 ADX 18.07 then re-check **18.16** (above the 18 gate → boundary flicker, no entry). BANKNIFTY 58,237.6 ADX 26.14 (trending, no). **SENSEX spot ~77,262 ADX(14) 17.09, re-confirmed 17.38** (clearly below 18, robust — not a flicker). India VIX 12.85 (low-vol backdrop credit spreads like).
+- **Strikes (step 100, ATM 77300):** short 77100PE/77500CE (2 OTM), long 76900PE/77700CE (4 OTM), width 200. Legs est via Black-Scholes (spot ~77,300, VIX ~12.7, DTE 7): SP77100PE 402.92 + SC77500CE 482.92 − LP76900PE 326.03 − LC77700CE 398.69 = **net credit 161.12/unit**.
+- **DTE choice (7 DTE, 2026-07-09):** only two SENSEX expiries listed — 2026-07-02 (today, **0 DTE**) and 2026-07-09 (**7 DTE**). Both sit just outside the backtest-validated 1-6 window. Chose 07-09 over the 0-DTE per strategy.md's explicit caution against same-day expiry (gamma/bid-ask risk near expiry) and its capital-protection/lower-drawdown-at-higher-DTE preference; 7 DTE is only 1 day beyond the validated range and mirrors yesterday's 6-DTE NIFTY choice. DTE is a soft preference, not a hard guardrail.
+- **Sized (6 lots):** `size-spread --capital 100029 --width 200 --credit 161.12 --lot-size 20` → 6 lots. Max loss 6×(200−161.12)×20 = **₹4,665.60 ≤ 5% cap (₹5,000)**. Credit collected 161.12×120 = ₹19,334.40. High credit/width ratio (80%) is structural for SENSEX — 2 strikes = 200 pts ≈ 0.26% OTM on a 77k index, so shorts sit near-ATM; sizing is by defined max-loss per guardrail, so lot count is higher than NIFTY's while risk stays capped.
+- **Broker (best-effort):** `place-spread` → **DH-906 Order_Error "Exchange Connectivity is not established for BSE Derivatives"** — a NEW distinct sandbox blocker (BSE-side connectivity, not the NIFTY DH-905 unknown-securityId or the earlier fund-limit DH-906). **Broker status: REJECTED, 0 legs filled. Paper position NOT unwound** — portfolio.md is source of truth in TRADING_MODE: paper.
+- **Exit levels for next monitor run:** PROFIT_TARGET cost-to-close ≤ 80.56/unit, SL ≥ 322.24/unit, else forced EOD square-off. Telegram sent (paper position opened + broker rejected).
+
 ## 2026-07-01 EOD square-off (~15:15 IST) — NIFTY IC #1 CLOSED for +₹30; flat into the close
 
 `2026-07-01 EOD IST | NIFTY | 6 | CLOSE (paper position #1) | IC SP23950/LP23850/SC24150/LC24250 | cost-to-close 71.78/unit vs 72.01 credit | 2 lots (130 qty) | forced EOD square-off, realized +₹29.90`
