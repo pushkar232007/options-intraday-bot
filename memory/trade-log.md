@@ -12,6 +12,17 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD both ICs (#2 flat, #3 flat); no fresh setup
+
+**Position management — both open ICs held (spot NIFTY 24,127 / SENSEX 77,314, VIX 12.56):**
+`2026-07-02 intraday IST | SENSEX | 7 | HOLD (paper position #2) | IC SP77100/LP76900/SC77500/LC77700 | cost-to-close 164.26/unit | 6 lots (120 qty) | neither 50% target nor 2× SL hit`
+- Priced all four legs via Black-Scholes (spot ~77,314, VIX 12.56, DTE 7). Buy-back SP77100PE 400.72 + SC77500CE 485.98 − sell LP76900PE 323.98 − LC77700CE 398.46 = **cost-to-close 164.26/unit**. Gates: PROFIT_TARGET ≤ 80.56 (not hit), SL ≥ 322.24 (not hit) → **HOLD**. Spot 77,314 still inside the 77100/77500 shorts (drifted toward upper short); unrealized ≈ (161.12−164.26)×120 = **−₹377**. Exit levels unchanged.
+`2026-07-02 intraday IST | NIFTY | 5 | HOLD (paper position #3) | IC SP24000/LP23900/SC24200/LC24300 | cost-to-close 67.38/unit | 2 lots (130 qty) | neither 50% target nor 2× SL hit`
+- Priced all four legs via Black-Scholes (spot ~24,127, VIX 12.56, DTE 5). Buy-back SP24000PE 80.46 + SC24200CE 115.69 − sell LP23900PE 51.26 − LC24300CE 77.51 = **cost-to-close 67.38/unit**. Gates: PROFIT_TARGET ≤ 33.88 (not hit), SL ≥ 135.50 (not hit) → **HOLD**. Spot 24,127 sits inside the 24000/24200 shorts; unrealized ≈ (67.75−67.38)×130 = **+₹48** (marginally green). Exit levels unchanged.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100029 --day-pnl -329` → False; combined open unrealized ≈ −₹329, nowhere near −₹10,000 trip line).
+- **Fresh-setup check:** none qualifies on an un-held instrument. Scan — NIFTY spot 24,127.3 ADX 15.96 (range-bound but already holds #3, no stacking), BANKNIFTY 58,149.15 ADX 19.42 (above gate, no), SENSEX 77,313.53 ADX 18.25 (above gate, no — already holds #2 anyway). India VIX 12.56. **No new entry.**
+- **Broker:** paper positions tracked in portfolio.md (source of truth); no broker action (both open orders remain REJECTED by DH-905/DH-906, unchanged). No trade placed or closed → no Telegram.
+
 ## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD SENSEX IC #2 (flat); NIFTY IC #3 OPENED (ADX 15.55, broker DH-905 rejected)
 
 **Position management — SENSEX IC #2 (entry credit 161.12/unit):**
