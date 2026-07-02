@@ -12,7 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
-## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD both ICs (#2 flat, #3 flat); no fresh setup
+## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD both ICs (#2 −₹584, #3 −₹65); BANKNIFTY qualified on ADX but SKIPPED (26 DTE, not near-expiry)
+
+**Position management — both open ICs held (spot NIFTY 24,141 / SENSEX 77,375, VIX 12.53):**
+`2026-07-02 intraday IST | SENSEX | 7 | HOLD (paper position #2) | IC SP77100/LP76900/SC77500/LC77700 | cost-to-close 165.99/unit | 6 lots (120 qty) | neither 50% target nor 2× SL hit`
+- Priced all four legs via Black-Scholes (spot ~77,375, VIX 12.53, DTE 7). Buy-back SP77100PE 371.86 + SC77500CE 520.02 − sell LP76900PE 298.28 − LC77700CE 427.61 = **cost-to-close 165.99/unit**. Gates: PROFIT_TARGET ≤ 80.56 (not hit), SL ≥ 322.24 (not hit) → **HOLD**. Spot 77,375 still inside the 77100/77500 shorts (drifted toward upper short); unrealized ≈ (161.12−165.99)×120 = **−₹584**. Exit levels unchanged.
+`2026-07-02 intraday IST | NIFTY | 5 | HOLD (paper position #3) | IC SP24000/LP23900/SC24200/LC24300 | cost-to-close 68.25/unit | 2 lots (130 qty) | neither 50% target nor 2× SL hit`
+- Priced all four legs via Black-Scholes (spot ~24,141, VIX 12.53, DTE 5). Buy-back SP24000PE 76.61 + SC24200CE 120.78 − sell LP23900PE 48.32 − LC24300CE 80.82 = **cost-to-close 68.25/unit**. Gates: PROFIT_TARGET ≤ 33.88 (not hit), SL ≥ 135.50 (not hit) → **HOLD**. Spot 24,141 sits inside the 24000/24200 shorts (near upper short); unrealized ≈ (67.75−68.25)×130 = **−₹65** (marginally red). Exit levels unchanged.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100029 --day-pnl -649` → False; combined open unrealized ≈ −₹649, nowhere near −₹10,000 trip line).
+- **Fresh-setup check — BANKNIFTY cleared the ADX gate but SKIPPED on DTE grounds:** Scan — NIFTY spot 24,140.95 ADX 18.53 (above gate, no — also holds #3), **BANKNIFTY 58,047.3 ADX 16.43, re-confirmed 16.19** (clearly <18, no open position → the only fresh qualifier), SENSEX 77,374.55 ADX 21.54 (above gate, no — also holds #2). India VIX 12.53.
+  `2026-07-02 intraday IST | BANKNIFTY | 26 | SKIP (DTE far outside window) | nearest expiry 2026-07-28 | — | — | ADX 16.19 qualifies but 26 DTE is not the ≤7-DTE near-expiry data point that is the entire rationale for trading unvalidated BANKNIFTY`
+  - BANKNIFTY has monthly-only expiries (no weeklies, confirmed against fresh instrument master): nearest is **2026-07-28 = 26 DTE**. That is far outside the validated DTE 1-6 window and far from the ~2-DTE preference. Critically, strategy.md's *sole* justification for trading unvalidated BANKNIFTY is "to accumulate real **near-expiry (≤7 DTE)** data points" — a 26-DTE IC does not serve that (negligible intraday theta at 26 DTE; backtest already showed BANKNIFTY long-dated trades just drift to EOD as noise, and a near-the-money tune made it worse). Opening it would add ~₹5k at-risk and a EOD-flat/cost-only outcome for no data-gathering benefit. **No entry** — no-trade is the correct guardrail-consistent outcome.
+- **Broker:** paper positions tracked in portfolio.md (source of truth); no broker action (both open orders remain REJECTED by DH-905/DH-906, unchanged). No trade placed or closed → no Telegram.
+
 
 **Position management — both open ICs held (spot NIFTY 24,127 / SENSEX 77,314, VIX 12.56):**
 `2026-07-02 intraday IST | SENSEX | 7 | HOLD (paper position #2) | IC SP77100/LP76900/SC77500/LC77700 | cost-to-close 164.26/unit | 6 lots (120 qty) | neither 50% target nor 2× SL hit`
