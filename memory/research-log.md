@@ -6,6 +6,26 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-02 — pre-market scan: NIFTY & SENSEX range-bound (first qualifying setups in days)
+
+India VIX **13.24** (low — the low-vol backdrop credit spreads like). After three consecutive
+all-trending sessions, the ADX<18 gate is finally met on two of three instruments:
+
+- **NIFTY** — spot 24,005.85, ADX(14) **13.49** → range-bound ✓. Qualifies for iron-condor entry.
+- **BANKNIFTY** — spot 58,033.05, ADX(14) 24.58 → trending. No entry.
+- **SENSEX** — spot 76,922.64, ADX(14) **13.89** → range-bound ✓. Qualifies for iron-condor entry.
+
+**Conclusion:** NIFTY and SENSEX both read clearly range-bound (ADX well below 18) with a low VIX
+backdrop — two candidate iron-condor setups to carry into the market-open routine. Draft only, no
+trade placed in pre-market per protocol. At the open, re-check ADX once the opening range prints,
+then evaluate each against the guardrails (2/4-strike condor, ~2 DTE preferred, ≤5% capital risk,
+stop-loss placed with entry). Note the known sandbox blockers (DH-905/DH-906) may reject broker
+orders — portfolio.md-first, broker best-effort per the current process. No positions open.
+Candidate strikes (2/4 OTM off spot, for open-routine reference): NIFTY ~23900/23800 P /
+24100/24200 C (step 50); SENSEX ~76800/76600 P / 77100/77300 C (step 100).
+
+---
+
 ## 2026-07-01 — pre-market scan: all three trending, no setup
 
 India VIX **13.6** (low — the low-vol backdrop credit spreads like), but the ADX<18 entry gate
