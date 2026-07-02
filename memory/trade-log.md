@@ -12,7 +12,23 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
-## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD open SENSEX IC (flat); no fresh setup
+## 2026-07-02 intraday-monitor (~later intraday IST) — HOLD SENSEX IC #2 (flat); NIFTY IC #3 OPENED (ADX 15.55, broker DH-905 rejected)
+
+**Position management — SENSEX IC #2 (entry credit 161.12/unit):**
+`2026-07-02 intraday IST | SENSEX | 7 | HOLD (paper position #2) | IC SP77100/LP76900/SC77500/LC77700 | cost-to-close 165.54/unit | 6 lots (120 qty) | neither 50% target nor 2× SL hit`
+- Priced all four legs via Black-Scholes (spot ~77,218, VIX 12.8, DTE 7 rem). Buy-back SP77100PE 448.42 + SC77500CE 455.44 − sell LP76900PE 365.69 − LC77700CE 372.63 = **cost-to-close 165.54/unit**. Gates: PROFIT_TARGET ≤ 80.56 (not hit), SL ≥ 322.24 (not hit) → **HOLD**. Spot 77,218 sits inside the 77100/77500 shorts; unrealized ≈ (161.12−165.54)×120 = **−₹530** (small drift, theta not yet biting hard). Exit levels unchanged.
+
+**Fresh setup — NIFTY QUALIFIED & OPENED (paper position #3):**
+`2026-07-02 intraday IST | NIFTY | 5 | OPEN (paper) | IC SP24000/LP23900/SC24200/LC24300 | net credit 67.75/unit | 2 lots (130 qty) | ADX 15.55 range-bound, cleared all guardrails`
+- **Scan:** NIFTY spot 24,081 **ADX(14) 15.55, re-confirmed 15.55** (clearly below 18, robust — not a flicker). BANKNIFTY 57,999 ADX 22.38 (trending, no). SENSEX 77,230 ADX 18.99 (above gate, no — already hold #2 anyway). India VIX 12.78 (low-vol backdrop credit spreads like). NIFTY had no open position → fresh distinct-instrument setup, not stacking on #2.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 100029 --day-pnl -530` → False).
+- **Strikes (step 50, ATM 24100):** short 24000PE/24200CE (2 OTM), long 23900PE/24300CE (4 OTM), width 100. Legs est via Black-Scholes (spot ~24,081, VIX 12.76, DTE 5): SP24000PE 98.46 + SC24200CE 99.56 − LP23900PE 64.35 − LC24300CE 65.92 = **net credit 67.75/unit**.
+- **DTE choice (5 DTE, 2026-07-07):** nearest listed NIFTY weekly (Tue); within validated DTE 1-6 and closer to the ~2-DTE preference than SENSEX #2's 7.
+- **Sized (2 lots):** `size-spread --capital 100029 --width 100 --credit 67.75 --lot-size 65` → 2 lots. Max loss 2×(100−67.75)×65 = **₹4,192.50 ≤ 5% cap (₹5,000)**. Credit collected 67.75×130 = ₹8,807.50.
+- **Broker (best-effort):** `place-spread` → **DH-905 Input_Exception** (sandbox OMS still doesn't recognize current NIFTY weekly securityIds — same frozen-instrument blocker as 07-01). **Broker status: REJECTED, 0 legs filled. Paper position NOT unwound** — portfolio.md is source of truth in TRADING_MODE: paper.
+- **Exit levels for IC #3 next run:** PROFIT_TARGET cost-to-close ≤ 33.88/unit, SL ≥ 135.50/unit, else forced EOD square-off. Telegram sent (paper position opened + broker rejected).
+
+## 2026-07-02 intraday-monitor (~earlier intraday IST) — HOLD open SENSEX IC (flat); no fresh setup
 
 `2026-07-02 intraday IST | SENSEX | 7 | HOLD (paper position #2) | IC SP77100/LP76900/SC77500/LC77700 | cost-to-close 161.63/unit | 6 lots (120 qty) | neither 50% target nor 2× SL hit`
 - **Position managed — SENSEX IC (entry credit 161.12/unit):** priced all four legs via Black-Scholes (spot ~77,232, VIX 12.72, DTE 7). Buy-back SP77100PE 434.19 + SC77500CE 459.18 − sell LP76900PE 354.71 − LC77700CE 377.03 = **cost-to-close 161.63/unit**. Exit gates: PROFIT_TARGET ≤ 80.56 (not hit), SL ≥ 322.24 (not hit) → **HOLD**. Spot 77,232 sits comfortably inside the 77100/77500 short strikes; spread ≈ at entry, unrealized ≈ (161.12−161.63)×120 = **−₹61** (theta hasn't bitten same-day). Exit levels unchanged.
