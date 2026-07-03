@@ -6,6 +6,31 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-03 — pre-market scan: only BANKNIFTY range-bound (NIFTY & SENSEX trending)
+
+India VIX **12.29** (low — even lower than yesterday's 13.24, the kind of quiet backdrop credit
+spreads like). The ADX<18 gate is met on only one of three today, and it's the non-validated one:
+
+- **NIFTY** — spot 24,175.70, ADX(14) **22.92** → trending. No entry. (Yesterday's slow grind up
+  to 24,175 lifted ADX above threshold; it's no longer range-bound.)
+- **BANKNIFTY** — spot 58,031.65, ADX(14) **12.70** → range-bound ✓. Qualifies for entry.
+- **SENSEX** — spot 77,502.12, ADX(14) **29.00** → clearly trending. No entry. (Yesterday's drift
+  to 77,511 has pushed ADX sharply up; not a setup today.)
+
+**Conclusion:** the only qualifying instrument is **BANKNIFTY**, which per strategy.md is the
+*non-validated, data-gathering* instrument (monthly expiry only, no weekly). Trade it in paper mode
+per the guardrail, tagging the entry with its DTE-at-entry, but keep it out of the NIFTY/SENSEX
+win-rate figure. Draft only — no trade in pre-market per protocol. At the open, re-check ADX once
+the opening range prints, confirm BANKNIFTY's current monthly expiry + per-leg securityIds via
+`dhan.py lookup`, and note the DTE (monthly cycle means DTE is likely well above the ~2-day
+preference — flag if it's far out, since signals-learnings shows long-dated BANKNIFTY barely moves
+intraday and rarely hits profit target/stop, so expect incidental EOD drift, not a clean decay).
+Candidate strikes (2/4 OTM off spot 58,031, step 100, lot 30): short put 57800 / long put 57600 /
+short call 58200 / long call 58400. Known sandbox blockers (DH-905/DH-906) may reject the broker
+order — portfolio.md-first, broker best-effort. No positions open, nothing to manage.
+
+---
+
 ## 2026-07-02 — pre-market scan: NIFTY & SENSEX range-bound (first qualifying setups in days)
 
 India VIX **13.24** (low — the low-vol backdrop credit spreads like). After three consecutive
