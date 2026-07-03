@@ -12,6 +12,16 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-03 EOD square-off (~15:15 IST) — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
+
+`2026-07-03 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close`
+- **Positions to carry/close:** none — flat the entire session (came in flat from 07-02 EOD, opened nothing today). Carry-forward 3-condition test N/A; nothing held.
+- **No-trade day:** every 07-03 intraday run skipped. NIFTY/SENSEX trended the whole session and only harder as spot drifted up (ADX ~26→44 NIFTY, ~32→49 SENSEX; VIX extremely low ~11.9 but ADX is the binding gate). BANKNIFTY was the only ADX qualifier all day (reads 13-17, mostly <18) but SKIPPED every run on DTE grounds — nearest expiry 2026-07-28 = ~25 DTE monthly, far outside the validated DTE 1-6 window and useless for its sole ≤7-DTE near-expiry data-gathering rationale.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → False; day P&L ₹0).
+- **Broker (best-effort):** `square-off-all` only saw the expired sid=71472 artifact → SELL 72260703102081 **REJECTED**, confirmed via `order-status`. Same known 2026-06-25-expired sandbox artifact — clean terminal rejection, not a stuck order, not a strategy position; will lapse on its own, no escalation.
+- **Final state:** cash ₹99,400.00 (unchanged), all-time realized P&L −₹600.00, today's P&L ₹0. Flat into the close. EOD Telegram summary sent (always fires, even on a no-trade day).
+- **Nothing contradicted backtest expectations** — a low-VIX day that nonetheless trended (ADX>18 on both validated instruments) is exactly the regime this range-bound credit-spread strategy correctly stands aside from; low VIX does not imply low ADX. No new signals-learnings entry needed.
+
 ## 2026-07-03 intraday-monitor (~latest intraday IST) — flat, nothing to manage; BANKNIFTY still the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
 
 **Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
