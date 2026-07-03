@@ -12,6 +12,13 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-03 intraday-monitor (later ~intraday IST) — flat, nothing to manage; BANKNIFTY still the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
+
+**Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → tripped=False; day P&L ₹0).
+- **Fresh-setup check — BANKNIFTY the only ADX qualifier but SKIPPED on DTE grounds:** Scan (VIX **11.92**, very low) — NIFTY spot 24,280.75 ADX **34.46** (trending, no), **BANKNIFTY 57,830.55 ADX 13.76** (<18, no open position → the only qualifier), SENSEX 77,915.06 ADX **44.29** (clearly trending, no). NIFTY/SENSEX remain firmly trending.
+  `2026-07-03 intraday IST | BANKNIFTY | ~25 | SKIP (DTE far outside window) | July monthly expiry, step 100/lot 30 | — | — | ADX 13.76 qualifies but ~25 DTE is not the ≤7-DTE near-expiry data point that is the entire rationale for trading unvalidated BANKNIFTY; far-dated ICs just drift to EOD per signals-learnings, no learning value. No entry.`
+
 ## 2026-07-03 intraday-monitor (~late-session IST) — flat, nothing to manage; BANKNIFTY again the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
 
 **Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
