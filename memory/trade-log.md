@@ -12,6 +12,15 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-03 intraday-monitor (~latest intraday IST) — flat, nothing to manage; BANKNIFTY still the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
+
+**Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → tripped=False; day P&L ₹0).
+- **Fresh-setup check — BANKNIFTY the only ADX qualifier but SKIPPED on DTE grounds:** Scan (VIX **11.93**, very low) — NIFTY spot 24,283.1 ADX **26.49** (trending, no), **BANKNIFTY 57,941.8 ADX 13.73** (<18, no open position → the only qualifier), SENSEX 77,795.88 ADX **32.47** (clearly trending, no). NIFTY/SENSEX remain firmly trending.
+  `2026-07-03 intraday IST | BANKNIFTY | 25 | SKIP (DTE far outside window) | July monthly expiry 2026-07-28 (step 100/lot 30), sid confirmed earlier today | — | — | ADX 13.73 qualifies but 25 DTE is not the ≤7-DTE near-expiry data point that is the entire rationale for trading unvalidated BANKNIFTY; far-dated ICs just drift to EOD per signals-learnings, no learning value. No entry.`
+- **Broker:** no action (flat, no orders to place/manage). No trade placed or closed → no Telegram.
+- **⚠ Git hygiene finding (fixed this run):** discovered `origin/main` was stranded at ~06-30 (`f83488a`); ALL of 07-01/07-02/07-03 work (3 paper trades + closes + EOD square-offs, 39 commits) lived only on session branch `claude/relaxed-brahmagupta-fdbo0a`. This is the exact orphaned-memory failure CLAUDE.md warns about. Fast-forwarded `main` to include everything and pushed `origin/main` this run so the next routine's fresh clone won't lose all recent memory.
+
 ## 2026-07-03 intraday-monitor (later ~intraday IST) — flat, nothing to manage; BANKNIFTY still the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
 
 **Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.

@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-03 intraday-monitor (later ~intraday IST) — no change, still flat (0 open positions). BANKNIFTY still the only ADX qualifier (13.76<18) but skipped (~25 DTE July monthly, not the ≤7-DTE near-expiry point that is its only rationale); NIFTY/SENSEX firmly trending (ADX 34.46/44.29, VIX 11.92). No trade, circuit breaker not tripped. Prior line: 2026-07-02 EOD square-off — both ICs force-closed (SENSEX #2 −₹568.80, NIFTY #3 −₹61.10), day P&L −₹629.90._
+_Last updated: 2026-07-03 intraday-monitor (~latest intraday IST) — no change, still flat (0 open positions). BANKNIFTY still the only ADX qualifier (13.73<18) but skipped (~25 DTE July monthly, not the ≤7-DTE near-expiry point that is its only rationale); NIFTY/SENSEX firmly trending (ADX 26.49/32.47, VIX 11.93). No trade, circuit breaker not tripped. **Git note:** origin/main had been stranded at ~06-30 with 07-01/02/03 work orphaned on a session branch — fast-forwarded + pushed main to fix this run. Prior line: 2026-07-02 EOD square-off — both ICs force-closed (SENSEX #2 −₹568.80, NIFTY #3 −₹61.10), day P&L −₹629.90._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹99,400.00 (100,029.90 − 629.90 realized today)
