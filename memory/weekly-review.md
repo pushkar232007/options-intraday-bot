@@ -6,6 +6,72 @@ investigate — not as an automatic trigger to change `memory/strategy.md`.
 
 ---
 
+## Week ending 2026-07-03 (Fri) — first live-trade week: 3 trades, 33% win, −₹600; below-band win rate but n=3, drawdown in-line — WATCH, don't change
+
+**First week with actual paper entries.** The prior review covered through 06-30 (0 trades); this
+window (07-01 → 07-03) is the first with real positions. VIX stayed low all week (12–13.6), the
+low-vol backdrop the credit spread wants.
+
+**The week's tally (validated NIFTY/SENSEX only — BANKNIFTY tracked separately below):**
+- Trade count: **3** (NIFTY ×2, SENSEX ×1). ~2 entries/week is the backtest cadence, so 3 is
+  slightly *above* pace — fine, not manufactured (each cleared a clean ADX<18 read).
+- Win rate: **33.3% (1 win / 2 losses).**
+- P&L: **−₹600.00** (−0.6% of ₹1,00,000 capital). Cash ₹1,00,029.90 → ₹99,400.00; all-time
+  realized +₹29.90 → −₹600.00.
+- Per-trade: #1 NIFTY 07-01 **+₹29.90** (win) · #2 SENSEX 07-02 **−₹568.80** (loss) ·
+  #3 NIFTY 07-02 **−₹61.10** (loss). **All three were forced EOD square-offs** — none hit the 50%
+  profit target or the 2× stop; each just drifted to a marginal close.
+
+**vs. backtest expectations (~8-9 trades/month ≈ ~2/week, 70-79% win rate, low drawdown):**
+- **Frequency: in line** (3 this week ≈ pace; no ADX loosening to force trades — 06-30 and 07-03
+  were correctly sat out as trending, and 07-01/07-02 qualifiers were taken).
+- **Win rate: below the 70-79% band (33% vs ~75%), but the sample is statistically meaningless.**
+  n=3. A single different outcome (#3 was a −₹61 rounding-level loss) flips this to 67%. One week
+  of 3 trades cannot confirm or deny a 75% edge — the backtest sample was 491 days. This is NOT a
+  drift signal to act on; it is a first data point.
+- **Drawdown: fully in line — arguably the week's *good* news.** The defined-risk structure did
+  exactly its job: the −₹630 losing day was ~13% of the two condors' combined ~₹4.7k+₹4.2k
+  max-loss caps, which were never remotely approached. No tail event, no thesis break, no
+  circuit-breaker anywhere near the −₹10k line. "Low drawdown" held.
+
+**Grade: ROUGHLY TRACKING with one below-band metric on a meaningless sample — WATCH, do not
+change strategy.md.** The drawdown/risk-control side is behaving exactly as backtested; the win
+rate is below band but on n=3, which is noise, not drift. Nothing here justifies touching the
+strategy file (per the review protocol: drift → investigate/slow down, never edit on the spot).
+
+**What actually happened (the real signal, from signals-learnings 07-02):** both losses came from
+the *same* mechanism — spot drifted steadily one way (up) all session inside a low-ADX regime and
+closed right at/just above the upper short strike, so the call side went marginally ITM and the
+credit didn't decay. **A low ADX reading means "not strongly trending," NOT "won't drift."** A slow
+one-way grind can still pin an at-worst outcome at a near-ATM short. **SENSEX is structurally the
+most exposed:** 2 strikes = 200 pts ≈ 0.26% OTM on a 77k index, so its shorts sit near-ATM and a
+~0.3% drift touches them — which is why SENSEX's loss (−₹569) was ~9× NIFTY's (−₹61) on a similar
+% move.
+
+**BANKNIFTY (tracked separately, per strategy.md — do NOT blend into the figure above):** **0
+trades, 0 new near-expiry data points this week.** BANKNIFTY was the *only* ADX qualifier on
+several 07-02/07-03 scans (ADX 13-17), but every one was correctly skipped: it is monthly-only
+(nearest expiry 2026-07-28 = 25-26 DTE), far outside the ≤7-DTE window that is the *sole* rationale
+for trading the unvalidated instrument. Its data-gathering mandate simply had no qualifying day
+this week — expected given the monthly cycle, not a miss. Still 0 genuine near-expiry BANKNIFTY
+data points accumulated; "validated" status remains far off.
+
+**Watch items for coming weeks (record, don't act):**
+1. **SENSEX near-ATM structural exposure.** If SENSEX condors keep losing to the grind-to-short
+   mechanism over more weeks while NIFTY holds up, a wider SENSEX short offset (3 strikes OTM) is
+   worth *backtesting* — explicitly NOT changing live on this one data point. One loss ≠ a pattern.
+2. **Win rate over a real sample.** Revisit once ≥10-15 completed trades exist; only then does the
+   33%-vs-75% gap become interpretable. Do not react to it before then.
+3. **Broker execution is still non-functional.** Every trade this week was paper-only, priced via
+   Black-Scholes — the Dhan sandbox rejected all orders (DH-905 unknown securityIds / DH-906
+   BSE connectivity + margin locked by the expired sid=71472 artifact). portfolio.md is
+   authoritative, but a real sandbox reset (fresh instrument set + freed margin) is still needed
+   before any order actually fills. Flagged to Pushkar previously; remains open.
+4. **BANKNIFTY data drought.** Its ≤7-DTE data-gathering will only ever progress in the ~1 week/
+   month its monthly expiry is near — expect long stretches of 0 progress; that's structural.
+
+---
+
 ## Week ending 2026-06-30 (Tue) — launch week, 0 trades, too early to grade drift
 
 **This is the bot's first week of operation.** Scaffolded + backtested + sandbox-onboarded on
