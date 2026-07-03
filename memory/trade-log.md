@@ -12,6 +12,15 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-03 intraday-monitor (~late-session IST) — flat, nothing to manage; BANKNIFTY again the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
+
+**Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → False; no positions, day P&L ₹0).
+- **Fresh-setup check — BANKNIFTY the only ADX qualifier but SKIPPED on DTE grounds:** Scan (VIX **11.86**, still very low) — NIFTY spot 24,351.4 ADX **43.21** (clearly trending, no), **BANKNIFTY 57,972.5 ADX 13.12** (<18, no open position → the only qualifier), SENSEX 78,087.62 ADX **49.26** (clearly trending, no). NIFTY/SENSEX have trended even harder than earlier today as spot kept drifting up.
+  `2026-07-03 intraday IST | BANKNIFTY | 25 | SKIP (DTE far outside window) | nearest expiry 2026-07-28 (re-confirmed via dhan.py lookup → sid 61889, lot 30) | — | — | ADX 13.12 qualifies but 25 DTE is not the ≤7-DTE near-expiry data point that is the entire rationale for trading unvalidated BANKNIFTY`
+  - Same reasoning as the four earlier runs today: BANKNIFTY is monthly-only (no weeklies), nearest expiry **2026-07-28 = 25 DTE**, far outside the validated DTE 1-6 window and the ~2-DTE preference. Strategy.md's *sole* justification for trading unvalidated BANKNIFTY is accumulating **near-expiry (≤7 DTE)** data points; a 25-DTE IC does not serve that (negligible intraday theta; backtest showed long-dated BANKNIFTY just drifts to EOD as noise). Opening it would add ~₹5k at-risk for zero data-gathering benefit. **No entry** — no-trade is the correct guardrail-consistent outcome.
+- **Broker:** no action (flat, no orders to place/manage). No trade placed or closed → no Telegram.
+
 ## 2026-07-03 intraday-monitor (~late intraday IST) — flat, nothing to manage; BANKNIFTY again the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
 
 **Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
