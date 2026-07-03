@@ -12,6 +12,15 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-03 intraday-monitor (~later intraday IST) — flat, nothing to manage; BANKNIFTY again the only ADX qualifier but SKIPPED (25 DTE, boundary flicker at 17.78)
+
+**Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → False; no positions, day P&L ₹0).
+- **Fresh-setup check — BANKNIFTY the only ADX qualifier but SKIPPED on DTE grounds:** Scan (VIX **11.99**, very low) — NIFTY spot 24,347.65 ADX **37.22** (clearly trending, no), **BANKNIFTY 58,108.3 ADX 17.78, re-confirmed 17.78** (just under the 18 gate → the only qualifier, but a boundary flicker vs earlier 14.89), SENSEX 77,997.77 ADX **41.84** (clearly trending, no). Both validated instruments (NIFTY/SENSEX) have trended harder than the prior run as spot kept drifting up.
+  `2026-07-03 intraday IST | BANKNIFTY | 25 | SKIP (DTE far outside window) | nearest expiry 2026-07-28 | — | — | ADX 17.78 barely qualifies but 25 DTE is not the ≤7-DTE near-expiry data point that is the entire rationale for trading unvalidated BANKNIFTY`
+  - Same reasoning as this morning's run: BANKNIFTY is monthly-only (no weeklies), nearest expiry **2026-07-28 = 25 DTE**, far outside the validated DTE 1-6 window and the ~2-DTE preference. Strategy.md's *sole* justification for trading unvalidated BANKNIFTY is accumulating **near-expiry (≤7 DTE)** data points; a 25-DTE IC does not serve that (negligible intraday theta; backtest showed long-dated BANKNIFTY just drifts to EOD as noise). ADX 17.78 is also a boundary read. Opening it would add ~₹5k at-risk for zero data-gathering benefit. **No entry** — no-trade is the correct guardrail-consistent outcome.
+- **Broker:** no action (flat, no orders to place/manage). No trade placed or closed → no Telegram.
+
 ## 2026-07-03 intraday-monitor (~intraday IST) — flat, nothing to manage; BANKNIFTY the only ADX qualifier but SKIPPED (25 DTE, not near-expiry)
 
 **Positions to manage:** none — flat into the close (both ICs squared off at 2026-07-02 EOD). Zero open paper positions in portfolio.md → nothing for the 50%/2× exit rules to act on.
