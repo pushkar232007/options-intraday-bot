@@ -1,9 +1,9 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-07 — capital reset to ₹2,00,000 (realistic live-trading figure; 1-lot sizing in paper mode makes ₹50K meaningless as a reference). Realized P&L from reset: ₹0. Prior: 2026-07-06 EOD — flat, 0 open positions, 0 trades (indices trending all day, ADX 27–31)._
+_Last updated: 2026-07-07 — capital reset to ₹4,00,000 (covers full strategy: 3 index condors + multiple simultaneous stock condors). Realized P&L from reset: ₹0. Prior: 2026-07-06 EOD — flat, 0 open positions, 0 trades (indices trending all day, ADX 27–31)._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
-- **Cash (tracked virtual):** ₹2,00,000.00 ← reset 2026-07-07 by Pushkar; set to reflect realistic live-trading margin requirements (NIFTY+BANKNIFTY+SENSEX condors need ₹1.6L–2.2L margin alone; ₹50K was too small to be meaningful). Previous balance was ₹50,000 (reset 2026-07-06).
+- **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.
 - **Realized P&L (from reset):** ₹0.00
 - **Position sizing:** 1 lot per trade (paper mode — sizing formula skipped, would block most stock trades)
 - **Circuit breaker:** DISABLED in paper mode — no daily loss cap, run all day regardless of P&L.

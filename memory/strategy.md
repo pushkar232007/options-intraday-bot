@@ -87,9 +87,9 @@ but that protection is untested in backtest, not proven.
     matches that assumption: 1 lot, every qualifying setup.
   - **TRADING_MODE: live → 5% of capital per trade**, sized by the spread's own defined max loss
     `(strike width - net credit received) × lot size`. Skip if qty_lots = 0.
-- **Paper capital: ₹2,00,000** — reflects realistic live-trading margin requirements
-  (NIFTY+BANKNIFTY+SENSEX condors need ₹1.6L–2.2L SPAN margin alone). Used only for P&L
-  tracking and return % calculations, not for trade sizing.
+- **Paper capital: ₹4,00,000** — covers full strategy margin: 3 index condors (₹1.6L–2.2L)
+  + multiple simultaneous stock condors (₹1L–2L). Used only for P&L tracking and return %
+  calculations, not for trade sizing.
 - **Daily loss circuit breaker:** DISABLED in `TRADING_MODE: paper` — paper trading is for
   learning, not capital protection, so let every setup run regardless of daily P&L. Re-enable
   at 10% of capital when switching to live trading.
