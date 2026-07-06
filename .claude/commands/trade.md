@@ -7,8 +7,9 @@ all of them. Works for both index instruments (NIFTY/BANKNIFTY/SENSEX) and stock
 
 1. Confirm ADX(14) < 18 on the instrument right now: `python3 scripts/market_data.py adx <X>`
    (re-check, don't rely on a stale pre-market reading — conditions can change).
-2. Confirm no circuit breaker has tripped today: `python3 scripts/risk.py circuit-breaker
-   --capital <current> --day-pnl <today's running P&L>`.
+2. **Circuit breaker: SKIP this check while TRADING_MODE: paper** — it is disabled in paper
+   mode (strategy.md). When live, confirm no circuit breaker has tripped:
+   `python3 scripts/risk.py circuit-breaker --capital <current> --day-pnl <today's running P&L>`.
 3. Confirm there isn't already an open position on this instrument (check memory/portfolio.md
    "Open Paper Positions" table — source of truth in TRADING_MODE: paper).
 4. Get spot: `python3 scripts/market_data.py spot <X>`. Pick strikes: short legs 2 strike steps
@@ -28,7 +29,8 @@ all of them. Works for both index instruments (NIFTY/BANKNIFTY/SENSEX) and stock
    routine). Pull the stock's `adx14_daily` and `hist_vol_pct` from that output. **Do not
    re-fetch ADX mid-day for stocks** — daily-bar ADX doesn't change intraday, use the
    morning scan reading.
-2. Confirm no circuit breaker has tripped today (same as step 2 above).
+2. **Circuit breaker: SKIP while TRADING_MODE: paper** (disabled in paper mode). When live only:
+   confirm no circuit breaker has tripped today (same check as index step 2 above).
 3. Confirm no open position on this stock symbol in memory/portfolio.md.
 4. **Check earnings:** never enter a stock iron condor if the company reports earnings within
    5 days of the chosen expiry. Skip and log reason if so.
