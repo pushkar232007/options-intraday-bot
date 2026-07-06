@@ -79,12 +79,12 @@ but that protection is untested in backtest, not proven.
   meaningfully lower drawdown for less return). Avoid trading options expiring same-day if spreads/
   liquidity look thin in the actual Dhan option chain — gamma risk and bid-ask cost near expiry are
   real execution costs the backtest can't see.
-- **Position sizing:** max 5% of capital risked per trade (₹5,000 at ₹1,00,000 capital), sized by
+- **Position sizing:** max 5% of capital risked per trade (₹2,500 at ₹50,000 capital), sized by
   the spread's own defined max loss — `(strike width - net credit received) × lot size` — not by
   lot count alone.
-- **Daily loss circuit breaker:** if the day's realized + open P&L hits -10% of capital (₹10,000),
-  stop opening new positions for the rest of that day. Existing positions still get managed/closed
-  normally.
+- **Daily loss circuit breaker:** DISABLED in `TRADING_MODE: paper` — paper trading is for
+  learning, not capital protection, so let every setup run regardless of daily P&L. Re-enable
+  at 10% of capital when switching to live trading.
 - **Exit rule (whichever hits first):**
   1. Profit target: close once the cost to close the spread has decayed to 50% of the credit
      received (lock in half the max profit, don't try to ride it to expiry intraday).
