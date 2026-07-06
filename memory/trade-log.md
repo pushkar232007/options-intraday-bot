@@ -12,6 +12,16 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-06 EOD square-off (~15:15 IST) — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
+
+`2026-07-06 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close`
+- **Positions to carry/close:** none — flat the entire session (came in flat from 07-02 EOD, opened nothing today). Carry-forward 3-condition test N/A; nothing held.
+- **No-trade day:** every 07-06 intraday run skipped. All three instruments trended the whole session and only harder as spot drifted up (ADX rose through ~19→34: NIFTY 26.66→32.76, BANKNIFTY 19.10→33.97, SENSEX 28.67→34.48; VIX extremely low ~11.8-11.9 but ADX is the binding gate). No ADX<18 qualifier at any point — even BANKNIFTY (its usual DTE-skip is moot when it doesn't clear ADX) climbed well above 18 by mid-session.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → False; day P&L ₹0).
+- **Broker (best-effort):** `square-off-all` only saw the expired sid=71472 artifact → SELL 72260706102081 **REJECTED** ("Fund Limit Insufficient", expired 2026-06-25), confirmed via `order-status`. Same known clean terminal rejection — not a stuck order, not a strategy position; will lapse on its own, no escalation. `funds`/`orders` unchanged (utilizedAmount ₹934,698 still locked by the artifact; only TRADED orders are the two artifact BUYs).
+- **Final state:** cash ₹99,400.00 (unchanged), all-time realized P&L −₹600.00, today's P&L ₹0. Flat into the close. EOD Telegram summary sent (always fires, even on a no-trade day).
+- **Nothing contradicted backtest expectations** — a very-low-VIX day that nonetheless trends hard on all three (ADX>18 across the board) is exactly the regime this range-bound credit-spread strategy correctly stands aside from; low VIX does not imply low ADX. No new signals-learnings entry needed.
+
 ## 2026-07-06 intraday-monitor (~late-session IST) — flat, nothing to manage; NO ADX qualifier (all three still trending hard, VIX 11.86)
 
 **Positions to manage:** none — flat (0 open paper positions in portfolio.md; came in flat from 07-02 EOD, opened nothing 07-03/07-06). Nothing for the 50%/2× exit rules to act on.
