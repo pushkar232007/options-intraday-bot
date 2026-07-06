@@ -1,7 +1,7 @@
 # Strategy & Guardrails
 
-_Last updated: 2026-06-29 — initial strategy, validated via backtest, then cross-checked against
-a real Dhan Sandbox account (funds/orders/positions tested end-to-end; see corrections below)._
+_Last updated: 2026-07-06 — stock universe unlocked for paper trading after Bhavcopy backtest
+(89% WR, 248 days, 445 trades). Original index strategy unchanged._
 
 ## Mode
 
@@ -38,8 +38,10 @@ but that protection is untested in backtest, not proven.
 
 ## Hard guardrails (never violate these)
 
-- **Instruments:** NIFTY, BANKNIFTY, SENSEX all trade. No individual stock options until this
-  file says otherwise (revisit only once this strategy has a real paper-trading track record).
+- **Instruments:** NIFTY, BANKNIFTY, SENSEX all trade. **Nifty 50 F&O stock options are now
+  also approved for paper trading** — backtested on real NSE Bhavcopy prices (248 days, 89% WR,
+  445 trades). See the "Stock universe" section below for the full list, blocklist, and
+  stock-specific guardrails. Scan daily via `python3 scripts/market_data.py scan-stocks`.
   **NIFTY and SENSEX are validated** (large backtest sample, robust across every DTE 1-6 and
   timeframe tested — see `memory/signals-learnings.md`). **BANKNIFTY is NOT validated and trades
   in a data-gathering capacity, not a proven-edge one** — re-backtested 2026-06-29 against its
