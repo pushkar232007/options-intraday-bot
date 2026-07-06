@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-06 intraday-monitor (~21:38 IST, AFTER MARKET CLOSE) — flat, nothing to manage; NO index qualifier; stocks now UNLOCKED but market closed → no entry
+
+**Timing/label note:** wall clock reads **2026-07-06 21:38 IST — market is closed** (NSE 09:15–15:30 IST). Scan returns EOD-close data (NIFTY 24,430.35 / BANKNIFTY 58,291.5 / SENSEX 78,285.07, VIX 11.82) — identical to the reads logged below under "07-07" labels, which were this same 07-06 EOD snapshot mislabeled a day forward by prior runs. No live market → no executable entry this run.
+
+**Positions to manage:** none — flat (0 open paper positions in portfolio.md). Nothing for the 50%/2× exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → tripped=False; day P&L ₹0).
+- **Index fresh-setup check — no qualifier, all three trending:** VIX **11.82** (very low) — NIFTY spot 24,430.35 ADX **30.61**, BANKNIFTY spot 58,291.5 ADX **27.55**, SENSEX spot 78,285.07 ADX **30.34**. All well above the 18 gate → **no ADX qualifier**. BANKNIFTY trending too, so its DTE-skip question is moot.
+  `2026-07-06 21:38 IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup + market closed) | ADX 30.61/27.55/30.34 all ≥18 | — | — | none range-bound; VIX 11.82 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — stocks NOW UNLOCKED, but no entry (market closed):** the just-landed strategy.md commit **42d8033 "Unlock stock options for paper trading" (2026-07-06 21:37 IST)** approves Nifty-50 F&O stock iron condors in paper mode — this **supersedes the "gated" reasoning in the earlier 07-07 entries below** (they predate the unlock). This morning's scan (research-log) lists **18 qualifiers** (ADX(14) daily <18: TECHM 10.96, SBIN 11.62, PNB 11.87 … HINDUNILVR 17.62; neither blocklisted name qualifies). **No stock entry this run:** market is closed (21:38 IST) — an intraday condor cannot be opened after close and squared off "today," which violates the intraday mandate. **Action for the next market-hours run:** evaluate these qualifiers live per strategy.md — fresh ADX at the open, per-name earnings check (none of the 18 report Jul 6-10, but re-confirm TECHM given 34% hist-vol), DTE 2-7, short-leg OI>1,000, `hist_vol_pct` (not VIX) for premium, strike step + lot size via `dhan.py lookup`.
+- **Broker:** no action (flat, no orders to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — a very-low-VIX day trending hard on all three indices is exactly the regime this range-bound strategy stands aside from. No new signals-learnings entry needed.
+
 ## 2026-07-07 intraday-monitor — flat, nothing to manage; NO ADX qualifier (all three trending, VIX 11.82); stocks gated
 
 **Positions to manage:** none — flat (0 open paper positions in portfolio.md; came in flat, opened nothing 07-03/07-06). Nothing for the 50%/2× exit rules to act on.
