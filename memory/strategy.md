@@ -97,20 +97,18 @@ but that protection is untested in backtest, not proven.
   2. Stop-loss: close if cost-to-close grows to 2.5x entry credit. Sweep showed 2.5x SL
      gives 92.4% WR and +₹3,187 vs 89% WR and +₹2,577 at 2.0x — wider SL avoids false
      exits from normal multi-day noise while theta decays the position.
-  3. EOD review (~3:15-3:20 PM IST): the **default** is to close everything intraday, but
-     carry-forward is a valid autonomous decision when all 3 conditions are met:
-     (a) position is currently in profit (cost-to-close < entry credit),
-     (b) original thesis is intact — ADX still reading <18 on the next day's pre-market, or
-         a clear continuation setup visible in the data,
-     (c) stop is tightened to at least breakeven (entry credit) before holding overnight — this
-         is non-negotiable, protects against overnight gap risk.
-     **Do NOT carry forward losers** — a position at a loss should be closed at EOD unless there
-     is an unusually strong, logged technical reason (and even then, the tightened-stop rule still
-     applies: cap the downside before holding). When in doubt, close it. Protecting capital beats
-     hoping for a recovery overnight.
-     The bot decides carry-forward autonomously — no need to message Pushkar for confirmation on
-     clear-cut cases. Send the EOD Telegram summary noting what was closed and what (if anything)
-     was carried forward and why.
+  3. **EOD rule for stocks: carry forward by default.** The backtest holds positions for
+     multiple days — that is where the edge comes from. Do NOT force-close stock condors at
+     EOD just because the day is ending. Close a stock condor only when one of these
+     triggers fires:
+     (a) Profit target hit (cost-to-close ≤ 25% of entry credit) — close immediately.
+     (b) SL hit (cost-to-close ≥ 2.5x entry credit) — close immediately.
+     (c) Expiry day — close by 3:15 PM IST on the expiry date, not before.
+     (d) Earnings announced within 5 days of expiry (identified post-entry) — close to avoid
+         IV spike; log reason.
+     A stock condor that is slightly down on day 1 is normal — theta needs multiple days to
+     work. Do NOT close it just because it is not profitable yet. This is the entire premise
+     of the multi-day hold backtest (92.4% WR assumed carries across days, not within hours).
   **Sandbox-verified quirk, do not skip this:** a closing order is NOT guaranteed to fill quickly.
   In testing, a BUY filled in ~3 seconds but the matching closing SELL on the same contract sat in
   `PENDING` (filledQty 0) for over a minute and never filled — the order's own `drvExpiryDate` field
