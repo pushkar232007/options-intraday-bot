@@ -6,6 +6,27 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-06 — pre-market scan: two trending, BANKNIFTY range-bound but DTE-blocked, no setup
+
+India VIX **11.8** (very low — the low-vol backdrop credit spreads like, extending the ~11.8-13.7
+low-vol regime of the past week). ADX<18 entry gate met on only one instrument, and that one fails
+on DTE:
+
+- **NIFTY** — spot 24,270.85, ADX(14) 23.51 → trending. No entry. (Drifted up ~400 pts off last
+  week's ~23,865; ADX rising with the grind.)
+- **BANKNIFTY** — spot 57,938.5, ADX(14) 12.75 → range_bound (only ADX qualifier). But nearest
+  expiry is the July monthly 2026-07-28 (~22 DTE, no weeklies) — far outside the ≤7-DTE near-expiry
+  window that is BANKNIFTY's sole rationale. Skip on DTE grounds, same as 07-03.
+- **SENSEX** — spot 77,763.91, ADX(14) 26.5 → clearly trending. No entry.
+
+**Conclusion:** no qualifying setup. NIFTY/SENSEX both trending; BANKNIFTY range-bound but
+DTE-blocked. No draft to carry into market-open. NIFTY (23.51) is the closest of the two trenders —
+worth a re-check at the open once the opening range prints, in case ADX settles below 18 intraday,
+though it's well above threshold now. No positions open, nothing to manage. Draft-only routine, no
+trade placed.
+
+---
+
 ## 2026-07-03 — pre-market scan: only BANKNIFTY range-bound (NIFTY & SENSEX trending)
 
 India VIX **12.29** (low — even lower than yesterday's 13.24, the kind of quiet backdrop credit
