@@ -13,11 +13,21 @@ three carry-forward conditions are met (rare, should almost never happen):
   - ADX still <18 and no large directional move / VIX spike since entry
   - Stop will be tightened to breakeven before holding overnight (log this explicitly)
 
+Before recording the P&L for any index close, check if profit target or SL was actually hit
+during the final trading hour (between the last intraday-monitor run and now):
+  ```
+  python3 scripts/market_data.py spot-range <INSTRUMENT>
+  ```
+  Estimate cost-to-close at candle_high and candle_low (using --spot override) in addition to
+  current spot. Use worst_cost for SL check, best_cost for target check — same logic as /monitor.
+  Record exit at the trigger price if a threshold was crossed (not at current cost-to-close).
+  If no threshold crossed, use current cost-to-close as the exit value with reason EOD_SQUAREOFF.
+
 For each index position being closed:
   - TRADING_MODE: paper: remove from "Open Paper Positions", add to "Closed Paper Positions"
-    with exit date, cost-to-close, realized P&L = entry credit - cost-to-close, reason
-    EOD_SQUAREOFF (or CARRY_FORWARD if held). Attempt broker close via
-    `python3 scripts/dhan.py place-order` — broker result is logged but does NOT affect paper close.
+    with exit date, exit credit (trigger price or current cost-to-close), realized P&L, reason.
+    Attempt broker close via `python3 scripts/dhan.py place-order` — broker result is logged
+    but does NOT affect paper close.
   - TRADING_MODE: live: place market closing orders via dhan.py, poll until TRADED, update portfolio.md.
 
 ---
@@ -28,13 +38,17 @@ Stock condors are multi-day trades by design (DTE 2-7, held until target/SL/expi
 force-close stock positions at EOD.** The 92.4% WR in the backtest came from holding across
 multiple days — closing intraday breaks the strategy entirely.
 
-For each stock position, estimate the current cost-to-close:
-  `python3 scripts/market_data.py estimate-premium <SYMBOL> <strike> <CE|PE> --dte <days remaining>`
-  for each of the 4 legs. Cost-to-close = buy-back short legs - sell long legs.
+For each stock position, check if SL or target was hit during the final trading hour using
+the candle range (same as /monitor — real broker would have filled at the trigger price):
+  ```
+  python3 scripts/market_data.py spot-range <SYMBOL>
+  ```
+  Estimate cost-to-close at current spot, candle_high, and candle_low (--spot override).
+  worst_cost = max of the three; best_cost = min of the three.
 
 Close the stock position NOW only if one of these triggers has fired:
-  - cost-to-close ≤ 25% of entry credit → close, reason: PROFIT_TARGET
-  - cost-to-close ≥ 2.5x entry credit → close, reason: SL
+  - best_cost ≤ 25% of entry credit → close at 0.25 × entry_credit, reason: PROFIT_TARGET
+  - worst_cost ≥ 2.5x entry credit → close at 2.5 × entry_credit, reason: SL
   - Expiry date = today → close, reason: EXPIRY (this is the only EOD-forced close for stocks)
   - Earnings announcement within 5 days of expiry discovered post-entry → close, reason: EARNINGS_RISK
 
