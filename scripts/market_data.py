@@ -164,8 +164,9 @@ def cmd_adx(args):
 
 
 def cmd_estimate_premium(args):
-    # For stock symbols, fetch spot from Yahoo Finance daily data
-    if args.instrument in STOCK_UNIVERSE:
+    if args.spot is not None:
+        spot = args.spot
+    elif args.instrument in STOCK_UNIVERSE:
         candles = _fetch_yf_daily(STOCK_UNIVERSE[args.instrument], range_="5d")
         spot = candles[-1]["c"]
     else:
@@ -175,6 +176,28 @@ def cmd_estimate_premium(args):
     print(json.dumps({"instrument": args.instrument, "spot": round(spot, 2), "iv_pct": round(iv, 2),
                         "strike": args.strike, "dte": args.dte, "option_type": args.option_type,
                         "estimated_premium": round(premium, 2)}))
+
+
+def cmd_spot_range(args):
+    """Last completed 1h candle high/low — used by monitor to detect SL/target breaches
+    that occurred between hourly runs, simulating real broker fill behaviour."""
+    if args.instrument in STOCK_UNIVERSE:
+        enc = urllib.parse.quote(STOCK_UNIVERSE[args.instrument])
+    else:
+        enc = YF_SYMBOLS[args.instrument]
+    candles = _fetch_yf(enc, range_="2d", interval="1h")
+    # Use [-2] — the last fully closed candle ([-1] may still be in progress during market hours)
+    if len(candles) < 2:
+        print(json.dumps({"error": "insufficient data"}))
+        return
+    c = candles[-2]
+    print(json.dumps({
+        "instrument": args.instrument,
+        "candle_high": round(c["h"], 2),
+        "candle_low":  round(c["l"], 2),
+        "candle_open": round(c["o"], 2),
+        "candle_close": round(c["c"], 2),
+    }))
 
 
 def _fetch_yf_daily(yahoo_symbol, range_="3mo"):
@@ -292,7 +315,16 @@ if __name__ == "__main__":
     p.add_argument("--dte", type=float, default=2.0)
     p.add_argument("--iv", type=float, default=None,
                    help="Override IV% (use hist_vol_pct from scan-stocks for stock symbols)")
+    p.add_argument("--spot", type=float, default=None,
+                   help="Override spot price (pass candle_high or candle_low from spot-range "
+                        "to check if SL/target was breached during the last hourly candle)")
     p.set_defaults(func=cmd_estimate_premium)
+
+    p = sub.add_parser("spot-range",
+                       help="Last completed 1h candle OHLC — use high/low to detect intra-hour "
+                            "SL/target breaches between monitor runs")
+    p.add_argument("instrument", help="Index name (NIFTY/BANKNIFTY/SENSEX) or NSE stock symbol")
+    p.set_defaults(func=cmd_spot_range)
 
     p = sub.add_parser("scan-stocks",
                        help="Scan all Nifty 50 F&O stocks for ADX<18 on daily bars")
