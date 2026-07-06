@@ -6,6 +6,56 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-07 — pre-market scan: all three indices trending; 18 stocks range-bound (no index setup)
+
+India VIX **11.82** (very low — extends the ~11.8-13.7 low-vol regime; the backdrop credit spreads
+like, but ADX is the binding gate and it's failing on every index). Grind-up continues: NIFTY
+24,270→24,430, SENSEX 77,763→78,285 vs yesterday — ADX rising with the one-way drift.
+
+- **NIFTY** — spot 24,430.35, ADX(14) **30.61** → trending. No entry.
+- **BANKNIFTY** — spot 58,291.5, ADX(14) **27.55** → trending. No entry. (Climbed out of the ~12-13
+  range-bound reads of 07-03/07-06; no longer a qualifier, and DTE would block it anyway — July
+  monthly 2026-07-28 only.)
+- **SENSEX** — spot 78,285.07, ADX(14) **30.34** → clearly trending. No entry.
+
+**INDEX CONCLUSION:** no qualifying index setup — all three trending hard (ADX ~27-31), none near
+the 18 gate. Fourth-plus consecutive session with the indices grinding up and out of range-bound.
+No index draft to carry into market-open. No positions open, nothing to manage.
+
+**STOCK SCAN — 18 of ~50 qualify (ADX(14) daily < 18)**, sorted most range-bound first. Neither
+blocklisted name (AXISBANK, BHARTIARTL) qualifies. Noted for any /trade call intraday:
+
+| Stock | ADX | hist_vol% | spot | Stock | ADX | hist_vol% | spot |
+|---|---|---|---|---|---|---|---|
+| TECHM | 10.96 | 34.43 | 1406.5 | RELIANCE | 14.87 | 16.60 | 1321.3 |
+| SBIN | 11.62 | 14.93 | 1037.7 | CANBK | 15.77 | 26.28 | 126.46 |
+| PNB | 11.87 | 19.22 | 104.29 | MARUTI | 15.92 | 25.50 | 14456.0 |
+| HEROMOTOCO | 12.40 | 19.56 | 4944.4 | BANKBARODA | 16.13 | 30.04 | 249.95 |
+| ULTRACEMCO | 13.31 | 18.87 | 11661.0 | EICHERMOT | 16.21 | 25.89 | 7471.5 |
+| SBILIFE | 13.39 | 17.28 | 1787.7 | TITAN | 16.70 | 23.96 | 4484.4 |
+| ITC | 13.55 | 17.82 | 288.25 | HINDUNILVR | 17.62 | 20.67 | 2202.0 |
+| POWERGRID | 14.11 | 18.46 | 285.4 | (TATAMOTORS errored — no data) | | | |
+| HDFCLIFE | 14.41 | 21.40 | 564.2 | | | | |
+| COALINDIA | 14.47 | 21.20 | 432.35 | | | | |
+| BPCL | 14.58 | 29.19 | 308.15 | | | | |
+
+**Earnings check (per guardrail: avoid results within 5 days of expiry):** Q1 FY26 season kicks off
+**Thu Jul 9 with TCS** (not a qualifier — trending, ADX 22.93), then HCLTech Jul 13, Infosys Jul 23.
+**None of the 18 qualifiers report this week (Jul 6-10).** TECHM is the only IT name in the list and
+Tech Mahindra reports late July, outside the window — but re-confirm its exact date before any TECHM
+/trade, given its high hist_vol (34.4%) already prices in some event risk. Banks/FMCG/auto names
+(SBIN, ITC, RELIANCE, MARUTI, etc.) report late-July onward, so a near-expiry (≤7 DTE) condor placed
+this week generally clears the earnings buffer — but verify each name's date at /trade time.
+
+**Reminder for /trade:** per strategy.md hard guardrail, stock options remain gated ("no individual
+stock options until this file says otherwise") pending a real paper track record — these qualifiers
+are logged for situational awareness / a possible future /trade, not an authorization to open one
+without the guardrail being lifted. Look up strike step + lot size fresh via `dhan.py lookup`, use
+`hist_vol_pct` (not VIX) for premium estimates, and confirm short-leg OI > 1,000. Draft-only routine
+— no trade placed.
+
+---
+
 ## 2026-07-06 — pre-market scan: two trending, BANKNIFTY range-bound but DTE-blocked, no setup
 
 India VIX **11.8** (very low — the low-vol backdrop credit spreads like, extending the ~11.8-13.7
