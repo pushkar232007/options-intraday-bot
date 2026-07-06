@@ -12,6 +12,16 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-06 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
+
+`2026-07-06 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close`
+- **Positions to carry/close:** none — flat the entire session (0 open paper positions in portfolio.md; came in flat, opened nothing today). No index condor to force-close, no stock condor to evaluate for carry-forward. Both the index force-close path and the stock carry-forward path are N/A — nothing held.
+- **No-trade day:** every 07-06 intraday run skipped — all three indices trended the whole session (ADX ~19→34, well above the 18 gate; VIX very low ~11.8-11.9 but ADX is the binding gate) so no index qualifier; stocks were UNLOCKED late (strategy.md commit 42d8033, ~21:37 IST) but only after market close, so no stock condor could be opened intraday. 18 F&O names qualified in this morning's scan → carried to the next market-hours run.
+- **Circuit breaker:** DISABLED in paper mode (no daily loss cap). Day P&L ₹0 regardless.
+- **Broker (best-effort):** after-hours — `funds` → FUND_LIMIT_ERROR 500, `orders` → DH-906. Known sandbox + after-hours read-endpoint failure (order-read endpoints error outside market hours), not a new problem. Portfolio.md is authoritative → flat.
+- **Final state:** cash ₹50,000.00 (unchanged, post-reset), realized P&L from reset ₹0.00, today's P&L ₹0. Flat into the close. EOD Telegram summary sent (always fires, even on a no-trade day).
+- **Nothing contradicted backtest expectations** — a very-low-VIX day trending hard on all three indices is exactly the regime this range-bound strategy stands aside from; no signals-learnings entry needed.
+
 ## 2026-07-06 intraday-monitor (~21:38 IST, AFTER MARKET CLOSE) — flat, nothing to manage; NO index qualifier; stocks now UNLOCKED but market closed → no entry
 
 **Timing/label note:** wall clock reads **2026-07-06 21:38 IST — market is closed** (NSE 09:15–15:30 IST). Scan returns EOD-close data (NIFTY 24,430.35 / BANKNIFTY 58,291.5 / SENSEX 78,285.07, VIX 11.82) — identical to the reads logged below under "07-07" labels, which were this same 07-06 EOD snapshot mislabeled a day forward by prior runs. No live market → no executable entry this run.
