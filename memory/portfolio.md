@@ -1,9 +1,9 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-06 EOD square-off — **flat, 0 open positions, 0 trades today** (no-op close, nothing to force-close). Cash ₹50,000.00 (reset 2026-07-06 by Pushkar); realized P&L from reset ₹0.00; today's P&L ₹0. Broker read endpoints erroring after hours (funds → FUND_LIMIT_ERROR 500; orders → DH-906) — known sandbox + after-hours condition, portfolio.md authoritative. Prior line: 2026-07-06 intraday-monitor (~21:38 IST, after close) — flat, no trade; all 3 indices trending (NIFTY ADX 30.61 / BANKNIFTY 27.55 / SENSEX 30.34, all ≥18; VIX 11.82); stocks UNLOCKED by strategy.md commit 42d8033 but market closed → no entry, 18 names qualified this morning for next market-hours run. Prior line: 2026-07-02 EOD square-off — both ICs force-closed (SENSEX #2 −₹568.80, NIFTY #3 −₹61.10), day P&L −₹629.90 (pre-reset history)._
+_Last updated: 2026-07-07 — capital reset to ₹2,00,000 (realistic live-trading figure; 1-lot sizing in paper mode makes ₹50K meaningless as a reference). Realized P&L from reset: ₹0. Prior: 2026-07-06 EOD — flat, 0 open positions, 0 trades (indices trending all day, ADX 27–31)._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
-- **Cash (tracked virtual):** ₹50,000.00 ← reset 2026-07-06 by Pushkar; starting fresh for stock+index paper trading phase. Previous balance was ₹99,400 (see closed trades below for history).
+- **Cash (tracked virtual):** ₹2,00,000.00 ← reset 2026-07-07 by Pushkar; set to reflect realistic live-trading margin requirements (NIFTY+BANKNIFTY+SENSEX condors need ₹1.6L–2.2L margin alone; ₹50K was too small to be meaningful). Previous balance was ₹50,000 (reset 2026-07-06).
 - **Realized P&L (from reset):** ₹0.00
 - **Position sizing:** 1 lot per trade (paper mode — sizing formula skipped, would block most stock trades)
 - **Circuit breaker:** DISABLED in paper mode — no daily loss cap, run all day regardless of P&L.

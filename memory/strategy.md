@@ -81,13 +81,15 @@ but that protection is untested in backtest, not proven.
   real execution costs the backtest can't see.
 - **Position sizing:**
   - **TRADING_MODE: paper → always 1 lot per trade.** No capital-based sizing in paper mode.
-    Most stock F&O lots have a minimum 1-lot exposure of ₹5,000–₹20,000 max loss, which exceeds
-    any reasonable % cap on ₹50K paper capital and would skip most trades — defeating the point
-    of paper trading as strategy validation. The backtest was lot-size agnostic and assumed every
-    qualifying trade is taken. Paper mode matches that assumption: 1 lot, every qualifying setup.
+    Most stock F&O lots have a minimum 1-lot exposure well above any % cap on paper capital,
+    which would skip most trades and defeat the point of paper trading as strategy validation.
+    The backtest was lot-size agnostic (assumed every qualifying trade is taken) — paper mode
+    matches that assumption: 1 lot, every qualifying setup.
   - **TRADING_MODE: live → 5% of capital per trade**, sized by the spread's own defined max loss
-    `(strike width - net credit received) × lot size`. Skip if qty_lots = 0 (minimum 1 lot
-    required). This is where real capital protection kicks in.
+    `(strike width - net credit received) × lot size`. Skip if qty_lots = 0.
+- **Paper capital: ₹2,00,000** — reflects realistic live-trading margin requirements
+  (NIFTY+BANKNIFTY+SENSEX condors need ₹1.6L–2.2L SPAN margin alone). Used only for P&L
+  tracking and return % calculations, not for trade sizing.
 - **Daily loss circuit breaker:** DISABLED in `TRADING_MODE: paper` — paper trading is for
   learning, not capital protection, so let every setup run regardless of daily P&L. Re-enable
   at 10% of capital when switching to live trading.
