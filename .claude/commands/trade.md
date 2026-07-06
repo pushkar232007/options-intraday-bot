@@ -18,8 +18,11 @@ all of them. Works for both index instruments (NIFTY/BANKNIFTY/SENSEX) and stock
 5. Estimate net credit: `python3 scripts/market_data.py estimate-premium <X> <strike> <CE|PE>
    --dte <days>` for each of the 4 legs (uses India VIX as IV). Net credit = (short put +
    short call) − (long put + long call).
-6. Size: `python3 scripts/risk.py size-spread --capital <current> --width <strike width>
-   --credit <net credit> --lot-size <lot size>`. Skip if qty_lots = 0.
+6. **Size: TRADING_MODE: paper → always 1 lot. Skip the risk.py sizing formula entirely.**
+   Most stock lots have a minimum 1-lot exposure that exceeds any % cap on ₹50K paper capital,
+   so the formula would skip most trades and break strategy validation. Paper mode = 1 lot always.
+   TRADING_MODE: live only: `python3 scripts/risk.py size-spread --capital <current>
+   --width <strike width> --credit <net credit> --lot-size <lot size>`. Skip if qty_lots = 0.
 
 ---
 
@@ -43,8 +46,10 @@ all of them. Works for both index instruments (NIFTY/BANKNIFTY/SENSEX) and stock
 7. Get spot: use `hist_vol_pct` from the scan output, and estimate net credit:
    `python3 scripts/market_data.py estimate-premium <SYMBOL> <strike> <CE|PE> --dte <days>
    --iv <hist_vol_pct>` for each of the 4 legs.
-8. Size: `python3 scripts/risk.py size-spread --capital <current> --width <strike width>
-   --credit <net credit> --lot-size <lot size from step 6>`. Skip if qty_lots = 0.
+8. **Size: TRADING_MODE: paper → always 1 lot** (same reason as index step 6 above).
+   TRADING_MODE: live only: `python3 scripts/risk.py size-spread --capital <current>
+   --width <strike width> --credit <net credit> --lot-size <lot size from step 6>`.
+   Skip if qty_lots = 0.
 
 ---
 

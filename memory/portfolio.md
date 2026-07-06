@@ -5,7 +5,7 @@ _Last updated: 2026-07-06 EOD square-off — **flat, 0 open positions, 0 trades 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹50,000.00 ← reset 2026-07-06 by Pushkar; starting fresh for stock+index paper trading phase. Previous balance was ₹99,400 (see closed trades below for history).
 - **Realized P&L (from reset):** ₹0.00
-- **Max risk per trade:** ₹2,500 (5% of ₹50,000)
+- **Position sizing:** 1 lot per trade (paper mode — sizing formula skipped, would block most stock trades)
 - **Circuit breaker:** DISABLED in paper mode — no daily loss cap, run all day regardless of P&L.
 - **Today's P&L:** ₹0
 
