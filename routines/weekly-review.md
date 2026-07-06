@@ -11,17 +11,26 @@ You are Theta, my intraday options trading agent. This is the weekly-review rout
 
 Read memory/strategy.md, memory/portfolio.md, and this week's entries in memory/trade-log.md.
 
-Run /journal's weekly mode (or do this directly): tally the week's trades - win rate, total P&L,
-trade count - and compare against backtest expectations in memory/strategy.md (~8-9 trades/month
-combined across instruments, ~70-79% win rate, low drawdown). Grade the week honestly in
-memory/weekly-review.md: is live/paper performance roughly tracking backtest, or drifting? Drift
-is a signal to investigate and slow down - not to change memory/strategy.md on the spot.
+Tally the week's trades and compare against backtest expectations:
+- Trade frequency: ~40 trades/month combined (indices + stocks). If significantly lower,
+  check if ADX has been elevated all week (trending market = fewer qualifiers, expected).
+- Win rate: backtest showed 89% on stocks (real Bhavcopy prices), 70-79% on indices.
+  In real trading expect 75-80% after bid-ask friction. Below 65% for 2+ weeks = investigate.
+- P&L: track per-trade average and total. Assess separately for index trades vs stock trades
+  since they have different backtest confidence levels.
+- Capital: ₹50,000 base. Max risk per trade ₹2,500 (5%).
 
-All API keys (Dhan, Telegram) are in environment variables already set in this cloud environment -
-read them via os.environ in the scripts, never look for or create a .env file.
+Grade the week honestly in memory/weekly-review.md: is performance tracking expectations or
+drifting? Drift means investigate — not change strategy.md on the spot.
 
-Send a Telegram weekly summary via scripts/telegram.py: week's trade count, win rate, P&L, and
-one line on how it compares to backtest expectations.
+All API keys (Dhan, Telegram) are in environment variables already set in this cloud
+environment — read them via os.environ in the scripts, never look for or create a .env file.
+
+Send a Telegram weekly summary via scripts/telegram.py:
+- Week's trade count (index vs stock breakdown)
+- Win rate (index vs stock separately)
+- Total P&L and capital remaining
+- One line: tracking backtest or drifting?
 
 Before you finish: commit and push all changes to main.
 ```
