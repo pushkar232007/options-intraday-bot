@@ -18,7 +18,7 @@ Tally the week's trades and compare against backtest expectations:
   In real trading expect 75-80% after bid-ask friction. Below 65% for 2+ weeks = investigate.
 - P&L: track per-trade average and total. Assess separately for index trades vs stock trades
   since they have different backtest confidence levels.
-- Capital: ₹50,000 base. Max risk per trade ₹2,500 (5%).
+- Capital: ₹4,00,000 base. Sizing: 1 lot per trade (paper mode).
 
 Grade the week honestly in memory/weekly-review.md: is performance tracking expectations or
 drifting? Drift means investigate — not change strategy.md on the spot.

@@ -28,7 +28,7 @@ read them via os.environ in the scripts, never look for or create a .env file.
 Then send a Telegram end-of-day summary (5-7 lines) covering:
   - Index trades: closed today (P&L, reason) or carried forward
   - Stock trades: closed today (P&L, reason) or still open (symbol, DTE remaining, unrealized P&L)
-  - Today's realized P&L and cumulative capital vs the ₹50,000 paper balance
+  - Today's realized P&L and cumulative capital vs the ₹4,00,000 paper balance
 
 Before you finish: commit and push all changes to main.
 ```
