@@ -12,6 +12,16 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-07 intraday-monitor — flat, nothing to manage; NO ADX qualifier (all three trending, VIX 11.82); stocks gated
+
+**Positions to manage:** none — flat (0 open paper positions in portfolio.md; came in flat, opened nothing 07-03/07-06). Nothing for the 50%/2× exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → tripped=False; day P&L ₹0).
+- **Index fresh-setup check — no qualifier, all three trending:** Scan (VIX **11.82**, very low) — NIFTY spot 24,430.35 ADX **30.61** (trending, no), BANKNIFTY spot 58,291.5 ADX **27.55** (trending, no), SENSEX spot 78,285.07 ADX **30.34** (trending, no). All three well above the 18 gate → **no ADX qualifier**. Data identical to today's 07-07 pre-market read (no new bar printed — market closed / no fresh intraday data). BANKNIFTY is trending too (27.55), so its usual DTE-skip question is moot — nothing clears ADX.
+  `2026-07-07 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 30.61/27.55/30.34 all ≥18 | — | — | none range-bound; VIX 11.82 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — GATED, no entry:** today's 07-07 pre-market logged 18 F&O names ADX<18 (TECHM 10.96, SBIN 11.62, PNB 11.87, … none blocklisted). Per strategy.md hard guardrail ("No individual stock options until this file says otherwise"), stock options remain **gated pending a real index paper track record** — the qualifiers are situational awareness only, not an authorization. **No stock entry.**
+- **Broker:** no action (flat, no orders to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — a very-low-VIX day (11.82) that trends hard on all three (ADX≥18) is exactly the regime this range-bound credit-spread strategy stands aside from; low VIX does not imply low ADX. No new signals-learnings entry needed.
+
 ## 2026-07-06 EOD square-off (~15:15 IST) — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
 
 `2026-07-06 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close`
