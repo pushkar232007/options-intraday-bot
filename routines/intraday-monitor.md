@@ -33,7 +33,7 @@ STOCK ENTRIES (use today's pre-market scan — daily ADX doesn't change intraday
   - Check earnings: skip if the company reports within 5 days of expiry.
   - Run /trade for that stock symbol using the hist_vol_pct from this morning's scan.
   - Target DTE 2-7 days. Use dhan.py lookup to get strike step and lot size.
-  - Max risk per trade: ₹2,500 (5% of ₹50,000 capital).
+  - Sizing: 1 lot per trade (paper mode — no capital-based sizing, matches backtest assumption).
   Do NOT re-run scan-stocks mid-day — daily ADX doesn't change, use morning's reading.
 
 All API keys (Dhan, Telegram) are in environment variables already set in this cloud

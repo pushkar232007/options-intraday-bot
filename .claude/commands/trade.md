@@ -21,6 +21,7 @@ all of them. Works for both index instruments (NIFTY/BANKNIFTY/SENSEX) and stock
 6. **Size: TRADING_MODE: paper → always 1 lot. Skip the risk.py sizing formula entirely.**
    Most stock lots have a minimum 1-lot exposure that exceeds any % cap on ₹50K paper capital,
    so the formula would skip most trades and break strategy validation. Paper mode = 1 lot always.
+   (Capital: ₹4,00,000 paper — for P&L tracking only, not sizing.)
    TRADING_MODE: live only: `python3 scripts/risk.py size-spread --capital <current>
    --width <strike width> --credit <net credit> --lot-size <lot size>`. Skip if qty_lots = 0.
 
