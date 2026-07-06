@@ -86,9 +86,17 @@ but that protection is untested in backtest, not proven.
   learning, not capital protection, so let every setup run regardless of daily P&L. Re-enable
   at 10% of capital when switching to live trading.
 - **Exit rule (whichever hits first):**
-  1. Profit target: close once the cost to close the spread has decayed to 50% of the credit
-     received (lock in half the max profit, don't try to ride it to expiry intraday).
-  2. Stop-loss: close if the cost to close grows to 2x the credit received.
+  **Index iron condors (NIFTY / BANKNIFTY / SENSEX — intraday):**
+  1. Profit target: close once cost-to-close decays to 50% of entry credit.
+  2. Stop-loss: close if cost-to-close grows to 2x entry credit.
+
+  **Stock iron condors (Nifty 50 F&O — held 2-7 days):**
+  1. Profit target: close once cost-to-close decays to 25% of entry credit (i.e. 75% of
+     premium captured). Backtest sweep showed 75% target outperforms 50% for multi-day holds
+     — theta has more time to work, no reason to exit early.
+  2. Stop-loss: close if cost-to-close grows to 2.5x entry credit. Sweep showed 2.5x SL
+     gives 92.4% WR and +₹3,187 vs 89% WR and +₹2,577 at 2.0x — wider SL avoids false
+     exits from normal multi-day noise while theta decays the position.
   3. EOD review (~3:15-3:20 PM IST): the **default** is to close everything intraday, but
      carry-forward is a valid autonomous decision when all 3 conditions are met:
      (a) position is currently in profit (cost-to-close < entry credit),

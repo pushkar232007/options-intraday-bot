@@ -8,11 +8,18 @@ Check every open position against the exit rules in memory/strategy.md.
    `python3 scripts/market_data.py estimate-premium <X> <strike> <CE|PE> --dte <days remaining>`
    for each of the 4 legs. Cost-to-close = (short put + short call premiums to BUY back) -
    (long put + long call premiums to SELL). Compare against the entry credit logged in
-   memory/trade-log.md:
+   memory/trade-log.md using the correct thresholds per instrument type:
+
+   **Index trades (NIFTY / BANKNIFTY / SENSEX):**
    - Cost-to-close <= 50% of entry credit → close now, reason: `PROFIT_TARGET`
-   - Cost-to-close >= 2x entry credit → close now, reason: `SL`
-   - Otherwise → leave open, note current unrealized P&L status in memory/trade-log.md if
-     meaningfully closer to either threshold than last check.
+   - Cost-to-close >= 2.0x entry credit → close now, reason: `SL`
+
+   **Stock trades (any Nifty 50 F&O symbol):**
+   - Cost-to-close <= 25% of entry credit → close now, reason: `PROFIT_TARGET`
+   - Cost-to-close >= 2.5x entry credit → close now, reason: `SL`
+
+   Otherwise → leave open, note current unrealized P&L in memory/trade-log.md if
+   meaningfully closer to either threshold than last check.
 3. To close a paper position:
    - **TRADING_MODE: paper**: remove the row from portfolio.md "Open Paper Positions" table,
      add a row to "Closed Paper Positions" with: exit date, exit credit (cost-to-close from

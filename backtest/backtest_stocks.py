@@ -107,8 +107,8 @@ STOCK_DATA_DIR = os.path.join(os.path.dirname(__file__), "data", "stocks")
 # Strategy constants (mirrors index strategy)
 SHORT_OFFSET_STEPS = 2    # strike steps OTM for the sold legs
 LONG_OFFSET_STEPS = 4     # strike steps OTM for the protective legs
-PROFIT_TARGET_PCT = 0.50  # exit when cost-to-close drops to 50% of entry credit
-SL_MULTIPLE = 2.0         # exit when cost-to-close reaches 2x entry credit
+DEFAULT_PROFIT_TARGET_PCT = 0.75  # capture 75% of premium — sweep showed this beats 50%
+DEFAULT_SL_MULTIPLE = 2.5         # sweep showed 2.5x beats 2.0x for multi-day stock holds
 
 
 # ── Stock price data ──────────────────────────────────────────────────────────
@@ -233,6 +233,8 @@ def run(adx_threshold: float = 18.0,
         min_dte: int = 2,
         max_dte: int = 7,
         min_oi: int = 1000,
+        profit_target_pct: float = DEFAULT_PROFIT_TARGET_PCT,
+        sl_multiple: float = DEFAULT_SL_MULTIPLE,
         refresh_prices: bool = False,
         verbose: bool = True) -> dict:
 
@@ -353,10 +355,10 @@ def run(adx_threshold: float = 18.0,
                 exit_date = future_date
                 exit_reason = "EOD_HOLD"
 
-                if cost_now <= entry_credit * (1 - PROFIT_TARGET_PCT):
+                if cost_now <= entry_credit * (1 - profit_target_pct):
                     exit_reason = "PROFIT_TARGET"
                     break
-                if cost_now >= entry_credit * SL_MULTIPLE:
+                if cost_now >= entry_credit * sl_multiple:
                     exit_reason = "SL"
                     break
                 if future_date >= expiry:
