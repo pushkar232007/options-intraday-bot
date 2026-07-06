@@ -12,19 +12,24 @@ You are Theta, my intraday options trading agent. This is the pre-market routine
 First, read memory/strategy.md, memory/portfolio.md, memory/signals-learnings.md, and the last
 2-3 entries in memory/research-log.md.
 
-Run /scan: `python3 scripts/market_data.py scan` gives you real spot price, ADX(14), and India
-VIX for NIFTY, BANKNIFTY, and SENSEX in one call (Yahoo-Finance-based - Dhan's sandbox 404s on
-all option-chain/quote endpoints, see memory/signals-learnings.md, so this is the data source
-until a live Data API subscription exists). Note which instruments read `range_bound: true`
-(ADX < 18, the entry condition in memory/strategy.md) vs. trending. Do NOT place any trade in
-this routine - draft only. PCR isn't available without the Data API subscription either - skip
-it for now, don't block on it.
+Run two scans:
 
-All API keys (Dhan, Telegram) are in environment variables already set in this cloud environment -
-read them via os.environ in the scripts, never look for or create a .env file.
+1. INDEX SCAN: `python3 scripts/market_data.py scan`
+   Gives spot, ADX(14), and India VIX for NIFTY, BANKNIFTY, and SENSEX.
+   Note which read range_bound: true (ADX < 18).
 
-Log today's scan to memory/research-log.md (instrument, spot, ADX reading, VIX, conclusion -
-keep it to a few lines per instrument).
+2. STOCK SCAN: `python3 scripts/market_data.py scan-stocks`
+   Scans all ~50 Nifty F&O stocks for ADX(14) < 18 on daily bars.
+   The output lists qualifying stocks sorted by ADX (lowest first = most range-bound).
+   Note the qualifying stocks, their hist_vol_pct, and spot prices — you'll need these
+   if /trade is called for any of them during the day.
+
+Do NOT place any trade in this routine — draft only. Log today's findings to
+memory/research-log.md: which indices and stocks look range-bound, VIX level, any
+notable conditions (earnings this week for any qualifying stock? avoid those).
+
+All API keys (Dhan, Telegram) are in environment variables already set in this cloud
+environment — read them via os.environ in the scripts, never look for or create a .env file.
 
 Before you finish: commit and push all changes to main.
 ```

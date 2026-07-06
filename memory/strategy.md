@@ -111,9 +111,50 @@ but that protection is untested in backtest, not proven.
   rather than silently moving on. Also: `/positions` returned empty even right after a confirmed
   fill in testing — track open positions from `orders` (filter `orderStatus == TRADED`, net BUY/SELL
   qty per securityId), not from `/positions`.
-- **Expected trade frequency:** ~8-9 trades/month combined across all three instruments in backtest
-  (roughly 1 every 3-4 trading days) — NOT daily. This is intentional selectivity, not a bug; don't
-  loosen the ADX threshold to manufacture more trades without re-backtesting the change first.
+- **Expected trade frequency:** ~8-9 trades/month from indices alone; ~40 trades/month combined
+  once stock scanning is active (backtest: 248 trading days, 445 trades, 89% WR on real Bhavcopy
+  prices). Don't loosen the ADX threshold to manufacture more trades — the 18.0 threshold is
+  validated; changing it requires a new backtest.
+
+## Stock universe (Nifty 50 F&O scanner)
+
+Rather than trading a fixed list of stocks, the bot scans the entire Nifty 50 F&O universe
+daily and enters iron condors on whichever stocks qualify that day (ADX < 18 on daily bars).
+This is the same approach as the backtest that produced 89% win rate / 445 trades / 248 days.
+
+**Scan command:** `python3 scripts/market_data.py scan-stocks`
+Reports qualifying stocks sorted by ADX (lowest = most range-bound = best candidate).
+
+**Blocklist — never trade these (backtest showed negative edge):**
+- AXISBANK: 68% win rate, -₹0.39/share average
+- BHARTIARTL: 64% win rate, -₹1.28/share average
+
+**Stock universe scanned (all others):** RELIANCE, HDFCBANK, ICICIBANK, INFY, TCS, SBIN,
+KOTAKBANK, BAJFINANCE, HINDUNILVR, LT, ITC, TATAMOTORS, TATASTEEL, WIPRO, HCLTECH, SUNPHARMA,
+NTPC, POWERGRID, ADANIENT, ADANIPORTS, BAJAJFINSV, MARUTI, TITAN, ASIANPAINT, DRREDDY, CIPLA,
+HINDALCO, JSWSTEEL, HEROMOTOCO, EICHERMOT, TECHM, ULTRACEMCO, GRASIM, COALINDIA, BPCL, ONGC,
+INDUSINDBK, APOLLOHOSP, TATACONSUM, NESTLEIND, BEL, HDFCLIFE, SBILIFE, BAJAJ-AUTO, HINDZINC,
+VEDL, NMDC, BANKBARODA, PNB, CANBK, SIEMENS, PIDILITIND, DMART.
+
+**Stock-specific guardrails (apply in addition to the index rules above):**
+- ADX uses **daily bars** (not hourly) — `scan-stocks` handles this automatically.
+- DTE range: **2-7 days** (stocks have weekly + monthly expiry; don't go longer).
+- Strike step and lot size: look up fresh from Dhan instrument master via
+  `python3 scripts/dhan.py lookup <SYMBOL> <expiry> <strike> CE` — do NOT guess or hardcode,
+  stock strike steps vary widely and get revised by SEBI periodically.
+- Iron condor structure: same as indices — short legs 2 strike steps OTM, long legs 4 steps OTM.
+- Premium estimate: use `hist_vol_pct` from `scan-stocks` output as the IV (pass via `--iv`)
+  instead of India VIX — stock IV is higher than VIX and varies by stock.
+- OI filter: short legs must have open interest > 1,000 contracts — check via Dhan option chain
+  (live) or skip if OI data unavailable (paper mode only).
+- Max risk per trade: same 5% of capital as indices.
+- Never trade a stock during earnings week (results announcement within 5 days of expiry) —
+  IV spike can blow out the condor. Check NSE calendar before entering.
+
+**Top performers from backtest (July 2023 – July 2024) for reference:**
+ITC 100% WR, INDUSINDBK 100%, ASIANPAINT 100%, ULTRACEMCO 100%, SBIN 100%, BANKBARODA 100%,
+SBILIFE 95%, BAJAJFINSV 95%, TCS 93%, APOLLOHOSP 86%. These had the best historical edge but
+any qualifying stock on any given day is a valid trade — don't cherry-pick only these.
 - **No naked option buying, no uncapped/undefined-risk positions** unless this file is explicitly
   updated with new backtest evidence justifying it.
 - **Paper first.** Do not place a live-money order while `TRADING_MODE` above reads `paper`.
