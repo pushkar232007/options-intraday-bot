@@ -6,6 +6,71 @@ investigate — not as an automatic trigger to change `memory/strategy.md`.
 
 ---
 
+## Week of 2026-07-06 (Mon → through Mon) — NEW stock+index phase begins (capital reset ₹50k, stocks unlocked); 0 trades so far, indices trending all week, stocks unlocked but not yet live-tested — INCOMPLETE, on track, no drift
+
+**This is the first review of a new phase, and the week is effectively 1 session old.** Two
+structural changes landed Monday 2026-07-06: capital was **reset to ₹50,000** by Pushkar (commit
+5058a07, from the prior ₹99,400) and the **Nifty-50 F&O stock universe was unlocked** for paper
+trading (commit 42d8033). So the backtest yardstick changes this week: the old index-only
+~8-9 trades/month is superseded by **~40 trades/month combined (indices + stocks)**. Only the
+Monday session has happened so far, and it was a no-trade day — read the tally in that light.
+(Note: the trade-log's "07-07"-labelled entries are the *same* 07-06 EOD-close snapshot mislabelled
+a day forward by prior runs, not a second trading day. Functionally there is only 07-06 data.)
+
+**The week's tally (indices — NIFTY/SENSEX validated; BANKNIFTY separate below):**
+- Trade count: **0** (index 0, stock 0). Nothing placed or closed.
+- Win rate: **N/A** (no completed trades).
+- P&L: **₹0.00.** Capital **₹50,000** (reset 07-06), realized-from-reset ₹0, today's P&L ₹0.
+  Flat into the close, 0 open positions — came in flat from the 07-02 EOD square-off.
+
+**vs. backtest expectations (~40 trades/month ≈ ~9/week combined, 89% WR stocks / 70-79% indices):**
+- **Frequency: below the new ~9/week pace, but fully explained — not a drift signal.** Per the
+  review protocol, a low count with ADX elevated all week = trending market = fewer qualifiers =
+  expected. That is exactly the case: **every index read this week was trending** (NIFTY ADX
+  26.7→40.3, BANKNIFTY 19.1→38.6, SENSEX 28.7→40.4; VIX extremely low ~11.8-11.9 but ADX is the
+  binding gate). No ADX<18 index qualifier at any point → correct sit-out, no ADX loosening to
+  manufacture trades. On the **stock** side, 18 F&O names qualified in the 07-06 scan (TECHM 10.96,
+  SBIN 11.62, PNB 11.87 … HINDUNILVR 17.62; neither blocklisted name qualified) — but the unlock
+  commit (42d8033) landed at ~21:37 IST, *after* the 15:30 market close, so **there has not yet been
+  a single live market-hours session with stocks unlocked.** The ~40/month combined cadence is
+  therefore **untested, not underperforming** — it has had zero opportunity to fire.
+- **Win rate: N/A** — no completed trades. Nothing to compare to the 89%/70-79% bands yet.
+- **Drawdown / risk control: N/A** — no positions held. Circuit breaker disabled in paper mode.
+
+**Grade: INCOMPLETE — on track, no drift to act on.** With 0 trades over a single no-trade session
+there is nothing to compare against the backtest, and the one metric that *could* look off
+(frequency) is fully accounted for by a trending-index regime plus a brand-new stock capability that
+simply hasn't had a live session to run. Performance is neither tracking nor drifting — the new
+phase is **unstarted**. No reason to touch strategy.md (per protocol: drift → investigate, never
+edit on the spot — and there is no drift here to even investigate).
+
+**BANKNIFTY (tracked separately per strategy.md — do NOT blend into the figures above):** **0 trades,
+0 new near-expiry data points this week.** BANKNIFTY was actually *trending* most of this week
+(ADX 19.1→38.6), so unlike the prior week it wasn't even an ADX qualifier; and it remains monthly-only
+(nearest expiry 2026-07-28 ≈ 22 DTE), far outside the ≤7-DTE window that is its sole data-gathering
+rationale. Still **0 genuine near-expiry BANKNIFTY data points accumulated** all-time; "validated"
+status remains far off. Expected given the monthly cycle — not a miss.
+
+**Watch items for coming weeks (record, don't act):**
+1. **The combined ~40/month cadence now hinges almost entirely on stocks actually firing live.**
+   Unlocked 07-06 but exercised in 0 live sessions so far. Watch that the next market-hours run
+   genuinely evaluates the qualifier list (fresh ADX at the open, per-name earnings check, DTE 2-7,
+   short-leg OI>1,000, `hist_vol_pct` for premium, strike/lot via `dhan.py lookup`) and enters where
+   guardrails clear — otherwise the 40/month figure stays theoretical. First real test = next
+   market-hours session.
+2. **Index ADX drought is now ~2+ straight weeks.** Indices have read ADX>18 essentially every scan
+   since the 06-30 launch week through this Monday. If ADX<18 index days keep not appearing, the
+   index contribution to the 40/month will stay near-zero and the whole cadence rests on stocks.
+   That's a *regime* observation, not an edge problem — do NOT loosen the 18 threshold; just track
+   whether range-bound index days ever return.
+3. **Broker execution still non-functional** (DH-905 unknown securityIds / DH-906 BSE + margin locked
+   by the expired sid=71472 artifact). portfolio.md remains authoritative; a real sandbox reset is
+   still needed before any order fills. Carried over — flagged to Pushkar previously, still open.
+4. **BANKNIFTY near-expiry drought is structural** — progresses only the ~1 week/month its monthly
+   expiry is ≤7 DTE. Expect long 0-progress stretches.
+
+---
+
 ## Week ending 2026-07-03 (Fri) — first live-trade week: 3 trades, 33% win, −₹600; below-band win rate but n=3, drawdown in-line — WATCH, don't change
 
 **First week with actual paper entries.** The prior review covered through 06-30 (0 trades); this
