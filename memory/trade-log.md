@@ -12,6 +12,15 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-06 intraday-monitor (~intraday IST) — flat, nothing to manage; NO ADX qualifier (all three trending, BANKNIFTY now also >18)
+
+**Positions to manage:** none — flat (0 open paper positions in portfolio.md; came in flat from 07-02 EOD, opened nothing 07-03). Nothing for the 50%/2× exit rules to act on.
+- **Circuit breaker:** not tripped (`risk.py circuit-breaker --capital 99400 --day-pnl 0` → tripped=False; day P&L ₹0).
+- **Fresh-setup check — no qualifier at all this run:** Scan (VIX **11.94**, very low) — NIFTY spot 24,375.85 ADX **26.66** (trending, no), BANKNIFTY 58,204.0 ADX **19.10** (above the 18 gate, no), SENSEX 78,044.98 ADX **28.67** (trending, no). All three above the gate → **no ADX qualifier**. Note BANKNIFTY has risen through the gate since the pre-market read (12.75 → 19.10) as spot drifted up ~266 pts, so today's usual DTE-skip question is moot — it doesn't even clear ADX now.
+  `2026-07-06 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 26.66/19.10/28.67 all ≥18 | — | — | none range-bound; VIX 11.94 low but ADX is the binding gate. No entry.`
+- **Broker:** no action (flat, no orders to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — another very-low-VIX day (11.94) that is nonetheless trending on all three (ADX≥18) is exactly the regime this range-bound credit-spread strategy stands aside from; low VIX does not imply low ADX. No new signals-learnings entry needed.
+
 ## 2026-07-03 EOD square-off (~15:15 IST) — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
 
 `2026-07-03 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close`
