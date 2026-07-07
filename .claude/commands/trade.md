@@ -38,10 +38,10 @@ all of them. Works for both index instruments (NIFTY/BANKNIFTY/SENSEX) and stock
 3. Confirm no open position on this stock symbol in memory/portfolio.md.
 4. **Check earnings:** never enter a stock iron condor if the company reports earnings within
    5 days of the chosen expiry. Skip and log reason if so.
-5. Find expiry: target DTE 2-7 days. Look up available expiries via
-   `python3 scripts/dhan.py lookup <SYMBOL> <nearest-expiry> <approx-atm-strike> CE` — try a
-   few expiry dates (nearest Thursday for weeklies, last Thursday of month for monthlies) to
-   find one with DTE 2-7.
+5. Find expiry: target DTE 2-30 days (monthly expiry only — last Thursday of month; no stock
+   weeklies exist in India). Look up available expiries via
+   `python3 scripts/dhan.py lookup <SYMBOL> <nearest-expiry> <approx-atm-strike> CE` — try
+   available monthly expiries to find one with DTE 2-30.
 6. Get strike step and lot size from the lookup result above (the instrument master has exact
    values — do NOT guess).
 7. Get spot: use `hist_vol_pct` from the scan output, and estimate net credit:

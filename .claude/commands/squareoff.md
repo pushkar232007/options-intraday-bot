@@ -34,7 +34,7 @@ For each index position being closed:
 
 ## STOCK positions (Nifty 50 F&O symbols)
 
-Stock condors are multi-day trades by design (DTE 2-7, held until target/SL/expiry). **Do NOT
+Stock condors are multi-day trades by design (DTE 2-30, held until target/SL/expiry). **Do NOT
 force-close stock positions at EOD.** The 92.4% WR in the backtest came from holding across
 multiple days — closing intraday breaks the strategy entirely.
 
