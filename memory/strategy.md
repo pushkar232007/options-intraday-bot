@@ -74,11 +74,12 @@ but that protection is untested in backtest, not proven.
 - **Entry trigger:** only enter when ADX(14) on the entry timeframe reads **below 18** (range-bound/
   chop reading) shortly after the open, once the opening range has printed. Do not enter on a day
   ADX reads as trending — that's exactly the regime this strategy is not designed for.
-- **Expiry to trade:** prefer ~2 days to expiry at entry (backtest: best balance of return vs.
-  drawdown — DTE=1 had the highest raw return but ~24% max drawdown in backtest; DTE=3+ had
-  meaningfully lower drawdown for less return). Avoid trading options expiring same-day if spreads/
-  liquidity look thin in the actual Dhan option chain — gamma risk and bid-ask cost near expiry are
-  real execution costs the backtest can't see.
+- **Expiry to trade (indices):** prefer ~2 days to expiry at entry (backtest: best balance of
+  return vs. drawdown — DTE=1 had the highest raw return but ~24% max drawdown in backtest;
+  DTE=3+ had meaningfully lower drawdown for less return). Avoid trading options expiring same-day
+  if spreads/liquidity look thin in the actual Dhan option chain — gamma risk and bid-ask cost near
+  expiry are real execution costs the backtest can't see.
+  **Expiry to trade (stocks):** DTE 2-30 — see stock-specific guardrails below.
 - **Position sizing:**
   - **TRADING_MODE: paper → always 1 lot per trade.** No capital-based sizing in paper mode.
     Most stock F&O lots have a minimum 1-lot exposure well above any % cap on paper capital,
@@ -98,7 +99,7 @@ but that protection is untested in backtest, not proven.
   1. Profit target: close once cost-to-close decays to 50% of entry credit.
   2. Stop-loss: close if cost-to-close grows to 2x entry credit.
 
-  **Stock iron condors (Nifty 50 F&O — held 2-7 days):**
+  **Stock iron condors (Nifty 50 F&O — held 2-30 days):**
   1. Profit target: close once cost-to-close decays to 25% of entry credit (i.e. 75% of
      premium captured). Backtest sweep showed 75% target outperforms 50% for multi-day holds
      — theta has more time to work, no reason to exit early.
@@ -127,11 +128,12 @@ but that protection is untested in backtest, not proven.
   rather than silently moving on. Also: `/positions` returned empty even right after a confirmed
   fill in testing — track open positions from `orders` (filter `orderStatus == TRADED`, net BUY/SELL
   qty per securityId), not from `/positions`.
-- **Expected trade frequency:** ~8-9 trades/month from indices alone. Stock options are
-  monthly-only (see DTE rule above), so stock entries are concentrated in the last ~5-7 trading
-  days of each month — expect 5-15 stock trades/month in that window, zero outside it.
-  Combined realistic estimate: ~13-24 trades/month. Don't loosen the ADX threshold to manufacture
-  more trades — the 18.0 threshold is validated; changing it requires a new backtest.
+- **Expected trade frequency:** ~8-9 trades/month from indices alone. Stock condors now trade
+  across the full month (DTE 2-30), split-sample validated in all three DTE windows:
+  DTE 2-7 (PF 4.60/16.88, 89-94% WR), DTE 8-14 (PF 9.09/13.35, 93-97% WR),
+  DTE 15-30 (PF 19.64/55.25, 93-94% WR). With the one-trade-per-symbol cap, realistic combined
+  volume is ~60-80 trades/month. Don't loosen the ADX threshold to manufacture more trades — the
+  18.0 threshold is validated; changing it requires a new backtest.
 
 ## Stock universe (Nifty 50 F&O scanner)
 
@@ -155,15 +157,14 @@ VEDL, NMDC, BANKBARODA, PNB, CANBK, SIEMENS, PIDILITIND, DMART.
 
 **Stock-specific guardrails (apply in addition to the index rules above):**
 - ADX uses **daily bars** (not hourly) — `scan-stocks` handles this automatically.
-- DTE range: **2-7 days before the monthly expiry.** Nifty 50 stock options are **monthly-only
-  on NSE** (last Thursday of each month) — there are no weekly stock options. This means the
-  entry window is approximately the last 5-7 trading days of each month (e.g. Jul 23-28 for
-  Jul 30 expiry, Aug 25-29 for Aug 28 expiry). Outside this window there is no qualifying
-  stock expiry within DTE ≤ 7 — skip stocks entirely and wait for the window.
-  **Backtest note:** the 445-trade / 89% WR backtest (July 2023–July 2024) was run on real
-  Bhavcopy prices. It assumed entries near expiry, which is consistent with monthly-only structure.
-  The ~40 trades/month combined estimate assumed higher frequency — realistic stock contribution
-  is closer to 5-15 trades/month concentrated in the last week of the month.
+- DTE range: **2-30 days before the monthly expiry.** Nifty 50 stock options are **monthly-only
+  on NSE** (last Thursday of each month) — there are no weekly stock options. All three DTE
+  windows are split-sample validated (see Expected trade frequency above). Prefer the shortest
+  qualifying DTE on any given day (the `_find_expiry` logic already does this).
+- **One trade per symbol at a time.** If a condor is already open on RELIANCE, skip RELIANCE
+  even if it qualifies again the next day — don't stack concurrent condors on the same stock.
+  Re-enter only after the existing position exits. This prevents inadvertently tripling exposure
+  to one name when a stock stays range-bound for weeks.
 - Strike step and lot size: look up fresh from Dhan instrument master via
   `python3 scripts/dhan.py lookup <SYMBOL> <expiry> <strike> CE` — do NOT guess or hardcode,
   stock strike steps vary widely and get revised by SEBI periodically.
