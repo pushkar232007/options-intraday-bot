@@ -12,6 +12,16 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-07 intraday-monitor (~afternoon) — flat; NO index qualifier (all three still trending, VIX 11.68); stocks still all DTE-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules to act on. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three still trending:** fresh `market_data.py scan` (VIX **11.68**) — NIFTY spot 24,472.35 ADX **34.15**, BANKNIFTY spot 58,329.9 ADX **24.36**, SENSEX spot 78,553.19 ADX **42.06**. All well above the 18 gate (NIFTY/BANKNIFTY eased a touch off the midday 39.06/29.06 but nowhere near range-bound; SENSEX firmly trending at 42) → **no ADX qualifier**. BANKNIFTY trending too, DTE moot.
+  `2026-07-07 afternoon IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 34.15/24.36/42.06 all ≥18 | — | — | none range-bound; VIX 11.68 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — same 18 qualifiers, ALL still SKIPPED on DTE grounds (unchanged; daily ADX doesn't change intraday, didn't re-run scan-stocks):** every single-stock option is monthly-only — nearest expiry **2026-07-30 (23 DTE)** ≫ the DTE 2-7 cap (reference: signals-learnings 2026-07-07). Enterable only in the ~week before monthly expiry (≈ Jul 23–28) absent a Pushkar decision to relax the cap. No re-alert — established reference.
+  `2026-07-07 afternoon IST | STOCKS (18 qualifiers) | 23 | SKIP (DTE far outside window) | nearest stock expiry 2026-07-30 monthly, no weeklies | — | — | ADX<18 on all 18 but 23 DTE ≫ 7-DTE hard cap. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — indices grinding in a very-low-VIX regime is exactly the regime this range-bound strategy stands aside from.
+
 ## 2026-07-07 intraday-monitor (midday) — flat; NO index qualifier (all three trending harder still, VIX 11.78); stocks still all DTE-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules to act on. Circuit breaker DISABLED in paper mode — N/A.
