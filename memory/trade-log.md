@@ -12,6 +12,17 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-07 intraday-monitor (~14:37 IST) — flat; BANKNIFTY now range-bound (ADX 17.6, first sub-18 read today) but SKIPPED (21 DTE, not near-expiry); NIFTY/SENSEX trending; stocks unchanged (all 18 earnings-blocked)
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — BANKNIFTY the sole ADX qualifier but SKIPPED on DTE grounds:** fresh `market_data.py scan` (VIX **11.51**) — NIFTY spot 24,471.85 ADX **21.11** (trending, no), **BANKNIFTY spot 58,357.05 ADX 17.60** (<18 → range_bound, the only qualifier), SENSEX spot 78,362.44 ADX **24.65** (trending, no). BANKNIFTY dipped below the 18 gate for the first time today (was 22.87 at 13:37) as spot chopped sideways; re-confirmed via `adx BANKNIFTY` → 17.6. Nearest expiry the July monthly **2026-07-28 = 21 DTE** (monthly-only, no weeklies; confirmed via `dhan.py lookup` → sid 61893, lot 30).
+  `2026-07-07 14:37 IST | BANKNIFTY | 21 | SKIP (DTE far outside window) | July monthly 2026-07-28, step 100/lot 30, sid 61893 | — | — | ADX 17.60 qualifies but 21 DTE is not the ≤7-DTE near-expiry data point that is the entire rationale for trading unvalidated BANKNIFTY; far-dated IC held intraday captures negligible theta and drifts to EOD per signals-learnings. Intraday routine → would square off same day for ~zero decay. No entry.`
+  `2026-07-07 14:37 IST | NIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 21.11/24.65 ≥18 | — | — | both trending, VIX 11.51 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — unchanged from 13:37; all 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks). This morning's 18 qualifiers are DTE-clear (Jul 30 expiry, 23 DTE, within 2-30) but the Jul 30 monthly collides with Q1 earnings season — none affirmatively earnings-clear (SBIN/MARUTI ~Jul 31 <5d of expiry banned; COALINDIA/TECHM/HDFCLIFE/RELIANCE report during the hold). Established earlier this run's cycle; no re-alert.
+  `2026-07-07 14:37 IST | STOCKS (18 qualifiers) | 23 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — BANKNIFTY finally clearing ADX only at 21 DTE is the recurring monthly-expiry mismatch (its data-gathering value lives at ≤7 DTE, which it won't reach until ~Jul 21+), not a thesis break; NIFTY/SENSEX grinding in low VIX is the stand-aside regime.
+
 ## 2026-07-07 intraday-monitor (~13:37 IST) — flat; NO index qualifier; STOCKS now DTE-unblocked but ALL 18 SKIPPED on EARNINGS (Jul 30 expiry collides with Q1 season); fixed dhan.py stock-lookup bug
 
 **First run under the DTE 2-30 cap (commit c1b555d) — re-evaluated all stock qualifiers under the new cap.** Flat coming in (0 open paper positions), capital ₹4,00,000.
