@@ -1,5 +1,34 @@
 # Signals & Learnings
 
+## 2026-07-07 — Stock options are MONTHLY-ONLY: DTE 2-7 stock guardrail is unexecutable except near monthly expiry
+
+First market-hours run after stocks were unlocked (strategy.md commit 42d8033). Discovered a
+spec/reality gap that blocks every stock entry under the current guardrails:
+
+- strategy.md's stock section states "DTE range: 2-7 days (**stocks have weekly + monthly
+  expiry**)". That premise is **false**. Checked the Dhan instrument master directly across 18
+  qualifying names (SBIN, TITAN, RELIANCE, ITC, MARUTI, TECHM, ULTRACEMCO, POWERGRID, COALINDIA,
+  BPCL, HDFCLIFE, SBILIFE, HEROMOTOCO, EICHERMOT, PNB, CANBK, BANKBARODA, HINDUNILVR): **every one
+  is monthly-only** — expiries 2026-07-30, 2026-08-27, 2026-09-24 and nothing in between. Indian
+  single-stock options have no weeklies (only NIFTY/SENSEX indices do; SEBI removed stock weeklies).
+- Consequence: on any given day the nearest stock expiry is up to ~23 DTE (Jul 7 → Jul 30). That
+  is far outside the DTE 2-7 hard cap, so **all stock qualifiers get skipped every day except in
+  the ~week before monthly expiry** (this cycle ≈ Jul 23–28, when Jul 30 sits at 2-7 DTE).
+- This is the same structural issue that skips BANKNIFTY daily (monthly-only, 25 DTE). And it's
+  consistent with the backtest, which "held 2-7 days into expiry" — i.e. the stock edge is a
+  **near-monthly-expiry theta trade**, entered ~2-7 days before expiry, not an any-day trade. A
+  23-DTE condor held a few days captures almost no theta (long-dated positions just drift to EOD
+  as noise), so entering now would not reproduce the validated setup even if the cap were waived.
+
+**Operating rule until Pushkar decides otherwise:** treat stock condors as a late-month trade —
+evaluate the 18-name scan only when the monthly expiry is within DTE 2-7 (≈ last week of the
+monthly cycle), enter then, hold into expiry per the stock exit rules. On all other days, log the
+qualifiers for awareness and skip on DTE grounds (no re-alerting — this entry is the reference).
+**Decision needed from Pushkar:** either (a) formally re-word strategy.md to "enter stock condors
+2-7 DTE before the monthly expiry" (recommended — matches the backtest and reality), or (b)
+explicitly relax the stock DTE cap to allow monthly-at-entry as a data-gathering carve-out like
+BANKNIFTY. Do not loosen the guardrail unilaterally.
+
 ## 2026-07-01 — FIRST live-sandbox spread attempt blocked: naked-leg margin + un-clearable artifact
 
 The very first time this bot hit a qualifying setup and tried to place a real iron condor

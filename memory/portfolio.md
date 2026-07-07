@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-07 — capital reset to ₹4,00,000 (covers full strategy: 3 index condors + multiple simultaneous stock condors). Realized P&L from reset: ₹0. Prior: 2026-07-06 EOD — flat, 0 open positions, 0 trades (indices trending all day, ADX 27–31)._
+_Last updated: 2026-07-07 09:37 IST intraday-monitor — still flat, 0 open positions, 0 trades. Indices all trending (ADX 31–33, VIX 11.83) → no index setup. Stocks now unlocked: 18 ADX qualifiers but all skipped — single-stock options are monthly-only, nearest expiry 2026-07-30 (23 DTE) ≫ DTE 2-7 cap (see trade-log + signals-learnings 2026-07-07). Capital reset to ₹4,00,000; realized P&L from reset: ₹0._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.

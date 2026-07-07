@@ -12,6 +12,20 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-07 intraday-monitor (~09:37 IST, market open) — flat; NO index qualifier; STOCKS UNLOCKED but ALL 18 skipped (monthly-only, 23 DTE ≫ 7-DTE cap)
+
+**First market-hours run since stocks were unlocked (strategy.md commit 42d8033).** Flat coming in (0 open paper positions), capital ₹4,00,000 post-reset.
+
+- **Positions to manage:** none — flat. Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules to act on.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three trending:** fresh `market_data.py scan` (VIX **11.83**) — NIFTY spot 24,456.95 ADX **32.79**, BANKNIFTY spot 58,469.25 ADX **31.16**, SENSEX spot 78,385.54 ADX **32.92**. All well above the 18 gate → **no ADX qualifier**. BANKNIFTY trending too, DTE question moot.
+  `2026-07-07 09:37 IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 32.79/31.16/32.92 all ≥18 | — | — | none range-bound; VIX 11.83 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — 18 ADX qualifiers, but ALL SKIPPED on DTE grounds (binding structural blocker):** this morning's scan lists 18 F&O names ADX(14) daily <18 (TECHM 10.96 … HINDUNILVR 17.62; neither blocklisted name qualifies). Checked the Dhan instrument master for available option expiries across the qualifiers (SBIN, TITAN, RELIANCE, ITC, MARUTI, TECHM, HINDUNILVR, ULTRACEMCO, POWERGRID, COALINDIA, BPCL, HDFCLIFE, SBILIFE, HEROMOTOCO, EICHERMOT, PNB, CANBK, BANKBARODA): **every one is monthly-only** — nearest option expiry **2026-07-30 (23 DTE)**, then 2026-08-27, 2026-09-24. **No weekly stock options exist** (only indices carry weeklies; SEBI phased out stock weeklies). 23 DTE is far outside the hard **DTE 2-7** guardrail ("don't go longer") → every qualifier fails the DTE gate. Also substantively: a 23-DTE condor held a few days captures almost no theta (cf. signals-learnings long-dated-BANKNIFTY "drifts to EOD as noise"), so it would NOT reproduce the backtest's near-expiry edge even if the literal cap were waived.
+  `2026-07-07 09:37 IST | STOCKS (18 qualifiers) | 23 | SKIP (DTE far outside window) | nearest stock expiry 2026-07-30 monthly, no weeklies | — | — | ADX<18 on all 18 but 23 DTE ≫ 7-DTE hard cap; entering now wouldn't replicate backtest near-expiry theta. No entry.`
+  - **Structural finding (see signals-learnings 2026-07-07):** strategy.md's stock section assumes "stocks have weekly + monthly expiry" — **factually wrong**; Indian single-stock options are monthly-only. Under DTE 2-7, stock condors are only enterable in the ~week before monthly expiry (this cycle ≈ **Jul 23–28**), held into the Jul 30 expiry — a late-month trade, not an any-day trade. Needs a Pushkar decision: either (a) accept stocks trade only near monthly expiry (natural fit with the "held 2-7 days into expiry" backtest), or (b) explicitly relax the stock DTE cap to allow monthly-at-entry (like the BANKNIFTY data-gathering carve-out — but signals-learnings shows long-dated condors are mostly EOD-drift noise). Flagged via Telegram.
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed.
+- **Nothing contradicted backtest expectations** — indices trending in a low-VIX grind is the regime this strategy stands aside from; the stock finding is a strategy-spec gap, not a thesis break.
+
 ## 2026-07-06 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
 
 `2026-07-06 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close`
