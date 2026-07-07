@@ -32,7 +32,7 @@ STOCK ENTRIES (use today's pre-market scan — daily ADX doesn't change intraday
   qualifying stock (ADX < 18, not in blocklist, no open position already):
   - Check earnings: skip if the company reports within 5 days of expiry.
   - Run /trade for that stock symbol using the hist_vol_pct from this morning's scan.
-  - Target DTE 2-7 days. Use dhan.py lookup to get strike step and lot size.
+  - Target DTE 2-30 days (monthly expiry only — last Thursday of month). Use dhan.py lookup to get strike step and lot size.
   - Sizing: 1 lot per trade (paper mode — no capital-based sizing, matches backtest assumption).
   Do NOT re-run scan-stocks mid-day — daily ADX doesn't change, use morning's reading.
 

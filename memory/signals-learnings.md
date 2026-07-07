@@ -29,6 +29,19 @@ qualifiers for awareness and skip on DTE grounds (no re-alerting — this entry 
 explicitly relax the stock DTE cap to allow monthly-at-entry as a data-gathering carve-out like
 BANKNIFTY. Do not loosen the guardrail unilaterally.
 
+## 2026-07-07 — **SUPERSEDED:** Stock DTE cap expanded to 2-30 after split-sample validation
+
+Pushkar ran split-sample backtests on DTE 8-14 and DTE 15-30 windows using the same real
+Bhavcopy data. Both passed PF > 1.2 in both halves:
+  - DTE 2-7:   H1 PF 4.60, H2 PF 16.88 (original validated window)
+  - DTE 8-14:  H1 PF 9.09, H2 PF 13.35 ← newly validated
+  - DTE 15-30: H1 PF 19.64, H2 PF 55.25 ← newly validated
+
+**strategy.md updated (commit c1b555d):** DTE cap is now 2-30. Stock condors can now enter
+any day of the month — not just the last week. One-trade-per-symbol guardrail added to prevent
+stacking concurrent condors on the same name. The above "DTE-blocked" reasoning is no longer
+operative — 23 DTE now qualifies. Realistic combined volume ~60-80 trades/month.
+
 ## 2026-07-01 — FIRST live-sandbox spread attempt blocked: naked-leg margin + un-clearable artifact
 
 The very first time this bot hit a qualifying setup and tried to place a real iron condor

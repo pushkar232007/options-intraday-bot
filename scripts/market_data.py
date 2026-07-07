@@ -286,7 +286,7 @@ def cmd_scan_stocks(args):
         "note": (
             "For each qualifying stock: use `dhan.py lookup <SYMBOL> <expiry> <strike> CE` "
             "to find strike step and lot size. Use hist_vol_pct instead of India VIX for "
-            "estimate-premium on stocks. Target DTE 2-7 days."
+            "estimate-premium on stocks. Target DTE 2-30 days (monthly expiry only)."
         ),
     }
     print(json.dumps(result, indent=2))

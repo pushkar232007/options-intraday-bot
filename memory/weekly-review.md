@@ -54,7 +54,7 @@ status remains far off. Expected given the monthly cycle — not a miss.
 **Watch items for coming weeks (record, don't act):**
 1. **The combined ~40/month cadence now hinges almost entirely on stocks actually firing live.**
    Unlocked 07-06 but exercised in 0 live sessions so far. Watch that the next market-hours run
-   genuinely evaluates the qualifier list (fresh ADX at the open, per-name earnings check, DTE 2-7,
+   genuinely evaluates the qualifier list (fresh ADX at the open, per-name earnings check, DTE 2-30,
    short-leg OI>1,000, `hist_vol_pct` for premium, strike/lot via `dhan.py lookup`) and enters where
    guardrails clear — otherwise the 40/month figure stays theoretical. First real test = next
    market-hours session.
