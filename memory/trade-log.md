@@ -12,6 +12,17 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-07 intraday-monitor (~10:36 IST) — flat; NO index qualifier (all three trending harder, VIX 11.76); stocks still all DTE-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules to act on. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three trending, harder than the 09:37 run:** fresh `market_data.py scan` (VIX **11.76**) — NIFTY spot 24,491.75 ADX **37.57**, BANKNIFTY spot 58,400.4 ADX **31.19**, SENSEX spot 78,530.52 ADX **36.95**. All well above the 18 gate (NIFTY/SENSEX ticked up from 32.79/32.92 at 09:37 as spot kept grinding up) → **no ADX qualifier**. BANKNIFTY trending too, DTE question moot.
+  `2026-07-07 10:36 IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 37.57/31.19/36.95 all ≥18 | — | — | none range-bound; VIX 11.76 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — same 18 qualifiers, ALL still SKIPPED on DTE grounds (unchanged from 09:37):** daily ADX doesn't change intraday (don't re-run scan-stocks mid-day), so this morning's 18 qualifiers stand. The 09:37 run already confirmed via the Dhan instrument master that every single-stock option is **monthly-only** — nearest expiry **2026-07-30 (23 DTE)**, then 2026-08-27 — far outside the hard **DTE 2-7** cap, and a 23-DTE condor captures almost no theta (wouldn't reproduce the backtest near-expiry edge). Nothing about the expiry calendar changes within a day → every qualifier still fails the DTE gate.
+  `2026-07-07 10:36 IST | STOCKS (18 qualifiers) | 23 | SKIP (DTE far outside window) | nearest stock expiry 2026-07-30 monthly, no weeklies | — | — | ADX<18 on all 18 but 23 DTE ≫ 7-DTE hard cap. No entry.`
+  - **Open item still pending Pushkar (flagged 09:37):** stocks are only enterable in the ~week before monthly expiry under DTE 2-7 (this cycle ≈ Jul 23–28) unless the stock DTE cap is explicitly relaxed. No new action this run — awaiting his decision.
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — indices grinding up in a low-VIX regime is exactly what this range-bound strategy stands aside from.
+
 ## 2026-07-07 intraday-monitor (~09:37 IST, market open) — flat; NO index qualifier; STOCKS UNLOCKED but ALL 18 skipped (monthly-only, 23 DTE ≫ 7-DTE cap)
 
 **First market-hours run since stocks were unlocked (strategy.md commit 42d8033).** Flat coming in (0 open paper positions), capital ₹4,00,000 post-reset.
