@@ -127,10 +127,11 @@ but that protection is untested in backtest, not proven.
   rather than silently moving on. Also: `/positions` returned empty even right after a confirmed
   fill in testing — track open positions from `orders` (filter `orderStatus == TRADED`, net BUY/SELL
   qty per securityId), not from `/positions`.
-- **Expected trade frequency:** ~8-9 trades/month from indices alone; ~40 trades/month combined
-  once stock scanning is active (backtest: 248 trading days, 445 trades, 89% WR on real Bhavcopy
-  prices). Don't loosen the ADX threshold to manufacture more trades — the 18.0 threshold is
-  validated; changing it requires a new backtest.
+- **Expected trade frequency:** ~8-9 trades/month from indices alone. Stock options are
+  monthly-only (see DTE rule above), so stock entries are concentrated in the last ~5-7 trading
+  days of each month — expect 5-15 stock trades/month in that window, zero outside it.
+  Combined realistic estimate: ~13-24 trades/month. Don't loosen the ADX threshold to manufacture
+  more trades — the 18.0 threshold is validated; changing it requires a new backtest.
 
 ## Stock universe (Nifty 50 F&O scanner)
 
@@ -154,7 +155,15 @@ VEDL, NMDC, BANKBARODA, PNB, CANBK, SIEMENS, PIDILITIND, DMART.
 
 **Stock-specific guardrails (apply in addition to the index rules above):**
 - ADX uses **daily bars** (not hourly) — `scan-stocks` handles this automatically.
-- DTE range: **2-7 days** (stocks have weekly + monthly expiry; don't go longer).
+- DTE range: **2-7 days before the monthly expiry.** Nifty 50 stock options are **monthly-only
+  on NSE** (last Thursday of each month) — there are no weekly stock options. This means the
+  entry window is approximately the last 5-7 trading days of each month (e.g. Jul 23-28 for
+  Jul 30 expiry, Aug 25-29 for Aug 28 expiry). Outside this window there is no qualifying
+  stock expiry within DTE ≤ 7 — skip stocks entirely and wait for the window.
+  **Backtest note:** the 445-trade / 89% WR backtest (July 2023–July 2024) was run on real
+  Bhavcopy prices. It assumed entries near expiry, which is consistent with monthly-only structure.
+  The ~40 trades/month combined estimate assumed higher frequency — realistic stock contribution
+  is closer to 5-15 trades/month concentrated in the last week of the month.
 - Strike step and lot size: look up fresh from Dhan instrument master via
   `python3 scripts/dhan.py lookup <SYMBOL> <expiry> <strike> CE` — do NOT guess or hardcode,
   stock strike steps vary widely and get revised by SEBI periodically.
