@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-07 ~14:37 IST intraday-monitor — still flat, 0 open positions, 0 trades. **BANKNIFTY dipped range-bound (ADX 17.6, first sub-18 read today, was 22.87 at 13:37)** but SKIPPED on DTE: nearest expiry Jul 28 monthly = **21 DTE**, far outside the ≤7-DTE near-expiry window that is its sole data-gathering rationale (far-dated IC held intraday captures ~zero theta, drifts to EOD). NIFTY 21.11 / SENSEX 24.65 still trending; VIX 11.51. Stocks: all 18 qualifiers still earnings-blocked (Jul 30 expiry in Q1 season; daily ADX unchanged intraday → no re-scan), unchanged from 13:37. Capital ₹4,00,000; realized P&L from reset: ₹0._
+_Last updated: 2026-07-07 EOD square-off — flat into the close, 0 open positions, 0 trades all day; day P&L ₹0. No-trade day: NIFTY/SENSEX trended the whole session (ADX ~21→39 / ~24→42, VIX ~11.5-11.8), BANKNIFTY the sole late ADX qualifier (17.6 at 14:37) but skipped on 21 DTE (Jul 28 monthly, outside ≤7-DTE window); 18 stock qualifiers all earnings-blocked (Jul 30 expiry in peak Q1 season). Capital ₹4,00,000; realized P&L from reset: ₹0._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.

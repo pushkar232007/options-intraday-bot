@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-07 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
+
+`2026-07-07 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
+- **Positions to carry/close:** none — flat the entire session (came in flat, opened nothing today). No index condor to force-close, no stock condor to evaluate for carry-forward. Both the index force-close path and the stock carry-forward path are N/A — nothing held. No spot-range candle check needed (no position to price).
+- **No-trade day recap:** every 07-07 intraday run skipped. **Indices:** NIFTY/SENSEX trended the whole session (ADX ran ~21→39 / ~24→42, well above the 18 gate; VIX very low ~11.5-11.8 but ADX is the binding gate). BANKNIFTY was the sole ADX qualifier late (dipped to 17.6 at 14:37, first sub-18 read) but SKIPPED — nearest expiry Jul 28 monthly = 21 DTE, far outside the ≤7-DTE near-expiry window that is its only data-gathering rationale. **Stocks:** 18 F&O names cleared ADX<18 and the DTE gate (Jul 30 expiry, 23 DTE, within 2-30) but ALL SKIPPED on earnings grounds — the only in-range expiry (Jul 30 monthly) collides with peak Q1 earnings season and no name could be affirmatively earnings-cleared (SBIN/MARUTI ~Jul 31 <5d of expiry; COALINDIA/TECHM/HDFCLIFE/RELIANCE report during the hold).
+- **Circuit breaker:** DISABLED in paper mode (no daily loss cap). Day P&L ₹0 regardless.
+- **Broker (best-effort):** flat — nothing to square off. No order placed.
+- **Final state:** cash ₹4,00,000.00 (unchanged, post-2026-07-07 reset by Pushkar), realized P&L from reset ₹0.00, today's P&L ₹0. Flat into the close. EOD Telegram summary sent (always fires, even on a no-trade day).
+- **Nothing contradicted backtest expectations** — a very-low-VIX day trending hard on all three indices is exactly the regime this range-bound strategy stands aside from; the stock earnings-season collision is a calendar constraint, not a thesis break. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-07 intraday-monitor (~14:37 IST) — flat; BANKNIFTY now range-bound (ADX 17.6, first sub-18 read today) but SKIPPED (21 DTE, not near-expiry); NIFTY/SENSEX trending; stocks unchanged (all 18 earnings-blocked)
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
