@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-07 intraday-monitor (~13:37 IST) — flat; NO index qualifier; STOCKS now DTE-unblocked but ALL 18 SKIPPED on EARNINGS (Jul 30 expiry collides with Q1 season); fixed dhan.py stock-lookup bug
+
+**First run under the DTE 2-30 cap (commit c1b555d) — re-evaluated all stock qualifiers under the new cap.** Flat coming in (0 open paper positions), capital ₹4,00,000.
+- **Positions to manage:** none — flat. Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three trending:** fresh `market_data.py scan` (VIX **11.71**) — NIFTY spot 24,430.65 ADX **28.24**, BANKNIFTY spot 58,256.0 ADX **22.87**, SENSEX spot 78,289.82 ADX **31.13**. All ≥18 gate → **no ADX qualifier**. BANKNIFTY trending too, DTE moot.
+  `2026-07-07 13:37 IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 28.24/22.87/31.13 all ≥18 | — | — | none range-bound; VIX 11.71 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — 18 ADX qualifiers now clear the DTE gate (23 DTE, Jul 30, within 2-30) but ALL SKIPPED on EARNINGS grounds:** the only in-range stock expiry is the **July monthly 2026-07-30**; entering now (23 DTE) holds through Q1 earnings season (~Jul 16–Aug 8). Web-researched dates: **SBIN ~Jul 31, MARUTI Jul 31** → within 5 days of expiry (banned). **COALINDIA** window closed Jul 1 (imminent), **TECHM ~Jul 16, HDFCLIFE ~Jul 16, RELIANCE** mid-late July → held through earnings. **Could not affirmatively clear a single name** → earnings guardrail ("check NSE calendar before entering") blocks all 18.
+  `2026-07-07 13:37 IST | STOCKS (18 qualifiers) | 23 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; SBIN/MARUTI ~Jul 31 <5d of expiry; COALINDIA/TECHM/HDFCLIFE/RELIANCE report during hold | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+  - **Structural finding (see signals-learnings 2026-07-07):** DTE 2-30 removed the DTE block, but the monthly-expiry-in-earnings-season collision now disqualifies the July universe. Refined rule: enter a name **only after it has reported** (earnings behind us), name-by-name later this month, OR wait for Pushkar's steer on holding through earnings. Telegram-flagged.
+- **Tooling fix:** `dhan.py find_security_id` was OPTIDX-only → every stock lookup silently failed. Fixed to accept OPTSTK; verified (SBIN→sid 1143559/BSE/lot 750, RELIANCE→lot 500, NIFTY index unaffected). Committed this run.
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed.
+- **Nothing contradicted backtest expectations** — indices trending in a low-VIX grind is the stand-aside regime; the stock earnings-collision is a calendar constraint, not a thesis break.
+
 ## 2026-07-07 intraday-monitor (~late afternoon) — flat; NO index qualifier (all three still trending, VIX 11.69); stocks still all DTE-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules to act on. Circuit breaker DISABLED in paper mode — N/A.

@@ -1,5 +1,44 @@
 # Signals & Learnings
 
+## 2026-07-07 — DTE 2-30 unlocks early-cycle entry, but the July monthly expiry COLLIDES with Q1 earnings season → all 18 stocks skipped on earnings; + fixed dhan.py stock-lookup bug
+
+First market-hours run with the DTE 2-30 cap live (commit c1b555d). Stocks are no longer
+DTE-blocked (23-DTE Jul 30 expiry now qualifies), so the **earnings guardrail becomes the binding
+constraint** — and for this cycle it blocks everything:
+
+- The only in-range stock expiry is the **July monthly, 2026-07-30**. Entering now (Jul 7, 23 DTE)
+  means holding a short-vol condor straight through the company's Q1 (June-qtr) result. Q1 season
+  runs ~Jul 16–Aug 8, so essentially the entire liquid Nifty universe reports **during the hold**.
+- Verified via web research (dates approximate, future-dated sources conflate FY labels): **SBIN
+  ~Jul 31, MARUTI Jul 31** → within 5 days of the Jul 30 expiry (banned outright by the earnings
+  guardrail — pre-earnings IV ramp hits the final days near expiry). **COALINDIA** trading window
+  closed Jul 1, result imminent. **TECHM ~Jul 16, HDFCLIFE ~Jul 16, RELIANCE** mid-late July →
+  held through the earnings gap. Could **not affirmatively clear a single one** of the 18 qualifiers.
+- strategy.md guardrail: "Never trade a stock during earnings week... Check NSE calendar before
+  entering." That check is an *affirmative* requirement — a name that can't be cleared isn't
+  cleared. → **All 18 skipped. No-trade is the correct, guardrail-consistent outcome**, not
+  over-caution: the monthly-expiry-in-earnings-season collision genuinely disqualifies the universe.
+
+**Refined operating rule (supersedes the "enter any day of the month" optimism in the c1b555d note
+below):** DTE 2-30 is validated on Bhavcopy that *did* include earnings gaps (89-94% WR), so the
+backtest tolerates earnings holds — BUT the explicit hard guardrail still forbids per-name earnings
+proximity to expiry, and the cleanest execution is to enter a stock condor **only after that name
+has already reported** (earnings behind us) for the remaining DTE into expiry. For the July cycle
+that means candidates become enterable name-by-name as each reports (e.g. RELIANCE after ~Jul 21,
+holding ~9 days into Jul 30). Do NOT open early-cycle condors held blind through a pending result.
+
+**Decision needed from Pushkar (Telegram-flagged):** (a) enter post-earnings, name-by-name, as each
+reports this month [recommended — respects both the guardrail and the theta edge]; or (b) explicitly
+authorize holding through earnings per the backtest and enter now (accepting occasional gap losses
+the 89-94% WR already prices in); or (c) stand aside on stocks until a cycle without earnings overlap.
+
+**Tooling fix (committed this run):** `scripts/dhan.py find_security_id` hardcoded
+`INSTRUMENT == "OPTIDX"`, so **every stock (OPTSTK) lookup silently returned "no contract found"** —
+stock trading was strategy-approved but the tooling never supported it. Fixed to match
+`("OPTIDX", "OPTSTK")`. Verified: SBIN 30-Jul 1050CE → sid 1143559/BSE/lot 750; RELIANCE → lot 500;
+NIFTY index lookup unaffected. Note: single-stock options sit on **BSE** in the Dhan master
+(EXCH_ID=BSE, `_exchange_segment` already maps → BSE_FNO), strike steps are tight (SBIN step 10).
+
 ## 2026-07-07 — Stock options are MONTHLY-ONLY: DTE 2-7 stock guardrail is unexecutable except near monthly expiry
 
 First market-hours run after stocks were unlocked (strategy.md commit 42d8033). Discovered a

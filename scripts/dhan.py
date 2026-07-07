@@ -125,10 +125,18 @@ def _load_scrip_master(refresh=False):
 
 
 def find_security_id(underlying, expiry, strike, option_type, refresh=False):
-    """underlying: NIFTY/BANKNIFTY/SENSEX. expiry: YYYY-MM-DD. strike: number. option_type: CE/PE."""
+    """underlying: index (NIFTY/BANKNIFTY/SENSEX) or stock F&O symbol (e.g. SBIN, RELIANCE).
+    expiry: YYYY-MM-DD. strike: number. option_type: CE/PE.
+
+    Matches both index options (INSTRUMENT=OPTIDX) and single-stock options
+    (INSTRUMENT=OPTSTK). Stock trading was approved for paper mode (memory/strategy.md) but
+    this lookup originally hardcoded OPTIDX, so every stock contract silently returned "no
+    contract found" — hence OPTSTK is included here. Note single-stock options in the Dhan
+    instrument master are listed on BSE (EXCH_ID=BSE); _exchange_segment already maps that to
+    BSE_FNO for order placement."""
     rows = _load_scrip_master(refresh=refresh)
     for row in rows:
-        if (row["UNDERLYING_SYMBOL"] == underlying and row["INSTRUMENT"] == "OPTIDX"
+        if (row["UNDERLYING_SYMBOL"] == underlying and row["INSTRUMENT"] in ("OPTIDX", "OPTSTK")
                 and row["SM_EXPIRY_DATE"] == expiry and row["OPTION_TYPE"] == option_type
                 and abs(float(row["STRIKE_PRICE"]) - float(strike)) < 0.01):
             return row["SECURITY_ID"], row["EXCH_ID"], float(row["LOT_SIZE"])

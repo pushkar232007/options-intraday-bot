@@ -6,6 +6,24 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-07 (intraday-monitor addendum) — earnings-calendar research: Jul 30 stock expiry collides with Q1 season
+
+Re-evaluated the 18 stock qualifiers under the new DTE 2-30 cap. The binding constraint flipped
+from DTE to **earnings**. The only in-range stock expiry is the July monthly **2026-07-30** (23 DTE);
+entering now holds through Q1 (June-qtr) results season (~Jul 16–Aug 8). Web-researched dates
+(approximate — forward-dated sources conflate FY labels, so treat as directional):
+- **SBIN ~Jul 31, MARUTI Jul 31** → within 5 days of the Jul 30 expiry → **banned** by the earnings
+  guardrail (pre-earnings IV ramp hits the final near-expiry days).
+- **COALINDIA** — trading window closed Jul 1, 2026, result imminent (mid-late July).
+- **TECHM ~Jul 16, HDFCLIFE ~Jul 16, RELIANCE** mid-late July → condor held straight through the gap.
+- Could not affirmatively clear a single one of the 18 → **all skipped** (see trade-log / signals-learnings).
+Context anchors: HDFC Bank & ICICI confirmed Jul 18, 2026; TCS ~Jul 10-12 (none are qualifiers).
+**Actionable:** the clean path is to enter each name **after it reports** (earnings behind us) for the
+remaining DTE into Jul 30 — pending Pushkar's steer on whether to instead hold through earnings per
+the DTE 2-30 backtest (which was on Bhavcopy that included earnings gaps).
+
+---
+
 ## 2026-07-07 — pre-market scan: all three indices trending; 18 stocks range-bound (no index setup)
 
 India VIX **11.82** (very low — extends the ~11.8-13.7 low-vol regime; the backdrop credit spreads
