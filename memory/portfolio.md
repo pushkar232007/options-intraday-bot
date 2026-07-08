@@ -1,19 +1,19 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-07 EOD square-off — flat into the close, 0 open positions, 0 trades all day; day P&L ₹0. No-trade day: NIFTY/SENSEX trended the whole session (ADX ~21→39 / ~24→42, VIX ~11.5-11.8), BANKNIFTY the sole late ADX qualifier (17.6 at 14:37) but skipped on 21 DTE (Jul 28 monthly, outside ≤7-DTE window); 18 stock qualifiers all earnings-blocked (Jul 30 expiry in peak Q1 season). Capital ₹4,00,000; realized P&L from reset: ₹0._
+_Last updated: 2026-07-08 intraday-monitor — flat, 0 open positions, 0 trades; day P&L ₹0. No pre-market ran today; this run did the day's first scan. No-trade: all three indices trending (NIFTY/BANKNIFTY/SENSEX ADX 38.98/32.37/36.07, VIX 12.34); 18 stock qualifiers (ADX<18) but all earnings-blocked — only in-range expiry Jul 30 monthly (22 DTE) collides with Q1 season, no name reports cleanly (before today or after ~Aug 4). Capital ₹4,00,000; realized P&L from reset: ₹0._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.
 - **Realized P&L (from reset):** ₹0.00
 - **Position sizing:** 1 lot per trade (paper mode — sizing formula skipped, would block most stock trades)
 - **Circuit breaker:** DISABLED in paper mode — no daily loss cap, run all day regardless of P&L.
-- **Today's P&L:** ₹0
+- **Today's P&L:** ₹0 (2026-07-08 — no trades)
 
 ---
 
 ## Open Paper Positions
 
-_None — flat into the close (both intraday ICs squared off at EOD 2026-07-02)._
+_None — flat (0 open positions; last ICs squared off at EOD 2026-07-02, no positions opened since)._
 
 ---
 

@@ -6,6 +6,16 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-08 (intraday-monitor — no pre-market ran today, this is the day's scan)
+
+India VIX **12.34** (still low). No pre-market routine fired for 07-08, so this intraday run did the day's first scan.
+
+- **Indices — all three trending, no setup:** NIFTY spot 24,195.95 ADX(14) **38.98**; BANKNIFTY 57,762.4 ADX **32.37**; SENSEX 77,608.36 ADX **36.07**. All ≫18 gate. Spot ticked down slightly from 07-07 EOD but ADX firmly trending. No index qualifier.
+- **Stocks — 18 of ~50 qualify (ADX(14) daily <18), fresh scan:** TECHM 10.15, SBIN 10.97, ULTRACEMCO 12.37, HEROMOTOCO 12.73, POWERGRID 13.06, HDFCLIFE 13.28, BPCL 13.71, PNB 13.92, ITC 14.49, EICHERMOT 14.87, RELIANCE 15.02, COALINDIA 15.32, ADANIPORTS 15.59, HINDUNILVR 15.73, JSWSTEEL 15.95, GRASIM 15.97, SBILIFE 17.26, MARUTI 17.91. Neither blocklisted name (AXISBANK/BHARTIARTL) qualifies. (TATAMOTORS errored — no data.)
+- **Earnings blocker persists (unchanged from 07-07):** only in-range stock expiry is the Jul 30 monthly (22 DTE); a Jul 8→Jul 30 hold spans Q1 (June-qtr) season (starts Jul 9 w/ TCS). Earnings-clean requires reporting before today (none) or >5 days after Jul 30 (after ~Aug 4). Fresh web check on this-day's top uncovered candidates confirms the mid-Jul-to-early-Aug cluster: ULTRACEMCO ~Jul 21, JSW Steel ~Jul 18, EICHERMOT ~Jul 31, ADANIPORTS ~Jul 31/Aug 1, HEROMOTOCO late-Jul/early-Aug — all either mid-hold or within 5d of expiry. Combined with 07-07's dates, **no name affirmatively clears** → all 18 skipped. Still awaiting Pushkar's steer (enter-after-report vs hold-through-earnings).
+
+---
+
 ## 2026-07-07 (intraday-monitor addendum) — earnings-calendar research: Jul 30 stock expiry collides with Q1 season
 
 Re-evaluated the 18 stock qualifiers under the new DTE 2-30 cap. The binding constraint flipped

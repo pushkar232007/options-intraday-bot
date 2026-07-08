@@ -12,6 +12,20 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-08 intraday-monitor — flat; NO index qualifier (all three trending, VIX 12.34); 18 stock qualifiers but ALL earnings-blocked (Jul 30 expiry in Q1 season). First run of 07-08 (no pre-market ran today)
+
+**No pre-market entry exists for 07-08** — this run did the first scan of the day (daily ADX changes day-to-day, so 07-07's stock scan is stale; running scan-stocks now is the day's first read, not a prohibited mid-day re-run).
+- **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three trending:** fresh `market_data.py scan` (VIX **12.34**) — NIFTY spot 24,195.95 ADX **38.98**, BANKNIFTY spot 57,762.4 ADX **32.37**, SENSEX spot 77,608.36 ADX **36.07**. All well above the 18 gate → **no ADX qualifier**. Spot pulled back a touch from 07-07 EOD (NIFTY 24,471→24,196) but ADX still firmly trending. BANKNIFTY trending too, DTE moot.
+  `2026-07-08 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 38.98/32.37/36.07 all ≥18 | — | — | none range-bound; VIX 12.34 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — 18 ADX qualifiers (fresh 07-08 scan), ALL SKIPPED on EARNINGS grounds (unchanged structural blocker from 07-07):** fresh `scan-stocks` lists 18 names ADX(14) daily <18 (TECHM 10.15, SBIN 10.97, ULTRACEMCO 12.37 … MARUTI 17.91; neither blocklisted name qualifies). Only in-range stock expiry is the July monthly **2026-07-30** (22 DTE, within 2-30), but entering now holds through Q1 (June-qtr) earnings season. A name is earnings-clean for a Jul 8→Jul 30 hold only if it reports before today (none — Q1 season starts Jul 9 w/ TCS) or >5 days after the Jul 30 expiry (after ~Aug 4). Fresh web check on the top uncovered candidates confirms the cluster: ULTRACEMCO ~Jul 21, JSW Steel ~Jul 18 (during hold); EICHERMOT ~Jul 31, ADANIPORTS ~Jul 31/Aug 1 (within 5d of expiry); HEROMOTOCO late Jul/early Aug (during hold or <5d of expiry). Plus 07-07's dates (SBIN/MARUTI ~Jul 31 <5d expiry, TECHM/HDFCLIFE ~Jul 16 mid-hold, RELIANCE/COALINDIA mid-late Jul). **Could not affirmatively earnings-clear a single one of the 18** → all skipped.
+  `2026-07-08 intraday IST | STOCKS (18 qualifiers) | 22 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly (before today or after ~Aug 4) | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+  - **Open item still pending Pushkar (flagged since 07-07):** whether to enter names name-by-name *after they report* (earnings behind us, remaining DTE into Jul 30) OR hold through earnings per the DTE-2-30 Bhavcopy backtest (which included earnings gaps). No new action — awaiting his steer. Not re-Telegrammed (already flagged 07-07).
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — indices trending in a low-VIX grind is the stand-aside regime; the stock earnings-season collision is a calendar constraint (recurring while Jul 30 is the only in-range expiry), not a thesis break. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-07 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
 
 `2026-07-07 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
