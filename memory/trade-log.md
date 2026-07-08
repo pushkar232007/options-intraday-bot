@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-08 intraday-monitor (sell-off run) — flat; NO index qualifier (all three trending HARDER on a risk-off day, VIX spiked 12.24→15.1); stocks unchanged (all 18 earnings-blocked, daily ADX static intraday)
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier; risk-off, spot down + ADX up + VIX up:** fresh `market_data.py scan` (VIX **15.1**, up from 12.24 earlier today) — NIFTY spot 23,860.3 ADX **50.14**, BANKNIFTY spot 56,724.35 ADX **42.63**, SENSEX spot 76,564.21 ADX **46.53**. Spot sold off across the board (NIFTY 24,211.7→23,860.3 ≈ −1.5%, BANKNIFTY −1.9%, SENSEX −1.3%) and ADX rose sharply with the one-way down-move → all three now trending *harder* than the earlier 38.53/28.54/36.77. Firmly ≥18 gate → **no ADX qualifier**. A directional sell-off is exactly the trending regime this range-bound strategy stands aside from; the VIX pop is the market pricing the move, not a setup. BANKNIFTY trending too, DTE moot.
+  `2026-07-08 sell-off IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 50.14/42.63/46.53 all ≥18, VIX 15.1 spike on risk-off | — | — | trending harder on a down-day; no range-bound entry. No entry.`
+- **Stock fresh-setup check — unchanged; all 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 18 qualifiers are DTE-clear (Jul 30 expiry, 22 DTE) but the Jul 30 monthly collides with Q1 season — none affirmatively earnings-clear (established this morning: ULTRACEMCO ~Jul 21, JSW ~Jul 18 mid-hold; SBIN/MARUTI/EICHERMOT/ADANIPORTS ~Jul 31 <5d of expiry). No re-alert — already Telegram-flagged 07-07, steer still pending from Pushkar.
+  `2026-07-08 sell-off IST | STOCKS (18 qualifiers) | 22 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — a risk-off directional day (spot down, ADX and VIX both up) is the trending regime the strategy correctly stands aside from. Worth noting the VIX pop off ~12 into 15 if it persists (a higher-vol backdrop is what credit spreads prefer, *once* ADX cools back below 18) — but no thesis break, no new signals-learnings entry needed.
+
+---
+
 ## 2026-07-08 intraday-monitor (later run) — flat; NO index qualifier (all three still trending, VIX 12.24); stocks unchanged (all 18 earnings-blocked, daily ADX static intraday)
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
