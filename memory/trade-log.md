@@ -12,6 +12,16 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-08 intraday-monitor (later run) — flat; NO index qualifier (all three still trending, VIX 12.24); stocks unchanged (all 18 earnings-blocked, daily ADX static intraday)
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three still trending:** fresh `market_data.py scan` (VIX **12.24**) — NIFTY spot 24,211.7 ADX **38.53**, BANKNIFTY spot 57,827.2 ADX **28.54**, SENSEX spot 77,585.14 ADX **36.77**. All well above the 18 gate → **no ADX qualifier** (essentially unchanged from this morning's 38.98/32.37/36.07). BANKNIFTY trending too, DTE moot.
+  `2026-07-08 later IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 38.53/28.54/36.77 all ≥18 | — | — | none range-bound; VIX 12.24 low but ADX is the binding gate. No entry.`
+- **Stock fresh-setup check — unchanged; all 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks). This morning's 18 qualifiers are DTE-clear (Jul 30 expiry, 22 DTE, within 2-30) but the Jul 30 monthly collides with Q1 season — none affirmatively earnings-clear (established this morning; ULTRACEMCO ~Jul 21, JSW ~Jul 18 mid-hold; SBIN/MARUTI/EICHERMOT/ADANIPORTS ~Jul 31 <5d of expiry). No re-alert — already Telegram-flagged 07-07, steer still pending from Pushkar.
+  `2026-07-08 later IST | STOCKS (18 qualifiers) | 22 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — indices trending in a low-VIX grind is the stand-aside regime; the stock earnings-season collision is a recurring calendar constraint, not a thesis break. No new signals-learnings entry needed.
+
 ## 2026-07-08 intraday-monitor — flat; NO index qualifier (all three trending, VIX 12.34); 18 stock qualifiers but ALL earnings-blocked (Jul 30 expiry in Q1 season). First run of 07-08 (no pre-market ran today)
 
 **No pre-market entry exists for 07-08** — this run did the first scan of the day (daily ADX changes day-to-day, so 07-07's stock scan is stale; running scan-stocks now is the day's first read, not a prohibited mid-day re-run).
