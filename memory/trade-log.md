@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-08 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
+
+`2026-07-08 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
+- **Positions to carry/close:** none — flat the entire session (came in flat from 07-02 EOD, opened nothing today). No index condor to force-close, no stock condor to evaluate for carry-forward. Both paths (index force-close, stock carry-forward) N/A — nothing held. No spot-range candle check needed (no position to price).
+- **No-trade day recap:** every 07-08 intraday run skipped. **Indices:** all three trended the whole session and only harder into the close as spot sold off on a risk-off day — final reads NIFTY 23,860 ADX 50.14, BANKNIFTY 56,724 ADX 42.63, SENSEX 76,564 ADX 46.53 (spot −1.3-1.9%, VIX popped 12.24→15.1). Firmly ≥18 gate all day → no index ADX qualifier. A one-way directional sell-off is exactly the trending regime this range-bound strategy stands aside from; the VIX pop is the market pricing the move, not a setup. BANKNIFTY trending too → DTE moot. **Stocks:** 18 F&O names cleared ADX<18 (daily) and the DTE gate (Jul 30 monthly, 22 DTE, within 2-30) but ALL SKIPPED on earnings grounds — the only in-range expiry (Jul 30) collides with peak Q1 season and no name could be affirmatively earnings-cleared (ULTRACEMCO ~Jul 21, JSW ~Jul 18 mid-hold; SBIN/MARUTI/EICHERMOT/ADANIPORTS ~Jul 31 <5d of expiry). Open item still pending Pushkar's steer (flagged 07-07): enter names name-by-name after they report vs. hold through earnings per the DTE-2-30 backtest.
+- **Circuit breaker:** DISABLED in paper mode (no daily loss cap). Day P&L ₹0 regardless.
+- **Broker (best-effort):** flat — nothing to square off. `funds` shows the known locked artifact (utilizedAmount ₹934,698, availabelBalance ₹65,301); `orders` shows only the stale expired sid=71472 NIFTY-Jun2026-24000-CE (REJECTED, "Fund Limit Insufficient", drvExpiryDate 2026-06-25) — not a strategy position, will lapse on its own, no escalation. No order placed.
+- **Final state:** cash ₹4,00,000.00 (unchanged, post-2026-07-07 reset), realized P&L from reset ₹0.00, today's P&L ₹0. Flat into the close. EOD Telegram summary sent (always fires, even on a no-trade day).
+- **Nothing contradicted backtest expectations** — a risk-off directional day (spot down, ADX and VIX both up) is the trending regime the strategy correctly stands aside from; the stock earnings-season collision is a recurring calendar constraint while Jul 30 is the only in-range expiry, not a thesis break. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-08 intraday-monitor (sell-off run) — flat; NO index qualifier (all three trending HARDER on a risk-off day, VIX spiked 12.24→15.1); stocks unchanged (all 18 earnings-blocked, daily ADX static intraday)
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
