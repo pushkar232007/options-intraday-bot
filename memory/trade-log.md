@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-09 intraday-monitor — flat; NO index qualifier (all three trending, ADX 39/34/40, VIX 13.4); 19 stock qualifiers ALL earnings-blocked (Jul 30 expiry in Q1 season)
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three trending:** fresh `market_data.py scan` (VIX **13.4**, eased from 14.68 pre-market) — NIFTY spot 24,022.35 ADX **39.17**, BANKNIFTY spot 57,160.85 ADX **34.04**, SENSEX spot 77,055.58 ADX **39.61**. All ≫18 gate, all `range_bound: false` → **no ADX qualifier**. ADX cooled off the pre-market 52.98/46.93/53.45 highs but stays firmly trending as the 07-08 sell-off's directional move persists (spot little changed intraday: NIFTY 23,882→24,022). BANKNIFTY trending too → DTE moot.
+  `2026-07-09 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 39.17/34.04/39.61 all ≥18, VIX 13.4 | — | — | none range-bound; still trending on the multi-day sell-off. No entry.`
+- **Stock fresh-setup check — unchanged; all 19 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 19 qualifiers (TECHM 10.15 … BEL 17.96) are DTE-clear (Jul 30 expiry, 21 DTE, within 2-30) but the Jul 30 monthly collides with Q1 season (started today 07-09 w/ TCS) — none affirmatively earnings-clear (ULTRACEMCO ~Jul 21, JSWSTEEL ~Jul 18 mid-hold; SBIN/MARUTI/EICHERMOT/ADANIPORTS ~Jul 31 <5d of expiry; HDFCLIFE/TECHM ~Jul 16 mid-hold). No re-alert — already Telegram-flagged 07-07, steer still pending from Pushkar.
+  `2026-07-09 intraday IST | STOCKS (19 qualifiers) | 21 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 19 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — a multi-day directional sell-off with ADX firmly ≥18 is the trending regime this range-bound strategy stands aside from; the stock earnings-season collision is a recurring calendar constraint while Jul 30 is the only in-range expiry, not a thesis break. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-08 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
 
 `2026-07-08 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
