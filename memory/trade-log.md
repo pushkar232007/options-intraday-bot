@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-09 EOD square-off (CANONICAL — scheduled cron run) — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
+
+`2026-07-09 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
+- **This is the true scheduled EOD square-off** (an earlier premature routine wrote an EOD-labelled NO-OP lower in this log before the 14:37 intraday run; this canonical run confirms the day's final flat state). Also fixed a real infra problem this run: **8 commits (weekly-review + all 07-09 intraday runs + the earlier EOD entry) were committed locally but never pushed to `origin/main`** — the exact "memory lost on next fresh clone" failure mode CLAUDE.md warns about. Pushed all to main this run.
+- **Positions to carry/close:** none — flat the entire session. Broker `orders` shows only the stale expired `sid=71472` NIFTY-Jun2026-24000-CE (TRADED, drvExpiryDate 2026-06-25) — not a strategy position, will lapse on its own. `funds`: utilizedAmount ₹934,698 / availableBalance ₹65,301 (the known locked artifact). No index condor to force-close, no stock condor to evaluate for carry-forward — both paths N/A. No spot-range candle check needed (no position to price).
+- **No-trade day recap:** **Indices** trended most of the session, ADX easing steadily off the pre-market highs (52.98/46.93/53.45) as the 07-08 sell-off consolidated, finally crossing below the 18 gate only at the 14:37 last slot (NIFTY 17.13, BANKNIFTY 16.38, SENSEX 14.91, VIX 13.15) — first index qualifier in >1 week, but too late in the session to open a same-day-close intraday condor (no theta runway before forced EOD). **Stocks:** 18 F&O names cleared ADX<18 (daily) and the DTE gate (Jul 30 monthly, 21 DTE) but ALL skipped on earnings grounds — Jul 30 is the only in-range expiry and it collides with peak Q1 season; no name affirmatively earnings-clear. Steer still pending from Pushkar (flagged 07-07).
+- **Circuit breaker:** DISABLED in paper mode (no daily loss cap). Day P&L ₹0 regardless.
+- **Final state:** cash ₹4,00,000.00 (unchanged, post-2026-07-07 reset), realized P&L from reset ₹0.00, today's P&L ₹0. Flat into the close. EOD Telegram summary sent.
+- **FORWARD NOTE for Fri 07-10:** indices ended range-bound (ADX 17/16/15, VIX 13.15) — if ADX holds <18 at the 07-10 open, NIFTY (Jul 14, DTE 4) and SENSEX (Jul 16, DTE 6) are genuine open-entry iron-condor candidates with full-session runway. Do NOT skip at the open if it persists. (BANKNIFTY still DTE-blocked at 19; SENSEX use Jul 16 not the same-day expiry.)
+- **Nothing contradicted backtest expectations** — a cooling-but-still-trending tape that only crossed range-bound at the bell is the stand-aside regime given intraday-only + open-entry-timing constraints; the stock earnings collision is a recurring calendar constraint. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-09 14:37 IST intraday-monitor (LAST slot, 2:30 PM IST cron) — REGIME SHIFT: all three indices FINALLY range-bound (first index qualifier in >1 week) but ALL SKIPPED on entry-TIMING grounds (too late to enter a same-day-close intraday condor)
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.

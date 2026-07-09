@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-09 14:37 IST intraday-monitor (last slot) — flat, no action: 0 open positions, 0 trades, day P&L ₹0. REGIME SHIFT: all three indices FINALLY range-bound (NIFTY ADX 17.13, BANKNIFTY 16.38, SENSEX 14.91, VIX 13.15) — first index qualifier in >1 week as the 07-08 sell-off finished consolidating. But SKIPPED all three on entry-timing (14:37 = last intraday slot, ~38 min to forced EOD close = no runway for a same-day-close condor; validated setup is an OPEN entry). FORWARD NOTE: if ADX holds <18 at Fri 07-10 open, NIFTY (Jul 14, DTE 4) + SENSEX (Jul 16, DTE 6) are genuine open-entry candidates — don't skip. Morning's 18 stock qualifiers still all earnings-blocked (Jul 30 monthly, 21 DTE). Capital ₹4,00,000; realized P&L from reset: ₹0._
+_Last updated: 2026-07-09 EOD square-off (canonical, scheduled cron run) — flat, no action: 0 open positions, 0 trades, day P&L ₹0. Confirmed flat via broker `orders` (only the stale expired sid=71472 Jun artifact, not a strategy position) and paper tracking. No index condor to force-close, no stock condor to carry. REGIME SHIFT held into the close: all three indices ended range-bound (NIFTY ADX 17.13, BANKNIFTY 16.38, SENSEX 14.91, VIX 13.15) — first index qualifier in >1 week, but every intraday run skipped (ADX only crossed <18 at the last 14:37 slot, no runway for a same-day-close condor). FORWARD NOTE: if ADX holds <18 at Fri 07-10 open, NIFTY (Jul 14, DTE 4) + SENSEX (Jul 16, DTE 6) are genuine open-entry candidates — don't skip. 18 stock qualifiers still all earnings-blocked (Jul 30 monthly, 21 DTE). Capital ₹4,00,000; realized P&L from reset: ₹0._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.
@@ -13,7 +13,7 @@ _Last updated: 2026-07-09 14:37 IST intraday-monitor (last slot) — flat, no ac
 
 ## Open Paper Positions
 
-_None — flat (0 open positions; last ICs squared off at EOD 2026-07-02, no positions opened since). Confirmed flat at 2026-07-09 EOD square-off — no index position to force-close, no stock condor to carry forward._
+_None — flat (0 open positions; last ICs squared off at EOD 2026-07-02, no positions opened since). Re-confirmed flat at the 2026-07-09 canonical EOD square-off — broker `orders` shows only the stale expired sid=71472 Jun artifact (not a strategy position); no index position to force-close, no stock condor to carry forward._
 
 ---
 
