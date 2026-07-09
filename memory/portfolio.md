@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-09 EOD square-off — flat all day, NO-OP close: 0 open positions, 0 trades, day P&L ₹0. Indices trended the whole session (ADX eased steadily off the pre-market 53/47/53 highs to final ~24/21/26 but stayed ≥18 all day), VIX 13.28 — no index qualifier. 18-19 stock qualifiers (ADX<18) all earnings-blocked into the Jul 30 monthly (21 DTE, Q1 season underway). Capital ₹4,00,000; realized P&L from reset: ₹0._
+_Last updated: 2026-07-09 13:37 IST intraday-monitor — flat, no action: 0 open positions, 0 trades, day P&L ₹0. Fresh scan VIX 13.15; indices still trending but ADX now hugging the 18 gate (NIFTY 20.08, BANKNIFTY 18.64, SENSEX 18.95) as the 07-08 sell-off consolidates — none through the gate, no index qualifier (re-check next run). Morning's 18 stock qualifiers (ADX<18) all earnings-blocked into the Jul 30 monthly (21 DTE, Q1 season underway). Capital ₹4,00,000; realized P&L from reset: ₹0._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.
