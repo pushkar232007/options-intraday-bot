@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-08 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0. Nothing to force-close (no index condor) or carry forward (no stock condor). Session was a risk-off directional day: all three indices trended HARDER (NIFTY/BANKNIFTY/SENSEX ADX 50.14/42.63/46.53) as spot sold off ~1.3-1.9% and VIX spiked 12.24→15.1; 18 stock qualifiers (ADX<18) all earnings-blocked (only in-range expiry Jul 30 monthly, 22 DTE, collides with Q1 season). Capital ₹4,00,000; realized P&L from reset: ₹0._
+_Last updated: 2026-07-09 pre-market — flat, no change: 0 open positions, 0 trades (draft-only routine). Indices all trending HARD (NIFTY/BANKNIFTY/SENSEX ADX 52.98/46.93/53.45 as the 07-08 sell-off continues, spot down another ~1.3-1.8%), VIX 14.68 — no index setup. 19 stock qualifiers (ADX<18) all earnings-blocked into the Jul 30 monthly (21 DTE, Q1 season starts today with TCS). Capital ₹4,00,000; realized P&L from reset: ₹0._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.

@@ -6,6 +6,41 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-09 — pre-market scan: all three indices trending HARD, no index setup; 19 stock qualifiers still earnings-blocked
+
+India VIX **14.68** (up from 12.34 on 07-08 — mild risk-off drift continues, but still a low-vol
+backdrop overall). Fourth-plus consecutive session with **no index qualifier** — and today the
+indices aren't just above the gate, they're strongly trending:
+
+- **Indices — all three trending, no setup:** NIFTY spot 23,882.05 ADX(14) **52.98**; BANKNIFTY
+  56,742.6 ADX **46.93**; SENSEX 76,503.6 ADX **53.45**. All ≫18. Spot slipped further from 07-08
+  (NIFTY 24,196→23,882, ~-1.3%; SENSEX 77,608→76,504, ~-1.4%; BANKNIFTY 57,762→56,743, ~-1.8%) —
+  the directional sell-off that began 07-08 is intact and ADX has surged, confirming trend not chop.
+  No iron-condor entry on any index — this is exactly the regime the strategy is not built for.
+- **Stocks — 19 of ~50 qualify (ADX(14) daily <18), sorted lowest-first:** TECHM 10.15, SBIN 11.47,
+  ULTRACEMCO 12.99, HEROMOTOCO 13.08, POWERGRID 13.37, HDFCLIFE 13.45, BPCL 13.71, PNB 14.46,
+  ITC 14.62, GRASIM 14.84, RELIANCE 15.26, COALINDIA 15.32, EICHERMOT 15.63, HINDUNILVR 15.76,
+  ADANIPORTS 15.77, JSWSTEEL 16.64, MARUTI 17.04, SBILIFE 17.26, BEL 17.96. Neither blocklisted
+  name (AXISBANK/BHARTIARTL) qualifies. (TATAMOTORS errored — no data, same as 07-08.)
+- **Earnings blocker persists (unchanged from 07-07/07-08):** only in-range stock expiry is the
+  **Jul 30 monthly (21 DTE)**; a Jul 9→Jul 30 hold spans Q1 (June-qtr) earnings season, which kicks
+  off **today (07-09) with TCS** and runs to ~Aug 8. Per the operating rule in signals-learnings,
+  an earnings-clean entry requires the name to have already reported (none have this early in the
+  cycle) or to report >5 days after Jul 30. From 07-07/07-08 research the mid-Jul→early-Aug cluster
+  is confirmed (ULTRACEMCO ~Jul 21, JSWSTEEL ~Jul 18, EICHERMOT ~Jul 31, ADANIPORTS ~Jul 31/Aug 1,
+  SBIN ~Jul 31, MARUTI ~Jul 31, RELIANCE mid-late Jul, HDFCLIFE ~Jul 16, TECHM ~Jul 16) — every
+  qualifier is either mid-hold or within 5 days of expiry. **No name affirmatively clears → all 19
+  skipped on earnings grounds.** Still awaiting Pushkar's steer (enter-after-report name-by-name vs.
+  authorize hold-through-earnings vs. stand aside on stocks this cycle).
+
+**Conclusion:** no draft to carry into market-open. Indices strongly trending (no ADX<18 read to
+even re-check at the open) and every stock qualifier is earnings-blocked into the Jul 30 monthly.
+No-trade is the correct, guardrail-consistent outcome. No positions open, nothing to manage. As
+names begin reporting later this month, the earliest post-earnings candidates (HDFCLIFE/TECHM
+~Jul 16) could become enterable name-by-name IF Pushkar picks option (a) — until then, log-and-skip.
+
+---
+
 ## 2026-07-08 (intraday-monitor — no pre-market ran today, this is the day's scan)
 
 India VIX **12.34** (still low). No pre-market routine fired for 07-08, so this intraday run did the day's first scan.
