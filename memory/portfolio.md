@@ -1,6 +1,6 @@
 # Portfolio Snapshot
 
-_Last updated: 2026-07-09 intraday-monitor — flat, no change: 0 open positions, 0 trades. Fresh intraday scan: indices still trending (NIFTY/BANKNIFTY/SENSEX ADX 39.17/34.04/39.61, cooled off the pre-market highs but firmly ≥18), VIX 13.4 — no index setup. 19 stock qualifiers (ADX<18) all still earnings-blocked into the Jul 30 monthly (21 DTE, Q1 season underway). Capital ₹4,00,000; realized P&L from reset: ₹0._
+_Last updated: 2026-07-09 intraday-monitor (later run) — flat, no change: 0 open positions, 0 trades. Fresh intraday scan: indices still trending (NIFTY/BANKNIFTY/SENSEX ADX 29.57/26.55/28.86, ADX easing further off the pre-market highs but all firmly ≥18), VIX 13.18 — no index setup. 19 stock qualifiers (ADX<18) all still earnings-blocked into the Jul 30 monthly (21 DTE, Q1 season underway). Capital ₹4,00,000; realized P&L from reset: ₹0._
 
 - **Mode:** paper (broker: Dhan Sandbox — switching to Dhan Live when ready for real trading)
 - **Cash (tracked virtual):** ₹4,00,000.00 ← reset 2026-07-07 by Pushkar; covers full strategy margin (3 index condors ₹1.6L–2.2L + multiple simultaneous stock condors ₹1L–2L). Previous balance was ₹2,00,000.
