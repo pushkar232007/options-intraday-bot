@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-09 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
+
+`2026-07-09 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
+- **Positions to carry/close:** none — flat the entire session (came in flat from 07-02 EOD, opened nothing 07-08 or 07-09). No index condor to force-close, no stock condor to evaluate for carry-forward. Both paths (index force-close, stock carry-forward) N/A — nothing held. No spot-range candle check needed (no position to price).
+- **No-trade day recap:** every 07-09 intraday run skipped. **Indices:** all three trended the whole session, ADX easing steadily off the pre-market highs (52.98/46.93/53.45 → 39/34/40 → 30/27/29 → 25/22/26 → final ~24.27/21.39/25.67) as the 07-08 risk-off sell-off's momentum faded, but all three stayed firmly ≥18 all day; spot essentially flat intraday (NIFTY ~24,025). VIX drifted 13.4→13.28. Firmly ≥18 gate all day → no index ADX qualifier. A multi-day directional move that's cooling but not yet range-bound is the trending regime this strategy stands aside from. BANKNIFTY trending too → DTE moot. **Stocks:** 18-19 F&O names cleared ADX<18 (daily) and the DTE gate (Jul 30 monthly, 21 DTE, within 2-30) but ALL SKIPPED on earnings grounds — the only in-range expiry (Jul 30) collides with peak Q1 season (opened 07-09 w/ TCS) and no name could be affirmatively earnings-cleared (ULTRACEMCO ~Jul 21, JSWSTEEL ~Jul 18 mid-hold; SBIN/MARUTI/EICHERMOT/ADANIPORTS ~Jul 31 <5d of expiry; HDFCLIFE/TECHM ~Jul 16 mid-hold). Open item still pending Pushkar's steer (flagged 07-07): enter names name-by-name after they report vs. hold through earnings per the DTE-2-30 backtest.
+- **Circuit breaker:** DISABLED in paper mode (no daily loss cap). Day P&L ₹0 regardless.
+- **Broker (best-effort):** flat — nothing to square off. `funds` shows the known locked artifact (utilizedAmount ₹934,698, availabelBalance ₹65,301) — the stale expired sid=71472 NIFTY artifact, not a strategy position, will lapse on its own, no escalation. No order placed.
+- **Final state:** cash ₹4,00,000.00 (unchanged, post-2026-07-07 reset), realized P&L from reset ₹0.00, today's P&L ₹0. Flat into the close. EOD Telegram summary sent (always fires, even on a no-trade day).
+- **Nothing contradicted backtest expectations** — a cooling-but-still-trending index tape (ADX ≥18 all day) is the stand-aside regime; the stock earnings-season collision is a recurring calendar constraint while Jul 30 is the only in-range expiry, not a thesis break. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-09 intraday-monitor (latest run) — flat; NO index qualifier (all three still trending, ADX 24/21/26, VIX 13.29); 19 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
