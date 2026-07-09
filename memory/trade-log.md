@@ -12,6 +12,17 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-09 intraday-monitor — flat; NO index qualifier (all three trending, ADX 47/41/50); 19 stock qualifiers all earnings-blocked into Jul 30 monthly
+
+`2026-07-09 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX≫18 all three` · `stocks | — | SKIP | all 19 qualifiers earnings-blocked (Jul 30 expiry in Q1 season)`
+- **Positions to manage:** none — flat (0 open paper positions, came in flat from 07-08 EOD). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier:** fresh `market_data.py scan` (VIX **13.58**) — NIFTY spot 24,025.75 ADX **46.95**, BANKNIFTY 57,139.5 ADX **41.24**, SENSEX 76,862.04 ADX **49.51**. All `range_bound: false`, firmly ≫18 gate. Spot bounced modestly off the 07-08/09 lows (NIFTY 23,882→24,026, SENSEX 76,504→76,862) but ADX stays high — the directional move that began 07-08 is intact, not chop. No index iron-condor entry.
+- **Stock fresh-setup check — all skipped on earnings:** using this morning's pre-market scan (daily ADX doesn't change intraday, per routine rule — did NOT re-run scan-stocks). 19 qualifiers (ADX<18): TECHM 10.15, SBIN 11.47, ULTRACEMCO 12.99, HEROMOTOCO 13.08, POWERGRID 13.37, HDFCLIFE 13.45, BPCL 13.71, PNB 14.46, ITC 14.62, GRASIM 14.84, RELIANCE 15.26, COALINDIA 15.32, EICHERMOT 15.63, HINDUNILVR 15.76, ADANIPORTS 15.77, JSWSTEEL 16.64, MARUTI 17.04, SBILIFE 17.26, BEL 17.96. Only in-range stock expiry is the **Jul 30 monthly (21 DTE)**; a Jul 9→Jul 30 hold spans Q1 season (started today with TCS). No name affirmatively clears the earnings guardrail (report either mid-hold or within 5d of Jul 30 expiry) → **all 19 skipped**. Still pending Pushkar's steer (enter-after-report vs. hold-through-earnings vs. stand aside on stocks this cycle).
+- **Circuit breaker:** DISABLED in paper mode. Day P&L ₹0.
+- **Outcome:** no-trade run, guardrail-consistent. No Telegram (no trade placed/closed). Nothing contradicts backtest expectations — trending indices + stock earnings-collision are both correct stand-aside conditions.
+
+---
+
 ## 2026-07-08 EOD square-off — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
 
 `2026-07-08 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
