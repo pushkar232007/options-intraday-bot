@@ -6,8 +6,12 @@ investigate — not as an automatic trigger to change `memory/strategy.md`.
 
 ---
 
-## Week of 2026-07-06 (Mon 07-06 → Thu 07-09, in-progress) — 0 trades: indices trending ALL week, every stock qualifier earnings-blocked (Jul 30 monthly ∩ Q1 season) with Pushkar's steer still pending — INCOMPLETE, on track, no drift; the pending earnings decision is now the binding blocker
+## Week of 2026-07-06 (Mon 07-06 → Thu 07-09) — 0 trades: indices trending ALL week, every stock qualifier earnings-blocked (Jul 30 monthly ∩ Q1 season) with Pushkar's steer still pending — INCOMPLETE, on track, no drift; the pending earnings decision is now the binding blocker
 
+**Formal weekly-review routine ran 2026-07-09 (Thu)** and confirmed the grade below — nothing
+changed vs. the running in-progress read (four clean no-trade sessions, 0 trades, no drift). Fri
+07-10 still to come but cannot alter the tally materially: indices would need to break a ~3-week
+ADX drought AND a stock name would need to earnings-clear, both unlikely in one session.
 **Supersedes the first-cut version of this same week** (which was written after only Monday, when
 capital briefly read ₹50k). The week now has **four distinct no-trade sessions** (Mon 07-06 → Thu
 07-09), and capital was **reset to ₹4,00,000 by Pushkar on 07-07** (commit context in portfolio.md).
