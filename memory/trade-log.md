@@ -12,7 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
-## 2026-07-09 intraday-monitor (latest run) — flat; NO index qualifier (all three still trending, ADX 25/22/26, VIX 13.2); 19 stock qualifiers still ALL earnings-blocked
+## 2026-07-09 intraday-monitor (latest run) — flat; NO index qualifier (all three still trending, ADX 24/21/26, VIX 13.29); 19 stock qualifiers still ALL earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier, all three still trending:** fresh `market_data.py scan` (VIX **13.29**) — NIFTY spot 24,025.15 ADX **24.27**, BANKNIFTY spot 57,226.3 ADX **21.39**, SENSEX spot 77,064.09 ADX **25.67**. All `range_bound: false`, all ≥18 gate → **no ADX qualifier**. ADX keeps easing off the pre-market highs (52.98/46.93/53.45 → 25.30/21.76/25.67 → now 24.27/21.39/25.67) as the 07-08 sell-off's momentum fades, but all three remain firmly trending — none near the 18 gate. Spot essentially flat intraday (NIFTY ~24,025). BANKNIFTY trending too → DTE moot.
+  `2026-07-09 latest2 IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 24.27/21.39/25.67 all ≥18, VIX 13.29 | — | — | none range-bound; still trending though ADX easing further. No entry.`
+- **Stock fresh-setup check — unchanged; all 19 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 19 qualifiers (TECHM 10.15 … BEL 17.96) are DTE-clear (Jul 30 expiry, 21 DTE) but the Jul 30 monthly collides with peak Q1 season — none affirmatively earnings-clear (ULTRACEMCO ~Jul 21, JSWSTEEL ~Jul 18 mid-hold; SBIN/MARUTI/EICHERMOT/ADANIPORTS ~Jul 31 <5d of expiry; HDFCLIFE/TECHM ~Jul 16 mid-hold). No re-alert — already Telegram-flagged 07-07, steer still pending from Pushkar.
+  `2026-07-09 latest2 IST | STOCKS (19 qualifiers) | 21 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 19 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — indices trending (even as ADX eases) is the stand-aside regime; the stock earnings-season collision is a recurring calendar constraint, not a thesis break. No new signals-learnings entry needed.
+
+---
+
+## 2026-07-09 intraday-monitor (prior run) — flat; NO index qualifier (all three still trending, ADX 25/22/26, VIX 13.2); 19 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
 - **Index fresh-setup check — no qualifier, all three still trending:** fresh `market_data.py scan` (VIX **13.2**) — NIFTY spot 24,043.7 ADX **25.30**, BANKNIFTY spot 57,258.0 ADX **21.76**, SENSEX spot 77,036.41 ADX **25.67**. All `range_bound: false`, all ≥18 gate → **no ADX qualifier**. ADX keeps cooling off the pre-market highs (52.98/46.93/53.45 → 29.57/26.55/28.86 earlier → now 25.30/21.76/25.67) as the 07-08 sell-off's momentum fades, but all three remain firmly trending — none near the 18 gate. Spot essentially flat intraday (NIFTY ~24,044, holding the 24,022–24,052 band). BANKNIFTY trending too → DTE moot.
