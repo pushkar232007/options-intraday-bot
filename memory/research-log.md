@@ -6,6 +6,40 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-09 (pre-market re-scan) — indices' ADX eased sharply but still all trending; 18 stock qualifiers, earnings block intact
+
+Second pre-market scan of the day (fresh data snapshot). Picture unchanged in substance — no index
+setup, stocks earnings-blocked — but the numbers moved notably vs. the earlier 07-09 read below:
+
+- **India VIX 13.28** (down from 14.68 earlier today — the mild risk-off drift has partly unwound;
+  low-vol backdrop restored).
+- **Indices — all three still trending (≥18), but ADX collapsed off the earlier highs:** NIFTY spot
+  24,030.45 ADX(14) **22.84** (was 52.98); BANKNIFTY 57,212.6 ADX **20.29** (was 46.93); SENSEX
+  77,054.6 ADX **24.71** (was 53.45). Spot bounced ~0.6-0.8% off the earlier read (NIFTY 23,882→24,030,
+  SENSEX 76,504→77,055, BANKNIFTY 56,743→57,213) — the sharp one-day sell-off is consolidating, which
+  is exactly what drags ADX down. **None qualifies yet** (all above the 18 gate), but BANKNIFTY (20.29)
+  and NIFTY (22.84) are now within striking distance — worth a re-check at market-open once the opening
+  range prints, in case one settles below 18 intraday. SENSEX (24.71) still clearly trending.
+- **Stocks — 18 of ~50 qualify (ADX<18), lowest-first:** TECHM 9.49, SBIN 12.04, ULTRACEMCO 12.17,
+  HEROMOTOCO 12.91, POWERGRID 13.12, BPCL 13.17, HDFCLIFE 14.43, GRASIM 14.69, COALINDIA 14.94,
+  EICHERMOT 14.94, HINDUNILVR 15.44, RELIANCE 15.45, ITC 15.78, JSWSTEEL 15.84, PNB 15.98, MARUTI 16.25,
+  BEL 16.72, ADANIPORTS 16.86. Change vs. earlier scan: **SBILIFE dropped out** (now trending, ADX 18.25).
+  Neither blocklisted name (AXISBANK/BHARTIARTL) qualifies. (TATAMOTORS errored — no data, as before.)
+- **Earnings blocker persists (unchanged):** only in-range stock expiry is the **Jul 30 monthly (21 DTE)**;
+  a Jul 9→Jul 30 hold spans Q1 (June-qtr) season, now underway (TCS today, runs to ~Aug 8). Per the
+  operating rule, an earnings-clean entry needs the name to have already reported (none this early) or to
+  report >5 days after Jul 30. Confirmed cluster (from 07-07/08 research): HDFCLIFE/TECHM ~Jul 16,
+  JSWSTEEL ~Jul 18, ULTRACEMCO ~Jul 21, RELIANCE mid-late Jul, EICHERMOT/SBIN/MARUTI/ADANIPORTS ~Jul 31.
+  **No qualifier affirmatively clears → all 18 skipped on earnings grounds.** Still awaiting Pushkar's
+  steer (enter-after-report name-by-name vs. authorize hold-through-earnings vs. stand aside this cycle).
+
+**Conclusion:** no draft to carry into market-open, but the index picture is softening — BANKNIFTY/NIFTY
+ADX has fallen from the low-50s/mid-40s to ~20-23 as the sell-off consolidates, so an index setup could
+plausibly appear if the chop deepens. Re-check ADX at the open. Stocks remain log-and-skip on earnings.
+No positions open, nothing to manage. Draft-only routine — no trade placed.
+
+---
+
 ## 2026-07-09 — pre-market scan: all three indices trending HARD, no index setup; 19 stock qualifiers still earnings-blocked
 
 India VIX **14.68** (up from 12.34 on 07-08 — mild risk-off drift continues, but still a low-vol
