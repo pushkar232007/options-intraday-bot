@@ -12,6 +12,23 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-13 (latest) intraday-monitor — managed both open index condors (A NIFTY + B SENSEX both stay OPEN, neither hit exit); NO new entry (NIFTY/SENSEX already open, BANKNIFTY DTE-blocked, stocks earnings-blocked)
+
+**Positions managed against exit rules (last completed 1h candle, VIX 13.38):**
+- **Position A (NIFTY Jul 14, DTE 1, entry credit 37.76, PT ≤18.88 / SL ≥75.52):** `spot-range NIFTY` candle high 24,222.65 / low 24,161.8, current 24,189.25. Cost-to-close 39.69 (current) / 42.74 (high) / 38.4 (low). worst 42.74 < SL 75.52 AND best 38.4 > PT 18.88 → **neither threshold hit, stays OPEN.** Unrealized ≈ (37.76−39.69)×65 = −₹125 (spot drifted up toward the 24250 short call, call side gained slightly). Comfortably inside both thresholds. Must force-close by EOD today.
+  `2026-07-13 latest IST | NIFTY | 1 | HOLD (no exit) | SP24050/LP23950/SC24250/LC24350 | cost-to-close 39.69 vs credit 37.76 | 1 lot | neither PT≤18.88 nor SL≥75.52; force-close at EOD.`
+- **Position B (SENSEX Jul 16, DTE 3, entry credit 149.91, PT ≤74.96 / SL ≥299.82):** `spot-range SENSEX` candle high 77,664.36 / low 77,583.41, current 77,586.95. Cost-to-close 151.18 (current) / 152.24 (high) / 151.14 (low). worst 152.24 < SL 299.82 AND best 151.14 > PT 74.96 → **neither threshold hit, stays OPEN.** Unrealized ≈ (149.91−151.18)×20 = −₹25, essentially flat (spot pinned mid-range between the 77200/77600 shorts). Must force-close by EOD today.
+  `2026-07-13 latest IST | SENSEX | 3 | HOLD (no exit) | SP77200/LP77000/SC77600/LC77800 | cost-to-close 151.18 vs credit 149.91 | 1 lot | neither PT≤74.96 nor SL≥299.82; force-close at EOD.`
+- **Index fresh-setup check — all three range_bound, but no new entry available:** fresh `scan` (VIX 13.38) — NIFTY 24,189.25 ADX **14.21**, BANKNIFTY 57,950.8 ADX **12.26**, SENSEX 77,586.95 ADX **17.26** — all `range_bound: true`. NIFTY and SENSEX qualify on ADX but already have open Positions A/B → one-per-instrument, skip. **BANKNIFTY qualifies on ADX (12.26) and has no open position, but its only available expiry is the July monthly 2026-07-28 = DTE 15** (confirmed via `dhan.py lookup`: Jul 14 weekly 404s / no weeklies, Jul 28 sid 61886 lot 30). 15 DTE is far outside BANKNIFTY's ≤7-DTE near-expiry data-gathering window (its sole rationale per strategy.md), and as an index it's intraday-only — a 15-DTE condor entered and force-closed same day captures ~zero theta. **Skip on DTE grounds**, same as every prior run this cycle.
+  `2026-07-13 latest IST | NIFTY/SENSEX | — | SKIP | both range_bound but already have open Positions A/B (one-per-instrument) | — | — | no new entry.`
+  `2026-07-13 latest IST | BANKNIFTY | 15 | SKIP (DTE) | Jul 28 monthly only, ADX 12.26<18 qualifies but 15 DTE ≫ ≤7-DTE near-expiry window + intraday-only no-theta-runway | — | — | no entry.`
+- **Stock fresh-setup check — unchanged; morning's 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX static intraday (didn't re-run scan-stocks per protocol). This morning's 18 qualifiers (TECHM 9.55 … ITC 16.88) are DTE-clear (Jul 30 monthly, 17 DTE) but Jul 30 collides with peak Q1 season — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-13 latest IST | STOCKS (18 qualifiers) | 17 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | no entry.`
+- **Broker:** no action (no close, no new entry). No trade placed or closed → no Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — both condors sitting slightly-underwater near mid-range is normal for a range-bound day; BANKNIFTY DTE-block and stock earnings-block are recurring calendar constraints. No new signals-learnings entry. Both index condors MUST be force-closed by ~3:15 PM IST today per the index intraday-only rule (EOD-squareoff run to handle unless PT/SL hits first).
+
+---
+
 ## 2026-07-13 (later) intraday-monitor — managed both open index condors (A NIFTY + B SENSEX both stay OPEN, neither hit exit); NO new entry (NIFTY/SENSEX already open, BANKNIFTY DTE-blocked, stocks earnings-blocked)
 
 **Positions managed against exit rules (last completed 1h candle, VIX 13.38):**
