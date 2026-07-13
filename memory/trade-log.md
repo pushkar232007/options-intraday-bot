@@ -12,6 +12,21 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-13 EOD square-off — **FORCE-CLOSED both index condors** (A NIFTY −₹175.50, B SENSEX −₹35.40); day realized −₹210.90; flat into 07-14
+
+**Both positions are INDEX condors → intraday-only, force-close at EOD.** Carry-forward requires ALL three conditions (currently in profit + ADX<18 + tightened stop); both fail condition 1 (each in small loss), so force-close — the normal index outcome.
+
+**Final-hour candle check before recording P&L (spot-range, VIX 13.29):**
+- **Position A (NIFTY Jul 14, DTE 1, credit 37.76, PT ≤18.88 / SL ≥75.52):** `spot-range NIFTY` high 24,250.85 / low 24,201.35, current spot 24,202.65. Cost-to-close @current 40.46 / @high 46.26 / @low 40.27. worst 46.26 < SL 75.52 AND best 40.27 > PT 18.88 → **no intra-hour trigger**, exit at current cost-to-close 40.46. Realized = (37.76−40.46)×65 = **−₹175.50**. Spot drifted ~58 pts up from the 24,144.75 entry into/through the 24250 short call.
+  `2026-07-13 EOD IST | NIFTY | 1 | CLOSE iron condor (EOD_SQUAREOFF) | SP24050/LP23950/SC24250/LC24350 | exit cost 40.46 vs credit 37.76 | 1 lot | index intraday-only force-close; no PT/SL trigger in final hour. Realized −₹175.50.`
+- **Position B (SENSEX Jul 16, DTE 3, credit 149.91, PT ≤74.96 / SL ≥299.82):** `spot-range SENSEX` high 77,741.58 / low 77,620.63, current spot 77,646.41. Cost-to-close @current 151.68 / @high 153.53 / @low 151.8. worst 153.53 < SL 299.82 AND best 151.68 > PT 74.96 → **no intra-hour trigger**, exit at current cost-to-close 151.68. Realized = (149.91−151.68)×20 = **−₹35.40**. Spot drifted ~219 pts up from the 77,427.86 entry to just above the 77600 short call.
+  `2026-07-13 EOD IST | SENSEX | 3 | CLOSE iron condor (EOD_SQUAREOFF) | SP77200/LP77000/SC77600/LC77800 | exit cost 151.68 vs credit 149.91 | 1 lot | index intraday-only force-close; no PT/SL trigger in final hour. Realized −₹35.40.`
+- **Broker:** `square-off-all` (best-effort) touched only the stale expired sid=71472 Jun artifact (SELL, TRANSIT) — the strategy legs were DH-905-blocked at entry and never in the broker, so paper close is authoritative. No new entry at EOD (flat is the correct end-of-day state; no fresh setup evaluated on the square-off run).
+- **Day totals:** realized −₹210.90; cumulative from reset −₹210.90; capital ₹4,00,000 → **₹3,99,789.10**. **EOD Telegram summary sent.**
+- **Nothing contradicted backtest expectations** — two small range-bound-drift losses (both < ₹200, both deep inside SL) on a day where spot ticked modestly up into the upper short strikes is exactly the ordinary "range-bound but not perfectly pinned → give back a few points of the credit" outcome; ~89% WR doesn't mean every condor prints, and small give-backs on the ~11% are expected. No new signals-learnings entry.
+
+---
+
 ## 2026-07-13 (latest-3) intraday-monitor — managed both open index condors (A NIFTY + B SENSEX both stay OPEN, neither hit exit); NO new entry (NIFTY/SENSEX already open, BANKNIFTY DTE-blocked, stocks earnings-blocked)
 
 **Positions managed against exit rules (last completed 1h candle, VIX 13.27):**
