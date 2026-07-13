@@ -12,6 +12,21 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-13 10:37 IST intraday-monitor — **ENTERED NIFTY iron condor** (first trade since 07-02); NIFTY settled into range-bound at the open (ADX 17.65<18)
+
+**Positions to manage on entry:** none pre-existing — flat coming in. Opened one new NIFTY IC this run (details below).
+- **Index setup — NIFTY QUALIFIES and traded:** fresh `market_data.py scan` at 10:37 IST (VIX **13.33**) — **NIFTY spot 24,144.75 ADX 17.65 → range_bound: true** (first index qualifier to actually resolve since the 07-09 late-day cross); BANKNIFTY 58,027.45 ADX 24.36 (trending, no); SENSEX 77,290.19 ADX 19.37 (trending, no). The pre-market flagged NIFTY (19.84) and SENSEX (18.89) as gate-huggers and said "do NOT skip the open re-check" — NIFTY duly settled below 18 once the opening range printed. Early session (10:37, full runway to EOD) → genuine open-entry, exactly the setup the forward notes said not to skip. ADX re-confirmed 17.65 via `adx NIFTY`.
+  - **Trade placed:** NIFTY Jul 14 (DTE 1) iron condor — **SP 24050PE / LP 23950PE / SC 24250CE / LC 24350CE**, 1 lot (65). DTE 1 chosen: nearest available NIFTY weekly, closest to the ~2-DTE preference (next is Jul 21 DTE 8), within the validated 1-6 range; index closes intraday today so the position is never held into Jul 14 same-day-expiry gamma. Leg premiums (BS, spot 24,144.75, VIX 13.32, DTE 1): 28.8 / 9.75 / 28.3 / 9.59 → **net credit 37.76/unit = ₹2,454.40**. Max loss (100−37.76)×65 = ₹4,045.60 (within 5% cap). PT cost-to-close ≤18.88, SL ≥75.52.
+  `2026-07-13 10:37 IST | NIFTY | 1 | OPEN iron condor | SP24050/LP23950/SC24250/LC24350 | +37.76/unit credit (₹2,454.40) | 1 lot | ADX 17.65<18 qualifies, VIX 13.33, early session full runway. Broker REJECTED DH-905 (known sandbox blocker) — paper position authoritative.`
+- **Other indices:** BANKNIFTY (ADX 24.36) and SENSEX (19.37) both trending ≥18 → no entry. SENSEX just above the gate again but not through.
+  `2026-07-13 10:37 IST | BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 24.36/19.37 ≥18, VIX 13.33 | — | — | both trending. No entry.`
+- **Stock fresh-setup check — unchanged; morning's 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks). This morning's 18 qualifiers (TECHM 9.55 … ITC 16.88) are DTE-clear (Jul 30 monthly, 17 DTE) but Jul 30 collides with peak Q1 season — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-13 10:37 IST | STOCKS (18 qualifiers) | 17 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+- **Broker:** `place-spread` REJECTED with DH-905 (sandbox OMS rejects current weekly securityIds — the documented long-standing blocker). Paper position logged to portfolio.md regardless (source of truth in paper mode). Telegram sent (trade placed).
+- **Note:** this NIFTY condor MUST be force-closed by ~3:15 PM IST today per the index intraday-only rule, unless PT/SL hits first. The next intraday-monitor / EOD-squareoff run must manage/close it.
+
+---
+
 ## 2026-07-13 intraday-monitor — flat; NO index qualifier (all three FIRMED away from the gate, ADX 24/33/22, VIX 13.31); 18 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
