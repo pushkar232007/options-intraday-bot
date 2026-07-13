@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-13 intraday-monitor — flat; NO index qualifier (all three FIRMED away from the gate, ADX 24/33/22, VIX 13.31); 18 stock qualifiers still ALL earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier; the pre-market gate-huggers pulled BACK away from 18:** fresh `market_data.py scan` (VIX **13.31**, up from 12.25 pre-market) — NIFTY spot 24,036.6 ADX **24.48**, BANKNIFTY spot 57,686.45 ADX **32.69**, SENSEX spot 76,967.37 ADX **22.3**. All `range_bound: false` (≥18) → **no ADX qualifier**. This morning's pre-market flagged NIFTY (19.84) and SENSEX (18.89) as on-the-threshold open re-check candidates, but by this run both had **risen** off the gate (NIFTY 19.84→24.48, SENSEX 18.89→22.3) rather than settling below — spot ticked down modestly (NIFTY 24,207→24,037, SENSEX 77,569→76,967) and ADX firmed with the drift. Softest index read of the week did NOT resolve into a setup. BANKNIFTY (32.69) still clearly trending → DTE moot.
+  `2026-07-13 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 24.48/32.69/22.3 all ≥18, VIX 13.31 | — | — | pre-market gate-huggers (NIFTY 19.84/SENSEX 18.89) firmed away from 18, not below it. No entry.`
+- **Stock fresh-setup check — unchanged; morning's 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 18 qualifiers (TECHM 9.55 … ITC 16.88) are DTE-clear (Jul 30 monthly, 17 DTE) but the Jul 30 expiry collides with peak Q1 season — none affirmatively earnings-clear (HDFCLIFE/TECHM ~Jul 16, JSWSTEEL ~Jul 18, ULTRACEMCO ~Jul 21, RELIANCE mid-late Jul, EICHERMOT/SBIN/MARUTI/ADANIPORTS ~Jul 31). No re-alert — already Telegram-flagged 07-07, steer still pending from Pushkar.
+  `2026-07-13 intraday IST | STOCKS (18 qualifiers) | 17 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram.
+- **Nothing contradicted backtest expectations** — indices firming back off the 18 gate is the stand-aside regime; the stock earnings-season collision is a recurring calendar constraint, not a thesis break. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-09 EOD square-off (CANONICAL — scheduled cron run) — NO-OP, flat all day: 0 open positions, 0 trades; day P&L ₹0
 
 `2026-07-09 EOD IST | — | — | NO-OP (no strategy positions, no trades) | nothing to close/carry`
