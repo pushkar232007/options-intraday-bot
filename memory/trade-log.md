@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-14 intraday-monitor (latest) — flat; NO index qualifier (all three still trending, ADX 21.74/23.43/21.81, VIX 13.47); 17 stock qualifiers still ALL earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier; complex holding the mild down-drift regime:** fresh `market_data.py scan` (VIX **13.47**) — NIFTY spot 24,122.7 ADX **21.74**, BANKNIFTY spot 57,591.35 ADX **23.43**, SENSEX spot 77,324.61 ADX **21.81**. All `range_bound: false` (≥18) → **no ADX qualifier**. ADX eased slightly off the prior addendum's peak (NIFTY 23.59→21.74, BANKNIFTY 25.38→23.43, SENSEX 23.96→21.81) as spot ticked marginally back up (NIFTY 24,093→24,123, SENSEX 77,113→77,325), but all three remain clearly above the 18 gate — the soft pre-market board (14.61/15.80/16.81) has stayed resolved into a mild down-drift regime all session, never the range-bound setup this strategy trades. No entry.
+  `2026-07-14 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 21.74/23.43/21.81 all ≥18, VIX 13.47 | — | — | pre-market range-bound board firmed away from 18 and held there all session. No entry.`
+- **Stock fresh-setup check — unchanged; morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (TECHM 9.61 … GRASIM 16.41) are DTE-clear (Jul 30 monthly, 16 DTE) but collide with peak Q1 season — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-14 intraday IST | STOCKS (17 qualifiers) | 16 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 17 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — indices holding above the 18 gate in a mild trend is the stand-aside regime; stock earnings collision is a recurring calendar constraint. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-14 intraday-monitor (later) — flat; NO index qualifier (all three firmed FURTHER from the gate, ADX 23.59/25.38/23.96, VIX 13.71); 17 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the exit rules. Circuit breaker DISABLED in paper mode — N/A.
