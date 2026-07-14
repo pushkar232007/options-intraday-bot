@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-14 EOD square-off — flat all day; NO positions to close or carry; NO trade placed. Day realized ₹0; cumulative −₹210.90; capital ₹3,99,789.10
+
+**Positions to process:** none — entered 07-14 flat (0 open paper positions) after yesterday's EOD force-close of both index condors, and every 07-14 intraday-monitor run (7 checks) found no qualifying setup, so nothing opened today. No index position to force-close, no stock condor to carry forward — the square-off is a clean no-op on positions.
+- **Index side:** all three indices spent the entire session trending above the 18 gate — the soft pre-market board (NIFTY 14.61 / BANKNIFTY 15.80 / SENSEX 16.81) firmed away from 18 at the open and kept firming, ending the day at ADX 30.75 / 29.39 / 26.01 (VIX 13.85, latest-4 scan). Never the range-bound setup this strategy trades → no index entry all day, hence nothing to square off.
+- **Stock side:** the day's 17 stock qualifiers (TECHM 9.61 … GRASIM 16.41, all ADX<18, Jul 30 monthly / 16 DTE) stayed blocked all day on the peak-Q1 earnings collision — none affirmatively earnings-clear. No stock condor was ever opened, so nothing to carry forward.
+  `2026-07-14 EOD IST | ALL | — | NO-OP (flat, nothing to close/carry) | 0 open positions all day; no qualifying entry (indices ADX≥18 all session, 17 stock qualifiers earnings-blocked) | — | — | clean flat EOD.`
+- **Day totals:** 0 trades closed today → **day realized ₹0**. Cumulative from reset unchanged at **−₹210.90** (yesterday's NIFTY −₹175.50 + SENSEX −₹35.40). Capital **₹3,99,789.10**. Flat into 07-15.
+- **Broker:** no action (flat, nothing to place or close). **EOD Telegram summary sent** (always sent on the square-off run per protocol).
+- **Nothing contradicted backtest expectations** — a full-session stand-aside (indices trending off the gate + stock earnings-season block) is an expected no-trade regime, not a thesis break. No new signals-learnings entry.
+
+---
+
 ## 2026-07-14 intraday-monitor (latest-4) — flat; NO index qualifier (all three firmed FURTHER from the gate, ADX 30.75/29.39/26.01, VIX 13.85); 17 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
