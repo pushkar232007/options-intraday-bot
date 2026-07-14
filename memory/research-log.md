@@ -6,6 +6,19 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-14 (intraday-monitor addendum) — pre-market's range-bound board firmed away from the gate at the open; no index setup materialized
+
+Fresh open scan (VIX **13.73**, up from 13.28 pre-market): NIFTY spot 24,120.1 ADX **18.9**,
+BANKNIFTY 57,573.75 ADX **18.6**, SENSEX 77,281.0 ADX **19.16** — **all `range_bound: false`
+(≥18)**. The soft pre-market board (14.61/15.80/16.81) did not hold: ADX rose back through the 18
+gate on all three as spot ticked down modestly (NIFTY 24,211→24,120, SENSEX 77,616→77,281) and
+VIX firmed. SENSEX Jul 16 (DTE 2), flagged this morning as the clean open candidate, no longer
+qualifies. **No index entry** — same "gate-hugger firms away rather than settling below" pattern
+seen 07-13. Stocks unchanged (17 qualifiers still earnings-blocked into Jul 30; daily ADX static,
+no re-scan). Flat, no positions to manage. No trade placed.
+
+---
+
 ## 2026-07-14 (pre-market scan) — ALL THREE indices now range-bound (<18); SENSEX Jul 16 (DTE 2) is the clean open candidate; 17 stock qualifiers still earnings-blocked
 
 India VIX **13.28** (low — quiet backdrop). Flat into today (−₹210.90 realized from reset after

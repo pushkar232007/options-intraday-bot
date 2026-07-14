@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-14 intraday-monitor — flat; NO index qualifier (all three FIRMED away from the gate at the open, ADX 18.9/18.6/19.16, VIX 13.73); 17 stock qualifiers still ALL earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions) coming out of yesterday's EOD force-close. Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier; the pre-market's soft board firmed away from 18 once the opening range printed:** fresh `market_data.py scan` (VIX **13.73**, up from 13.28 pre-market) — NIFTY spot 24,120.1 ADX **18.9**, BANKNIFTY spot 57,573.75 ADX **18.6**, SENSEX spot 77,281.0 ADX **19.16**. All `range_bound: false` (≥18) → **no ADX qualifier**. This morning's pre-market flagged all three as range-bound (NIFTY 14.61, BANKNIFTY 15.80, SENSEX 16.81) with SENSEX Jul 16 (DTE 2) the clean open candidate — but by the open all three had **risen back through the 18 gate** (NIFTY 14.61→18.9, BANKNIFTY 15.80→18.6, SENSEX 16.81→19.16) as spot ticked down modestly (NIFTY 24,211→24,120, SENSEX 77,616→77,281) and ADX firmed with the drift. Softest pre-market board in weeks did NOT resolve into a setup — same "gate-hugger firms away, not below" pattern as 07-13. (NIFTY was in any case avoid-today on 0-DTE Jul 14 expiry; the Jul 21 weekly would have been the vehicle, but ADX ≥18 moots it. BANKNIFTY separately DTE-blocked, Jul 28 monthly only.)
+  `2026-07-14 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 18.9/18.6/19.16 all ≥18, VIX 13.73 | — | — | pre-market range-bound board (14.61/15.80/16.81) firmed back through 18 at the open. No entry.`
+- **Stock fresh-setup check — unchanged; morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (TECHM 9.61 … GRASIM 16.41) are DTE-clear (Jul 30 monthly, 16 DTE) but Jul 30 collides with peak Q1 season — none affirmatively earnings-clear (HDFCLIFE/TECHM ~Jul 16, JSWSTEEL ~Jul 18, ULTRACEMCO ~Jul 21, RELIANCE mid-late Jul, EICHERMOT/SBIN/MARUTI/ADANIPORTS ~Jul 31). No re-alert — steer still pending from Pushkar.
+  `2026-07-14 intraday IST | STOCKS (17 qualifiers) | 16 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 17 but none earnings-clear. No entry.`
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — indices firming back off the 18 gate is the stand-aside regime; the stock earnings-season collision is a recurring calendar constraint, not a thesis break. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-13 EOD square-off — **FORCE-CLOSED both index condors** (A NIFTY −₹175.50, B SENSEX −₹35.40); day realized −₹210.90; flat into 07-14
 
 **Both positions are INDEX condors → intraday-only, force-close at EOD.** Carry-forward requires ALL three conditions (currently in profit + ADX<18 + tightened stop); both fail condition 1 (each in small loss), so force-close — the normal index outcome.
