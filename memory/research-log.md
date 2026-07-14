@@ -6,6 +6,45 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-14 (pre-market scan) — ALL THREE indices now range-bound (<18); SENSEX Jul 16 (DTE 2) is the clean open candidate; 17 stock qualifiers still earnings-blocked
+
+India VIX **13.28** (low — quiet backdrop). Flat into today (−₹210.90 realized from reset after
+yesterday's two EOD force-closes). The compression the last few days flagged has resolved: **all
+three indices read range-bound this morning** — first time the whole index board qualifies since
+the early-July sell-off.
+
+- **Indices — all three qualify (ADX<18):** NIFTY spot 24,211.0 ADX(14) **14.61**; BANKNIFTY
+  58,131.45 ADX **15.80**; SENSEX 77,616.4 ADX **16.81**. Big drop from 07-13 (NIFTY 19.84→14.61,
+  SENSEX 18.89→16.81, BANKNIFTY 33.21→15.80) — the consolidation deepened. **Open re-check
+  candidates once the opening range prints:**
+  - **NIFTY:** today (07-14) is the Jul 14 weekly **expiry day (DTE 0)** — same-day gamma/liquidity
+    risk, the guardrail says avoid expiry-day if the chain looks thin. Prefer the **Jul 21 weekly
+    (DTE 7)** if entering NIFTY, or skip NIFTY today. Don't reflexively sell the 0-DTE.
+  - **SENSEX:** **Jul 16 (DTE 2)** — the cleanest setup, right on the preferred ~2-DTE sweet spot.
+    Best index candidate for the open.
+  - **BANKNIFTY:** qualifies on ADX (15.80) but only the **Jul 28 monthly (DTE 14)** is available —
+    far outside the ≤7-DTE near-expiry window, so it stays a log/skip on DTE grounds (same standing
+    issue; trade only as the data-gathering carve-out if near-expiry). No new alert.
+- **Stocks — 17 of ~50 qualify (ADX<18), lowest-first:** TECHM 9.61, SBIN 10.89, ULTRACEMCO 11.51,
+  HEROMOTOCO 12.42, POWERGRID 12.97, HDFCLIFE 13.43, RELIANCE 13.87, PNB 13.88, BPCL 14.00,
+  EICHERMOT 14.07, HINDUNILVR 14.17, BEL 14.58, ADANIPORTS 15.03, JSWSTEEL 15.15, MARUTI 15.40,
+  COALINDIA 15.72, GRASIM 16.41. (ITC dropped out — now 18.51 trending; roster else ~stable vs
+  07-13.) Neither blocklisted name (AXISBANK/BHARTIARTL) qualifies. TATAMOTORS errored (no data).
+- **Earnings blocker persists:** only in-range stock expiry is the **Jul 30 monthly (16 DTE)**; a
+  Jul 14→Jul 30 hold spans Q1 (June-qtr) season, now in full swing. Confirmed mid-Jul→early-Aug
+  cluster (HDFCLIFE/TECHM ~Jul 16, JSWSTEEL ~Jul 18, ULTRACEMCO ~Jul 21, RELIANCE mid-late Jul,
+  EICHERMOT/SBIN/MARUTI/ADANIPORTS ~Jul 31) means **no qualifier affirmatively clears → all 17
+  skipped on earnings grounds.** Earliest name-by-name post-report candidates (HDFCLIFE/TECHM) land
+  ~Jul 16 IF Pushkar picks enter-after-report. Still awaiting Pushkar's steer (enter-after-report
+  vs. authorize hold-through-earnings vs. stand aside this cycle).
+
+**Conclusion:** no draft trade — draft-only routine, no order placed. Index picture is the softest
+in weeks: **SENSEX Jul 16 (DTE 2) is a genuine open-entry candidate**, NIFTY only if taken on the
+Jul 21 weekly (avoid the 0-DTE), BANKNIFTY log/skip on DTE. **Re-check ADX at market-open once the
+opening range prints.** Stocks remain log-and-skip on earnings. Flat — no positions to manage.
+
+---
+
 ## 2026-07-13 (pre-market scan) — NIFTY & SENSEX at the 18 gate (closest yet); 18 stock qualifiers, earnings block intact
 
 India VIX **12.25** (low — quiet backdrop credit spreads like). First trading day of the week.
