@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-14 intraday-monitor (latest-4) — flat; NO index qualifier (all three firmed FURTHER from the gate, ADX 30.75/29.39/26.01, VIX 13.85); 17 stock qualifiers still ALL earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier; complex firmed further into the trend:** fresh `market_data.py scan` (VIX **13.85**) — NIFTY spot 24,043.6 ADX **30.75**, BANKNIFTY spot 57,400.05 ADX **29.39**, SENSEX spot 77,115.65 ADX **26.01**. All `range_bound: false` (≥18) → **no ADX qualifier**. ADX rose further from the prior addendum (NIFTY 26.24→30.75, BANKNIFTY 26.67→29.39, SENSEX 23.64→26.01) with spot flat-to-marginally-lower (NIFTY 24,070→24,044, SENSEX 77,215→77,116) — the soft pre-market board (14.61/15.80/16.81) has decisively and durably resolved into the mild down-drift/trend regime all session, the opposite of the range-bound setup this strategy trades. No entry.
+  `2026-07-14 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 30.75/29.39/26.01 all ≥18, VIX 13.85 | — | — | pre-market range-bound board firmed away from 18 and kept firming all session. No entry.`
+- **Stock fresh-setup check — unchanged; morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (TECHM 9.61 … GRASIM 16.41) are DTE-clear (Jul 30 monthly, 16 DTE) but collide with peak Q1 season — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-14 intraday IST | STOCKS (17 qualifiers) | 16 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 17 but none earnings-clear. No entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 9d6ed12 (the latest-3 commit) after `git fetch origin main` — prior run's memory is on `main`, no stranding. Clean fast-forward for this run's commit.
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — indices firming off the 18 gate into a mild trend is the stand-aside regime; stock earnings collision is a recurring calendar constraint. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-14 intraday-monitor (latest-3) — flat; NO index qualifier (all three still trending, ADX 26.24/26.67/23.64, VIX 13.66); 17 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
