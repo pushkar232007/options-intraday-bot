@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-14 intraday-monitor (latest-2) — flat; NO index qualifier (all three still trending, ADX 25.75/27.11/23.36, VIX 13.64); 17 stock qualifiers still ALL earnings-blocked. **INFRA FIX: synced 12 stranded commits (07-13/07-14) from feature branch to `origin/main`.**
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
+- **Index fresh-setup check — no qualifier; complex firmed further into the mild trend:** fresh `market_data.py scan` (VIX **13.64**) — NIFTY spot 24,065.85 ADX **25.75**, BANKNIFTY spot 57,422.55 ADX **27.11**, SENSEX spot 77,151.71 ADX **23.36**. All `range_bound: false` (≥18) → **no ADX qualifier**. ADX ticked back up from the prior addendum (NIFTY 21.74→25.75, BANKNIFTY 23.43→27.11, SENSEX 21.81→23.36) as spot drifted a touch lower (NIFTY 24,123→24,066, SENSEX 77,325→77,152) — the soft pre-market board (14.61/15.80/16.81) has stayed decisively resolved into the mild down-drift regime all session, never the range-bound setup this strategy trades. No entry.
+  `2026-07-14 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 25.75/27.11/23.36 all ≥18, VIX 13.64 | — | — | pre-market range-bound board firmed away from 18 and held trending all session. No entry.`
+- **Stock fresh-setup check — unchanged; morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (TECHM 9.61 … GRASIM 16.41) are DTE-clear (Jul 30 monthly, 16 DTE) but collide with peak Q1 season — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-14 intraday IST | STOCKS (17 qualifiers) | 16 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 17 but none earnings-clear. No entry.`
+- **INFRA — memory was stranded off `main` (fixed this run):** on read, found this session on branch `claude/theta-intraday-monitor-kngd8y` with **12 commits (all of 07-13 + 07-14, incl. the two 07-13 condor opens/closes and −₹210.90 realized) pushed only to `origin/claude/theta-intraday-monitor-kngd8y`, never to `origin/main`** — `origin/main` frozen at the 07-09 EOD commit (018860d). This is the exact CLAUDE.md-documented failure mode (routine defaulting to a session branch instead of `main`, the single source of truth for a fresh-clone-every-run repo). origin/main is a clean-FF ancestor of HEAD → fast-forwarded `main` to include all stranded commits + this one. Notified Pushkar (recurring infra misconfig — the routine keeps designating a feature branch; needs a config fix so it targets `main`).
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — indices holding above the 18 gate in a mild trend is the stand-aside regime; stock earnings collision is a recurring calendar constraint. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-14 intraday-monitor (latest) — flat; NO index qualifier (all three still trending, ADX 21.74/23.43/21.81, VIX 13.47); 17 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
