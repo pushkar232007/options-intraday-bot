@@ -12,6 +12,18 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-15 EOD square-off — flat all day; NO positions to close or carry; NO trade placed. Day realized ₹0; cumulative −₹210.90; capital ₹3,99,789.10
+
+**Positions to process:** none — entered 07-15 flat (0 open paper positions) after the 07-13 EOD force-close of both index condors, and every 07-15 intraday-monitor run (6 checks) found no qualifying setup, so nothing opened today. No index position to force-close, no stock condor to carry forward — the square-off is a clean no-op on positions.
+- **Index side:** all three indices spent the entire session trending above the 18 gate. Pre-market read them trending (NIFTY ADX 31.70 / BANKNIFTY 28.19 / SENSEX 26.91) after the 07-14 compression fully unwound overnight; the complex then firmed on a morning rally and held a mild trend all session. Fresh EOD `scan` (VIX **13.27**): NIFTY spot 24,075.6 ADX **26.45**, BANKNIFTY spot 57,766.5 ADX **24.22**, SENSEX spot 77,165.72 ADX **24.93** — all `range_bound: false`, none near the 18 gate. Never the range-bound setup this strategy trades → no index entry all day, hence nothing to square off.
+- **Stock side:** the day's 17 stock qualifiers (SBIN 11.20 … MARUTI 15.88, all ADX<18, Jul 30 monthly / 15 DTE) stayed blocked all day on the peak-Q1 earnings collision — none affirmatively earnings-clear. No stock condor was ever opened, so nothing to carry forward.
+  `2026-07-15 EOD IST | ALL | — | NO-OP (flat, nothing to close/carry) | 0 open positions all day; no qualifying entry (indices ADX≥18 all session, 17 stock qualifiers earnings-blocked) | — | — | clean flat EOD.`
+- **Day totals:** 0 trades closed today → **day realized ₹0**. Cumulative from reset unchanged at **−₹210.90** (07-13 NIFTY −₹175.50 + SENSEX −₹35.40). Capital **₹3,99,789.10**. Flat into 07-16.
+- **Broker:** `square-off-all` (best-effort) touched only the stale expired sid=71472 Jun artifact (SELL, TRANSIT) — no strategy legs in the broker (paper tracking authoritative). **EOD Telegram summary sent** (always sent on the square-off run per protocol).
+- **Nothing contradicted backtest expectations** — a full-session stand-aside (indices trending off the gate + stock earnings-season block) is an expected no-trade regime, not a thesis break. No new signals-learnings entry.
+
+---
+
 ## 2026-07-15 intraday-monitor (latest-5) — flat; NO index qualifier (all three still trending, ADX 26.51/24.85/25.43, VIX 13.35); 17 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A.
