@@ -6,6 +6,18 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-15 (intraday-monitor addendum) — indices firmed further into trend on a rally; no index setup materialized
+
+Fresh scan (VIX **13.29**, down from 13.75 pre-market): NIFTY spot 24,204.2 ADX **30.67**,
+BANKNIFTY 58,086.15 ADX **30.78**, SENSEX 77,465.99 ADX **26.77** — **all `range_bound: false`
+(≥18)**. Spot rallied off the morning lows on all three (NIFTY 24,052→24,204, BANKNIFTY
+57,462→58,086, SENSEX 77,055→77,466) — a directional up-move, the opposite of the range-bound
+regime this strategy trades; none near the 18 gate to even re-check. **No index entry.** Stocks
+unchanged (17 qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat,
+no positions to manage. No trade placed.
+
+---
+
 ## 2026-07-15 (pre-market scan) — all three indices trending again (ADX 27-32), no index setup; 17 stock qualifiers still earnings-blocked into Jul 30
 
 India VIX **13.75** (low — quiet backdrop). Flat into today (−₹210.90 realized from reset;
