@@ -6,6 +6,18 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-15 (intraday-monitor addendum, latest-4) — indices still trending, NIFTY firmed back up; no index setup
+
+Fresh scan (VIX **13.48**): NIFTY spot 24,070.0 ADX **26.63**, BANKNIFTY 57,690.05 ADX **25.42**,
+SENSEX 77,198.47 ADX **27.86** — **all `range_bound: false` (≥18)**. NIFTY firmed back up vs the prior
+addendum (21.09→26.63), BANKNIFTY eased (26.18→25.42), SENSEX flat (28.13→27.86), spot ticking down on
+all three (NIFTY 24,158→24,070, SENSEX 77,548→77,198) — a mild down-drift, still directional not
+range-bound, none near the 18 gate to re-check. **No index entry.** Stocks unchanged (17 qualifiers
+still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, no positions to manage. No
+trade placed.
+
+---
+
 ## 2026-07-15 (intraday-monitor addendum, latest-3) — indices still trending, NIFTY/BANKNIFTY eased a touch; no index setup
 
 Fresh scan (VIX **13.13**): NIFTY spot 24,157.55 ADX **21.09**, BANKNIFTY 57,983.9 ADX **26.18**,
