@@ -6,6 +6,18 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-15 (intraday-monitor addendum, latest-2) — indices holding the directional trend late-session; no index setup
+
+Fresh scan (VIX **13.11**): NIFTY spot 24,207.35 ADX **25.16**, BANKNIFTY 58,071.75 ADX **33.02**,
+SENSEX 77,538.72 ADX **27.86** — **all `range_bound: false` (≥18)**. NIFTY/SENSEX ADX eased slightly
+vs the prior addendum (NIFTY 29.08→25.16, SENSEX 29.76→27.86) while BANKNIFTY firmed (32.45→33.02),
+spot essentially flat (SENSEX 77,607→77,539) — the morning rally's directional up-move is still
+holding, none near the 18 gate to re-check. **No index entry.** Stocks unchanged (17 qualifiers
+still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, no positions to manage.
+No trade placed.
+
+---
+
 ## 2026-07-15 (intraday-monitor addendum, latest) — indices holding the directional trend into the afternoon; no index setup
 
 Fresh scan (VIX **13.06**): NIFTY spot 24,203.65 ADX **29.08**, BANKNIFTY 58,075.45 ADX **32.45**,
