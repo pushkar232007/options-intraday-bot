@@ -6,6 +6,37 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-15 (pre-market scan) — all three indices trending again (ADX 27-32), no index setup; 17 stock qualifiers still earnings-blocked into Jul 30
+
+India VIX **13.75** (low — quiet backdrop). Flat into today (−₹210.90 realized from reset;
+0 open positions). Yesterday's soft pre-market board (all three <18) resolved into a mild
+down-drift regime through the session and has now firmed back into clear trend overnight:
+
+- **Indices — none qualify (all ADX≥18):** NIFTY spot 24,052.05 ADX(14) **31.70**;
+  BANKNIFTY 57,462.3 ADX **28.19**; SENSEX 77,054.94 ADX **26.91**. All well above the 18 gate
+  and higher than yesterday's EOD reads (30.75/29.39/26.01) — the compression that made 07-14
+  pre-market look range-bound has fully unwound; spot drifted modestly lower (NIFTY 24,044→24,052
+  flat, SENSEX 77,116→77,055). No index iron-condor setup on any of the three; none near the gate
+  to even re-check at the open. This is the regime the strategy is not built for.
+- **Stocks — 17 of ~50 qualify (ADX<18), lowest-first:** SBIN 11.20, ULTRACEMCO 11.60,
+  TECHM 11.64, HEROMOTOCO 12.08, BPCL 12.12, JSWSTEEL 13.66, POWERGRID 13.66, HINDUNILVR 13.68,
+  ADANIPORTS 13.91, RELIANCE 13.98, EICHERMOT 14.03, HDFCLIFE 14.10, PNB 14.17, BEL 14.23,
+  GRASIM 14.70, COALINDIA 14.93, MARUTI 15.88. Neither blocklisted name (AXISBANK/BHARTIARTL)
+  qualifies. (TATAMOTORS errored — no data, as always.) Roster ~stable vs 07-14.
+- **Earnings blocker persists:** only in-range stock expiry is the **Jul 30 monthly (15 DTE)**;
+  a Jul 15→Jul 30 hold spans Q1 (June-qtr) season, now in full swing (mid-Jul→early-Aug cluster:
+  HDFCLIFE/TECHM ~Jul 16, JSWSTEEL ~Jul 18, ULTRACEMCO ~Jul 21, RELIANCE mid-late Jul,
+  EICHERMOT/SBIN/MARUTI/ADANIPORTS ~Jul 31). No qualifier affirmatively clears → **all 17 skipped
+  on earnings grounds.** Earliest name-by-name post-report candidates (HDFCLIFE/TECHM) land ~Jul 16
+  IF Pushkar picks enter-after-report. Still awaiting Pushkar's steer (enter-after-report vs.
+  authorize hold-through-earnings vs. stand aside this cycle).
+
+**Conclusion:** no draft trade — draft-only routine, no order placed. Indices trending hard
+(no ADX<18 read to even re-check at the open); stocks remain log-and-skip on earnings. No-trade
+is the correct, guardrail-consistent outcome. Flat — no positions to manage.
+
+---
+
 ## 2026-07-14 (intraday-monitor addendum) — pre-market's range-bound board firmed away from the gate at the open; no index setup materialized
 
 Fresh open scan (VIX **13.73**, up from 13.28 pre-market): NIFTY spot 24,120.1 ADX **18.9**,
