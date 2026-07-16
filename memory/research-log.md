@@ -6,6 +6,17 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-16 (intraday-monitor addendum) — all three indices still trending, no setup; flat, nothing to manage
+
+Fresh `scan` (VIX **13.06**): NIFTY spot 24,105.05 ADX **22.45**, BANKNIFTY 57,641.05 ADX **19.78**,
+SENSEX 77,385.28 ADX **24.57** — **all `range_bound: false` (≥18)**. ADX eased slightly off the
+pre-market board (NIFTY 26.51→22.45, BANKNIFTY 23.28→19.78, SENSEX 24.31→24.57); BANKNIFTY is
+closest at 19.78 but still ~2 pts above the 18 gate — no re-check trigger. **No index entry.**
+Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no
+re-scan). Flat, 0 open positions, nothing to manage. No trade placed.
+
+---
+
 ## 2026-07-16 — pre-market scan: all three indices trending, no setup; 17 stock qualifiers still earnings-blocked
 
 India VIX **13.27** (low — the low-vol backdrop credit spreads like), but the ADX<18 entry gate
