@@ -6,6 +6,37 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-16 — pre-market scan: all three indices trending, no setup; 17 stock qualifiers still earnings-blocked
+
+India VIX **13.27** (low — the low-vol backdrop credit spreads like), but the ADX<18 entry gate
+isn't met on any index; all three read clearly trending, none near the gate to re-check at the open:
+
+- **NIFTY** — spot 24,078.5, ADX(14) **26.51** → trending. No entry.
+- **BANKNIFTY** — spot 57,757.85, ADX(14) **23.28** → trending. No entry.
+- **SENSEX** — spot 77,185.43, ADX(14) **24.31** → trending. No entry.
+
+Essentially unchanged from yesterday's EOD board (NIFTY 26.45 / BANKNIFTY 24.22 / SENSEX 24.93,
+VIX 13.27) — the mid-20s trend regime that held all of 07-15 carried overnight into 07-16. No
+index draft to carry into the open.
+
+**Stock scan — 17 qualifying (ADX<18 daily), all earnings-blocked:** SBIN 11.12, ULTRACEMCO 11.48,
+TECHM 11.64, HEROMOTOCO 11.69, BPCL 12.12, JSWSTEEL 12.98, PNB 13.31, BEL 13.34, HDFCLIFE 13.62,
+POWERGRID 13.89, RELIANCE 13.90, ADANIPORTS 13.91, HINDUNILVR 14.14, EICHERMOT 14.42, COALINDIA
+14.67, GRASIM 14.83, MARUTI 15.88 (spots/hist_vol in scan output). Nearest stock expiry is the
+**July monthly 2026-07-30 (DTE 14)** — right inside peak Q1 earnings season (~Jul 16–Aug 8), so
+essentially every name reports during the hold. Per the standing earnings guardrail + the 2026-07-07
+learnings, no name affirmatively clears (SBIN/MARUTI ~Jul 31 within 5 days of expiry = banned
+outright; the rest held blind through a pending result) → **all 17 skipped on earnings grounds**,
+same as every day this cycle. (TATAMOTORS errored in the scan — data fetch, not a signal.) Awaiting
+Pushkar's steer on enter-post-earnings-name-by-name vs stand-aside-this-cycle (flagged 07-07).
+
+**Conclusion:** no index setup (all trending, none near 18), no stock setup (all earnings-blocked).
+No-trade day by default. Draft only — no order placed per pre-market protocol. If any index settles
+<18 once the opening range prints, re-check at the open, but none is close enough today to expect it.
+No positions open, nothing to manage.
+
+---
+
 ## 2026-07-15 (intraday-monitor addendum, latest-5) — indices still trending, ADX clustered mid-20s; no index setup
 
 Fresh scan (VIX **13.35**): NIFTY spot 24,088.7 ADX **26.51**, BANKNIFTY 57,698.95 ADX **24.85**,
