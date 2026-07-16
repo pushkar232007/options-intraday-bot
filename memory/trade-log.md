@@ -12,6 +12,23 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-16 intraday-monitor (latest-3) — Position C (NIFTY Jul 21) MANAGED, stays OPEN (neither PT/SL hit, ~flat); NO new entry (NIFTY already open, BANKNIFTY DTE-blocked, SENSEX trending, stocks earnings-blocked)
+
+**Position managed against exit rules (last completed 1h candle, VIX 12.8):**
+- **Position C (NIFTY Jul 21, DTE 5 remaining, entry credit 68.79, PT ≤34.40 / SL ≥137.58):** `spot-range NIFTY` candle high 24,163.45 / low 24,131.95, current spot 24,146.85. Cost-to-close (IV 12.8): 68.29 @current / 68.56 @high / 68.11 @low. worst 68.56 < SL 137.58 AND best 68.11 > PT 34.40 → **neither threshold hit, stays OPEN.** Unrealized ≈ (68.79−68.29)×65 = **+₹32.50** — essentially flat, NIFTY still pinned mid-range between the 24000/24200 shorts. Index → intraday-only, MUST force-close by ~3:15 PM IST today.
+  `2026-07-16 intraday (latest-3) IST | NIFTY | 5 | HOLD (no exit) | SP24000/LP23900/SC24200/LC24300 | cost-to-close 68.29 vs credit 68.79 | 1 lot | neither PT≤34.40 nor SL≥137.58; force-close at EOD.`
+- **Index fresh-setup check — NIFTY still range-bound but already open; BANKNIFTY qualifies but DTE-blocked; SENSEX trending:** fresh `scan` (VIX **12.8**) — NIFTY spot 24,146.85 ADX **17.03** → `range_bound: true` (but has open Position C → one-per-instrument, skip); BANKNIFTY 57,651.45 ADX **12.28** → `range_bound: true`, no open position, BUT only expiry available is Jul 28 monthly (**DTE 12**, per today's earlier `dhan.py lookup`: no weeklies, Jul 28 sid 61886 lot 30) — far outside BANKNIFTY's ≤7-DTE near-expiry data-gathering window + intraday-only no-theta-runway → skip on DTE grounds; SENSEX 77,432.79 ADX **25.81** → trending, no entry.
+  `2026-07-16 intraday (latest-3) IST | NIFTY | 5 | SKIP | ADX 17.03<18 range_bound but already has open Position C (one-per-instrument) | — | — | no new entry.`
+  `2026-07-16 intraday (latest-3) IST | BANKNIFTY | 12 | SKIP (DTE) | Jul 28 monthly only, ADX 12.28<18 qualifies but 12 DTE ≫ ≤7-DTE near-expiry window + intraday-only no-theta-runway | — | — | no entry.`
+  `2026-07-16 intraday (latest-3) IST | SENSEX | — | SKIP (no qualifying setup) | ADX 25.81≥18 trending, VIX 12.8 | — | — | no entry.`
+- **Stock fresh-setup check — unchanged; morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (SBIN 11.12 … MARUTI 15.88) are DTE-clear (Jul 30 monthly, 14 DTE) but a Jul 16→Jul 30 hold spans peak Q1 season — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-16 intraday (latest-3) IST | STOCKS (17 qualifiers) | 14 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | no entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 18fb4e2 (07-16 latest-2 commit) after `git fetch origin main` — prior memory on `main`, no stranding. Clean fast-forward for this run's commit.
+- **Broker:** no action (Position C held, no close/new entry). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — Position C sitting flat mid-range is exactly how a range-bound condor should behave; BANKNIFTY DTE-block and stock earnings-block are recurring calendar constraints. No new signals-learnings entry needed. Position C MUST be force-closed by ~3:15 PM IST today (EOD-squareoff run handles unless PT/SL hits first).
+
+---
+
 ## 2026-07-16 intraday-monitor (latest-2) — Position C (NIFTY Jul 21) MANAGED, stays OPEN (neither PT/SL hit, ~flat); NO new entry (NIFTY already open, BANKNIFTY DTE-blocked, SENSEX trending, stocks earnings-blocked)
 
 **Position managed against exit rules (last completed 1h candle, VIX 12.82):**
