@@ -6,6 +6,20 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-16 (intraday-monitor addendum, latest-2) — NIFTY & BANKNIFTY now range-bound; Position C held (flat); no new entry available
+
+Fresh `scan` (VIX **12.82**): NIFTY spot 24,152.7 ADX **17.96** → `range_bound: true`, BANKNIFTY
+57,683.5 ADX **15.08** → `range_bound: true`, SENSEX 77,506.74 ADX **27.02** → trending. Two
+indices dropped through the 18 gate vs this morning (NIFTY 22.45→17.96, BANKNIFTY 19.78→15.08) as
+VIX eased to 12.82 — but **no new entry available**: NIFTY already holds Position C (one-per-instrument);
+BANKNIFTY qualifies on ADX but only Jul 28 monthly (DTE 12) is listed, far outside its ≤7-DTE
+near-expiry window; SENSEX still trending. **Position C (NIFTY Jul 21) managed** vs last 1h candle
+(24,142.1–24,163.5): cost-to-close 68.43 (worst 68.61 < SL 137.58, best 68.27 > PT 34.40) → stays
+OPEN, ~flat (+₹23), pinned mid-range. Stocks unchanged (17 morning qualifiers still earnings-blocked
+into Jul 30; daily ADX static, no re-scan). No trade placed. Position C force-closes at EOD.
+
+---
+
 ## 2026-07-16 (intraday-monitor addendum) — all three indices still trending, no setup; flat, nothing to manage
 
 Fresh `scan` (VIX **13.06**): NIFTY spot 24,105.05 ADX **22.45**, BANKNIFTY 57,641.05 ADX **19.78**,
