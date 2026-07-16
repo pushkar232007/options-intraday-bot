@@ -12,6 +12,20 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-16 intraday-monitor (latest) — **OPENED 1 NIFTY iron condor** (Position C; NIFTY dropped INTO range-bound intraday, ADX 16.77<18); BANKNIFTY/SENSEX still trending; 17 stock qualifiers still earnings-blocked
+
+**Positions to manage:** none at read (entered flat). `/monitor` a no-op before this entry.
+- **Index fresh-setup check — NIFTY qualified, regime shift since this morning:** fresh `market_data.py scan` (VIX **12.95**) — NIFTY spot 24,114.8 ADX **16.77** → `range_bound: true`; BANKNIFTY 57,591.45 ADX **18.07** → false (just above the gate); SENSEX 77,389.23 ADX **24.21** → false. NIFTY dropped through the 18 gate vs this morning's 22.45 (first index qualifier since the 07-13 entries). Re-confirmed via `adx NIFTY` = 16.77. No open NIFTY position → qualifies for entry. BANKNIFTY at 18.07 is a whisker above (not range_bound); SENSEX clearly trending — neither entered.
+- **ENTERED NIFTY iron condor (Position C):** spot 24,112.5, ATM 24100 (step 50). Nearest NIFTY weekly is **Jul 21 (DTE 5)** — Jul 17 (Fri) and Jul 23 (Thu) return no contract, so no expiry before Jul 21; DTE 5 is within the validated 1-6 range (prefer ~2 but DTE 3+ has lower drawdown). Legs (est-premium, IV=VIX 12.95, DTE 5): SP24000PE 87.68 / LP23900PE 56.84 / SC24200CE 115.95 / LC24300CE 78.00. Net credit (87.68+115.95)−(56.84+78.00) = **68.79/unit = ₹4,471.35** (1 lot, 65). PT cost-to-close ≤34.40 (50% decay), SL ≥137.58 (2×), max loss (100−68.79)×65 = **₹2,028.65**. Index → intraday-only, MUST force-close by ~3:15 PM IST today.
+  `2026-07-16 intraday (latest) IST | NIFTY | 5 | OPEN iron condor | SP24000/LP23900/SC24200/LC24300 | net credit 68.79/unit (₹4,471.35) | 1 lot | ADX 16.77<18, VIX 12.95, spot 24,112.5; Jul 21 nearest weekly. PT≤34.40 / SL≥137.58 / max loss ₹2,028.65. Broker REJECTED DH-905 (paper authoritative).`
+- **BANKNIFTY / SENSEX:** `2026-07-16 intraday (latest) IST | BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 18.07 (just above gate) / 24.21 (trending), VIX 12.95 | — | — | neither range_bound. No entry.`
+- **Stock fresh-setup check — unchanged; morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (SBIN 11.12 … MARUTI 15.88) are DTE-clear (Jul 30 monthly, 14 DTE) but a Jul 16→Jul 30 hold spans peak Q1 season — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-16 intraday (latest) IST | STOCKS (17 qualifiers) | 14 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 17 but none earnings-clear. No entry.`
+- **Broker:** `place-spread` REJECTED with **DH-905** (Input_Exception — sandbox OMS rejects current weekly securityIds; the frozen-instrument-universe blocker documented since 07-01). Paper position logged to portfolio.md is authoritative in paper mode; broker never held the legs. **Trade Telegram sent** (per protocol — a paper position was opened).
+- **Nothing contradicted backtest expectations** — NIFTY settling <18 intraday and printing a clean 2/4-OTM condor at a low VIX (12.95) is exactly the range-bound setup this strategy trades. DH-905 broker block and the stock earnings collision are recurring, already-documented constraints. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-16 intraday-monitor — flat; NO index qualifier (all three trending, ADX 22.45/19.78/24.57, VIX 13.06); 17 stock qualifiers still ALL earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A. `/monitor` is a no-op with no open positions.
