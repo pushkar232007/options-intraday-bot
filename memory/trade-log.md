@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-16 EOD square-off — Position C (NIFTY Jul 21) FORCE-CLOSED at 68.03, realized +₹49.40 (index intraday-only, neither PT/SL hit → EOD_SQUAREOFF). Day realized +₹49.40; cumulative −₹161.50; capital ₹3,99,838.50. Flat into 07-17.
+
+**Position processed (1 index condor, force-closed per intraday-only rule):**
+- **Position C (NIFTY Jul 21, DTE 5, entry credit 68.79, PT ≤34.40 / SL ≥137.58):** final-hour candle check `spot-range NIFTY` high 24,073.55 / low 24,068.5 / spot 24,068.6 (VIX 12.88). Cost-to-close (IV 12.88, DTE 5): 68.03 @current / 68.02 @high / 68.03 @low — legs buy-back SP24000PE 104.60 + SC24200CE 96.09 − sell LP23900PE 69.19 − LC24300CE 63.47 = 68.03. worst 68.03 < SL 137.58 AND best 68.02 > PT 34.40 → **no intra-hour trigger, exit at current cost-to-close.** Index → force-closed at EOD (carry-forward is the rare exception; a barely-profitable flat condor is no reason to hold overnight gamma/gap risk). Realized = (68.79−68.03)×65 = **+₹49.40**.
+  `2026-07-16 EOD IST | NIFTY | 5 | CLOSE iron condor (EOD_SQUAREOFF) | SP24000/LP23900/SC24200/LC24300 | exit cost-to-close 68.03 vs credit 68.79 | 1 lot | index intraday-only, neither PT≤34.40 nor SL≥137.58 in final hour → force-close. Realized +₹49.40.`
+- **Day totals:** 1 index condor closed → **day realized +₹49.40**. Cumulative from reset **−₹161.50** (07-13 NIFTY −₹175.50 + SENSEX −₹35.40; 07-16 NIFTY +₹49.40). Capital **₹3,99,838.50**. Flat (0 open positions) into 07-17.
+- **No stock positions to process** — none were ever opened (17 morning qualifiers stayed earnings-blocked all day, Jul 30 monthly / peak Q1). No carry-forward.
+- **Git:** on read, local HEAD and `origin/main` both at 935528c (07-16 latest-5 commit) after `git fetch origin main` — prior memory on `main`, no stranding.
+- **Broker:** `square-off-all` (best-effort) touched only the stale expired sid=71472 Jun artifact (SELL, TRANSIT) — no strategy legs in the broker (Position C DH-905-blocked at entry, never accepted). Paper close authoritative. **EOD Telegram summary sent** (always sent on the square-off run per protocol).
+- **Nothing contradicted backtest expectations** — Position C is the textbook range-bound condor outcome: NIFTY pinned mid-range between the 24000/24200 shorts all session (entry 24,112.5 → close 24,068.6), decaying to a small +₹49.40 profit. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-16 intraday-monitor (latest-5) — Position C (NIFTY Jul 21) MANAGED, stays OPEN (neither PT/SL hit, ~flat); NO new entry (NIFTY already open, BANKNIFTY DTE-blocked, SENSEX trending, stocks earnings-blocked)
 
 **Position managed against exit rules (last completed 1h candle, VIX 12.9):**
