@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-17 (intraday-monitor addendum) — pre-market's range-bound board firmed away from the gate at the open; only BANKNIFTY range-bound (DTE-blocked); no index setup
+
+Fresh open `scan` (VIX **13.03**, up from 12.88 pre-market): NIFTY spot 24,204.65 ADX **18.47** → `range_bound: false`, BANKNIFTY 57,877.65 ADX **16.17** → `range_bound: true`, SENSEX 77,626.4 ADX **20.46** → `range_bound: false`. The pre-market REGIME SHIFT (all three <18: NIFTY 16.40 / SENSEX 17.87) did **not** hold — NIFTY and SENSEX both firmed back above the 18 gate as spot ticked up ~130 pts / ~440 pts once the opening range printed (same "gate-hugger firms away rather than settling below" pattern seen 07-13/07-14). **No enterable index setup:** NIFTY/SENSEX now trending; BANKNIFTY qualifies on ADX (16.17) but only Jul 28 monthly (**DTE 11**) is listed, far outside its ≤7-DTE near-expiry window → DTE-blocked as always. Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.
+
+---
+
 ## 2026-07-17 — pre-market scan: REGIME SHIFT — all three indices range-bound; NIFTY & SENSEX are clean open candidates; stocks still earnings-blocked
 
 India VIX **12.88** (low — the low-vol backdrop credit spreads like). After ~a week of all-trending
