@@ -6,6 +6,42 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-17 — pre-market scan: REGIME SHIFT — all three indices range-bound; NIFTY & SENSEX are clean open candidates; stocks still earnings-blocked
+
+India VIX **12.88** (low — the low-vol backdrop credit spreads like). After ~a week of all-trending
+sessions (indices clustered mid-20s ADX), the chop regime is back: **all three indices read
+range-bound at the pre-market board** — first time all three qualify together in over a week.
+
+- **NIFTY** — spot 24,072.75, ADX(14) **16.40** → range-bound ✓. Clean iron-condor candidate.
+- **BANKNIFTY** — spot 57,582.25, ADX(14) **10.68** → range-bound ✓ (deeply so), BUT only the
+  Jul 28 monthly is listed = **DTE 11**, far outside its ≤7-DTE near-expiry data-gathering window →
+  **skip on DTE grounds** (same structural block as every prior day; monthly-only, no weeklies).
+- **SENSEX** — spot 77,186.87, ADX(14) **17.87** → range-bound ✓ (just under the 18 gate — a
+  gate-hugger, re-check at the open since it could firm back above 18 like 07-13/07-14 did).
+
+**Index conclusion:** NIFTY (16.40) and SENSEX (17.87) are the two candidate iron-condor setups to
+carry into the market-open routine — but SENSEX is right at the gate, so confirm ADX<18 once the
+opening range prints before entering. BANKNIFTY qualifies on ADX yet again but stays DTE-blocked.
+Draft only, no trade placed per pre-market protocol. Candidate strikes (2/4 OTM off spot, for the
+open routine to refine): **NIFTY** (step 50) SP24000 / LP23900 / SC24150 / LC24250, nearest weekly
+~Jul 21 (DTE ~4; verify listing at open, prefer ~2 DTE if a nearer one exists); **SENSEX** (step 100)
+SP77000 / LP76800 / SC77400 / LC77600, nearest weekly ~Jul 21–23 (confirm via `dhan.py lookup` at open).
+Known sandbox blockers (DH-905/DH-906) may reject broker orders — portfolio.md-first, broker best-effort.
+
+**Stock scan:** 17 qualifiers, ADX 11.05–16.17 (most range-bound first): SBIN 11.05, ULTRACEMCO 11.09,
+HEROMOTOCO 11.15, TECHM 12.02, BPCL 12.35, PNB 12.80, JSWSTEEL 12.86, ADANIPORTS 12.89, BEL 13.60,
+RELIANCE 13.63, HDFCLIFE 13.74, EICHERMOT 14.03, COALINDIA 14.26, HINDUNILVR 14.32, POWERGRID 14.40,
+GRASIM 16.02, MARUTI 16.17 (TATAMOTORS errored — data fetch fail, not a signal). **All 17 remain
+earnings-blocked, unchanged from prior days:** the only in-range stock expiry is the **Jul 30 monthly
+(DTE 13)**, and Q1 (June-qtr) earnings season runs ~Jul 16–Aug 8 — entering now means holding a
+short-vol condor straight through essentially every name's result (SBIN/MARUTI ~Jul 31 within 5 days
+of expiry = hard-banned; others report during the hold). Per the standing earnings guardrail (an
+*affirmative* clear is required and none can be given this cycle) → **skip all 17 on earnings**. Same
+reference reasoning as the 2026-07-07 signals-learnings entry; no re-alerting. No positions open,
+nothing to manage — flat into today.
+
+---
+
 ## 2026-07-16 (intraday-monitor addendum, latest-5) — NIFTY & BANKNIFTY still range-bound; Position C held (flat); no new entry available
 
 Fresh `scan` (VIX **12.9**): NIFTY spot 24,087.45 ADX **16.55** → `range_bound: true`, BANKNIFTY
