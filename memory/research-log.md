@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-17 (intraday-monitor addendum, latest) — whole board firmed FURTHER into trend; even BANKNIFTY no longer range-bound; no setup; flat, nothing to manage
+
+Fresh open `scan` (VIX **13.28**, up from 13.03): NIFTY spot 24,272.55 ADX **24.18** → `range_bound: false`, BANKNIFTY 58,121.95 ADX **26.13** → `range_bound: false`, SENSEX 77,910.74 ADX **27.7** → `range_bound: false`. All three firmed further from the gate vs the first-intraday read (NIFTY 18.47→24.18, BANKNIFTY 16.17→26.13, SENSEX 20.46→27.7) on a directional up-move (NIFTY spot +68, BANKNIFTY +244, SENSEX +284). BANKNIFTY — range-bound earlier but DTE-blocked (Jul 28 monthly, DTE 11) — has now firmed clear of the ADX gate too, so the DTE-block is moot this run. **No index setup**, none near the 18 gate. Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.
+
+---
+
 ## 2026-07-17 (intraday-monitor addendum) — pre-market's range-bound board firmed away from the gate at the open; only BANKNIFTY range-bound (DTE-blocked); no index setup
 
 Fresh open `scan` (VIX **13.03**, up from 12.88 pre-market): NIFTY spot 24,204.65 ADX **18.47** → `range_bound: false`, BANKNIFTY 57,877.65 ADX **16.17** → `range_bound: true`, SENSEX 77,626.4 ADX **20.46** → `range_bound: false`. The pre-market REGIME SHIFT (all three <18: NIFTY 16.40 / SENSEX 17.87) did **not** hold — NIFTY and SENSEX both firmed back above the 18 gate as spot ticked up ~130 pts / ~440 pts once the opening range printed (same "gate-hugger firms away rather than settling below" pattern seen 07-13/07-14). **No enterable index setup:** NIFTY/SENSEX now trending; BANKNIFTY qualifies on ADX (16.17) but only Jul 28 monthly (**DTE 11**) is listed, far outside its ≤7-DTE near-expiry window → DTE-blocked as always. Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.

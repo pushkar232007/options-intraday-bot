@@ -12,6 +12,21 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-17 intraday-monitor (latest) — flat; all three indices firmed FURTHER into trend since the first intraday run; BANKNIFTY no longer even range-bound; 17 stock qualifiers still earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A. `/monitor` a no-op with no open positions.
+- **Index fresh-setup check — no qualifier; the whole board firmed into trend:** fresh `market_data.py scan` (VIX **13.28**, up from 13.03) — NIFTY spot 24,272.55 ADX **24.18** → `range_bound: false` (firmed further from the first-intraday 18.47, spot up ~68 pts); BANKNIFTY spot 58,121.95 ADX **26.13** → `range_bound: false` (was range-bound at 16.17 earlier but firmed clear through the gate on a ~244-pt rally, so now DTE-block is moot — it doesn't even qualify on ADX); SENSEX spot 77,910.74 ADX **27.7** → trending (firmed from 20.46). The pre-market REGIME SHIFT has fully unwound into a directional up-move across all three — none near the 18 gate, no re-check trigger.
+  `2026-07-17 intraday IST (latest) | NIFTY | — | SKIP (no qualifying setup) | ADX 24.18≥18 trending (first-intraday 18.47), VIX 13.28 | — | — | not range_bound. No entry.`
+  `2026-07-17 intraday IST (latest) | BANKNIFTY | — | SKIP (no qualifying setup) | ADX 26.13≥18 firmed clear of the gate (first-intraday 16.17) on a rally; DTE-block now moot | — | — | not range_bound. No entry.`
+  `2026-07-17 intraday IST (latest) | SENSEX | — | SKIP (no qualifying setup) | ADX 27.7≥18 trending (first-intraday 20.46), VIX 13.28 | — | — | not range_bound. No entry.`
+- **Stock fresh-setup check — morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (SBIN 11.05 … MARUTI 16.17) are DTE-clear (Jul 30 monthly, 13 DTE) but a Jul 17→Jul 30 hold spans peak Q1 season (~Jul 16–Aug 8) — none affirmatively earnings-clear (SBIN/MARUTI ~Jul 31 within 5 days of expiry = hard-banned; rest held through a pending result). No re-alert — steer still pending from Pushkar.
+  `2026-07-17 intraday IST (latest) | STOCKS (17 qualifiers) | 13 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 17 but none earnings-clear. No entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 8c4e89a (07-17 first-intraday commit) after `git fetch origin main` — prior memory on `main`, no stranding. Clean fast-forward for this run's commit.
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — pre-market range-bound board firming into trend once the opening range printed is the recurring gate-hugger pattern (07-13/07-14/07-17-first); no new signals-learnings entry needed.
+
+---
+
 ## 2026-07-17 intraday-monitor — flat; pre-market's NIFTY/SENSEX candidates FIRMED away from the gate at the open; only BANKNIFTY range-bound but DTE-blocked; 17 stock qualifiers still earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A. `/monitor` a no-op with no open positions.
