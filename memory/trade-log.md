@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-17 EOD square-off — flat all day; NO positions to close or carry; NO trade placed. Day realized ₹0; cumulative −₹161.50; capital ₹3,99,838.50. Flat into 07-20 (Mon).
+
+**Positions to process:** none — entered 07-17 flat (0 open paper positions) after the 07-16 EOD force-close of Position C (NIFTY +₹49.40), and every 07-17 intraday-monitor run (6 checks) found no qualifying setup, so nothing opened today. No index position to force-close, no stock condor to carry forward — the square-off is a clean no-op on positions.
+- **Index side:** the day whipsawed but never delivered a tradeable setup. Pre-market flagged a rare REGIME SHIFT (all three range-bound: NIFTY ADX 16.40 / BANKNIFTY 10.68 / SENSEX 17.87), but the gate-huggers FIRMED away from 18 once the opening range printed (the recurring 07-13/07-14 pattern) and the whole board then trended UP all session. Fresh EOD `scan` (VIX **13.18**): NIFTY spot 24,292.7 ADX **29.1**, BANKNIFTY spot 58,388.25 ADX **38.08**, SENSEX spot 78,080.24 ADX **35.75** — all `range_bound: false`, none near the 18 gate. Only enterable window was pre-market/early; by the open it was gone → no index entry, nothing to square off. (BANKNIFTY was range-bound early but DTE-blocked — Jul 28 monthly only, 11 DTE, no weeklies.)
+- **Stock side:** the day's 17 stock qualifiers (SBIN 11.05 … MARUTI 16.17, all ADX<18, Jul 30 monthly / 13 DTE) stayed blocked all day on the peak-Q1 earnings collision (~Jul 16–Aug 8) — SBIN/MARUTI ~Jul 31 within 5 days of expiry hard-banned; rest held through a pending result. None affirmatively earnings-clear. No stock condor was ever opened, so nothing to carry forward.
+  `2026-07-17 EOD IST | ALL | — | NO-OP (flat, nothing to close/carry) | 0 open positions all day; no qualifying entry (indices firmed off the gate into an up-trend, 17 stock qualifiers earnings-blocked) | — | — | clean flat EOD.`
+- **Day totals:** 0 trades closed today → **day realized ₹0**. Cumulative from reset unchanged at **−₹161.50** (07-13 NIFTY −₹175.50 + SENSEX −₹35.40; 07-16 NIFTY +₹49.40). Capital **₹3,99,838.50**. Flat into 07-20 (Mon; 07-18/07-19 weekend).
+- **Git:** on read, local HEAD and `origin/main` both at b0c7ceb (07-17 latest-5 commit) after `git fetch origin main` — prior memory on `main`, no stranding.
+- **Broker:** `square-off-all` (best-effort) touched only the stale expired sid=71472 Jun artifact (SELL, TRANSIT) — no strategy legs in the broker (paper tracking authoritative). **EOD Telegram summary sent** (always sent on the square-off run per protocol).
+- **Nothing contradicted backtest expectations** — a full-session stand-aside (a pre-market range-bound board that firms into trend at the open + a stock earnings-season block) is an expected no-trade regime, not a thesis break. Both patterns are already documented in signals-learnings. No new entry.
+
+---
+
 ## 2026-07-17 intraday-monitor (latest-5) — flat; all three indices still trending (ADX 29.1/38.08/35.75, VIX 13.18); board near-unchanged on a firmer spot; 17 stock qualifiers still earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A. `/monitor` a no-op with no open positions.
