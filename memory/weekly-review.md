@@ -6,6 +6,82 @@ investigate — not as an automatic trigger to change `memory/strategy.md`.
 
 ---
 
+## Week of 2026-07-13 (Mon 07-13 → Fri 07-17) — 3 index trades (first index condors to actually execute in-window since the reset), all EOD-forced closes, week −₹161.50; WR 1/3 = 33% BUT a 3-trade artifact, not drift — ON TRACK, no strategy change. Stocks 0 (earnings-blocked all week), BANKNIFTY 0.
+
+**Formal weekly-review routine ran 2026-07-17 (Fri).** The week produced the **first index
+condors since the 07-07 capital reset that actually opened AND closed inside their window** — three
+of them, all forced shut at EOD by the index intraday-only rule (none hit PT or SL). Small sample,
+small money, but the combined program is finally off zero on the index side. Stocks stayed shut out
+all five sessions (earnings collision, see below); BANKNIFTY never qualified in-window.
+
+**The week's tally (indices — NIFTY/SENSEX validated; BANKNIFTY separate below):**
+- Trade count: **3** (index 3, stock 0). All three index, all entered & closed same-day, forced at
+  EOD (intraday-only rule) — on none did cost-to-close reach PT (50% decay) or SL (2×); each drifted
+  slightly into a short strike and closed at a small P&L.
+  - **A — NIFTY Jul 14 (DTE 1), entered 07-13, −₹175.50.** Spot drifted ~58 pts up into the 24250 short call.
+  - **B — SENSEX Jul 16 (DTE 3), entered 07-13, −₹35.40.** Spot drifted ~219 pts up to just above the 77600 short call.
+  - **C — NIFTY Jul 21 (DTE 5), entered 07-16, +₹49.40.** Stayed pinned mid-range between the 24000/24200 shorts — textbook condor outcome.
+- Win rate: **1/3 = 33%** (index). **Below the 65% floor, but on a 3-trade sample it carries no
+  signal** — the "below 65% for 2+ weeks" investigate-trigger needs a meaningful sample, and 3 forced
+  EOD closes where nothing hit PT/SL is noise, not an edge read. The two losses (−175.50, −35.40)
+  are normal small range-bound drift caught by the EOD force-close, not stop-outs.
+- P&L: **−₹161.50** for the week (per-trade avg **−₹53.83**). Trivial vs capital (−0.04%). Capital
+  **₹3,99,838.50**; realized-from-reset **−₹161.50** (this week IS the entire from-reset P&L — the
+  book was flat-since-reset until 07-13).
+- Drawdown / risk control: no position ever approached SL; max single loss −₹175.50 (well inside the
+  ₹4,045.60 max-loss on Position A). Circuit breaker disabled (paper). Nothing to flag.
+
+**vs. backtest expectations (~9/week combined, 89% WR stocks / 70-79% indices):**
+- **Frequency: 3 vs ~9/week — below pace, fully explained, not a drift signal.** Per protocol, a low
+  count with ADX elevated most of the week = trending market = fewer qualifiers = expected. Indices
+  only dipped sub-18 in two narrow intraday windows all week (07-13 open, 07-16 midday); every other
+  scan across all five sessions read trending (ADX mid-20s→high-30s). Stocks — the other ~7-8/week of
+  the combined figure — were **100% earnings-blocked every session** (see below). So the achievable
+  count was ~indices-only, and indices barely qualified.
+- **Win rate: 1/3 index — noise, don't compare to the 70-79% band yet.** Sample far too small. Worth
+  noting the *mechanism*: all three closed at EOD because the intraday-only rule forces the book flat
+  before theta finishes working, so a range-bound day that drifts a touch into a short by 3:15 closes
+  at a small loss even though the position was never in real trouble. That's structural to trading
+  index condors intraday, not an edge failure — but see watch item 1.
+- **Stocks: 0 — the earnings block held the entire week.** Same collision as the prior two weeks: the
+  only in-range expiry is the **Jul 30 monthly**, and a hold into it spans **peak Q1 season (~Jul 16–
+  Aug 8)**. 17 names cleared ADX<18 + DTE daily (SBIN 11.05 … MARUTI 16.17) but none could be
+  affirmatively earnings-cleared (SBIN/MARUTI ~Jul 31 within 5 days of expiry = banned; rest held
+  through a pending result). Pushkar's steer (enter post-earnings name-by-name / hold-through /
+  stand-aside) is **still pending** — see watch item 2.
+
+**Grade: ON TRACK — no drift to act on.** The index side finally executed and behaved as designed
+(C is a clean textbook win; A/B are small drift losses inside SL). The 33% WR is a 3-trade artifact,
+not a trend — do NOT read it as the WR drifting below the band, and do NOT touch strategy.md (per
+protocol: even real drift → investigate, never edit on the spot; here there is no real drift). The
+combined ~40/month cadence remains theoretical because stocks are still shut out on the calendar.
+
+**BANKNIFTY (tracked separately per strategy.md — do NOT blend into the figures above):** **0 trades,
+0 new near-expiry data points this week.** BANKNIFTY qualified on ADX several times (dipped <18 intraday
+on 07-16 and 07-17-first) but only the **Jul 28 monthly** was listed (11-12 DTE, no weeklies), far
+outside its ≤7-DTE data-gathering window → skipped every time on DTE grounds. Still **0 genuine
+near-expiry BANKNIFTY data points accumulated all-time**; "validated" status remains far off. Expected
+given it now trades only a monthly cycle.
+
+**Watch items for coming weeks (record, don't act):**
+1. **EOD force-close is quietly costing the index side.** All three trades this week closed at EOD
+   with neither PT nor SL hit; two were small losses purely because spot drifted a little into a short
+   by 3:15 before theta could decay the position. This is inherent to intraday-only index condors and
+   is NOT a reason to change anything yet — but track it: if a pattern of "forced-close-at-small-loss"
+   dominates over several weeks, it's worth asking whether the index intraday-only rule is leaving
+   edge on the table vs. the multi-day hold that stocks use. Record only; no action.
+2. **⚠ Pushkar's earnings-season steer is STILL open (now ~10 days).** Same binding blocker as the
+   prior two weekly reviews — the whole stock program (the bulk of the ~40/month cadence) has been
+   earnings-blocked for its entire live window since unlock. Re-surface it; until answered the book
+   stays index-only and thin.
+3. **Index ADX drought easing but choppy.** Sub-18 windows did appear this week (07-13, 07-16) after
+   ~3 weeks of drought — the regime is loosening enough to occasionally qualify. Keep the 18 threshold
+   untouched; just note that range-bound index days are starting to return.
+4. **Broker execution still non-functional** (DH-905 unknown securityIds). portfolio.md remains
+   authoritative; every trade this week was paper-tracked, broker never held the legs.
+
+---
+
 ## Week of 2026-07-06 (Mon 07-06 → Thu 07-09) — 0 trades: indices trending ALL week, every stock qualifier earnings-blocked (Jul 30 monthly ∩ Q1 season) with Pushkar's steer still pending — INCOMPLETE, on track, no drift; the pending earnings decision is now the binding blocker
 
 **Formal weekly-review routine ran 2026-07-09 (Thu)** and confirmed the grade below — nothing
