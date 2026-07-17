@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-17 (intraday-monitor addendum, latest-2) — all three indices still trending; BANKNIFTY firmed hard; no setup; flat, nothing to manage
+
+Fresh `scan` (VIX **13.28**): NIFTY spot 24,247.85 ADX **26.86** → `range_bound: false`, BANKNIFTY 58,047.75 ADX **33.8** → `range_bound: false`, SENSEX 77,889.71 ADX **32.05** → `range_bound: false`. Unchanged-to-firmer vs the prior addendum (NIFTY 24.18→26.86, BANKNIFTY 26.13→33.8, SENSEX 27.7→32.05) with spot near-flat — the directional up-move regime is holding, none near the 18 gate. **No index setup.** Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.
+
+---
+
 ## 2026-07-17 (intraday-monitor addendum, latest) — whole board firmed FURTHER into trend; even BANKNIFTY no longer range-bound; no setup; flat, nothing to manage
 
 Fresh open `scan` (VIX **13.28**, up from 13.03): NIFTY spot 24,272.55 ADX **24.18** → `range_bound: false`, BANKNIFTY 58,121.95 ADX **26.13** → `range_bound: false`, SENSEX 77,910.74 ADX **27.7** → `range_bound: false`. All three firmed further from the gate vs the first-intraday read (NIFTY 18.47→24.18, BANKNIFTY 16.17→26.13, SENSEX 20.46→27.7) on a directional up-move (NIFTY spot +68, BANKNIFTY +244, SENSEX +284). BANKNIFTY — range-bound earlier but DTE-blocked (Jul 28 monthly, DTE 11) — has now firmed clear of the ADX gate too, so the DTE-block is moot this run. **No index setup**, none near the 18 gate. Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.
