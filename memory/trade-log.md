@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-17 intraday-monitor (latest-5) — flat; all three indices still trending (ADX 29.1/38.08/35.75, VIX 13.18); board near-unchanged on a firmer spot; 17 stock qualifiers still earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A. `/monitor` a no-op with no open positions.
+- **Index fresh-setup check — no qualifier; the whole board is still trending:** fresh `market_data.py scan` (VIX **13.18**) — NIFTY spot 24,292.7 ADX **29.1** → `range_bound: false`; BANKNIFTY spot 58,388.25 ADX **38.08** → `range_bound: false`; SENSEX spot 78,080.24 ADX **35.75** → trending. Near-unchanged vs the prior addendum (NIFTY 30.25→29.1, BANKNIFTY 35.06→38.08, SENSEX 39.44→35.75) with spot ticking a touch firmer (NIFTY 24,273→24,293, BANKNIFTY 58,090→58,388, SENSEX 77,985→78,080) — the directional up-move regime is holding into the close, none anywhere near the 18 gate. No entry.
+  `2026-07-17 intraday IST (latest-5) | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 29.1/38.08/35.75 all ≥18, VIX 13.18 | — | — | all trending, none near the 18 gate. No entry.`
+- **Stock fresh-setup check — morning's 17 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 17 qualifiers (SBIN 11.05 … MARUTI 16.17) are DTE-clear (Jul 30 monthly, 13 DTE) but a Jul 17→Jul 30 hold spans peak Q1 season (~Jul 16–Aug 8) — none affirmatively earnings-clear (SBIN/MARUTI ~Jul 31 within 5 days of expiry = hard-banned; rest held through a pending result). No re-alert — steer still pending from Pushkar.
+  `2026-07-17 intraday IST (latest-5) | STOCKS (17 qualifiers) | 13 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 17 but none earnings-clear. No entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 5d8bda5 (07-17 latest-4 commit) after `git fetch origin main` — prior memory on `main`, no stranding. Clean fast-forward for this run's commit.
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — indices holding a directional trend is the stand-aside regime; stock earnings-block is a recurring calendar constraint. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-17 intraday-monitor (latest-4) — flat; all three indices still trending (ADX 30.25/35.06/39.44, VIX 13.21); SENSEX firmed to 39.44, NIFTY/BANKNIFTY eased marginally; 17 stock qualifiers still earnings-blocked
 
 **Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A. `/monitor` a no-op with no open positions.
