@@ -40,6 +40,12 @@ No positions open, nothing to manage — flat into today.
 
 ---
 
+## 2026-07-20 (intraday-monitor addendum) — all three indices still trending; NIFTY eased off pre-market but none near the gate; no setup; flat, nothing to manage
+
+Fresh `scan` (VIX **13.55**): NIFTY spot 24,188.35 ADX **27.59** → `range_bound: false`, BANKNIFTY 57,677.15 ADX **38.28** → `range_bound: false`, SENSEX 77,613.8 ADX **35.1** → `range_bound: false`. NIFTY eased vs the pre-market board (32.35→27.59) on a modest spot pullback (24,334→24,188); BANKNIFTY/SENSEX eased marginally too (42.35→38.28, 38.73→35.1) — the directional up-move regime is holding, none anywhere near the 18 gate to even re-check. **No index setup.** Stocks unchanged (18 morning qualifiers still earnings-blocked into Jul 30, DTE 10; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.
+
+---
+
 ## 2026-07-17 (intraday-monitor addendum, latest-5) — all three indices still trending; board near-unchanged on a firmer spot; no setup; flat, nothing to manage
 
 Fresh `scan` (VIX **13.18**): NIFTY spot 24,292.7 ADX **29.1** → `range_bound: false`, BANKNIFTY 58,388.25 ADX **38.08** → `range_bound: false`, SENSEX 78,080.24 ADX **35.75** → `range_bound: false`. Near-unchanged vs the prior addendum (NIFTY 30.25→29.1, BANKNIFTY 35.06→38.08, SENSEX 39.44→35.75) with spot ticking a touch firmer (NIFTY 24,273→24,293, BANKNIFTY 58,090→58,388, SENSEX 77,985→78,080) — the directional up-move regime is holding into the close, none anywhere near the 18 gate. **No index setup.** Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.

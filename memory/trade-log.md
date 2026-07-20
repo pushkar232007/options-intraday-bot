@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-20 intraday-monitor — flat; all three indices still trending (ADX 27.59/38.28/35.1, VIX 13.55); NIFTY eased off pre-market but none near the 18 gate; 18 stock qualifiers still earnings-blocked
+
+**Positions to manage:** none — flat (0 open paper positions). Nothing for the 50%/2× (index) or 25%/2.5× (stock) exit rules. Circuit breaker DISABLED in paper mode — N/A. `/monitor` a no-op with no open positions.
+- **Index fresh-setup check — no qualifier; the whole board is still trending:** fresh `market_data.py scan` (VIX **13.55**) — NIFTY spot 24,188.35 ADX **27.59** → `range_bound: false`; BANKNIFTY spot 57,677.15 ADX **38.28** → `range_bound: false`; SENSEX spot 77,613.8 ADX **35.1** → trending. NIFTY eased vs the pre-market board (32.35→27.59) as spot drifted down a touch (24,334→24,188), BANKNIFTY/SENSEX eased marginally too (42.35→38.28, 38.73→35.1) — the directional up-move regime is holding, none anywhere near the 18 gate to even re-check. No entry.
+  `2026-07-20 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 27.59/38.28/35.1 all ≥18, VIX 13.55 | — | — | all trending, none near the 18 gate. No entry.`
+- **Stock fresh-setup check — morning's 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX doesn't change intraday (didn't re-run scan-stocks per protocol). This morning's 18 qualifiers (SBIN 10.36 … INFY 17.84) are DTE-clear (Jul 30 monthly, 10 DTE) but a Jul 20→Jul 30 hold spans peak Q1 season (~Jul 16–Aug 8) — none affirmatively earnings-clear (SBIN/MARUTI ~Jul 31 within 5 days of expiry = hard-banned; rest held through a pending result). No re-alert — steer still pending from Pushkar.
+  `2026-07-20 intraday IST | STOCKS (18 qualifiers) | 10 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 8149a74 (07-20 pre-market commit) after `git fetch origin main` — prior memory on `main`, no stranding. Clean fast-forward for this run's commit.
+- **Broker:** no action (flat, nothing to place/manage). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — indices holding a directional trend is the stand-aside regime; stock earnings-block is a recurring calendar constraint. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-17 EOD square-off — flat all day; NO positions to close or carry; NO trade placed. Day realized ₹0; cumulative −₹161.50; capital ₹3,99,838.50. Flat into 07-20 (Mon).
 
 **Positions to process:** none — entered 07-17 flat (0 open paper positions) after the 07-16 EOD force-close of Position C (NIFTY +₹49.40), and every 07-17 intraday-monitor run (6 checks) found no qualifying setup, so nothing opened today. No index position to force-close, no stock condor to carry forward — the square-off is a clean no-op on positions.
