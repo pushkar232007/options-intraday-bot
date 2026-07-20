@@ -1299,3 +1299,24 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
   BANKNIFTY 57,658 ADX 28.7; SENSEX 76,675 ADX 25.08. All trending, all above the 18 gate.
   India VIX 13.36 (low-vol backdrop, but the ADX gate is the binding constraint). No entry —
   selectivity working as designed. NIFTY remains well above the gate (was 19.5 pre-market).
+
+## 2026-07-20 intraday-monitor (latest-4)
+
+`2026-07-20 ~intraday IST | NIFTY (Position D) | manage-only | HOLD (neither PT/SL) | +new-entry SKIP`
+- **Position D (NIFTY Jul 21, DTE 1) managed → stays OPEN.** VIX 13.21. Last completed 1h candle
+  high 24,250.05 / low 24,212.4 (current spot 24,244.4). Cost-to-close (BS, IV 13.21, DTE 1) =
+  (short PE24100 + short CE24300) − (long PE24000 + long CE24400):
+  - current 24,244.4: (17.63+43.45)−(5.15+16.44) = **39.49**
+  - candle high 24,250.05: (16.14+46.47)−(4.64+17.91) = **40.06**
+  - candle low 24,212.4: (24.00+33.25)−(7.62+11.70) = **37.93**
+  worst 40.06 < SL 77.02 AND best 37.93 > PT 19.26 → **no trigger**, stays OPEN. Current 39.49 vs
+  credit 38.51 → **−₹63.70 unrealized** (~flat; NIFTY pinned mid-range between the 24100/24300
+  shorts). MUST force-close at EOD (index intraday-only).
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check:** fresh `scan` (VIX 13.21) — NIFTY spot 24,244.4 ADX **14.12** `range_bound:
+  true` (eased further from the 16.38 latest-3 read) but already holds Position D → one-per-instrument
+  skip; BANKNIFTY 57,863.95 ADX **21.9** trending; SENSEX 77,674.53 ADX **25.85** trending → no
+  index entry. Stocks: 18 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 10, peak
+  Q1; daily ADX static, no mid-day re-scan) → skip all.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,838.50 unchanged; realized from reset
+  −₹161.50. 1 open position (Position D).

@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-20 (intraday-monitor addendum, latest-4) — Position D held (neither PT/SL, ~flat); NIFTY range-bound again but one-per-instrument-blocked; BANKNIFTY/SENSEX trending; no new trade
+
+Fresh `scan` (VIX **13.21**): NIFTY spot 24,244.4 ADX **14.12** → `range_bound: true` (eased further from the 16.38 latest-3 read), BANKNIFTY 57,863.95 ADX **21.9** → trending, SENSEX 77,674.53 ADX **25.85** → trending. **Position D (NIFTY Jul 21, DTE 1) managed:** last 1h candle 24,212.4–24,250.05; cost-to-close (BS, IV 13.21, DTE 1) current 39.49 / high 40.06 / low 37.93 → worst 40.06 < SL 77.02 AND best 37.93 > PT 19.26 → stays OPEN, ~flat (−₹63.70 unrealized), NIFTY pinned mid-range between the 24100/24300 shorts. No new index entry (NIFTY qualifies on ADX but already holds Position D → one-per-instrument; BANKNIFTY/SENSEX trending). Stocks unchanged (18 morning qualifiers still earnings-blocked into Jul 30, DTE 10). Position D force-closes at EOD (index intraday-only). No trade placed or closed.
+
+---
+
 ## 2026-07-20 (pre-market scan) — all three indices trending HARD (ADX 32-42), no index setup; 18 stock qualifiers still earnings-blocked into Jul 30
 
 India VIX **13.15** (low — the quiet backdrop credit spreads like), but the ADX<18 entry gate is
