@@ -6,6 +6,40 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-20 (pre-market scan) — all three indices trending HARD (ADX 32-42), no index setup; 18 stock qualifiers still earnings-blocked into Jul 30
+
+India VIX **13.15** (low — the quiet backdrop credit spreads like), but the ADX<18 entry gate is
+met on no index; all three read clearly trending, none near the gate to re-check at the open:
+
+- **NIFTY** — spot 24,334.3, ADX(14) **32.35** → trending. No entry.
+- **BANKNIFTY** — spot 58,521.4, ADX(14) **42.35** → trending. No entry.
+- **SENSEX** — spot 78,151.45, ADX(14) **38.73** → trending. No entry.
+
+The directional up-move regime that held all of 07-17 (EOD board 29.1/38.08/35.75) firmed further
+over the weekend into 07-20 — all three ADX higher, spot ticking up (NIFTY 24,293→24,334, BANKNIFTY
+58,388→58,521, SENSEX 78,080→78,151). No index iron-condor setup; none anywhere near the 18 gate to
+even re-check at the open. This is the regime the strategy is not built for.
+
+**Stock scan — 18 qualifying (ADX<18 daily), lowest-first:** SBIN 10.36, ULTRACEMCO 10.65,
+HEROMOTOCO 10.72, JSWSTEEL 11.79, PNB 11.90, HDFCLIFE 12.60, ADANIPORTS 12.67, EICHERMOT 12.70,
+BPCL 12.83, RELIANCE 12.99, HINDUNILVR 13.46, TECHM 13.96, BEL 14.01, COALINDIA 14.10, POWERGRID
+14.80, MARUTI 15.33, GRASIM 16.62, INFY 17.84 (spots/hist_vol in scan output; TATAMOTORS errored —
+no data). Neither blocklisted name (AXISBANK/BHARTIARTL) qualifies. **All 18 remain earnings-blocked,
+unchanged from prior days:** the only in-range stock expiry is the **Jul 30 monthly (DTE 10)**, and
+Q1 (June-qtr) earnings season runs ~Jul 16–Aug 8 — entering now means holding a short-vol condor
+straight through essentially every name's result (SBIN/MARUTI ~Jul 31 within 5 days of expiry =
+hard-banned; the rest report during the hold). Per the standing earnings guardrail (an *affirmative*
+clear is required and none can be given this cycle) → **skip all 18 on earnings.** Same reference
+reasoning as the 2026-07-07 signals-learnings entry; no re-alerting. Awaiting Pushkar's steer
+(enter-after-report name-by-name vs authorize hold-through-earnings vs stand aside this cycle).
+
+**Conclusion:** no index setup (all trending, none near 18), no stock setup (all earnings-blocked).
+No-trade day by default. Draft only — no order placed per pre-market protocol. If any index settles
+<18 once the opening range prints, re-check at the open, but none is close enough today to expect it.
+No positions open, nothing to manage — flat into today.
+
+---
+
 ## 2026-07-17 (intraday-monitor addendum, latest-5) — all three indices still trending; board near-unchanged on a firmer spot; no setup; flat, nothing to manage
 
 Fresh `scan` (VIX **13.18**): NIFTY spot 24,292.7 ADX **29.1** → `range_bound: false`, BANKNIFTY 58,388.25 ADX **38.08** → `range_bound: false`, SENSEX 78,080.24 ADX **35.75** → `range_bound: false`. Near-unchanged vs the prior addendum (NIFTY 30.25→29.1, BANKNIFTY 35.06→38.08, SENSEX 39.44→35.75) with spot ticking a touch firmer (NIFTY 24,273→24,293, BANKNIFTY 58,090→58,388, SENSEX 77,985→78,080) — the directional up-move regime is holding into the close, none anywhere near the 18 gate. **No index setup.** Stocks unchanged (17 morning qualifiers still earnings-blocked into Jul 30; daily ADX static, no re-scan). Flat, 0 open positions, nothing to manage. No trade placed.
