@@ -12,6 +12,21 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-20 intraday-monitor (latest-3) — **Position D (NIFTY Jul 21) MANAGED, stays OPEN** (neither PT/SL hit; ~flat, −₹40.30 unrealized); NIFTY range-bound again (ADX 16.38) but already holds Position D → one-per-instrument skip; BANKNIFTY/SENSEX trending; 18 stock qualifiers still earnings-blocked; NO new trade, NO close
+
+**Positions to manage:** Position D (NIFTY Jul 21 iron condor SP24100/LP24000/SC24300/LC24400, credit 38.51/unit, 1 lot 65).
+- **`/monitor` Position D — stays OPEN:** last completed 1h candle (`spot-range NIFTY`) high 24,199.9 / low 24,166.5; current spot 24,167.15, VIX 13.43, DTE 1 remaining. Cost-to-close (BS, IV 13.43, DTE 1) = (SP+SC buy-back) − (LP+LC sell): CURRENT (37.98+22.09)−(13.82+7.12)=**39.13**; @HIGH (28.08+30.48)−(9.44+10.65)=**38.47**; @LOW (38.2+21.95)−(13.92+7.06)=**39.17**. worst_cost 39.17 < SL 77.02 AND best_cost 38.47 > PT 19.26 → **no intra-candle trigger, OPEN.** Unrealized (38.51−39.13)×65 = **−₹40.30** (~flat). Index → force-closes at EOD today.
+  `2026-07-20 intraday IST (latest-3) | NIFTY | 1 | HOLD iron condor (neither PT/SL hit) | SP24100/LP24000/SC24300/LC24400 | cost-to-close 39.13 vs credit 38.51 | 1 lot (65) | worst 39.17<SL 77.02 & best 38.47>PT 19.26. ~flat −₹40.30 unrealized. Force-close at EOD.`
+- **Index fresh-setup check — NIFTY qualifies on ADX but blocked one-per-instrument:** fresh `scan` (VIX **13.43**) — NIFTY spot 24,167.15 ADX **16.38** → `range_bound: true` but already holds Position D → skip (one condor per instrument). BANKNIFTY spot 57,622.6 ADX **27.41** → trending; SENSEX spot 77,595.55 ADX **26.14** → trending. No new index entry.
+  `2026-07-20 intraday IST (latest-3) | NIFTY/BANKNIFTY/SENSEX | — | SKIP (NIFTY one-per-instrument; BN/SX trending) | NIFTY ADX 16.38<18 but holds Position D; BANKNIFTY 27.41 / SENSEX 26.14 ≥18, VIX 13.43 | — | — | no new entry.`
+- **Stock fresh-setup check — morning's 18 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX static intraday (no re-scan). 18 qualifiers (SBIN 10.36 … INFY 17.84) DTE-clear (Jul 30 monthly, 10 DTE) but a Jul 20→Jul 30 hold spans peak Q1 season (~Jul 16–Aug 8) — none affirmatively earnings-clear (SBIN/MARUTI ~Jul 31 within 5 days of expiry hard-banned; rest held through a pending result). No re-alert — steer still pending.
+  `2026-07-20 intraday IST (latest-3) | STOCKS (18 qualifiers) | 10 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 18 but none earnings-clear. No entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 04d945c (07-20 intraday-monitor latest-2 commit) after `git fetch origin main` — prior memory on `main`, no stranding.
+- **Broker:** no order this run (no close, no new entry). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — a NIFTY condor sitting ~flat mid-range while the other two indices trend is exactly the expected regime. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-20 intraday-monitor (latest-2) — **OPENED 1 NIFTY iron condor (Position D)**; NIFTY dropped INTO range-bound (ADX 17.18<18, VIX 13.35, spot 24,209.3), first index qualifier this session; BANKNIFTY/SENSEX still trending; 18 stock qualifiers still earnings-blocked
 
 **Positions to manage:** none at start — entered flat (0 open). `/monitor` a no-op on entry.

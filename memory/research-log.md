@@ -40,6 +40,12 @@ No positions open, nothing to manage — flat into today.
 
 ---
 
+## 2026-07-20 (intraday-monitor addendum, latest-3) — Position D held (neither PT/SL hit, ~flat); NIFTY range-bound again but one-per-instrument-blocked; BANKNIFTY/SENSEX trending; no new trade
+
+Fresh `scan` (VIX **13.43**): NIFTY spot 24,167.15 ADX **16.38** → `range_bound: true` (still below the gate, eased from the 17.18 entry read), BANKNIFTY 57,622.6 ADX **27.41** → trending, SENSEX 77,595.55 ADX **26.14** → trending. **Position D (NIFTY Jul 21) managed:** last 1h candle 24,166.5–24,199.9; cost-to-close (BS, IV 13.43, DTE 1) worst 39.17 < SL 77.02 and best 38.47 > PT 19.26 → stays OPEN, ~flat (−₹40.30 unrealized), NIFTY pinned mid-range between the 24100/24300 shorts. No new index entry (NIFTY qualifies on ADX but already holds Position D → one-per-instrument; BANKNIFTY/SENSEX trending). Stocks unchanged (18 morning qualifiers still earnings-blocked into Jul 30, DTE 10). Position D force-closes at EOD (index intraday-only). No trade placed or closed.
+
+---
+
 ## 2026-07-20 (intraday-monitor addendum, latest-2) — NIFTY dropped INTO range-bound (ADX 17.18<18); OPENED Position D (NIFTY iron condor); BANKNIFTY/SENSEX still trending
 
 Fresh `scan` + `adx NIFTY` re-check (VIX **13.35**): NIFTY spot 24,209.3 ADX **17.18** → `range_bound: true` ✓ — dropped below the 18 gate for the first time this session after easing steadily all day (pre-market 32.35 → 27.59 → 21.19 → **17.18**). BANKNIFTY 57,652.5 ADX **30.44** and SENSEX 77,673.29 ADX **26.74** both still trending. **Entered 1 NIFTY iron condor (Position D):** Jul 21 (DTE 1, nearest weekly) SP24100/LP24000/SC24300/LC24400, 1 lot, net credit 38.51/unit (₹2,503.15), PT ≤19.26 / SL ≥77.02, max loss ₹3,996.85 — index intraday-only, force-close at EOD. Broker DH-905 rejected (paper authoritative). Stocks unchanged (18 morning qualifiers still earnings-blocked into Jul 30, DTE 10). Trade Telegram sent.
