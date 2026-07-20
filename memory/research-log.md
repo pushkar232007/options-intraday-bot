@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-20 (intraday-monitor addendum, latest-5) — Position D held (neither PT/SL, ~flat +₹40.95); NIFTY range-bound again but one-per-instrument-blocked; BANKNIFTY/SENSEX trending; no new trade
+
+Fresh `scan` (VIX **12.99**): NIFTY spot 24,229.65 ADX **12.03** → `range_bound: true` (eased further from the 14.12 latest-4 read), BANKNIFTY 58,004.75 ADX **22.57** → trending, SENSEX 77,780.71 ADX **18.93** → trending (just above the gate). **Position D (NIFTY Jul 21, DTE 1) managed:** last 1h candle 24,232.75–24,259.1; cost-to-close (BS, IV 12.99, DTE 1) current 37.88 / high 40.24 / low 38.06 → worst 40.24 < SL 77.02 AND best 37.88 > PT 19.26 → stays OPEN, ~flat (+₹40.95 unrealized, now slightly green), NIFTY pinned mid-range between the 24100/24300 shorts. No new index entry (NIFTY qualifies on ADX but already holds Position D → one-per-instrument; BANKNIFTY/SENSEX trending). Stocks unchanged (18 morning qualifiers still earnings-blocked into Jul 30, DTE 10). Position D force-closes at EOD (index intraday-only). No trade placed or closed.
+
+---
+
 ## 2026-07-20 (intraday-monitor addendum, latest-4) — Position D held (neither PT/SL, ~flat); NIFTY range-bound again but one-per-instrument-blocked; BANKNIFTY/SENSEX trending; no new trade
 
 Fresh `scan` (VIX **13.21**): NIFTY spot 24,244.4 ADX **14.12** → `range_bound: true` (eased further from the 16.38 latest-3 read), BANKNIFTY 57,863.95 ADX **21.9** → trending, SENSEX 77,674.53 ADX **25.85** → trending. **Position D (NIFTY Jul 21, DTE 1) managed:** last 1h candle 24,212.4–24,250.05; cost-to-close (BS, IV 13.21, DTE 1) current 39.49 / high 40.06 / low 37.93 → worst 40.06 < SL 77.02 AND best 37.93 > PT 19.26 → stays OPEN, ~flat (−₹63.70 unrealized), NIFTY pinned mid-range between the 24100/24300 shorts. No new index entry (NIFTY qualifies on ADX but already holds Position D → one-per-instrument; BANKNIFTY/SENSEX trending). Stocks unchanged (18 morning qualifiers still earnings-blocked into Jul 30, DTE 10). Position D force-closes at EOD (index intraday-only). No trade placed or closed.
