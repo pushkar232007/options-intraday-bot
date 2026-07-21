@@ -12,6 +12,22 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-21 intraday-monitor — **OPENED 1 NIFTY iron condor (Position E)**; NIFTY dropped deeply range-bound (ADX 11.46<18, VIX 12.89, spot 24,227.6), only index qualifier; took Jul 28 (DTE 7) not 0-DTE Jul 21; BANKNIFTY/SENSEX trending; 20 stock qualifiers still earnings-blocked
+
+**Positions to manage:** none at start — entered flat (0 open). `/monitor` a no-op on entry.
+- **Index fresh-setup check — NIFTY QUALIFIED:** fresh `market_data.py scan` then `adx NIFTY` re-check (VIX **12.89**) — NIFTY spot 24,227.6 ADX **11.46** → `range_bound: true` ✓ (deeply so; collapsed further from the pre-market 9.77 board region, well below the 18 gate). BANKNIFTY spot 57,996.5 ADX **22.75** → trending; SENSEX spot 77,722.5 ADX **19.63** → trending (the pre-market gate-hugger at 17.34 firmed back above 18 once the opening range printed — recurring 07-13/07-14/07-17 pattern; its Jul 23 DTE-2 candidate off the table). Only NIFTY qualifies.
+- **ENTERED NIFTY iron condor (Position E):** re-confirmed ADX 11.46<18. **Expiry decision — took Jul 28 (DTE 7), NOT the 0-DTE Jul 21:** nearest listed weekly is today's Jul 21 (0-DTE, expiry day — expiry-day gamma/liquidity risk, guardrail says avoid; verified sid 57348), Jul 23 does not exist (lookup: "No contract found"), next weekly is Jul 28 (DTE 7, verified sid 63947 lot 65). Per the guardrail (avoid same-day-expiry) + house precedent (07-14 guidance: prefer the next weekly, "don't reflexively sell the 0-DTE") → Jul 28. DTE 7 acceptable (backtest: DTE 3+ lower drawdown); position force-closes at EOD today anyway. Structure centered at nearest strike 24250 (step 50), shorts ±2 / longs ±4: **SP24150/LP24050/SC24350/LC24450, 1 lot (65)**. Premium estimates (BS, IV≈12.84, DTE 7): SP 121.07 + SC 132.23 − LP 85.24 − LC 94.91 = **net credit 73.15/unit (₹4,754.75)**. PT cost-to-close ≤36.58 (50%), SL ≥146.30 (2×), max loss (100−73.15)×65 = **₹1,745.25**. Index → **intraday-only, MUST force-close at EOD today**. Paper→1 lot (sizing formula skipped).
+  `2026-07-21 intraday IST | NIFTY | 7 | OPEN iron condor | SP24150/LP24050/SC24350/LC24450 | +73.15/unit credit (₹4,754.75) | 1 lot (65) | ADX 11.46<18 range-bound, VIX 12.89, spot 24,227.6. Jul 28 (DTE 7) not 0-DTE Jul 21. PT≤36.58 SL≥146.30 maxloss ₹1,745.25. Broker DH-905 REJECTED (paper authoritative).`
+- **BANKNIFTY / SENSEX — no entry:** both trending (ADX 22.75 / 19.63 ≥18).
+  `2026-07-21 intraday IST | BANKNIFTY/SENSEX | — | SKIP (no qualifying setup) | ADX 22.75/19.63 ≥18, VIX 12.89 (SENSEX gate-hugger firmed back above 18) | — | — | both trending. No entry.`
+- **Stock fresh-setup check — morning's 20 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX static intraday (no re-scan per protocol). 20 qualifiers (HEROMOTOCO 10.35 … KOTAKBANK 17.82) DTE-clear (Jul 30 monthly, 9 DTE) but a Jul 21→Jul 30 hold spans peak Q1 season (~Jul 16–Aug 8) — none affirmatively earnings-clear (SBIN/MARUTI ~Jul 31 within 5 days of expiry hard-banned; rest held through a pending result). No re-alert — steer still pending from Pushkar.
+  `2026-07-21 intraday IST | STOCKS (20 qualifiers) | 9 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 20 but none earnings-clear. No entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 316d9ce (07-21 pre-market commit) after `git fetch origin main` — prior memory on `main`, no stranding.
+- **Broker:** `place-spread` REJECTED with **DH-905** (SELL leg; the two long BUY legs sit in TRANSIT as harmless artifacts) — the standing sandbox blocker, same as every prior entry (DH-905 has never accepted a strategy leg). Best-effort only — paper position (portfolio.md) is authoritative. **Trade Telegram SENT** (msg 302).
+- **Nothing contradicted backtest expectations** — NIFTY collapsing deeply into range-bound (ADX 11.46) on a low-VIX day and printing a clean condor setup is exactly the regime the strategy trades. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-20 EOD square-off — **Position D (NIFTY Jul 21) FORCE-CLOSED** at 38.72, realized −₹13.65 (index intraday-only, neither PT/SL hit → EOD_SQUAREOFF). Day realized −₹13.65; cumulative −₹175.15; capital ₹3,99,824.85. FLAT into 07-21.
 
 **Position processed (1 index condor, force-closed per intraday-only rule):**
