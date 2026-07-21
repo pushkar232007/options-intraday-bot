@@ -1,5 +1,30 @@
 # Signals & Learnings
 
+## 2026-07-21 — FIRST BANKNIFTY entry ever: the data-gathering carve-out finally fired (ADX<18 AND DTE≤7 aligned)
+
+Position F is the **first BANKNIFTY iron condor the bot has ever opened** — the milestone the
+2026-06-29 BANKNIFTY note anticipated ("trade BANKNIFTY in paper anyway to accumulate real
+near-expiry data points over the coming months"). It took this long because BANKNIFTY needs
+**two independent conditions to line up on the same day**, and they rarely do:
+1. **ADX(14) < 18** (range-bound) — the usual index entry gate; and
+2. **The Jul 28 monthly at DTE ≤ 7** — because BANKNIFTY is monthly-only (no weeklies, SEBI
+   removed them), so on most days its nearest expiry is DTE 11-30, far outside the ≤7-DTE
+   near-expiry window where the edge (such as it is) actually lives. Every prior qualifying-ADX
+   day this month (07-16 DTE 12, 07-17 DTE 11, etc.) was skipped purely on DTE grounds.
+
+Today (Jul 21) both aligned for the first time: ADX 17.7, Jul 28 monthly at exactly DTE 7. Entry:
+SP57700/LP57500/SC58100/LC58300, 1 lot (30), credit 153.55/unit (₹4,606.50), DTE-at-entry **7**.
+Because it's an index it's still intraday-only (force-closed at EOD), so this is a *near-expiry
+intraday* data point, not a multi-day hold — but that matches how NIFTY/SENSEX index condors run,
+and it's the kind of data the carve-out wants. **Tracking reminder (per strategy.md): assess
+BANKNIFTY's results SEPARATELY from NIFTY/SENSEX — do not blend into a combined win-rate figure.
+Its sample is known-thin (~2 genuine near-expiry data points in the whole backtest window); every
+new live data point like this one matters for eventually deciding whether BANKNIFTY earns
+"validated" status.** No thesis update — this is a normal qualifying setup, just the first for this
+instrument. Watch how it behaves vs. NIFTY on the same day (both Jul 28, both DTE 7): BANKNIFTY's
+2-strike offset is 200 pts ≈ 0.35% OTM on a ~58k index vs NIFTY's 100 pts ≈ 0.41% — comparably
+near-ATM, so a similar quiet-drift risk to the one that pinned SENSEX on 2026-07-02.
+
 ## 2026-07-07 — DTE 2-30 unlocks early-cycle entry, but the July monthly expiry COLLIDES with Q1 earnings season → all 18 stocks skipped on earnings; + fixed dhan.py stock-lookup bug
 
 First market-hours run with the DTE 2-30 cap live (commit c1b555d). Stocks are no longer
