@@ -6,6 +6,56 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-21 (pre-market scan) — REGIME SHIFT: NIFTY (9.77) & SENSEX (17.34) range-bound; SENSEX Jul 23 (DTE 2) is the clean open candidate, NIFTY expiry-caveated; 20 stock qualifiers still earnings-blocked into Jul 30
+
+India VIX **12.98** (low — the quiet backdrop credit spreads like). After a week+ of all-trending
+sessions (07-20 board 32.35/42.35/38.73), the chop is back: **two of three indices read range-bound
+at the pre-market board**, NIFTY deeply so — the softest index read since 07-17.
+
+- **NIFTY** — spot 24,238.5, ADX(14) **9.77** → range-bound ✓ (deeply; collapsed from the 07-20
+  pre-market 32.35). Qualifies clean on ADX, BUT expiry-caveated: nearest listed weekly is **today's
+  Jul 21 = 0-DTE (expiry day)** — same-day gamma/liquidity risk, guardrail says avoid 0-DTE if the
+  chain looks thin; **Jul 23 does not exist**, so the next weekly is **Jul 28 (DTE 7)**, on the far
+  side of the preferred ~2-DTE sweet spot. At the open, either accept the 0-DTE (intraday-only, closed
+  same day, so never held to expiry — but expiry-day execution cost is real) or take Jul 28 (DTE 7),
+  or skip NIFTY today. Don't reflexively sell the 0-DTE.
+- **BANKNIFTY** — spot 57,945.0, ADX(14) **19.08** → trending (just above the 18 gate). No entry;
+  DTE-blocked anyway (monthly-only, no near-expiry weekly).
+- **SENSEX** — spot 77,708.52, ADX(14) **17.34** → range-bound ✓ (gate-hugger, just under 18).
+  Nearest weekly **Jul 23 (DTE 2)** confirmed listed (sid 835690, BSE, lot 20) — right on the
+  preferred ~2-DTE sweet spot. **Best index candidate for the open**, but re-check ADX<18 once the
+  opening range prints — SENSEX has repeatedly firmed back above 18 at the open this month
+  (07-13/07-14/07-17 gate-hugger pattern), so confirm before entering.
+
+**Index candidate strikes (2/4 OTM off spot, for the open routine to refine):**
+- **SENSEX** (step 100, spot 77,708) — SP77500 / LP77300 / SC77900 / LC78100, Jul 23 (DTE 2).
+- **NIFTY** (step 50, spot 24,238) — SP24150 / LP24050 / SC24350 / LC24450, Jul 28 (DTE 7) or the
+  0-DTE Jul 21 if execution looks clean.
+Known sandbox blockers (DH-905/DH-906) may reject broker orders — portfolio.md-first, broker best-effort.
+
+**Stock scan — 20 qualifying (ADX<18 daily), lowest-first:** HEROMOTOCO 10.35, ULTRACEMCO 11.33,
+JSWSTEEL 11.63, SBIN 11.66, ADANIPORTS 12.27, HDFCLIFE 12.48, EICHERMOT 12.83, RELIANCE 12.88,
+HINDUNILVR 13.28, COALINDIA 13.43, BEL 13.47, PNB 13.52, BPCL 13.82, TECHM 14.03, POWERGRID 14.79,
+MARUTI 15.12, GRASIM 16.23, INFY 16.96, CANBK 17.35, KOTAKBANK 17.82 (spots/hist_vol in scan
+output; TATAMOTORS errored — no data). Two new vs 07-20: CANBK, KOTAKBANK. Neither blocklisted name
+(AXISBANK/BHARTIARTL) qualifies. **All 20 remain earnings-blocked:** only in-range stock expiry is
+the **Jul 30 monthly (DTE 9)**, and Q1 (June-qtr) season runs ~Jul 16–Aug 8 — SBIN/MARUTI ~Jul 31
+sit within 5 days of expiry (hard-banned outright); the rest mostly report during the hold. Per the
+standing earnings guardrail (an *affirmative* clear is required) → **skip all 20 on earnings.**
+**Note for the open routine:** several names have now likely reported (HDFCLIFE/TECHM ~Jul 16,
+JSWSTEEL ~Jul 18, ULTRACEMCO ~Jul 21, RELIANCE ~mid-late Jul) and could become genuine name-by-name
+post-earnings candidates for the ~9-day hold into Jul 30 **IF Pushkar picks enter-after-report** —
+verify each name's report date is actually behind us before considering it. Absent that steer, still
+log-and-skip. Same reference reasoning as the 2026-07-07 signals-learnings entry; no re-alerting.
+
+**Conclusion:** genuine index setup forming for the first time in days — SENSEX Jul 23 (DTE 2) is a
+clean open-entry candidate, NIFTY qualifies but is expiry-caveated (0-DTE today / Jul 28 DTE 7).
+Draft only — no order placed per pre-market protocol. **Re-check ADX at market-open once the opening
+range prints** (SENSEX especially, being a gate-hugger). Stocks remain log-and-skip on earnings.
+Flat — 0 open positions, nothing to manage.
+
+---
+
 ## 2026-07-20 (intraday-monitor addendum, latest-5) — Position D held (neither PT/SL, ~flat +₹40.95); NIFTY range-bound again but one-per-instrument-blocked; BANKNIFTY/SENSEX trending; no new trade
 
 Fresh `scan` (VIX **12.99**): NIFTY spot 24,229.65 ADX **12.03** → `range_bound: true` (eased further from the 14.12 latest-4 read), BANKNIFTY 58,004.75 ADX **22.57** → trending, SENSEX 77,780.71 ADX **18.93** → trending (just above the gate). **Position D (NIFTY Jul 21, DTE 1) managed:** last 1h candle 24,232.75–24,259.1; cost-to-close (BS, IV 12.99, DTE 1) current 37.88 / high 40.24 / low 38.06 → worst 40.24 < SL 77.02 AND best 37.88 > PT 19.26 → stays OPEN, ~flat (+₹40.95 unrealized, now slightly green), NIFTY pinned mid-range between the 24100/24300 shorts. No new index entry (NIFTY qualifies on ADX but already holds Position D → one-per-instrument; BANKNIFTY/SENSEX trending). Stocks unchanged (18 morning qualifiers still earnings-blocked into Jul 30, DTE 10). Position D force-closes at EOD (index intraday-only). No trade placed or closed.
