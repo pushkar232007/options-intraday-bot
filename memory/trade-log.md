@@ -12,6 +12,19 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-21 EOD square-off — **Positions E (NIFTY) & F (BANKNIFTY) BOTH FORCE-CLOSED** (index intraday-only; neither PT/SL hit in the final hour → EOD_SQUAREOFF); day realized **+₹55.20**; now FLAT into 07-22
+
+**Positions closed:** Position E (NIFTY Jul 28 SP24150/LP24050/SC24350/LC24450, credit 73.15/unit, 1 lot 65) + Position F (BANKNIFTY Jul 28 SP57700/LP57500/SC58100/LC58300, credit 153.55/unit, 1 lot 30, DTE-at-entry 7). Both index → force-close at EOD per intraday-only rule; carry-forward fails (both in profit but index carry-forward requires ADX<18 AND stop-to-breakeven log AND is a rare exception — default is force-close).
+- **Position E (NIFTY) — FORCE-CLOSED, EOD_SQUAREOFF:** final-hour candle (spot-range NIFTY) high 24,186.3 / low 24,182.95; current spot 24,185.35, VIX 12.62, IV 12.62, DTE 7. Cost-to-close (BS): current **72.43** / @high **72.43** / @low **72.45** → worst 72.45 < SL 146.30 AND best 72.43 > PT 36.58 → no intra-hour trigger, exit at current cost-to-close. Realized (73.15−72.43)×65 = **+₹46.80**. NIFTY pinned mid-range between the 24150/24350 shorts (entry 24,227.6 → 24,185.35, ~42 pts) — textbook flat hold.
+  `2026-07-21 EOD IST | NIFTY | 7 | CLOSE iron condor (EOD force-close, index intraday-only) | SP24150/LP24050/SC24350/LC24450 | exit 72.43 vs credit 73.15 | 1 lot (65) | +₹46.80 realized. worst 72.45<SL 146.30 & best 72.43>PT 36.58, no intra-hour trigger. EOD_SQUAREOFF.`
+- **Position F (BANKNIFTY, DTE-at-entry 7) — FORCE-CLOSED, EOD_SQUAREOFF — FIRST BANKNIFTY TRADE EVER CLOSED:** final-hour candle (spot-range BANKNIFTY) high 57,820.8 / low 57,804.95; current spot 57,833.2, VIX 12.62, IV 12.62, DTE 7. Cost-to-close (BS): current **153.27** / @high **153.28** / @low **153.30** → worst 153.30 < SL 307.10 AND best 153.27 > PT 76.78 → no intra-hour trigger, exit at current cost-to-close. Realized (153.55−153.27)×30 = **+₹8.40**. BANKNIFTY pinned mid-range between the 57700/58100 shorts (entry 57,882.05 → 57,833.2, ~49 pts) — textbook flat hold. **First near-expiry (≤7-DTE) BANKNIFTY data point: essentially flat/noise (+₹8.40), consistent with the backtest's "29 of 31 trades drift to EOD with tiny P&L" finding.**
+  `2026-07-21 EOD IST | BANKNIFTY | 7 | CLOSE iron condor (EOD force-close, index intraday-only) | SP57700/LP57500/SC58100/LC58300 | exit 153.27 vs credit 153.55 | 1 lot (30) | +₹8.40 realized. worst 153.30<SL 307.10 & best 153.27>PT 76.78, no intra-hour trigger. EOD_SQUAREOFF. First BANKNIFTY close, DTE-at-entry 7.`
+- **Day realized +₹55.20** (E +₹46.80 + F +₹8.40); cumulative from reset **−₹119.95**; capital **₹3,99,880.05**. Now **FLAT — 0 open positions** into 07-22.
+- **Broker:** `square-off-all` touched only the stale sid=71472 Jun artifact (TRANSIT: orderId 72260721105081), no strategy legs (both DH-905-blocked at entry, never in broker) — paper close authoritative.
+- **Telegram:** EOD summary sent (per protocol — EOD square-off always notifies).
+
+---
+
 ## 2026-07-21 intraday-monitor (latest-5) — **Positions E (NIFTY) & F (BANKNIFTY) BOTH MANAGED, both stay OPEN** (neither PT/SL hit; both ~flat, combined +₹22.45 unrealized); NIFTY/SENSEX trending, BANKNIFTY range-bound but one-per-instrument-blocked; 20 stock qualifiers still earnings-blocked; NO new trade, NO close
 
 **Positions to manage:** Position E (NIFTY Jul 28 SP24150/LP24050/SC24350/LC24450, credit 73.15/unit, 1 lot 65, DTE 7) + Position F (BANKNIFTY Jul 28 SP57700/LP57500/SC58100/LC58300, credit 153.55/unit, 1 lot 30, DTE 7).

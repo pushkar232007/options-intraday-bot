@@ -1,5 +1,20 @@
 # Signals & Learnings
 
+## 2026-07-21 (EOD) — FIRST BANKNIFTY near-expiry data point CLOSED: flat/noise (+₹8.40), matching backtest expectation
+
+The first-ever BANKNIFTY iron condor (Position F, opened this morning — see the entry below) was
+EOD force-closed for **+₹8.40** (exit 153.27 vs credit 153.55, DTE-at-entry 7). It was pinned
+mid-range between the 57700/58100 shorts all session (spot 57,882 → 57,833, ~49 pts, well inside
+both shorts) and never came close to PT (76.78) or SL (307.10). **This is exactly the behavior the
+2026-06-29 BANKNIFTY re-backtest flagged: "29 of 31 trades drift to EOD with tiny P&L."** So the
+first live near-expiry (≤7-DTE) data point *confirms* the drift-to-flat pattern rather than
+contradicting it — one data point, essentially noise, no edge visible yet either way. **Running
+BANKNIFTY-only tally (kept separate from validated NIFTY/SENSEX per strategy.md): 1 trade, 1 win
+(barely), +₹8.40, DTE-at-entry 7 (near-expiry).** Still nowhere near enough to judge "validated"
+status — keep accumulating. On the same day, NIFTY (Position E, also Jul 28 / DTE 7) behaved
+identically (+₹46.80, also flat mid-range) — the anticipated comparably-near-ATM quiet-drift played
+out benignly for both, no directional breach of either condor. No thesis update.
+
 ## 2026-07-21 — FIRST BANKNIFTY entry ever: the data-gathering carve-out finally fired (ADX<18 AND DTE≤7 aligned)
 
 Position F is the **first BANKNIFTY iron condor the bot has ever opened** — the milestone the
