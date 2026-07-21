@@ -12,6 +12,23 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-21 intraday-monitor (latest-3) — **Positions E (NIFTY) & F (BANKNIFTY) BOTH MANAGED, both stay OPEN** (neither PT/SL hit; both ~flat, combined +₹37.20 unrealized); NIFTY/SENSEX trending, BANKNIFTY range-bound but one-per-instrument-blocked; 20 stock qualifiers still earnings-blocked; NO new trade, NO close
+
+**Positions to manage:** Position E (NIFTY Jul 28 SP24150/LP24050/SC24350/LC24450, credit 73.15/unit, 1 lot 65, DTE 7) + Position F (BANKNIFTY Jul 28 SP57700/LP57500/SC58100/LC58300, credit 153.55/unit, 1 lot 30, DTE 7).
+- **`/monitor` Position E (NIFTY) — stays OPEN:** last completed 1h candle (`spot-range NIFTY`) high 24,188.15 / low 24,169.8; current spot 24,187.2, VIX 12.65, DTE 7. Cost-to-close (BS, IV 12.65) = (SP+SC buy-back) − (LP+LC sell): CURRENT (138.31+110.57)−(98.71+77.68)=**72.49**; @HIGH (137.9+110.93)−(98.38+77.96)=**72.49**; @LOW (146.03+104.11)−(104.84+72.69)=**72.61**. worst 72.61 < SL 146.30 AND best 72.49 > PT 36.58 → **no intra-candle trigger, OPEN.** Unrealized (73.15−72.49)×65 = **+₹42.90** (~flat; NIFTY pinned mid-range between the 24150/24350 shorts).
+  `2026-07-21 intraday IST (latest-3) | NIFTY | 7 | HOLD iron condor (neither PT/SL hit) | SP24150/LP24050/SC24350/LC24450 | cost-to-close 72.49 vs credit 73.15 | 1 lot (65) | worst 72.61<SL 146.30 & best 72.49>PT 36.58. ~flat +₹42.90 unrealized. Force-close at EOD.`
+- **`/monitor` Position F (BANKNIFTY, DTE-at-entry 7) — stays OPEN:** last completed 1h candle (`spot-range BANKNIFTY`) high 57,978.15 / low 57,873.6; current spot 57,969.7, VIX 12.65, DTE 7. Cost-to-close (BS, IV 12.65) = (SP+SC buy-back) − (LP+LC sell): CURRENT (257.98+374.4)−(190.71+287.93)=**153.74**; @HIGH (254.89+378.46)−(188.23+291.34)=**153.78**; @LOW (294.94+330.22)−(220.66+251.11)=**153.39**. worst 153.78 < SL 307.10 AND best 153.39 > PT 76.78 → **no intra-candle trigger, OPEN.** Unrealized (153.55−153.74)×30 = **−₹5.70** (~flat; BANKNIFTY pinned mid-range between the 57700/58100 shorts).
+  `2026-07-21 intraday IST (latest-3) | BANKNIFTY | 7 | HOLD iron condor (neither PT/SL hit) | SP57700/LP57500/SC58100/LC58300 | cost-to-close 153.74 vs credit 153.55 | 1 lot (30) | worst 153.78<SL 307.10 & best 153.39>PT 76.78. ~flat −₹5.70 unrealized. Force-close at EOD.`
+- **Index fresh-setup check — no new entry:** fresh `scan` (VIX **12.65**) — NIFTY spot 24,187.2 ADX **24.66** → trending (firmed from the 21.92 latest-2 read; also already holds Position E); BANKNIFTY spot 57,969.7 ADX **16.06** → `range_bound: true` but already holds Position F → one-per-instrument skip; SENSEX spot 77,456.23 ADX **33.17** → trending. No qualifier without an existing position → no new index entry.
+  `2026-07-21 intraday IST (latest-3) | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no new entry) | NIFTY ADX 24.66 trending + holds E; BANKNIFTY 16.06 range-bound but holds F (one-per-instrument); SENSEX 33.17 trending, VIX 12.65 | — | — | no new entry.`
+- **Stock fresh-setup check — morning's 20 qualifiers still SKIPPED on EARNINGS grounds:** daily ADX static intraday (no re-scan per protocol). 20 qualifiers (HEROMOTOCO 10.35 … KOTAKBANK 17.82) DTE-clear (Jul 30 monthly, DTE 9) but a Jul 21→Jul 30 hold spans peak Q1 season (~Jul 16–Aug 8) — none affirmatively earnings-clear. No re-alert — steer still pending from Pushkar.
+  `2026-07-21 intraday IST (latest-3) | STOCKS (20 qualifiers) | 9 | SKIP (earnings within/through hold) | Jul 30 expiry in peak Q1 season; no name reports cleanly | — | — | ADX<18 on all 20 but none earnings-clear. No entry.`
+- **Git:** on read, local HEAD and `origin/main` both at 9459ff4 (07-21 intraday-monitor latest-2 commit) after `git fetch origin main` — prior memory on `main`, no stranding.
+- **Broker:** no order this run (no close, no new entry). No trade placed or closed → no trade Telegram (per protocol).
+- **Nothing contradicted backtest expectations** — two index condors sitting ~flat mid-range on a low-VIX day while the qualifying instruments are either already positioned or trending is exactly the expected regime. No new signals-learnings entry needed.
+
+---
+
 ## 2026-07-21 intraday-monitor (latest-2) — **OPENED 1 BANKNIFTY iron condor (Position F, FIRST BANKNIFTY entry ever, DTE 7)**; BANKNIFTY range-bound (ADX 17.7<18) AND its Jul 28 monthly now inside the ≤7-DTE window; Position E (NIFTY) held (~flat +₹32.50); NIFTY/SENSEX trending; 20 stock qualifiers still earnings-blocked
 
 **Positions to manage:** Position E (NIFTY Jul 28 iron condor SP24150/LP24050/SC24350/LC24450, credit 73.15/unit, 1 lot 65, DTE 7).
