@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-21 (intraday-monitor addendum, latest) — Position E held (neither PT/SL, ~flat +₹16.25); NIFTY range-bound again but one-per-instrument-blocked; BANKNIFTY/SENSEX trending; no new trade
+
+Fresh `scan` (VIX **12.86**): NIFTY spot 24,189.3 ADX **15.67** → `range_bound: true` (firmed a touch from the 11.46 entry read, still well below the gate), BANKNIFTY 57,954.0 ADX **22.57** → trending, SENSEX 77,529.27 ADX **23.74** → trending. **Position E (NIFTY Jul 28, DTE 7) managed:** last 1h candle 24,185.5–24,214.7; cost-to-close (BS, IV 12.86, DTE 7) current 72.90 / high 72.82 / low 72.91 → worst 72.91 < SL 146.30 AND best 72.82 > PT 36.58 → stays OPEN, ~flat (+₹16.25 unrealized), NIFTY pinned mid-range between the 24150/24350 shorts. No new index entry (NIFTY qualifies on ADX but already holds Position E → one-per-instrument; BANKNIFTY/SENSEX trending). Stocks unchanged (20 morning qualifiers still earnings-blocked into Jul 30, DTE 9). Position E force-closes at EOD (index intraday-only). No trade placed or closed.
+
+---
+
 ## 2026-07-21 (intraday-monitor addendum) — NIFTY dropped deeply range-bound (ADX 11.46<18); OPENED Position E (NIFTY iron condor, Jul 28 DTE 7); SENSEX gate-hugger firmed back above 18; BANKNIFTY trending
 
 Fresh `scan` + `adx NIFTY` re-check (VIX **12.89**): NIFTY spot 24,227.6 ADX **11.46** → `range_bound: true` ✓ — deeply range-bound, only index qualifier. BANKNIFTY 57,996.5 ADX **22.75** → trending; SENSEX 77,722.5 ADX **19.63** → trending — the pre-market SENSEX gate-hugger (17.34) firmed back above 18 once the opening range printed (recurring 07-13/07-14/07-17 pattern), so its Jul 23 DTE-2 candidate is off the table. **Entered 1 NIFTY iron condor (Position E):** expiry decision — Jul 21 is 0-DTE today (verified listed, sid 57348), Jul 23 does NOT exist (lookup returned no contract), Jul 28 = DTE 7 (sid 63947 lot 65); took **Jul 28 (DTE 7)** not the 0-DTE per the avoid-same-day-expiry guardrail + 07-14 house precedent. SP24150/LP24050/SC24350/LC24450, 1 lot, net credit 73.15/unit (₹4,754.75), PT ≤36.58 / SL ≥146.30, max loss ₹1,745.25 — index intraday-only, force-close at EOD. Broker DH-905 rejected (paper authoritative). Stocks unchanged (20 morning qualifiers still earnings-blocked into Jul 30, DTE 9; daily ADX static, no re-scan). Trade Telegram sent (msg 302).
