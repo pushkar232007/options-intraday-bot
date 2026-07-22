@@ -12,6 +12,22 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-22 intraday-monitor (latest-2) — FLAT, NO trade: all three indices still trending, board firmed a touch further (ADX 34/33/41); `/monitor` a no-op
+
+Flat (0 open positions). `/monitor` a no-op — nothing to manage. Fresh `scan` (VIX **12.9**):
+- **NIFTY** — spot 24,038.25, ADX(14) **34.02** → trending (flat vs the 34.3 prior read). No entry.
+- **BANKNIFTY** — spot 57,284.4, ADX(14) **32.8** → trending (firmed from 29.12; pre-market 9.73 fully unwound, stays unwound). No entry.
+- **SENSEX** — spot 76,894.62, ADX(14) **40.98** → trending (firmed from 37.45). No entry.
+- Board unchanged-to-firmer vs the prior intraday read (34.3/29.12/37.45) on a slightly firmer spot; the trend regime is holding/deepening, none anywhere near the 18 gate to even re-check.
+- **Stocks:** morning scan's 22 qualifiers still earnings-blocked (Jul 30 monthly, DTE 8, peak Q1) — daily ADX static, no mid-day re-scan. Skip all on earnings.
+- Broker `orders` shows only the stale sid=71472 Jun artifact (filledQty 65, expired 2026-06-25) — no strategy legs; confirmed FLAT.
+
+**No index qualifier, no stock setup → NO trade placed, nothing to close.** Capital ₹3,99,880.05 unchanged; realized from reset −₹119.95. No Telegram. **Git clean:** on read, local HEAD and `origin/main` both at 081469c after `git fetch origin main` — prior memory on `main`, no stranding.
+
+`2026-07-22 intraday IST | ALL INDICES | — | SKIP (no entry) | — | — | — | none range-bound: NIFTY ADX 34.02, BANKNIFTY 32.8, SENSEX 40.98; VIX 12.9. Stocks earnings-blocked (Jul 30 DTE 8). Flat, /monitor no-op.`
+
+---
+
 ## 2026-07-22 intraday-monitor (latest) — FLAT, NO trade: whole board firmed FURTHER into trend (ADX 34/29/37); BANKNIFTY fully unwound its pre-market 9.73; `/monitor` a no-op
 
 Flat (0 open positions). `/monitor` a no-op — nothing to manage. Fresh `scan` (VIX **13.12**):
