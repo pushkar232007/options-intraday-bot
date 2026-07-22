@@ -1546,3 +1546,20 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   monthly, DTE 8, peak Q1; daily ADX static, no mid-day re-scan) → skip all.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat.
+
+## 2026-07-22 EOD square-off
+
+`2026-07-22 EOD IST | — | — | NO-OP (no strategy positions) | flat all day, nothing to close/carry`
+- **Flat all day, clean no-op square-off.** Entered 07-22 flat (0 open positions, capital
+  ₹3,99,880.05); every intraday-monitor run found no qualifying setup — all three indices trended
+  above the 18 gate the entire session (EOD board from latest-5: VIX 13.34, NIFTY ADX 30.51,
+  BANKNIFTY 35.97, SENSEX 38.04, all `range_bound: false`, directional down-move regime). So
+  nothing opened → nothing to force-close (index) or carry forward (stock) at EOD.
+- **Broker state:** `orders` shows only the stale sid=71472 (NIFTY-Jun2026-24000-CE, +65-net long,
+  expired 2026-06-25) sandbox test artifact — no strategy legs. `square-off-all` placed one closing
+  SELL on it (order 72260722102081, TRANSIT) — expired contract, will lapse/reject on its own, not
+  a strategy position, no escalation. Confirmed FLAT.
+- **Index force-close:** N/A (no index positions). **Stock carry-forward:** N/A (no stock positions).
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **P&L:** day realized **₹0**; cumulative from reset **−₹119.95**; capital **₹3,99,880.05**.
+  Flat into 2026-07-23. EOD Telegram summary sent.
