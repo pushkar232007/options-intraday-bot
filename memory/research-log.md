@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-22 (intraday-monitor addendum) — pre-market's BANKNIFTY candidate firmed away at the open (ADX 9.73→20.4); all three indices now trending; no setup; flat, nothing to manage
+
+Fresh open `scan` (VIX **13.01**, up from 12.6 pre-market): NIFTY spot 24,020.05 ADX **27.53** → `range_bound: false`, BANKNIFTY spot 57,265.55 ADX **20.4** → `range_bound: false`, SENSEX spot 77,099.33 ADX **31.1** → `range_bound: false`. **The pre-market standout — BANKNIFTY, deeply range-bound at ADX 9.73 with Jul 28 at DTE 6 (both gates flagged as aligning) — did NOT hold**: ADX firmed all the way back above the 18 gate to 20.4 as spot dropped ~570 pts (57,835→57,266) into the open. Same "gate-hugger firms away rather than settling below" pattern seen repeatedly this month (07-13/07-14/07-17/07-21), just a much larger swing here. NIFTY firmed too (pre-market 18.67→27.53); SENSEX unchanged-trending (26.01→31.1). **No enterable index setup** — none below 18. Would-be BANKNIFTY entry (2nd-ever) does not fire; DTE 6 was in-window but the ADX gate is not met. Stocks unchanged (22 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 8, peak Q1; daily ADX static, no re-scan). Flat, 0 open positions, `/monitor` a no-op. No trade placed.
+
+---
+
 ## 2026-07-22 — pre-market scan: BANKNIFTY the standout (deeply range-bound + DTE 6, genuine open candidate); NIFTY a gate-hugger; SENSEX trending; 22 stock qualifiers still earnings-blocked
 
 India VIX **12.6** (low — the low-vol backdrop credit spreads like). Draft only, no trade placed per protocol. Fresh `scan`:

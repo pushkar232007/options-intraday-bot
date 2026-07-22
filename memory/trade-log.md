@@ -12,6 +12,20 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-22 intraday-monitor — FLAT, NO trade: all three indices firmed into trend at the open (BANKNIFTY pre-market candidate ADX 9.73→20.4); stocks earnings-blocked; `/monitor` a no-op
+
+Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/monitor` a no-op — nothing to manage. Fresh `scan` (VIX **13.01**):
+- **NIFTY** — spot 24,020.05, ADX(14) **27.53** → trending (firmed hard from the pre-market gate-hugger 18.67). No entry.
+- **BANKNIFTY** — spot 57,265.55, ADX(14) **20.4** → trending. **The pre-market clean candidate (ADX 9.73, deeply range-bound) firmed back above the 18 gate once the opening range printed** — the recurring gate-hugger/"firms away rather than settling below" pattern, this time a large 9.73→20.4 swing on a ~570-pt spot drop (57,835→57,266). No both-gates-aligned setup after all → **no BANKNIFTY entry** (would have been the 2nd-ever entry had ADX held <18). Its only expiry Jul 28 = DTE 6 (still in the ≤7 window), but ADX gate not met.
+- **SENSEX** — spot 77,099.33, ADX(14) **31.1** → trending. No entry.
+- **Stocks:** morning scan's 22 qualifiers still earnings-blocked (only in-range expiry Jul 30 monthly, DTE 8, peak Q1 season) — daily ADX static, no mid-day re-scan per protocol. Standing operating rule holds: skip all on earnings pending Pushkar's steer.
+
+**No index qualifier, no stock setup → NO trade placed, nothing to close.** Capital ₹3,99,880.05 unchanged; realized from reset −₹119.95. No Telegram (no trade placed/closed). **Git clean:** on read, local HEAD and `origin/main` both at 473d0e5 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+`2026-07-22 intraday IST | ALL INDICES | — | SKIP (no entry) | — | — | — | none range-bound: NIFTY ADX 27.53, BANKNIFTY 20.4 (pre-market 9.73 candidate firmed away at open), SENSEX 31.1; VIX 13.01. Stocks earnings-blocked (Jul 30 DTE 8). Flat, /monitor no-op.`
+
+---
+
 ## 2026-07-21 EOD square-off — **Positions E (NIFTY) & F (BANKNIFTY) BOTH FORCE-CLOSED** (index intraday-only; neither PT/SL hit in the final hour → EOD_SQUAREOFF); day realized **+₹55.20**; now FLAT into 07-22
 
 **Positions closed:** Position E (NIFTY Jul 28 SP24150/LP24050/SC24350/LC24450, credit 73.15/unit, 1 lot 65) + Position F (BANKNIFTY Jul 28 SP57700/LP57500/SC58100/LC58300, credit 153.55/unit, 1 lot 30, DTE-at-entry 7). Both index → force-close at EOD per intraday-only rule; carry-forward fails (both in profit but index carry-forward requires ADX<18 AND stop-to-breakeven log AND is a rare exception — default is force-close).
