@@ -12,6 +12,15 @@ from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 ---
 
+## 2026-07-22 intraday-monitor (latest-5) — FLAT, NO trade: all three indices still trending, board eased marginally further (ADX 31/36/38) but nowhere near the gate; `/monitor` a no-op
+
+- **NO index trade.** Fresh `scan` (VIX 13.34): NIFTY ADX **30.51** (spot 23,989.45), BANKNIFTY **35.97** (57,111.9), SENSEX **38.04** (76,714.35) — all `range_bound: false`, eased a touch vs the prior read (33.51/38.15/42.52) on near-flat spot. None near the 18 gate → no entry.
+- **NO stock trade.** 22 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 8, peak Q1); daily ADX static → no mid-day re-scan.
+- **`/monitor` no-op** — 0 open positions. Broker `orders` shows only the stale sid=71472 Jun artifact (expired 2026-06-25), no strategy legs → confirmed FLAT.
+- Capital ₹3,99,880.05 unchanged. No trade placed/closed → no Telegram.
+
+---
+
 ## 2026-07-22 intraday-monitor (latest-4) — FLAT, NO trade: all three indices still trending, board eased marginally (ADX 34/38/43) but nowhere near the gate; `/monitor` a no-op
 
 Flat (0 open positions). `/monitor` a no-op — nothing to manage. Fresh `scan` (VIX **13.21**):
