@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-23 (intraday-monitor addendum, latest-3) — all three indices still trending, down-move regime holding on a lower spot (ADX 25/43/24); no setup; flat, nothing to manage
+
+Fresh `scan` (VIX **13.4**, up from 13.11): NIFTY spot 23,886.95 ADX **25.24** → `range_bound: false`, BANKNIFTY spot 56,502.75 ADX **42.78** → `range_bound: false`, SENSEX spot 76,548.64 ADX **24.02** → `range_bound: false`. vs the prior read (23.06/38.92/26.25) NIFTY firmed (23.06→25.24) and BANKNIFTY firmed (38.92→42.78) while SENSEX eased (26.25→24.02), spot lower across the board (NIFTY 23,946→23,887, BANKNIFTY 56,672→56,503, SENSEX 76,624→76,549) — the 07-22 directional down-move regime is holding, none anywhere near the 18 gate to even re-check (SENSEX nearest at 24.02, ~6 pts above). **No enterable index setup.** Stocks unchanged (22 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 7, peak Q1; daily ADX static, no mid-day re-scan). Broker `orders` shows only the stale sid=71472 Jun artifact (filledQty 65, expired 2026-06-25) — no strategy legs; confirmed FLAT. `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 8cc5bf6 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-23 (intraday-monitor addendum, latest-2) — all three indices still trending, NIFTY/SENSEX eased (ADX 23/39/26); no setup; flat, nothing to manage
 
 Fresh `scan` (VIX **13.11**, flat): NIFTY spot 23,946.45 ADX **23.06** → `range_bound: false`, BANKNIFTY spot 56,671.9 ADX **38.92** → `range_bound: false`, SENSEX spot 76,624.15 ADX **26.25** → `range_bound: false`. vs the prior open read (25.38/36.7/30.79) NIFTY eased (25.38→23.06) and SENSEX eased (30.79→26.25) while BANKNIFTY firmed (36.7→38.92), spot near-flat (NIFTY 23,969→23,946, BANKNIFTY 56,845→56,672, SENSEX 76,597→76,624) — the 07-22 directional down-move regime is holding, none anywhere near the 18 gate to even re-check (NIFTY nearest at 23.06, ~5 pts above). **No enterable index setup.** Stocks unchanged (22 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 7, peak Q1; daily ADX static, no mid-day re-scan). Broker `orders` shows only the stale sid=71472 Jun artifact (filledQty 65, expired 2026-06-25) — no strategy legs; confirmed FLAT. `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at fb3530e after `git fetch origin main` — prior memory on `main`, no stranding.
