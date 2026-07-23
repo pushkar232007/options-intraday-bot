@@ -6,6 +6,12 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-23 (intraday-monitor addendum) — all three indices firmed further into trend on a lower spot (ADX 29/37/34); no setup; flat, nothing to manage
+
+Fresh open `scan` (VIX **13.38**, up from 13.29 pre-market): NIFTY spot 23,896.85 ADX **28.75** → `range_bound: false`, BANKNIFTY spot 56,683.9 ADX **36.62** → `range_bound: false`, SENSEX spot 76,517.15 ADX **34.14** → `range_bound: false`. All three firmed further vs the pre-market board (NIFTY 24.25→28.75, BANKNIFTY 30.78→36.62, SENSEX 30.45→34.14) as spot dropped across the board (NIFTY 23,996→23,897, BANKNIFTY 57,127→56,684, SENSEX 76,755→76,517) — the 07-22 directional down-move regime is holding and deepening, none anywhere near the 18 gate to even re-check. **No enterable index setup.** Stocks unchanged (22 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 7, peak Q1; daily ADX static, no mid-day re-scan). Broker `orders` shows only the stale sid=71472 Jun artifact (filledQty 65, expired 2026-06-25) — no strategy legs; confirmed FLAT. `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at af82317 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-23 — pre-market scan: all three indices trending (ADX 24/31/30), no index setup; 22 stock qualifiers now at DTE 7 (final week) but still earnings-blocked into Jul 30 monthly
 
 India VIX **13.29** (low — the low-vol backdrop credit spreads like). Draft only, no trade placed per protocol. Fresh `scan`:
