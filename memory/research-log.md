@@ -6,6 +6,22 @@ entries when reading this file in a routine.
 
 ---
 
+## 2026-07-23 — pre-market scan: all three indices trending (ADX 24/31/30), no index setup; 22 stock qualifiers now at DTE 7 (final week) but still earnings-blocked into Jul 30 monthly
+
+India VIX **13.29** (low — the low-vol backdrop credit spreads like). Draft only, no trade placed per protocol. Fresh `scan`:
+
+- **NIFTY** — spot 23,996.25, ADX(14) **24.25** → `range_bound: false`, trending. No entry. (Down-move regime from 07-22 holding; eased off yesterday's EOD 30.51 but still well above the 18 gate.)
+- **BANKNIFTY** — spot 57,126.8, ADX(14) **30.78** → `range_bound: false`, trending. No entry. Its Jul 28 monthly is now DTE 5 (inside the ≤7-DTE near-expiry window), so DTE would clear — but ADX is nowhere near the gate (fully unwound from its 07-22 pre-market 9.73). Both-gates alignment does not fire today.
+- **SENSEX** — spot 76,755.05, ADX(14) **30.45** → `range_bound: false`, trending. No entry.
+
+Board eased marginally vs 07-22 EOD (NIFTY 30.51→24.25, BANKNIFTY 35.97→30.78, SENSEX 38.04→30.45) on a near-flat spot, but the directional trend regime is holding — none within re-check distance of 18. **No enterable index setup pre-market.**
+
+**Stocks:** 22 qualifiers (HDFCLIFE 10.71, HEROMOTOCO 10.92, BEL 11.26, SBIN 11.35, RELIANCE 11.6, EICHERMOT 12.13, COALINDIA 12.43, HINDUNILVR 12.44, ULTRACEMCO 12.7, ADANIPORTS 12.89, JSWSTEEL 13.32, POWERGRID 13.32, GRASIM 13.84, BPCL 14.18, INFY 14.72, MARUTI 15.52, ASIANPAINT 15.98, PNB 16.39, CANBK 16.43, NESTLEIND 16.45, KOTAKBANK 16.83, TECHM 17.67; TATAMOTORS errored). Only in-range stock expiry is the **Jul 30 monthly, now at DTE 7** — the final week of the cycle, so stocks are finally inside the near-expiry theta window the backtest edge lives in. **BUT it remains squarely inside Q1 earnings season**, so the earnings guardrail is still the binding constraint and the standing operating rule holds: **all 22 earnings-blocked pending Pushkar's steer** (enter-after-report name-by-name vs hold-through vs stand-aside — see signals-learnings 2026-07-07). Several names have very likely reported by now (Jul 23) — RELIANCE, HDFCLIFE, TECHM, JSWSTEEL, ULTRACEMCO, INFY — and would be name-by-name post-earnings candidates IF Pushkar picks option (a). Avoid any name whose result lands within 5 days of the Jul 30 expiry (SBIN ~Jul 31, MARUTI ~Jul 31 are outright-banned per the guardrail). Log for awareness, no re-alert.
+
+**Conclusion:** no-trade day by default at the open — all three indices trending (no index qualifier), all 22 stock qualifiers earnings-blocked pending steer. Re-check ADX at the open for any gate-hugger (none close today; NIFTY at 24.25 is the nearest and still ~6 pts above 18). **Git clean:** on read, local HEAD and `origin/main` both at 39c51ae after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-22 (intraday-monitor addendum, latest-5) — all three indices still trending, board eased marginally further (ADX 31/36/38); no setup; flat, nothing to manage
 
 Fresh `scan` (VIX **13.34**, up from 13.21): NIFTY spot 23,989.45 ADX **30.51** → `range_bound: false`, BANKNIFTY spot 57,111.9 ADX **35.97** → `range_bound: false`, SENSEX spot 76,714.35 ADX **38.04** → `range_bound: false`. All three eased a touch vs the prior addendum (NIFTY 33.51→30.51, BANKNIFTY 38.15→35.97, SENSEX 42.52→38.04) on a near-flat spot (NIFTY 24,004→23,989, BANKNIFTY 57,136→57,112, SENSEX flat 76,707→76,714) — the directional down-move regime is holding, none anywhere near the 18 gate to even re-check. BANKNIFTY, the deeply range-bound pre-market standout (ADX 9.73), remains fully unwound (9.73→20.4→29.12→32.8→39.87→38.15→35.97). **No enterable index setup.** Stocks unchanged (22 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 8, peak Q1; daily ADX static, no mid-day re-scan). Broker `orders` shows only the stale sid=71472 Jun artifact (filledQty 65, expired 2026-06-25) — no strategy legs; confirmed FLAT. `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 7bdbb8c after `git fetch origin main` — prior memory on `main`, no stranding.
