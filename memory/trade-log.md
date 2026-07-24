@@ -1687,3 +1687,19 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
 - **Circuit breaker:** DISABLED in paper mode — N/A.
 - **P&L:** day realized **₹0**; cumulative from reset **−₹119.95**; capital **₹3,99,880.05**.
   Flat into 2026-07-24. EOD Telegram summary sent.
+
+## 2026-07-24 intraday-monitor (latest)
+
+`2026-07-24 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three`
+- **Positions to manage:** none. Broker `orders` shows only the stale sid=71472 (NIFTY-Jun2026-24000-CE,
+  +65 long, expired 2026-06-25) sandbox test artifact — no strategy legs. Confirmed FLAT. `/monitor` a no-op.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check:** fresh `scan` (VIX 14.58) — NIFTY spot 23,616.25 ADX **39.78** `range_bound: false`;
+  BANKNIFTY 56,127.15 ADX **46.14** `range_bound: false`; SENSEX 75,490.23 ADX **39.87** `range_bound: false`.
+  All three firmed further into trend vs the prior read (33.31/42.61/32.33) on a lower spot across
+  (NIFTY 23,682→23,616, BANKNIFTY 56,186→56,127, SENSEX 75,973→75,490) — the 07-22 directional down-move
+  regime is holding and deepening, none anywhere near the 18 gate (NIFTY/SENSEX nearest at ~40, ~22 pts
+  above). No index entry. Stocks: 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 6,
+  peak Q1; daily ADX static, no mid-day re-scan) → skip all.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at e85cc24 on read.
