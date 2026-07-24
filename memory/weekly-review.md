@@ -6,6 +6,100 @@ investigate — not as an automatic trigger to change `memory/strategy.md`.
 
 ---
 
+## Week of 2026-07-20 (Mon 07-20 → Fri 07-24) — 3 trades (2 NIFTY index + 1 BANKNIFTY, 0 SENSEX, 0 stock), all EOD-forced closes, week +₹41.55; index WR 1/2 = 50% BUT n=2 noise — ON TRACK on P&L/process, with an INVESTIGATE-flag raised: index WR now sub-65% for a 2nd straight week (record + watch, no strategy change). Stocks 0 (earnings-blocked all week). BANKNIFTY +₹8.40 (only near-expiry data point ever).
+
+**Formal weekly-review routine ran 2026-07-24 (Fri).** The book opened three index condors this
+week — two NIFTY, one BANKNIFTY — all forced shut at EOD by the index intraday-only rule (none hit
+PT or SL), and finished the week a small net positive (**+₹41.55**). The three trades all landed
+early week (07-20 / 07-21); from Wed onward the market shifted into a firm directional down-move
+(the "07-22 regime") and every scan Wed–Fri read trending on all three indices, so nothing else
+qualified. Stocks stayed 100% earnings-blocked all five sessions; SENSEX never dipped sub-18.
+
+**The week's tally (indices — NIFTY/SENSEX validated; BANKNIFTY separate below):**
+- Trade count: **2 index** (both NIFTY; SENSEX 0), **0 stock**. Both entered & closed same-day,
+  forced at EOD (intraday-only rule); on neither did cost-to-close reach PT (50% decay) or SL (2×) —
+  each pinned mid-range between its shorts and closed on residual near-expiry time value.
+  - **D — NIFTY Jul 21 (DTE 1), entered 07-20, −₹13.65.** Pinned mid-range 24100/24300 all session
+    (entry spot 24,209 → 24,241); closed a hair underwater (exit 38.72 vs credit 38.51) on leftover
+    time value, not a directional breach.
+  - **E — NIFTY Jul 28 (DTE 7), entered 07-21, +₹46.80.** Pinned mid-range 24150/24350 (entry 24,228
+    → 24,185); textbook flat range-bound hold, exit 72.43 vs credit 73.15.
+- Win rate: **1/2 = 50%** (index). **On a 2-trade sample this carries no signal** on its own — but
+  see the grade: combined with last week it is the 2nd straight sub-65% week, which trips the
+  "investigate" flag by the letter of the rule (record + watch, not act). The one loss (D, −₹13.65)
+  is normal small range-bound drift caught by the EOD force-close, not a stop-out.
+- P&L: **+₹33.15** index (per-trade avg **+₹16.58**). Trivial vs capital (+0.008%).
+- Drawdown / risk control: no position ever approached SL; max single loss −₹13.65 (well inside the
+  ₹1,745 max-loss on Position D). Circuit breaker disabled (paper). Nothing to flag.
+
+**Combined week P&L (index + BANKNIFTY): +₹41.55.** Capital **₹3,99,880.05**; realized-from-reset
+**−₹119.95** (was −₹161.50 entering the week; +₹41.55 this week narrows it).
+
+**vs. backtest expectations (~9/week combined, 89% WR stocks / 70-79% indices):**
+- **Frequency: 3 vs ~9/week — below pace, fully explained, not a drift signal.** Per protocol, a low
+  count with ADX elevated most of the week = trending market = fewer qualifiers = expected. Indices
+  only dipped sub-18 in narrow windows Mon–Tue (07-20 NIFTY 17.18 midday; 07-21 NIFTY 11.46 open,
+  BANKNIFTY 17.7); every scan Wed–Fri read trending on all three (ADX mid-20s→mid-40s, the 07-22
+  down-move regime). Stocks — the other ~7-8/week of the combined figure — were **100% earnings-
+  blocked every session** (Jul 30 monthly ∩ peak Q1). So the achievable count was ~indices-only, and
+  indices only qualified early week.
+- **Win rate: 1/2 index — noise on its own, but a 2nd sub-65% week (see grade).** The one loss's
+  *mechanism* is the same recurring one: intraday-only forces the book flat at 3:15 before theta
+  finishes, so a range-bound day that drifts a touch into a short closes at a small loss even though
+  the position was never in trouble. Structural to intraday index condors, not an edge failure.
+- **Stocks: 0 — the earnings block held the entire week.** Same collision as prior weeks: only
+  in-range expiry is the **Jul 30 monthly**, a hold into it spans **peak Q1 (~Jul 16–Aug 8)**. DTE
+  compressed 10→6 across the week (final week of the cycle), 23 names cleared ADX<18 daily
+  (HDFCLIFE 10.95 … HINDZINC 17.96) but none could be affirmatively earnings-cleared. Pushkar's
+  steer (post-earnings name-by-name / hold-through / stand-aside) is **still pending** — watch item 2.
+
+**Grade: ON TRACK on P&L and process — with an INVESTIGATE-flag raised on index win rate.** The two
+NIFTY condors behaved exactly as designed (E a clean textbook win; D a benign −₹13.65 EOD drift,
+never near SL), the week netted positive, and the low frequency is the documented trending-regime +
+earnings-block combination, both expected. **However, honesty requires flagging:** index WR has now
+been below the 65% floor for **two consecutive weeks** (last week 1/3 = 33%, this week 1/2 = 50%;
+combined **2/5 = 40%** index over the two weeks), which by the letter of the task's "below 65% for
+2+ weeks = investigate" rule is an investigate-trigger. **What the investigation finds:** (a) the
+combined sample is only **5 index trades** — statistically it still carries little signal; (b) **every
+single loss across both weeks has been a sub-₹200 EOD-force-close on a small drift, never a stop-out,
+never a real directional breach** — the losses are the *intraday-only mechanism* (watch item 1), not
+an edge breakdown; (c) net index P&L over the two weeks is **−₹128.35**, i.e. essentially flat/
+trivial. So: **record and keep watching — do NOT change strategy.md** (per protocol: even real drift →
+investigate, never edit on the spot; here the "drift" is a 5-trade artifact of a known structural
+cost). If sub-65% persists a 3rd/4th week on a larger sample, that escalates watch item 1 into a real
+question about the intraday-only rule leaving edge on the table vs. the multi-day hold stocks use.
+
+**BANKNIFTY (tracked separately per strategy.md — do NOT blend into the figures above):** **1 trade,
+1 win, +₹8.40** this week — Position F (Jul 28 monthly, DTE-at-entry **7**), the **first BANKNIFTY
+condor the bot has ever opened** (the ADX<18 ∩ DTE≤7 carve-out finally aligned on 07-21). It pinned
+mid-range 57700/58100 all session and drifted to a flat EOD close — **exactly the "29 of 31 trades
+drift to EOD with tiny P&L" pattern the 2026-06-29 re-backtest flagged**, so the first live near-
+expiry data point *confirms* the drift-to-flat expectation rather than contradicting it. **All-time
+BANKNIFTY tally: 1 trade, 1 win, +₹8.40, 1 near-expiry (≤7-DTE) data point.** One point is essentially
+noise — nowhere near enough to judge "validated" status; keep accumulating.
+
+**Watch items for coming weeks (record, don't act):**
+1. **⚠ ESCALATING — index WR sub-65% two weeks running, mechanism = EOD force-close.** All 5 index
+   trades over the two weeks closed at EOD with neither PT nor SL hit; the 3 losses were all small
+   drift-into-a-short closes before theta could decay the position. This is inherent to intraday-only
+   index condors. NOT actionable on 5 trades — but it is now a *named, escalating* watch: if the
+   forced-close-at-small-loss pattern dominates over 2–3 more weeks, seriously examine whether the
+   index intraday-only rule leaves edge on the table vs. the multi-day hold stocks use (would require
+   a backtest to change, never an on-the-spot edit).
+2. **⚠ Pushkar's earnings-season steer is STILL open (now ~17 days).** Same binding blocker as the
+   last three weekly reviews — the whole stock program (the bulk of the ~40/month cadence) has been
+   earnings-blocked its entire live window since unlock. The Jul 30 cycle is now nearly over (DTE 6
+   Fri); the block will clear mechanically once Q1 season ends / the Aug cycle opens, but the standing
+   *policy* question (enter post-earnings name-by-name?) remains unanswered. Re-surface it.
+3. **Regime: firm directional down-move since 07-22.** After early-week range-bound windows, all three
+   indices trended hard Wed–Fri (the 07-22 down-move: NIFTY spot 24,038→23,616 across the week). Keep
+   the 18 threshold untouched; just note the regime is currently trending, so thin index days are
+   expected to continue until it relaxes (NIFTY was a gate-hugger at 18.77 by Fri — watch for a turn).
+4. **Broker execution still non-functional** (DH-905 unknown securityIds). portfolio.md remains
+   authoritative; every trade this week was paper-tracked, broker never held the legs.
+
+---
+
 ## Week of 2026-07-13 (Mon 07-13 → Fri 07-17) — 3 index trades (first index condors to actually execute in-window since the reset), all EOD-forced closes, week −₹161.50; WR 1/3 = 33% BUT a 3-trade artifact, not drift — ON TRACK, no strategy change. Stocks 0 (earnings-blocked all week), BANKNIFTY 0.
 
 **Formal weekly-review routine ran 2026-07-17 (Fri).** The week produced the **first index
