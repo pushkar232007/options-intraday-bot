@@ -1762,3 +1762,22 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   (Jul 30 monthly, DTE 6, peak Q1; daily ADX static, no mid-day re-scan) → skip all.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at b0241f4 on read.
+
+## 2026-07-24 EOD square-off
+
+`2026-07-24 EOD IST | NIFTY/BANKNIFTY/SENSEX | — | NO-OP SQUAREOFF (flat all day) | 0 positions`
+- **Positions to process:** none. Entered 07-24 flat and stayed flat all session — every
+  intraday-monitor run (7 reads) found no qualifying index setup; all three indices trended above
+  the 18 gate the entire day. Last intraday board (VIX 14.19): NIFTY ADX **18.77** (spot 23,770.9,
+  a genuine gate-hugger just 0.77 above the gate — closest any index came all day but never crossed),
+  BANKNIFTY ADX **28.96** (56,707.8), SENSEX ADX **20.23** (76,080.98) — all `range_bound: false`,
+  the 07-22 directional down-move regime relaxing through the day but not enough to qualify.
+- **Broker check:** `orders` (23 total) shows only stale sandbox artifacts — sid=71472
+  (NIFTY-Jun2026-24000-CE, expired 2026-06-25, TRADED BUY +65 plus REJECTED/TRANSIT SELLs) and
+  five REJECTED ABCAPITAL/ABFRL 2025 test orders. No strategy legs. Confirmed FLAT — no square-off
+  order needed.
+- **Index force-close:** N/A (no index positions). **Stock carry-forward:** N/A (no stock positions).
+  23 morning stock qualifiers stayed earnings-blocked all day (Jul 30 monthly, DTE 6, peak Q1).
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **P&L:** day realized **₹0**; cumulative from reset **−₹119.95**; capital **₹3,99,880.05**.
+  Flat into 2026-07-27 (Mon). EOD Telegram summary sent.
