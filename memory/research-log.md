@@ -4,6 +4,11 @@ Daily notes on option-chain conditions: ADX/trend reading, India VIX level, PCR,
 strike, anything news-driven that might affect the day. Keep entries short. Tail the last 2-3
 entries when reading this file in a routine.
 
+
+## 2026-07-24 (intraday-monitor addendum) — all three indices firmed FURTHER into trend on a lower spot, down-move deepening (ADX 33/43/32); no setup; flat, nothing to manage
+
+Fresh open `scan` (VIX **14.31**, up from 13.48 pre-market): NIFTY spot 23,682.45 ADX **33.31** → `range_bound: false`, BANKNIFTY spot 56,186.3 ADX **42.61** → `range_bound: false`, SENSEX spot 75,973.05 ADX **32.33** → `range_bound: false`. All three firmed hard vs the pre-market board (NIFTY 26.96→33.31, BANKNIFTY 37.84→42.61, SENSEX 27.45→32.33) as spot dropped across the board (NIFTY 23,870→23,682, BANKNIFTY 56,592→56,186, SENSEX 76,391→75,973) — the 07-22 directional down-move regime is holding and deepening, none anywhere near the 18 gate to even re-check (SENSEX/NIFTY nearest at ~33, ~15 pts above). **No enterable index setup.** Stocks unchanged (23 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 6, peak Q1; daily ADX static, no mid-day re-scan). Broker `orders` shows only the stale sid=71472 Jun artifact (NIFTY-Jun2026-24000-CE, expired 2026-06-25) — no strategy legs; confirmed FLAT. `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 2cea2cb after `git fetch origin main` — prior memory on `main`, no stranding.
+
 ---
 
 ## 2026-07-24 — pre-market scan: all three indices trending (ADX 27/38/27), no index setup; 23 stock qualifiers now at DTE 6 (final week) but still earnings-blocked into Jul 30 monthly
