@@ -11,6 +11,18 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-27 EOD square-off — FLAT all day, NO trade, clean no-op square-off (day realized ₹0)
+
+`2026-07-27 ~15:20 IST | NIFTY/BANKNIFTY/SENSEX | — | NO-OP square-off (flat all day) | 0 open positions`
+
+- **0 open positions entering EOD → nothing to force-close (index) or carry forward (stock).** Entered 07-27 flat; every intraday-monitor run found all three indices trending above the 18 gate the entire session. Both pre-market gate-huggers (NIFTY 15.6, SENSEX 16.79) firmed away at the open and stayed well above the gate all day.
+- **EOD board:** fresh `scan` (VIX **12.63**): NIFTY ADX **29.86** (spot 23,987.65), BANKNIFTY **23.18** (57,072.6), SENSEX **32.18** (76,842.02) — all `range_bound: false`. Near-flat vs the last intraday read (29.02/23.99/30.77); NIFTY & SENSEX firmed a touch, BANKNIFTY flat, spot near-flat. No index qualifier all session.
+- **Index force-close N/A, stock carry-forward N/A** — nothing held. 23 morning stock qualifiers stayed earnings-blocked all day (Jul 30 monthly, DTE 3, peak Q1) pending Pushkar's steer.
+- **Broker confirmed FLAT:** `orders` shows only the stale sid=71472 Jun artifact (NIFTY-Jun2026-24000-CE, expired 2026-06-25) + old REJECTED test orders — no strategy legs. Funds unchanged (availableBalance ₹65,301.12, utilizedAmount ₹934,698 locked by the artifact; sandbox unusable but irrelevant in paper mode).
+- **Day realized ₹0; cumulative from reset −₹119.95; capital ₹3,99,880.05.** Flat into 2026-07-28 (Tue). EOD Telegram summary sent. Nothing contradicted backtest → no signals-learnings entry.
+
+---
+
 ## 2026-07-27 intraday-monitor (latest-5) — FLAT, NO trade: all three indices still trending (ADX 29/24/31), NIFTY/SENSEX firmed back up; `/monitor` a no-op
 
 - **NO index trade.** Fresh `scan` (VIX 12.8, down from 13.09): NIFTY ADX **29.02** (spot 23,991.9), BANKNIFTY **23.99** (57,102.1), SENSEX **30.77** (76,848.53) — all `range_bound: false`; vs prior read (25.95/24.08/29.99) NIFTY firmed (25.95→29.02), BANKNIFTY flat (24.08→23.99), SENSEX firmed (29.99→30.77), spot near-flat. Pre-market gate-huggers (NIFTY/SENSEX 15.6/16.79) that firmed away at the open remain well above the gate; BANKNIFTY nearest at 23.99, ~6 pts above 18. No qualifier.
