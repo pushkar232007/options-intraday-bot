@@ -11,6 +11,13 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-27 intraday-monitor (latest-5) — FLAT, NO trade: all three indices still trending (ADX 29/24/31), NIFTY/SENSEX firmed back up; `/monitor` a no-op
+
+- **NO index trade.** Fresh `scan` (VIX 12.8, down from 13.09): NIFTY ADX **29.02** (spot 23,991.9), BANKNIFTY **23.99** (57,102.1), SENSEX **30.77** (76,848.53) — all `range_bound: false`; vs prior read (25.95/24.08/29.99) NIFTY firmed (25.95→29.02), BANKNIFTY flat (24.08→23.99), SENSEX firmed (29.99→30.77), spot near-flat. Pre-market gate-huggers (NIFTY/SENSEX 15.6/16.79) that firmed away at the open remain well above the gate; BANKNIFTY nearest at 23.99, ~6 pts above 18. No qualifier.
+- **NO stock trade.** 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 3, peak Q1) pending Pushkar's steer; daily ADX static → no mid-day re-scan.
+- **`/monitor` no-op** — 0 open positions → confirmed FLAT (broker `orders`: 2 TRADED rows both the stale sid=71472 NIFTY-Jun2026-24000-CE artifact, expired 2026-06-25; no strategy legs).
+- Capital ₹3,99,880.05 unchanged. No trade placed/closed → no Telegram. Git clean at 94cd570 on read.
+
 ## 2026-07-27 intraday-monitor (latest-4) — FLAT, NO trade: all three indices still trending (ADX 26/24/30), board eased slightly; `/monitor` a no-op
 
 - **NO index trade.** Fresh `scan` (VIX 13.09, down from 13.19): NIFTY ADX **25.95** (spot 23,955.65), BANKNIFTY **24.08** (56,990.15), SENSEX **29.99** (76,762.74) — all `range_bound: false`, eased slightly vs prior read (26.62/28.7/29.27); NIFTY & BANKNIFTY eased, SENSEX firmed, spot near-flat. Pre-market gate-huggers (NIFTY/SENSEX 15.6/16.79) that firmed away at the open remain well above the gate; NIFTY nearest at 25.95, ~8 pts above 18. No qualifier.
