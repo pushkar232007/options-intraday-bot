@@ -1781,3 +1781,23 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
 - **Circuit breaker:** DISABLED in paper mode — N/A.
 - **P&L:** day realized **₹0**; cumulative from reset **−₹119.95**; capital **₹3,99,880.05**.
   Flat into 2026-07-27 (Mon). EOD Telegram summary sent.
+
+## 2026-07-27 intraday-monitor
+
+`2026-07-27 ~open IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (both pre-market candidates firmed away) | ADX>18 all three`
+- **Positions to manage:** none. Flat into today (portfolio authoritative in paper mode; last
+  position was Position F closed 2026-07-21). `/monitor` a no-op.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check:** fresh open `scan` (VIX **13.24**, down from pre-market 14.03) —
+  NIFTY spot 23,946.15 ADX **21.24** `range_bound: false`; BANKNIFTY 57,198.15 ADX **32.01**
+  `range_bound: false`; SENSEX 76,613.42 ADX **20.78** `range_bound: false`. **Both pre-market
+  index candidates FIRMED AWAY at the open** — the recurring gate-hugger pattern: NIFTY 15.6→21.24
+  and SENSEX 16.79→20.78 both climbed back above the 18 gate as spot rose (NIFTY 23,767→23,946,
+  SENSEX 76,060→76,613) and VIX slipped (14.03→13.24). BANKNIFTY firmed too (25.52→32.01). **No
+  index qualifier → no entry.** The "first real index setup in days" flagged pre-market did not
+  survive the open — same firms-away dynamic seen 07-22 (BANKNIFTY 9.73→20.4) and 07-21
+  (SENSEX 17.34→19.63).
+- **Stocks:** 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 3, peak Q1; daily
+  ADX static, no mid-day re-scan per protocol) → skip all pending Pushkar's steer.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 992423b on read.

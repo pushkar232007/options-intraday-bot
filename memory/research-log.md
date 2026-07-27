@@ -5,6 +5,12 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-27 (intraday-monitor addendum) — both pre-market candidates FIRMED AWAY at the open (NIFTY 15.6→21.24, SENSEX 16.79→20.78); all three trending; no setup; flat, nothing to manage
+
+Fresh open `scan` (VIX **13.24**, down from pre-market 14.03): NIFTY spot 23,946.15 ADX **21.24** → `range_bound: false`, BANKNIFTY spot 57,198.15 ADX **32.01** → `range_bound: false`, SENSEX spot 76,613.42 ADX **20.78** → `range_bound: false`. **The "first real index setup in days" flagged pre-market did not survive the open** — the recurring gate-hugger "firms away" pattern hit both candidates: NIFTY 15.6→21.24 and SENSEX 16.79→20.78 both climbed back above the 18 gate as spot rose (NIFTY 23,767→23,946, SENSEX 76,060→76,613, ~0.75% up-move) and VIX slipped (14.03→13.24). BANKNIFTY firmed too (25.52→32.01). Same dynamic seen 07-22 (BANKNIFTY 9.73→20.4) and 07-21 (SENSEX 17.34→19.63) — pre-market ADX ≠ open ADX, exactly why the pre-market note said "re-check at the open." **No enterable index setup.** Stocks unchanged (23 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 3, peak Q1; daily ADX static, no mid-day re-scan). Flat — `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 992423b after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-27 — pre-market scan: REGIME SHIFT — NIFTY (ADX 15.6) & SENSEX (ADX 16.79) both range-bound, first genuine index setup in days; BANKNIFTY trending; 23 stock qualifiers still earnings-blocked into Jul 30 monthly (DTE 3)
 
 India VIX **14.03** (moderate-low, still the low-vol backdrop credit spreads like). Draft only, no trade placed per protocol. Fresh `scan`:
