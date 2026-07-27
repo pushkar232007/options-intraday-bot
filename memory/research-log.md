@@ -5,6 +5,12 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-27 (intraday-monitor addendum, latest-4) — all three indices still trending, board eased slightly (ADX 26/24/30); no setup; flat, nothing to manage
+
+Fresh `scan` (VIX **13.09**, down from 13.19): NIFTY spot 23,955.65 ADX **25.95** → `range_bound: false`, BANKNIFTY spot 56,990.15 ADX **24.08** → `range_bound: false`, SENSEX spot 76,762.74 ADX **29.99** → `range_bound: false`. vs the prior read (26.62/28.7/29.27) NIFTY eased (26.62→25.95) and BANKNIFTY eased (28.7→24.08) while SENSEX firmed (29.27→29.99), spot near-flat across (NIFTY 23,953→23,956, BANKNIFTY 57,031→56,990, SENSEX 76,714→76,763) as VIX ticked down (13.19→13.09). The pre-market gate-huggers (NIFTY/SENSEX 15.6/16.79) that firmed away at the open remain well above the 18 gate — NIFTY nearest at 25.95, ~8 pts above. **No enterable index setup.** Stocks unchanged (23 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 3, peak Q1; daily ADX static, no mid-day re-scan). Flat — `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 8e8b9a9 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-27 (intraday-monitor addendum, latest-3) — all three indices still trending, board firmed a touch further (ADX 27/29/29); no setup; flat, nothing to manage
 
 Fresh `scan` (VIX **13.19**, up from 13.12): NIFTY spot 23,952.5 ADX **26.62** → `range_bound: false`, BANKNIFTY spot 57,031.3 ADX **28.7** → `range_bound: false`, SENSEX spot 76,714.29 ADX **29.27** → `range_bound: false`. vs the prior read (25.94/30.26/26.61) NIFTY firmed further (25.94→26.62) and SENSEX firmed (26.61→29.27) while BANKNIFTY eased slightly (30.26→28.7), spot near-flat across (NIFTY 23,959→23,953, BANKNIFTY 57,018→57,031, SENSEX 76,686→76,714) as VIX ticked up (13.12→13.19). The pre-market gate-huggers (NIFTY/SENSEX 15.6/16.79) that firmed away at the open have kept drifting further from the 18 gate through the session — NIFTY nearest at 26.62, ~9 pts above. **No enterable index setup.** Stocks unchanged (23 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 3, peak Q1; daily ADX static, no mid-day re-scan). Flat — `/monitor` a no-op (0 open positions). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 06edfc8 after `git fetch origin main` — prior memory on `main`, no stranding.
