@@ -955,3 +955,16 @@ spot/ADX/VIX numbers — the cloud environment's network egress policy is reject
 **Conclusion: no setups assessed, no draft. No-trade by default — there is no data to evaluate
 the ADX<18 entry condition against. Nothing to carry into the market-open routine until egress is
 fixed.** (No positions are open, so nothing to manage either.)
+
+---
+
+## 2026-07-27 — intraday-monitor (latest-2): all three still trending, board firming, no setup
+
+Fresh `scan` (VIX **13.12**, down from 13.4): NIFTY spot 23,959.25 ADX **25.94** `range_bound:
+false`; BANKNIFTY 57,018.45 ADX **30.26** `range_bound: false`; SENSEX 76,686.4 ADX **26.61**
+`range_bound: false`. All three trending above the 18 gate; vs the prior read (23.22/31.64/24.78)
+NIFTY firmed further (23.22→25.94), SENSEX firmed (24.78→26.61), BANKNIFTY eased slightly
+(31.64→30.26), spot near-flat. The pre-market NIFTY/SENSEX gate-huggers that firmed away at the
+open continue drifting further from the gate — NIFTY nearest at 25.94, ~8 pts above 18. **No index
+qualifier → no entry.** 23 morning stock qualifiers still earnings-blocked (Jul 30 monthly, DTE 3,
+peak Q1; daily ADX static, no mid-day re-scan). Flat, `/monitor` a no-op. No trade.
