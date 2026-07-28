@@ -1953,3 +1953,23 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   ADX static, no mid-day re-scan per protocol) → skip all pending Pushkar's steer.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 9fa86cf on read.
+
+## 2026-07-28 intraday-monitor (latest-5)
+
+`2026-07-28 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three, NIFTY gate-hugger 18.66`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — broker `orders` shows only the stale sid=71472
+  Jun artifact (NIFTY-Jun2026-24000-CE, expired 2026-06-25). Confirmed FLAT.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check:** fresh `scan` (VIX **12.62**, near-flat from 12.7) — NIFTY spot 23,989.25 ADX
+  **18.66** `range_bound: false`; BANKNIFTY 56,794.75 ADX **20.0** `range_bound: false`; SENSEX
+  76,793.01 ADX **19.93** `range_bound: false`. **All three now clustered just above the 18 gate**
+  (NIFTY 0.66 above — genuine gate-hugger, closest all day; SENSEX 1.93 above; BANKNIFTY 2.0 above)
+  but none crossed. vs latest-4 (22.98/16.85/25.89) NIFTY eased (22.98→18.66) and SENSEX eased
+  (25.89→19.93) while BANKNIFTY firmed back above the gate (16.85→20.0), so BANKNIFTY no longer even
+  qualifies on ADX. No index entry. (BANKNIFTY's expiry-day DTE-0/DTE-28 calendar gap remains a
+  second block regardless — signals-learnings 2026-07-28.)
+- **Stocks:** 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 2, peak Q1; daily
+  ADX static, no mid-day re-scan per protocol) → skip all pending Pushkar's steer.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 97ba1e7 on read.
