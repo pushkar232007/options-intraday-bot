@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-28 intraday-monitor — FLAT, NO trade (all three indices trending at the open)
+
+`2026-07-28 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending) | 0 open positions`
+
+- **`/monitor` a no-op** — 0 open positions, nothing to check against exit rules. Broker `orders` confirms FLAT (only stale sid=71472 Jun artifact, NIFTY-Jun2026-24000-CE, expired 2026-06-25; no strategy legs).
+- **Index fresh-setup check:** fresh open `scan` (VIX **12.69**) NIFTY ADX **33.38** (spot 24,015.4), BANKNIFTY **21.63** (56,936.2), SENSEX **34.51** (76,951.24) — all `range_bound: false`. Firmed vs pre-market (30.35/23.0/32.26); BANKNIFTY nearest at 21.63 (~3.6 above the 18 gate) but still trending, and its monthly expires **today (DTE 0)** → no theta runway regardless. **No index qualifier → no entry.**
+- **Stock check:** 23 morning qualifiers (HDFCLIFE 10.26 … PNB 17.47) at DTE 2 into the Jul 30 monthly, still earnings-blocked (peak Q1) pending Pushkar's steer — standing operating rule holds, no entry. Daily ADX static, no mid-day re-scan.
+- No trade placed/closed → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset −₹119.95.
+
+---
+
 ## 2026-07-27 EOD square-off — FLAT all day, NO trade, clean no-op square-off (day realized ₹0)
 
 `2026-07-27 ~15:20 IST | NIFTY/BANKNIFTY/SENSEX | — | NO-OP square-off (flat all day) | 0 open positions`
