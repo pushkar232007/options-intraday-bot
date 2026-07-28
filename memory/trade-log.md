@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-28 intraday-monitor (latest) — FLAT, NO trade (all three indices still trending, board eased a touch)
+
+`2026-07-28 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending) | 0 open positions`
+
+- **Index scan (VIX 12.66):** NIFTY ADX **30.34** (spot 24,005.1), BANKNIFTY ADX **19.92** (spot 56,941.0), SENSEX ADX **32.92** (spot 76,798.09) — all `range_bound: false`. Eased a touch vs the prior intraday read (33.38/21.63/34.51). BANKNIFTY nearest at 19.92 (~1.9 above the 18 gate, closest today) but still trending — and its monthly expires **today (DTE 0)**, so no theta runway regardless. No index qualifier → no entry.
+- **Stocks:** 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 2, peak Q1) pending Pushkar's steer; daily ADX static, no mid-day re-scan.
+- **`/monitor` a no-op** — 0 open positions, nothing to check against exit rules. Broker `orders` confirms FLAT (only stale sid=71472 Jun artifact, expired 2026-06-25; no strategy legs).
+- No trade placed/closed → no Telegram. **Git clean:** local HEAD and `origin/main` both at 6373788 on read.
+
+---
+
 ## 2026-07-28 intraday-monitor — FLAT, NO trade (all three indices trending at the open)
 
 `2026-07-28 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending) | 0 open positions`
