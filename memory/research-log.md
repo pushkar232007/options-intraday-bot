@@ -5,6 +5,14 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-28 (intraday-monitor addendum, latest-3) — BANKNIFTY ADX 11.79 (deeper range-bound), still NO tradeable expiry on its expiry day; /trade skipped on DTE guardrail; flat, nothing to manage
+
+Fresh `scan` (VIX **12.54**, near-flat from 12.65): NIFTY spot 24,015.35 ADX **28.86** → `range_bound: false`, **BANKNIFTY spot 56,951.85 ADX 11.79 → `range_bound: true` — QUALIFIES on ADX**, SENSEX spot 76,922.11 ADX **31.86** → `range_bound: false`. vs the prior read (29.77/14.61/33.12) BANKNIFTY dropped deeper below the 18 gate (14.61→11.79), NIFTY eased (29.77→28.86) and SENSEX eased (33.12→31.86), spot near-flat. BANKNIFTY is even more clearly range-bound now — but the outcome is unchanged.
+
+**Ran /trade for BANKNIFTY → SKIPPED on the DTE/expiry guardrail** (identical binding constraint to the latest-2 run earlier today). Instrument-master lookup confirms available BANKNIFTY expiries are **Jul 28 (today, DTE 0; sid 61867)** and **Aug 25 (DTE 28; sid 59079)** — nothing between (no weeklies). DTE 0 is same-day (gamma/pin risk, no theta runway, ~25-pt credit vs ~₹5.2K/lot max loss); DTE 28 is far outside the index ~2-DTE window and BANKNIFTY's ≤7-DTE carve-out. **NO ENTRY** — the documented calendar-gap outcome (signals-learnings 2026-07-28: on BANKNIFTY's expiry day the ADX and DTE gates cannot both clear). NIFTY/SENSEX trending. Stocks unchanged (23 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 2, peak Q1; daily ADX static, no mid-day re-scan). Flat — `/monitor` a no-op (0 open positions; broker `orders` shows only the stale sid=71472 Jun artifact + old REJECTED test orders — confirmed FLAT). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 3e3c053 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-28 (intraday-monitor addendum, latest-2) — BANKNIFTY finally crossed the ADX gate (14.61 < 18, range_bound: true) — first index qualifier in over a week — but NO tradeable expiry; /trade skipped on the DTE guardrail; flat, nothing to manage
 
 Fresh `scan` (VIX **12.65**, near-flat from 12.66): NIFTY spot 24,006.4 ADX **29.77** → `range_bound: false`, **BANKNIFTY spot 56,983.45 ADX 14.61 → `range_bound: true` — QUALIFIES on ADX**, SENSEX spot 76,904.01 ADX **33.12** → `range_bound: false`. vs the prior read (30.34/19.92/32.92) BANKNIFTY dropped decisively below the 18 gate (19.92→14.61) while NIFTY eased (30.34→29.77) and SENSEX firmed a touch (32.92→33.12), spot near-flat. **This is the first index ADX qualifier since 07-21** — but it does not produce a trade, because of the calendar.

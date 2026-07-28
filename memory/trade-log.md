@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-28 intraday-monitor (latest-3) — BANKNIFTY ADX 11.79 (deeper), still NO tradeable expiry on its expiry day; /trade skipped on DTE guardrail; FLAT, NO trade
+
+`2026-07-28 intraday IST | BANKNIFTY | DTE 0 / DTE 28 | SKIP (no valid expiry — DTE guardrail) | 0 open positions`
+
+- **Index scan (VIX 12.54):** NIFTY ADX **28.86** (spot 24,015.35) `range_bound: false`, **BANKNIFTY ADX 11.79 (spot 56,951.85) `range_bound: true` — QUALIFIES on ADX (deeper into range-bound than the prior read's 14.61)**, SENSEX ADX **31.86** (76,922.11) `range_bound: false`.
+- **Ran /trade for BANKNIFTY → SKIPPED on the DTE/expiry guardrail** (same binding constraint as latest-2). Confirmed via instrument-master lookup: available BANKNIFTY expiries are **Jul 28 (today, DTE 0)** and **Aug 25 (DTE 28)** — nothing between (no weeklies; sids 61867 / 59079 respectively, lot 30). DTE 0 = same-day expiry (guardrail cautions against — gamma/pin risk, no theta runway); DTE 28 = far outside the index ~2-DTE (backtest DTE 1–6) window and BANKNIFTY's ≤7-DTE carve-out. No qualifying expiry → **NO ENTRY** (disciplined no-trade; see signals-learnings 2026-07-28: ADX gate + DTE gate can only both clear in BANKNIFTY's DTE 1–7 window before its monthly, never on expiry day).
+- **NIFTY/SENSEX:** trending, no entry.
+- **Stocks:** 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 2, peak Q1) pending Pushkar's steer; daily ADX static, no mid-day re-scan.
+- **`/monitor` a no-op** — 0 open positions. Broker `orders` confirms FLAT (only stale sid=71472 Jun artifact, expired 2026-06-25, + old REJECTED test orders; no strategy legs).
+- No trade placed/closed → no Telegram. **Git clean:** local HEAD and `origin/main` both at 3e3c053 on read.
+
 ## 2026-07-28 intraday-monitor (latest-2) — BANKNIFTY crossed the ADX gate (14.61) but NO tradeable expiry; /trade skipped on DTE guardrail; FLAT, NO trade
 
 `2026-07-28 intraday IST | BANKNIFTY | DTE 0 / DTE 28 | SKIP (no valid expiry — DTE guardrail) | 0 open positions`
