@@ -11,6 +11,19 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-28 intraday-monitor (latest-2) — BANKNIFTY crossed the ADX gate (14.61) but NO tradeable expiry; /trade skipped on DTE guardrail; FLAT, NO trade
+
+`2026-07-28 intraday IST | BANKNIFTY | DTE 0 / DTE 28 | SKIP (no valid expiry — DTE guardrail) | 0 open positions`
+
+- **Index scan (VIX 12.65):** NIFTY ADX **29.77** (spot 24,006.4) `range_bound: false`, **BANKNIFTY ADX 14.61 (spot 56,983.45) `range_bound: true` — QUALIFIES on ADX, first index qualifier in over a week**, SENSEX ADX **33.12** (76,904.01) `range_bound: false`.
+- **Ran /trade for BANKNIFTY → SKIPPED on the DTE/expiry guardrail.** ADX gate cleared (14.61 < 18) but the calendar offers no expiry that fits: available BANKNIFTY option expiries are **Jul 28 (today, DTE 0)** and **Aug 25 (DTE 28)** — nothing between (BANKNIFTY has no weeklies). DTE 0 is same-day expiry (guardrail explicitly cautions against — gamma/liquidity), net credit only ~25.4 pts [short 56800 PE 14.84 + short 57200 CE 12.84 − long 56600 PE 1.26 − long 57400 CE 1.03] vs ~₹5,238/lot max loss (width 200 − credit 25.4 × lot 30), spot ~183 pts from the 56,800 short put → max pin/gamma risk in the final hours, no theta runway. DTE 28 is far outside the index's validated/preferred ~2-DTE (backtest DTE 1–6) window and outside BANKNIFTY's ≤7-DTE data-gathering carve-out. No qualifying expiry → **NO ENTRY** (disciplined no-trade; the exact DTE-0 scenario prior runs anticipated).
+- **NIFTY/SENSEX:** trending, no entry.
+- **Stocks:** 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 2, peak Q1) pending Pushkar's steer; daily ADX static, no mid-day re-scan.
+- **`/monitor` a no-op** — 0 open positions. Broker `orders` confirms FLAT (only stale sid=71472 Jun artifact, expired 2026-06-25, + old REJECTED test orders; no strategy legs).
+- No trade placed/closed → no Telegram. **Git clean:** local HEAD and `origin/main` both at 6c44d10 on read.
+
+---
+
 ## 2026-07-28 intraday-monitor (latest) — FLAT, NO trade (all three indices still trending, board eased a touch)
 
 `2026-07-28 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending) | 0 open positions`

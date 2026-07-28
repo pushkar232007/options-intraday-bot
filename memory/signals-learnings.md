@@ -1,5 +1,22 @@
 # Signals & Learnings
 
+## 2026-07-28 — the ADX gate can open on BANKNIFTY's expiry day and still yield NO trade (calendar gap, not a missed setup)
+
+BANKNIFTY's ADX finally dropped below 18 (14.61, `range_bound: true`) on 2026-07-28 — the first
+index ADX qualifier in over a week. It produced **no trade anyway**, and this is the correct,
+expected outcome, worth remembering so a future run doesn't treat it as a missed opportunity or
+loosen a guardrail to force it. **Because BANKNIFTY is monthly-only (no weeklies), on the day its
+monthly expires the only two available expiries are today (DTE 0) and next month (~DTE 28) — with
+nothing in between.** Neither fits the index DTE guardrail: DTE 0 is same-day (explicitly cautioned
+against — gamma/pin risk, ~25-pt credit vs ~₹5.2K/lot max loss, no theta runway), and DTE 28 is far
+outside the validated/preferred ~2-DTE (backtest DTE 1–6) window and outside BANKNIFTY's own
+≤7-DTE data-gathering carve-out. **Takeaway: for BANKNIFTY specifically, the ADX gate and the DTE
+gate can only both be satisfied in the ~DTE 1–7 window *before* its monthly expiry — never on
+expiry day itself, and never in the first ~3 weeks of a fresh monthly.** When BANKNIFTY qualifies on
+ADX on its expiry day, the disciplined move is to skip (log the reason), not to reach for the DTE-0
+or the DTE-28 contract. NIFTY/SENSEX are unaffected — they still have weeklies, so a near-DTE
+expiry is essentially always available when their ADX qualifies.
+
 ## 2026-07-21 (EOD) — FIRST BANKNIFTY near-expiry data point CLOSED: flat/noise (+₹8.40), matching backtest expectation
 
 The first-ever BANKNIFTY iron condor (Position F, opened this morning — see the entry below) was
