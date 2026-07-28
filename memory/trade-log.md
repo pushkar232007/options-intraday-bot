@@ -1932,3 +1932,24 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   ADX static, no mid-day re-scan per protocol) → skip all pending Pushkar's steer.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 06edfc8 on read.
+
+## 2026-07-28 intraday-monitor (latest-4)
+
+`2026-07-28 ~intraday IST | BANKNIFTY | ADX 16.85 range_bound:true | SKIP (DTE gap) | NIFTY/SENSEX ADX>18`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — broker `orders` shows only the stale sid=71472
+  Jun artifact (NIFTY-Jun2026-24000-CE, expired 2026-06-25) + old REJECTED test orders. Confirmed FLAT.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check:** fresh `scan` (VIX **12.7**) — NIFTY spot 23,985.95 ADX **22.98**
+  `range_bound: false`; **BANKNIFTY 56,803.85 ADX 16.85 `range_bound: true` — QUALIFIES on ADX**;
+  SENSEX 76,808.11 ADX **25.89** `range_bound: false`. vs latest-3 (28.86/11.79/31.86) NIFTY eased,
+  SENSEX eased, BANKNIFTY firmed back from its deep 11.79 (→16.85) but still below the 18 gate.
+- **Ran /trade for BANKNIFTY → SKIPPED on the DTE guardrail.** Instrument-master lookup reconfirms
+  only Jul 28 (today, DTE 0, sid 61867) and Aug 25 (DTE 28, sid 59079) — no weeklies between. DTE 0
+  = same-day (no theta runway, gamma/pin risk); DTE 28 = far outside the index ~2-DTE window and
+  BANKNIFTY's own ≤7-DTE carve-out. **NO ENTRY** — the documented expiry-day calendar gap
+  (signals-learnings 2026-07-28). NIFTY/SENSEX trending → no entry there.
+- **Stocks:** 23 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 2, peak Q1; daily
+  ADX static, no mid-day re-scan per protocol) → skip all pending Pushkar's steer.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 9fa86cf on read.

@@ -5,6 +5,14 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-28 (intraday-monitor addendum, latest-4) — BANKNIFTY still range-bound (ADX 16.85 < 18), still NO tradeable expiry on its expiry day; /trade skipped on DTE guardrail; flat, nothing to manage
+
+Fresh `scan` (VIX **12.7**, near-flat from 12.54): NIFTY spot 23,985.95 ADX **22.98** → `range_bound: false`, **BANKNIFTY spot 56,803.85 ADX 16.85 → `range_bound: true` — QUALIFIES on ADX**, SENSEX spot 76,808.11 ADX **25.89** → `range_bound: false`. vs the prior read (28.86/11.79/31.86) NIFTY eased (28.86→22.98) and SENSEX eased (31.86→25.89) while BANKNIFTY firmed back up from its deep 11.79 (→16.85) but stayed below the 18 gate, spot near-flat.
+
+**Ran /trade for BANKNIFTY → SKIPPED on the DTE/expiry guardrail** (same binding constraint as the latest-2/latest-3 runs earlier today). Instrument-master lookup reconfirms available BANKNIFTY expiries are **Jul 28 (today, DTE 0; sid 61867)** and **Aug 25 (DTE 28; sid 59079)** — nothing between (no weeklies). DTE 0 is same-day (gamma/pin risk, no theta runway); DTE 28 is far outside the index ~2-DTE window and BANKNIFTY's ≤7-DTE carve-out. **NO ENTRY** — the documented calendar-gap outcome (signals-learnings 2026-07-28: on BANKNIFTY's expiry day the ADX and DTE gates cannot both clear). NIFTY/SENSEX trending. Stocks unchanged (23 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 2, peak Q1; daily ADX static, no mid-day re-scan). Flat — `/monitor` a no-op (0 open positions; broker `orders` shows only the stale sid=71472 Jun artifact + old REJECTED test orders — confirmed FLAT). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 9fa86cf after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-28 (intraday-monitor addendum, latest-3) — BANKNIFTY ADX 11.79 (deeper range-bound), still NO tradeable expiry on its expiry day; /trade skipped on DTE guardrail; flat, nothing to manage
 
 Fresh `scan` (VIX **12.54**, near-flat from 12.65): NIFTY spot 24,015.35 ADX **28.86** → `range_bound: false`, **BANKNIFTY spot 56,951.85 ADX 11.79 → `range_bound: true` — QUALIFIES on ADX**, SENSEX spot 76,922.11 ADX **31.86** → `range_bound: false`. vs the prior read (29.77/14.61/33.12) BANKNIFTY dropped deeper below the 18 gate (14.61→11.79), NIFTY eased (29.77→28.86) and SENSEX eased (33.12→31.86), spot near-flat. BANKNIFTY is even more clearly range-bound now — but the outcome is unchanged.
