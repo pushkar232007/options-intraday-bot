@@ -11,6 +11,18 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-28 EOD square-off — FLAT all day, NO trade, clean no-op square-off (day realized ₹0)
+
+`2026-07-28 ~15:20 IST | NIFTY/BANKNIFTY/SENSEX | — | NO-OP square-off (flat all day) | 0 open positions`
+
+- **0 open positions entering EOD → nothing to force-close (index) or carry forward (stock).** Entered 07-28 flat; every intraday-monitor run found no qualifying setup. BANKNIFTY twice dipped below the 18 ADX gate mid-session (14.61, then 11.79, `range_bound: true`) — first index ADX qualifiers in over a week — but both times /trade was correctly skipped on the DTE guardrail: BANKNIFTY is monthly-only and its monthly expired **today**, so the only expiries were DTE 0 (same-day, no runway) and DTE 28 (out of window), with nothing between (documented calendar-gap outcome, signals-learnings 2026-07-28). NIFTY/SENSEX trended above the gate all day.
+- **EOD board:** fresh `scan` (VIX **12.6**): NIFTY ADX **19.05** (spot 23,977.25), BANKNIFTY **25.22** (56,693.55), SENSEX **19.76** (76,685.95) — all `range_bound: false`. NIFTY the closest gate-hugger at 19.05 (~1.05 above the 18 gate) but never crossed; SENSEX eased toward the gate too (19.76); BANKNIFTY firmed back up (20.0→25.22). No index qualifier with a valid expiry all session.
+- **Index force-close N/A, stock carry-forward N/A** — nothing held. 23 morning stock qualifiers stayed earnings-blocked all day (Jul 30 monthly, DTE 2, peak Q1) pending Pushkar's steer.
+- **Broker confirmed FLAT:** `orders` shows only the stale sid=71472 Jun artifact (NIFTY-Jun2026-24000-CE, expired 2026-06-25) + old REJECTED 2025 ABCAPITAL/ABFRL test orders — no strategy legs. Funds unchanged (availableBalance ₹65,301.12, utilizedAmount ₹934,698 locked by the artifact; sandbox unusable but irrelevant in paper mode).
+- **Day realized ₹0; cumulative from reset −₹119.95; capital ₹3,99,880.05.** Flat into 2026-07-29 (Wed). EOD Telegram summary sent. Nothing contradicted backtest → no signals-learnings entry.
+
+---
+
 ## 2026-07-28 intraday-monitor (latest-3) — BANKNIFTY ADX 11.79 (deeper), still NO tradeable expiry on its expiry day; /trade skipped on DTE guardrail; FLAT, NO trade
 
 `2026-07-28 intraday IST | BANKNIFTY | DTE 0 / DTE 28 | SKIP (no valid expiry — DTE guardrail) | 0 open positions`
