@@ -5,6 +5,12 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-29 (intraday-monitor addendum, latest+2) — all three indices STILL trending, board firmed further again (ADX 48/28/44), VIX 12.09; no setup; flat, nothing to manage; Dhan token still expired
+
+Fresh `scan` (VIX **12.09**, flat): NIFTY spot 24,266.75 ADX **48.03** → `range_bound: false`, BANKNIFTY spot 57,262.05 ADX **28.39** → `range_bound: false`, SENSEX spot 77,743.31 ADX **44.16** → `range_bound: false`. vs the prior read (47.07/29.24/43.08) NIFTY firmed further (47.07→48.03, deepest of the week), SENSEX firmed (43.08→44.16) and BANKNIFTY eased slightly (29.24→28.39) on a slightly higher spot (NIFTY 24,250→24,267, BANKNIFTY 57,211→57,262, SENSEX 77,651→77,743). The week-long trend regime keeps deepening — NIFTY now ADX ~48, deepest yet. **No enterable index setup.** Stocks unchanged (22 morning qualifiers still earnings-blocked into the Jul 30 monthly, DTE 1 — final day; daily ADX static, no mid-day re-scan). **Dhan token still expired** (401 DH-901 on `funds`, unchanged from prior run; already alerted msg 551, no re-alert). Flat — `/monitor` a no-op (0 open positions; broker unverifiable this run, portfolio.md authoritative). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 8383457 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-29 (intraday-monitor addendum, latest) — all three indices firmed FURTHER into trend (ADX 45/28/43), VIX 12.11; no setup; flat, nothing to manage; ⚠️ DHAN TOKEN EXPIRED (401)
 
 Fresh `scan` (VIX **12.11**, up a touch from 12.09): NIFTY spot 24,229.4 ADX **44.99** → `range_bound: false`, BANKNIFTY spot 57,218.9 ADX **28.0** → `range_bound: false`, SENSEX spot 77,596.35 ADX **43.19** → `range_bound: false`. vs the prior read (41.08/24.26/40.49) NIFTY firmed further (41.08→44.99), SENSEX firmed (40.49→43.19) and BANKNIFTY firmed (24.26→28.0) on a near-flat spot (NIFTY 24,225→24,229, BANKNIFTY 57,152→57,219, SENSEX 77,622→77,596). The trend regime that held all session keeps deepening — NIFTY/SENSEX now ADX ~44, deepest of the day. **No enterable index setup.** Stocks unchanged (22 morning qualifiers still earnings-blocked into the Jul 30 monthly, DTE 1 — final day; daily ADX static, no mid-day re-scan).

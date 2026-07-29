@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-29 intraday-monitor (latest+2) — all three indices still trending, board firmed further again (ADX 48/28/44), VIX 12.09; no setup; FLAT, NO trade
+
+`2026-07-29 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending, no ADX qualifier) | 0 open positions`
+
+- **Index scan (VIX 12.09):** NIFTY ADX **48.03** (spot 24,266.75) `range_bound: false`, BANKNIFTY ADX **28.39** (57,262.05) `range_bound: false`, SENSEX ADX **44.16** (77,743.31) `range_bound: false`. vs the prior read (47.07/29.24/43.08) NIFTY firmed further (47.07→48.03, deepest of the week), SENSEX firmed (43.08→44.16) while BANKNIFTY eased slightly (29.24→28.39) on a slightly higher spot. **No index qualifier → no entry.** The week-long trend regime keeps deepening.
+- **/monitor a no-op** — 0 open positions. Dhan token still expired (401 DH-901 on `funds`) so broker unverifiable this run; portfolio.md authoritative → confirmed FLAT. Already alerted msg 551, no re-alert.
+- **Stocks:** 22 morning qualifiers still earnings-blocked into the Jul 30 monthly, **DTE 1 (final day)** — a fresh condor at DTE 1 captures almost no theta and carries max pin/gamma; still earnings-blocked regardless (peak Q1) pending Pushkar's steer. Daily ADX static, no mid-day re-scan.
+- **No trade placed/closed → no Telegram.** Capital unchanged ₹3,99,880.05; cumulative from reset −₹119.95. **Git clean:** on read, local HEAD and `origin/main` both at 8383457 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-29 intraday-monitor (latest-2) — all three indices trending, board firmed further still (ADX 41/24/40), VIX 12.09; no setup; FLAT, NO trade
 
 `2026-07-29 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending, no ADX qualifier) | 0 open positions`
