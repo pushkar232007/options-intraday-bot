@@ -2028,3 +2028,30 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   pin/gamma risk into expiry regardless.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 07517bf on read.
+
+## 2026-07-29 intraday-monitor (latest)
+
+`2026-07-29 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three, board firmed further; DHAN TOKEN EXPIRED (401)`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — 0 open positions.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **⚠️ Dhan API 401 (token expired):** `dhan.py orders` AND `funds` both returned
+  `401 DH-901 Invalid_Authentication` ("Client ID or user generated access token is invalid or
+  expired"). The most recent prior run (latest-2, 4ff5574) had a working broker check (saw the
+  stale sid=71472 Jun artifact), so the token expired sometime since. **No operational impact
+  today** — flat, paper mode, broker best-effort, portfolio.md authoritative, and no setup
+  qualifies. But the bot cannot verify broker state or place/close orders until refreshed.
+  **Telegram alert sent** (msg 551) asking Pushkar to regenerate `DHAN_ACCESS_TOKEN` in cloud env.
+- **New-entry check:** fresh `scan` (VIX **12.11**, down a touch from 12.09) — NIFTY spot 24,229.4
+  ADX **44.99** `range_bound: false`; BANKNIFTY 57,218.9 ADX **28.0** `range_bound: false`;
+  SENSEX 77,596.35 ADX **43.19** `range_bound: false`. vs the prior read (41.08/24.26/40.49) NIFTY
+  firmed further (41.08→44.99), SENSEX firmed (40.49→43.19) and BANKNIFTY firmed (24.26→28.0) on a
+  near-flat spot — the trend regime that held all session keeps deepening (NIFTY/SENSEX now ADX
+  ~44). **No index qualifier → no entry.**
+- **Stocks:** 22 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 1 — final day of
+  the cycle, peak Q1; daily ADX static, no mid-day re-scan per protocol) → skip all pending
+  Pushkar's steer. At DTE 1 a fresh condor captures almost no remaining theta and carries max
+  pin/gamma risk into expiry regardless.
+- **No trade placed or closed.** Telegram sent (token-expiry alert only, not a trade). Capital
+  ₹3,99,880.05 unchanged; realized from reset −₹119.95. 0 open positions — flat. **Git clean:**
+  local HEAD and `origin/main` both at a1f5299 on read.
