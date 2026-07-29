@@ -11,6 +11,18 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-29 EOD square-off — flat all day, NO trade, clean no-op square-off; EOD board ADX 44/25/43, VIX 12.06
+
+`2026-07-29 EOD IST | NIFTY/BANKNIFTY/SENSEX | — | NO SQUARE-OFF (flat all day, nothing held) | 0 open positions`
+
+- **Entered 07-29 flat; stayed flat all session.** Every intraday-monitor run found all three indices trending above the 18 ADX gate → nothing opened → nothing to force-close (index) or carry forward (stock). Index force-close N/A, stock carry-forward N/A.
+- **EOD board (VIX 12.06):** NIFTY ADX **43.66** (spot 24,250.1) `range_bound: false`, BANKNIFTY ADX **24.65** (57,199.75, nearest the gate ~6.6 above but still trending) `range_bound: false`, SENSEX ADX **42.64** (77,717.51) `range_bound: false`. vs the last intraday read (48.03/28.39/44.16) all three eased a touch (NIFTY 48.03→43.66, BANKNIFTY 28.39→24.65, SENSEX 44.16→42.64) but all remain firmly trending — none crossed the gate. No spot-range check needed (no positions to close).
+- **Broker:** Dhan token STILL EXPIRED (401 DH-901) on `funds`/`orders` — unchanged all day; portfolio.md authoritative → confirmed FLAT. Already alerted Pushkar (Telegram msg 551) to regenerate `DHAN_ACCESS_TOKEN`; **no re-alert** (would be spam). No operational impact (flat, paper mode).
+- **Stocks:** 22 qualifiers stayed earnings-blocked all day (Jul 30 monthly, DTE 1 — final day, peak Q1) pending Pushkar's steer. Nothing held → nothing to carry.
+- **Day realized ₹0; cumulative from reset −₹119.95; capital ₹3,99,880.05.** Flat into 2026-07-30 (Thu). EOD Telegram summary sent. Nothing contradicted backtest → no signals-learnings entry.
+
+---
+
 ## 2026-07-29 intraday-monitor (latest+2) — all three indices still trending, board firmed further again (ADX 48/28/44), VIX 12.09; no setup; FLAT, NO trade
 
 `2026-07-29 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending, no ADX qualifier) | 0 open positions`
