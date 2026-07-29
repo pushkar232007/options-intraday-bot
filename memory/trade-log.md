@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-29 intraday-monitor (latest) — all three indices firmed further into trend (ADX 36/24/35), VIX 12.12; no setup; FLAT, NO trade
+
+`2026-07-29 intraday IST | NIFTY/BANKNIFTY/SENSEX | — | NO ENTRY (all trending, no ADX qualifier) | 0 open positions`
+
+- **Index scan (VIX 12.12, down from 12.3):** NIFTY ADX **35.67** (spot 24,234.55) `range_bound: false`, BANKNIFTY ADX **24.23** (57,116.6) `range_bound: false`, SENSEX ADX **35.26** (77,616.33) `range_bound: false`. vs the prior open read (25.82/22.07/25.55) all three firmed further as spot rose across (NIFTY 24,191→24,235, BANKNIFTY 56,962→57,117, SENSEX 77,445→77,616) and VIX slipped (12.3→12.12). BANKNIFTY nearest the gate at 24.23 (~6 above) but still trending. **No index qualifier → no entry.** The pre-market NIFTY candidate (ADX 16.6) that firmed away at the open (→25.82) has kept climbing all session (→35.67) — the gate-hugger reversal fully played out.
+- **/monitor a no-op** — 0 open positions. Broker `orders` confirms FLAT (only the stale sid=71472 Jun artifact, NIFTY-Jun2026-24000-CE, expired 2026-06-25; no strategy legs).
+- **Stocks:** 22 morning qualifiers still earnings-blocked into the Jul 30 monthly, now **DTE 1 (final day of the cycle)** — a fresh condor at DTE 1 captures almost no theta and carries max pin/gamma; still earnings-blocked regardless (peak Q1) pending Pushkar's steer. Daily ADX static, no mid-day re-scan.
+- **No trade placed/closed → no Telegram.** Capital unchanged ₹3,99,880.05; cumulative from reset −₹119.95. **Git clean:** on read, local HEAD and `origin/main` both at 6dda1f4 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-28 EOD square-off — FLAT all day, NO trade, clean no-op square-off (day realized ₹0)
 
 `2026-07-28 ~15:20 IST | NIFTY/BANKNIFTY/SENSEX | — | NO-OP square-off (flat all day) | 0 open positions`
