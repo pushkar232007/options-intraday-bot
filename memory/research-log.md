@@ -5,6 +5,22 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-29 — pre-market scan: NIFTY range-bound (ADX 16.6 < 18) — first genuine index setup since 07-21; BANKNIFTY/SENSEX trending; 22 stock qualifiers at DTE 1 into Jul 30 monthly still earnings-blocked
+
+India VIX **12.56** (low — the low-vol backdrop credit spreads like). Draft only, no trade placed per protocol. Fresh `scan`:
+
+- **NIFTY** — spot 23,985.35, ADX(14) **16.6** → `range_bound: true`, **QUALIFIES**. First NIFTY range-bound read since 07-21, and a solid one (well below the gate, not a marginal gate-hugger like SENSEX 16.79 on 07-27 that firmed away). The week-long directional/trend regime has finally relaxed below the 18 gate on NIFTY. Genuine open-entry candidate. **Expiry:** July monthly (last-Thu) is **Jul 30 = DTE 1** (very near expiry — guardrail cautions on gamma/thin liquidity; DTE=1 had highest backtest return but ~24% max drawdown), next weekly is Tue **Aug 4 = DTE 6** (cleaner but farther than the preferred ~2 DTE). Trade routine to weigh DTE 1 vs DTE 6 and verify sids/lot at the open.
+- **BANKNIFTY** — spot 56,755.6, ADX(14) **22.56** → `range_bound: false`, trending. No entry. Fresh Aug monthly is DTE ~27 anyway (far outside the ≤7-DTE carve-out) after its Jul 28 expiry rolled off yesterday.
+- **SENSEX** — spot 76,765.92, ADX(14) **19.54** → `range_bound: false`, trending but a near-gate read (~1.5 above 18 — an open re-check candidate if it eases). Nearest weekly Thu **Jul 30 = DTE 1**.
+
+Board eased vs 07-28 EOD (NIFTY 19.05→16.6, BANKNIFTY 25.22→22.56, SENSEX 19.76→19.54) on a near-flat spot/VIX (12.6→12.56) — **NIFTY crossed the gate**, SENSEX hugging just above it. **One solid enterable index candidate pre-market (NIFTY).** Caveat: pre-market ADX ≠ open ADX — the recurring pattern is gate-huggers firming back above 18 into the open (07-27 NIFTY 15.6→21.24, SENSEX 16.79→20.78; 07-22 BANKNIFTY 9.73→20.4). NIFTY at 16.6 is more solid than those marginal reads, but **re-check ADX at the open before any entry.**
+
+**Stocks:** 22 qualifiers (HDFCLIFE 9.45, ULTRACEMCO 11.86, HINDUNILVR 12.07, SBIN 12.36, JSWSTEEL 12.48, INFY 12.51, BEL 12.97, CANBK 12.98, GRASIM 13.03, BPCL 13.14, POWERGRID 13.36, EICHERMOT 13.7, ADANIPORTS 13.71, HINDZINC 14.74, RELIANCE 14.91, ASIANPAINT 15.7, MARUTI 15.96, WIPRO 16.09, COALINDIA 16.36, KOTAKBANK 16.96, HEROMOTOCO 17.3, PNB 17.88; TATAMOTORS errored). Only in-range stock expiry is the **Jul 30 monthly, now at DTE 1 (final day of the cycle)** — deepest possible near-expiry theta, but a fresh condor entered at DTE 1 captures almost no remaining theta and carries max pin/gamma risk into expiry. **Still earnings-blocked** regardless (peak Q1 season; any name reporting ~Jul 29–31 is within 5 days of the Jul 30 expiry — outright-banned, e.g. SBIN/MARUTI). Standing operating rule holds: **all 22 earnings-blocked pending Pushkar's steer** (enter-after-report name-by-name vs hold-through vs stand-aside — see signals-learnings 2026-07-07). Log for awareness, no re-alert.
+
+**Conclusion:** first real index-setup day in a week — NIFTY qualifies solidly (ADX 16.6). Draft only; re-check ADX at the open (firm-away risk, though NIFTY's read is more solid than recent gate-huggers), verify NIFTY expiry/sid at open (weigh DTE 1 vs DTE 6). SENSEX a near-gate re-check candidate. All 22 stock qualifiers earnings-blocked pending steer. **Git clean:** on read, local HEAD and `origin/main` both at 06682bb after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-28 (intraday-monitor addendum, latest-4) — BANKNIFTY still range-bound (ADX 16.85 < 18), still NO tradeable expiry on its expiry day; /trade skipped on DTE guardrail; flat, nothing to manage
 
 Fresh `scan` (VIX **12.7**, near-flat from 12.54): NIFTY spot 23,985.95 ADX **22.98** → `range_bound: false`, **BANKNIFTY spot 56,803.85 ADX 16.85 → `range_bound: true` — QUALIFIES on ADX**, SENSEX spot 76,808.11 ADX **25.89** → `range_bound: false`. vs the prior read (28.86/11.79/31.86) NIFTY eased (28.86→22.98) and SENSEX eased (31.86→25.89) while BANKNIFTY firmed back up from its deep 11.79 (→16.85) but stayed below the 18 gate, spot near-flat.
