@@ -1985,3 +1985,24 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   ADX static, no mid-day re-scan per protocol) → skip all pending Pushkar's steer.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 97ba1e7 on read.
+
+## 2026-07-29 intraday-monitor
+
+`2026-07-29 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three; pre-market NIFTY 16.6 firmed away to 25.82`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — 0 open positions.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check:** fresh `scan` (VIX **12.3**, down from pre-market 12.56) — NIFTY spot 24,191.5
+  ADX **25.82** `range_bound: false`; BANKNIFTY 56,962.3 ADX **22.07** `range_bound: false`;
+  SENSEX 77,444.93 ADX **25.55** `range_bound: false`. **The pre-market NIFTY candidate (ADX 16.6,
+  the first solid range-bound read since 07-21) FIRMED AWAY at the open** — climbed to 25.82 as
+  spot rose ~0.86% (23,985→24,191) and VIX slipped (12.56→12.3). Same recurring gate-hugger
+  "firms away" pattern as 07-27 (NIFTY 15.6→21.24, SENSEX 16.79→20.78), 07-22 (BANKNIFTY 9.73→20.4),
+  07-21 (SENSEX 17.34→19.63) — pre-market ADX ≠ open ADX. BANKNIFTY nearest at 22.07 but still
+  trending. **No index qualifier → no entry.**
+- **Stocks:** 22 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 1 — final day of
+  the cycle, peak Q1; daily ADX static, no mid-day re-scan per protocol) → skip all pending
+  Pushkar's steer. At DTE 1 a fresh condor captures almost no remaining theta and carries max
+  pin/gamma risk into expiry regardless.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 07517bf on read.
