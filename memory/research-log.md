@@ -5,6 +5,22 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-30 — pre-market scan: all three indices trending (ADX 42/24/40), no index setup; VIX 12.01; 18 stock qualifiers but Jul 30 monthly = DTE 0 (expiry day) and still earnings-blocked
+
+India VIX **12.01** (low — the low-vol backdrop credit spreads like). Draft only, no trade placed per protocol. Today is the **July monthly expiry day (Thu 2026-07-30)**. Fresh `scan`:
+
+- **NIFTY** — spot 24,250.2, ADX(14) **41.79** → `range_bound: false`, trending hard. No entry. (The 07-29 pre-market ADX-16.6 read firmed away at the open and climbed to ~48 by EOD; holds trending into today.)
+- **BANKNIFTY** — spot 57,205.9, ADX(14) **23.57** → `range_bound: false`, trending. Nearest the 18 gate (~5.6 above) but not close. No entry. Its Jul 28 monthly rolled off; next monthly Aug 25 is ~DTE 26, far outside the ≤7-DTE carve-out anyway.
+- **SENSEX** — spot 77,654.6, ADX(14) **39.95** → `range_bound: false`, trending hard. No entry.
+
+Board eased a touch vs 07-29 EOD (43.66/24.65/42.64) but all three remain firmly trending on a near-flat spot — **no index qualifier**. The week-long trend regime holds into monthly expiry.
+
+**Stocks:** 18 qualifiers (HDFCLIFE 8.9, GRASIM 11.69, ULTRACEMCO 12.13, CANBK 12.23, SBIN 12.68, JSWSTEEL 13.29, INFY 13.36, BPCL 13.44, HINDZINC 13.75, POWERGRID 13.75, HINDUNILVR 13.91, MARUTI 14.58, ADANIPORTS 15.32, BEL 15.35, EICHERMOT 15.74, WIPRO 16.66, ASIANPAINT 17.5, KOTAKBANK 17.7; TATAMOTORS errored). The only in-range stock expiry is the **Jul 30 monthly, now at DTE 0 — expiry day itself**: a fresh condor entered today captures essentially no remaining theta and carries maximum pin/gamma risk into the close, so even setting earnings aside there is no valid entry. And stocks remain **earnings-blocked** regardless (peak Q1; any name reporting ~Jul 29–31 is within 5 days of the Jul 30 expiry — outright-banned, e.g. SBIN/MARUTI ~Jul 31). Standing operating rule holds: **all 18 earnings-blocked pending Pushkar's steer** (enter-after-report name-by-name vs hold-through vs stand-aside — see signals-learnings 2026-07-07). Log for awareness, no re-alert. After today the July monthly expires; the next stock expiry is the Aug 27 monthly (~DTE 28), so stocks drop back to far-DTE for the start of the new cycle.
+
+**Conclusion:** no-trade day by default — all three indices trending (no index qualifier; BANKNIFTY nearest at 23.57 but ~5.6 above the gate), all 18 stock qualifiers earnings-blocked and at DTE 0 on the last day of the monthly cycle. Draft only; re-check ADX at the open for any gate-hugger (none close today). **Dhan token was expired (401 DH-901) all of 07-29** — already alerted (Telegram msg 551); pre-market makes no broker calls so unverified this run, no operational impact (flat, paper mode). **Git clean:** on read, local HEAD and `origin/main` both at 1cb1af7 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-29 (intraday-monitor addendum, latest+2) — all three indices STILL trending, board firmed further again (ADX 48/28/44), VIX 12.09; no setup; flat, nothing to manage; Dhan token still expired
 
 Fresh `scan` (VIX **12.09**, flat): NIFTY spot 24,266.75 ADX **48.03** → `range_bound: false`, BANKNIFTY spot 57,262.05 ADX **28.39** → `range_bound: false`, SENSEX spot 77,743.31 ADX **44.16** → `range_bound: false`. vs the prior read (47.07/29.24/43.08) NIFTY firmed further (47.07→48.03, deepest of the week), SENSEX firmed (43.08→44.16) and BANKNIFTY eased slightly (29.24→28.39) on a slightly higher spot (NIFTY 24,250→24,267, BANKNIFTY 57,211→57,262, SENSEX 77,651→77,743). The week-long trend regime keeps deepening — NIFTY now ADX ~48, deepest yet. **No enterable index setup.** Stocks unchanged (22 morning qualifiers still earnings-blocked into the Jul 30 monthly, DTE 1 — final day; daily ADX static, no mid-day re-scan). **Dhan token still expired** (401 DH-901 on `funds`, unchanged from prior run; already alerted msg 551, no re-alert). Flat — `/monitor` a no-op (0 open positions; broker unverifiable this run, portfolio.md authoritative). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 8383457 after `git fetch origin main` — prior memory on `main`, no stranding.
