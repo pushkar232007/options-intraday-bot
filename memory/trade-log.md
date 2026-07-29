@@ -2055,3 +2055,28 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
 - **No trade placed or closed.** Telegram sent (token-expiry alert only, not a trade). Capital
   ₹3,99,880.05 unchanged; realized from reset −₹119.95. 0 open positions — flat. **Git clean:**
   local HEAD and `origin/main` both at a1f5299 on read.
+
+## 2026-07-29 intraday-monitor (latest+1)
+
+`2026-07-29 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three, board firmed further; DHAN TOKEN STILL EXPIRED (401), no re-alert`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — 0 open positions.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Dhan API 401 (token still expired):** `dhan.py funds` again returned `401 DH-901
+  Invalid_Authentication`. Unchanged from the prior run, which already sent the Telegram alert
+  (msg 551) asking Pushkar to regenerate `DHAN_ACCESS_TOKEN`. **No re-alert this run** — re-sending
+  the same alert every run would be spam. No operational impact (flat, paper mode, broker
+  best-effort, portfolio.md authoritative, no setup qualifies).
+- **New-entry check:** fresh `scan` (VIX **12.09**, near-flat from 12.11) — NIFTY spot 24,249.95
+  ADX **47.07** `range_bound: false`; BANKNIFTY 57,211.2 ADX **29.24** `range_bound: false`;
+  SENSEX 77,650.69 ADX **43.08** `range_bound: false`. vs the prior read (44.99/28.0/43.19) NIFTY
+  firmed further (44.99→47.07 — deepest of the day/week), BANKNIFTY firmed (28.0→29.24), SENSEX
+  near-flat (43.19→43.08) on a slightly higher spot. The trend regime that held all session keeps
+  deepening. **No index qualifier → no entry.**
+- **Stocks:** 22 morning qualifiers still earnings-blocked (Jul 30 monthly, DTE 1 — final day of
+  the cycle, peak Q1; daily ADX static, no mid-day re-scan per protocol) → skip all pending
+  Pushkar's steer. At DTE 1 a fresh condor captures almost no remaining theta and carries max
+  pin/gamma risk into expiry regardless.
+- **No trade placed or closed** → no Telegram (token-expiry alert already sent prior run).
+  Capital ₹3,99,880.05 unchanged; realized from reset −₹119.95. 0 open positions — flat.
+  **Git clean:** local HEAD and `origin/main` both at 43f3fda on read.

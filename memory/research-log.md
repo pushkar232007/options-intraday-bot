@@ -1090,3 +1090,16 @@ peak Q1; daily ADX static, no mid-day re-scan). Flat, `/monitor` a no-op. No tra
 Fresh `scan` (VIX **12.62**, near-flat from 12.7): NIFTY spot 23,989.25 ADX **18.66** → `range_bound: false`, BANKNIFTY spot 56,794.75 ADX **20.0** → `range_bound: false`, SENSEX spot 76,793.01 ADX **19.93** → `range_bound: false`. vs the prior read (22.98/16.85/25.89) NIFTY eased (22.98→18.66) and SENSEX eased (25.89→19.93) toward the gate while BANKNIFTY firmed back above it (16.85→20.0), spot near-flat across (NIFTY 23,986→23,989, BANKNIFTY 56,804→56,795, SENSEX 76,808→76,793). **All three are now clustered just above the 18 gate** — NIFTY at 18.66 is the closest any index has come to qualifying today (only 0.66 above), a genuine gate-hugger; SENSEX 1.93 above; BANKNIFTY 2.0 above. But **none crossed** — the `scan` authority reads `range_bound: false` for all three. BANKNIFTY, which qualified on ADX in the latest-3/latest-4 runs (11.79/16.85), has firmed back above the gate and no longer qualifies — and its expiry-day DTE-0/DTE-28 calendar gap would have blocked it regardless (signals-learnings 2026-07-28). **No enterable index setup**, though NIFTY at 18.66 is a real open re-check candidate next run if the day keeps easing. Stocks unchanged (23 morning qualifiers still earnings-blocked into Jul 30 monthly, DTE 2, peak Q1; daily ADX static, no mid-day re-scan). Flat — `/monitor` a no-op (0 open positions; broker `orders` shows only the stale sid=71472 Jun artifact, expired 2026-06-25 — no strategy legs, confirmed FLAT). No trade placed. **Git clean:** on read, local HEAD and `origin/main` both at 97ba1e7 after `git fetch origin main` — prior memory on `main`, no stranding.
 
 ---
+
+## 2026-07-29 — intraday-monitor (latest+1): all three still trending, board firmed further, token still expired, no setup
+
+Fresh `scan` (VIX **12.09**, near-flat from 12.11): NIFTY spot 24,249.95 ADX **47.07** `range_bound:
+false`; BANKNIFTY 57,211.2 ADX **29.24** `range_bound: false`; SENSEX 77,650.69 ADX **43.08**
+`range_bound: false`. vs the prior read (44.99/28.0/43.19) NIFTY firmed further (44.99→47.07 — the
+deepest ADX read of the day/week), BANKNIFTY firmed (28.0→29.24), SENSEX near-flat (43.19→43.08) on
+a slightly higher spot — the day-long trend regime keeps deepening, none anywhere near the 18 gate.
+**No index qualifier → no entry.** Dhan token still 401-expired on `funds` (unchanged; already
+alerted prior run, no re-alert). 22 morning stock qualifiers still earnings-blocked (Jul 30 monthly,
+DTE 1 — final day, peak Q1; daily ADX static, no mid-day re-scan). Flat, `/monitor` a no-op. No trade.
+
+---
