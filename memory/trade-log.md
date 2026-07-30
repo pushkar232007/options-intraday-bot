@@ -11,6 +11,19 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-30 intraday-monitor — **TRADE OPENED: Position G, NIFTY iron condor** (first entry in 9 sessions); NIFTY ADX 17.31<18 held; SENSEX qualified but skipped on DTE; BANKNIFTY trending; VIX 12.15
+
+`2026-07-30 ~intraday IST | NIFTY | DTE 5 | OPEN iron condor | 24150 PE / 24050 PE / 24350 CE / 24450 CE | net credit 66.60/unit (₹4,329) | 1 lot (65) | scan ADX 17.60 + re-check 17.31 < 18, range_bound; broker REJECTED DH-905, paper authoritative`
+
+- **Positions to manage on entry:** none — was flat (last position F closed 2026-07-21). `/monitor` a no-op.
+- **Circuit breaker:** DISABLED in paper mode — N/A (enter every qualifying setup regardless of P&L).
+- **Index new-entry check:** fresh `scan` (VIX **12.15**) — NIFTY spot 24,259 ADX **17.60** `range_bound: true`; SENSEX spot 77,588 ADX **16.36** `range_bound: true`; BANKNIFTY spot 57,009 ADX **18.53** `range_bound: false`. **Two index qualifiers** — first genuine index ADX qualifiers to appear since the 07-21 setups.
+  - **NIFTY → ENTERED (Position G).** Authoritative `/trade` ADX re-check **17.31 < 18** — HELD below the gate (did NOT firm away, unlike the recurring gate-hugger reversals of 07-27/29). Spot 24,267 → ATM 24,250 (step 50, lot 65). IC legs: short 24150 PE 79.47 + short 24350 CE 108.29 − long 24050 PE 49.86 − long 24450 CE 71.30 = **net credit 66.60/unit = ₹4,329/lot**; width 100 → **max loss 33.40/unit = ₹2,171/lot** (0.54% of ₹4L cap). **Expiry Aug 4 = DTE 5** — inside the validated DTE 1–6 window; NIFTY had no nearer listed expiry (Jul 30 monthly already rolled off the instrument master; next after Aug 4 is Aug 11). Exit rules (index intraday): cost-to-close ≤ **33.30** (PT, 50% credit) or ≥ **133.20** (SL, 2× credit), else EOD force-close. **Broker place-spread REJECTED — DH-905** (`Input_Exception`, the documented sandbox blocker on current weekly securityIds — same as all prior sandbox attempts); paper position logged and authoritative per `TRADING_MODE: paper`.
+  - **SENSEX → SKIPPED on DTE.** Qualified on ADX (scan 16.36, re-check **16.43 < 18**), but its only available expiries are **Jul 30 = DTE 0** (today, expiry day — max gamma/pin, no theta runway, guardrail cautions against same-day) or **Aug 6 = DTE 7** (one day outside the validated DTE 1–6 window). Neither fits; per the strategy's "don't loosen validated parameters to manufacture trades" discipline, no stretch to an untested DTE — **no SENSEX entry.** (Documented calendar/DTE-gap outcome, akin to the BANKNIFTY expiry-day gaps of 07-28.)
+  - **BANKNIFTY → no entry.** ADX 18.53 > 18, trending (nearest the gate but over it); nearest expiry is Aug 25 = DTE 26 anyway (far outside the ≤7-DTE carve-out).
+- **Stocks:** this morning's scan (~20 qualifiers, daily ADX static, no mid-day re-scan per protocol). Today is the **July-monthly expiry day** — only in-range stock expiry is **DTE 0** (no theta, max pin/gamma), and stocks remain **earnings-blocked** (peak Q1) pending Pushkar's steer → **no stock entry.** Next stock expiry is the Aug monthly (~DTE 28).
+- **Telegram sent** (Position G opened — instrument/strikes/lots/credit/broker status). Day realized ₹0 (credit unrealized until close); capital ₹3,99,880.05; cumulative from reset −₹119.95. **1 open position** into the rest of the session. **Git clean:** local HEAD and `origin/main` both at 7d8510a on read; committing Position G to `main`.
+
 ## 2026-07-30 intraday-monitor — flat, NO trade; all three indices trending (ADX 36/28/37), VIX 12.16; stocks DTE-0 on July-monthly expiry day; ✅ Dhan token restored
 
 `2026-07-30 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three; stocks DTE 0 (expiry day) + earnings-blocked | 0 open positions`
