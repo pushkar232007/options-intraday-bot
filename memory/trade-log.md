@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-30 intraday-monitor — flat, NO trade; all three indices trending (ADX 36/28/37), VIX 12.16; stocks DTE-0 on July-monthly expiry day; ✅ Dhan token restored
+
+`2026-07-30 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three; stocks DTE 0 (expiry day) + earnings-blocked | 0 open positions`
+
+- **Positions to manage:** none. Flat (portfolio authoritative; last position was F closed 2026-07-21). `/monitor` a no-op — 0 open positions, nothing to check against exit rules.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **✅ Dhan token restored:** `dhan.py funds` returned a valid response this run (availBal ₹65,301.12) — the 401 DH-901 that persisted all of 07-29 is resolved (Pushkar regenerated `DHAN_ACCESS_TOKEN`). `orders` shows only the stale sid=71472 NIFTY-Jun2026 artifact (expired 2026-06-25) + old REJECTED test orders — no current strategy legs → broker confirms FLAT. No re-alert (restoration isn't a trade event; the expiry alert msg 551 already delivered).
+- **Index new-entry check:** fresh `scan` (VIX **12.16**) — NIFTY spot 24,265.6 ADX **36.47** `range_bound: false`; BANKNIFTY spot 56,887.75 ADX **28.06** `range_bound: false`; SENSEX spot 77,679.92 ADX **37.42** `range_bound: false`. vs today's pre-market board (41.79/23.57/39.95) NIFTY eased (41.79→36.47), SENSEX eased (39.95→37.42), BANKNIFTY firmed (23.57→28.06) on a near-flat spot — all three still firmly trending, BANKNIFTY nearest at 28.06 (~10 above the 18 gate). The week-long trend regime holds into July-monthly expiry day. **No index qualifier → no entry.**
+- **Stocks:** using this morning's scan (20 qualifiers, HDFCLIFE 8.9 … KOTAKBANK 17.7; daily ADX static, no mid-day re-scan per protocol). Today (Thu 2026-07-30) is the **July monthly expiry day** — the only in-range stock expiry is the **Jul 30 monthly = DTE 0**: a fresh condor captures essentially no remaining theta and carries maximum pin/gamma risk into the close, so no valid entry even setting earnings aside. Stocks also remain **earnings-blocked** (peak Q1) pending Pushkar's steer. Next stock expiry is the Aug monthly (~DTE 28). **No stock entry.**
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at ca37b15 on read.
+
 ## 2026-07-29 EOD square-off — flat all day, NO trade, clean no-op square-off; EOD board ADX 44/25/43, VIX 12.06
 
 `2026-07-29 EOD IST | NIFTY/BANKNIFTY/SENSEX | — | NO SQUARE-OFF (flat all day, nothing held) | 0 open positions`
