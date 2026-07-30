@@ -2173,3 +2173,27 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   re-scan per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at eda65bc on read.
+
+## 2026-07-30 intraday-monitor (latest+3)
+
+`2026-07-30 ~intraday IST | NIFTY | 17.98→18.42 | SKIP (gate-hugger firmed away) | first ADX qualifier in a week; scan 17.98 range_bound but /trade re-check firmed >18`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — 0 open positions. Broker `orders`/`funds`
+  confirm FLAT (availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact).
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Dhan token:** valid — `funds` returned availBal ₹65,301.12.
+- **New-entry check — NIFTY briefly qualified then firmed away:** fresh `scan` (VIX **12.25**) read
+  NIFTY spot 24,287.8 ADX **17.98** → `range_bound: true`, the **first index ADX qualifier in over
+  a week**. Ran `/trade NIFTY`. Per the skill's step 1, re-checked ADX with the dedicated `adx`
+  command (the entry authority): it read **18.12**, then a stable **18.42** on two confirming reads
+  — NIFTY firmed **17.98→18.12→18.42**, back above the strict **<18** gate. This is the recurring
+  gate-hugger "firms away" pattern (07-27 NIFTY 15.6→21.24, 07-22 BANKNIFTY 9.73→20.4, 07-21 SENSEX
+  17.34→19.63): a scan tick that grazes the gate does not survive the open re-check. **NIFTY fails
+  the <18 guardrail → NO entry.** BANKNIFTY ADX 23.07 trending; SENSEX ADX 18.30 (scan) / 18.32
+  (re-check) a gate-hugger just above — also no entry. **No index qualifier survived → no entry.**
+- **Stocks:** today (Thu 2026-07-30) is the **July-monthly expiry day** — the only in-range stock
+  expiry is DTE 0 (a fresh condor captures ~no theta and carries max pin/gamma into the close), and
+  stocks remain earnings-blocked (peak Q1) pending Pushkar's steer. Morning scan static, no mid-day
+  re-scan per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at ef1b645 on read.

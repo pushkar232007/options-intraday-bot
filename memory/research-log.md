@@ -1144,3 +1144,19 @@ alerted prior run, no re-alert). 22 morning stock qualifiers still earnings-bloc
 DTE 1 — final day, peak Q1; daily ADX static, no mid-day re-scan). Flat, `/monitor` a no-op. No trade.
 
 ---
+
+---
+
+## 2026-07-30 — intraday-monitor (latest+3): NIFTY briefly range-bound (scan ADX 17.98) but FIRMED AWAY on /trade re-check (→18.42); no setup
+
+Fresh `scan` (VIX **12.25**): NIFTY spot 24,287.8 ADX **17.98** → `range_bound: true` — the first
+index ADX qualifier in over a week; BANKNIFTY spot 57,026.15 ADX **23.07** `range_bound: false`;
+SENSEX spot 77,728.65 ADX **18.30** `range_bound: false`. Ran `/trade NIFTY`. The skill's step-1
+re-check via the dedicated `adx` command (the entry authority) read **18.12**, then a stable
+**18.42** on two confirming reads — NIFTY firmed **17.98→18.12→18.42**, back above the strict
+**<18** gate before any order. Classic gate-hugger "firms away" (same as 07-27 NIFTY 15.6→21.24,
+07-22 BANKNIFTY 9.73→20.4, 07-21 SENSEX 17.34→19.63): a scan tick grazing the gate did not survive
+the open re-check. SENSEX re-check 18.32 also above the gate. **No index qualifier survived → no
+entry.** Stocks: July-monthly expiry day (DTE 0, no theta, max pin/gamma) + still earnings-blocked
+(peak Q1) → no stock entry; next stock expiry is the Aug monthly (~DTE 28). Flat — `/monitor` a
+no-op (0 open positions; Dhan token valid, availBal ₹65,301.12, broker confirms FLAT). No trade.
