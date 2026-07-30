@@ -2114,3 +2114,23 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
 - **No trade placed or closed** → no Telegram (token-expiry alert already sent prior run).
   Capital ₹3,99,880.05 unchanged; realized from reset −₹119.95. 0 open positions — flat.
   **Git clean:** local HEAD and `origin/main` both at 43f3fda on read.
+
+## 2026-07-30 intraday-monitor (latest)
+
+`2026-07-30 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three (31/33/31); stocks DTE-0 on July expiry day + earnings-blocked`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — 0 open positions. Broker `orders` shows only
+  the stale sid=71472 Jun2026 artifact (NIFTY-Jun2026-24000-CE, expired 2026-06-25) → confirmed FLAT.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Dhan token:** valid — `funds` returned availBal ₹65,301.12 (401 DH-901 from 07-29 stays resolved).
+- **New-entry check:** fresh `scan` (VIX **12.16**) — NIFTY spot 24,238.25 ADX **30.97**
+  `range_bound: false`; BANKNIFTY 56,804.15 ADX **33.38** `range_bound: false`; SENSEX 77,570.42
+  ADX **30.87** `range_bound: false`. vs the day's first intraday board (36.47/28.06/37.42) NIFTY/SENSEX
+  eased a touch while BANKNIFTY firmed (28.06→33.38) on a near-flat spot — all three still firmly
+  trending, none near the 18 gate. **No index qualifier → no entry.**
+- **Stocks:** today (Thu 2026-07-30) is the **July-monthly expiry day** — only in-range stock expiry
+  is DTE 0 (a fresh condor captures ~no theta and carries max pin/gamma into the close), and stocks
+  remain earnings-blocked (peak Q1) pending Pushkar's steer. Morning scan static, no mid-day re-scan
+  per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at dce7733 on read.
