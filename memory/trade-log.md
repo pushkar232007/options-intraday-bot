@@ -11,6 +11,19 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-30 EOD square-off — **Position G (NIFTY iron condor, DTE 5) EOD force-closed for −₹44.85**; index intraday-only rule, no PT/SL trigger; flat into 2026-07-31; VIX 12.19
+
+`2026-07-30 EOD IST | NIFTY | DTE 5 | CLOSE iron condor (EOD_SQUAREOFF) | 24150/24050/24350/24450 | exit cost 67.29/unit vs credit 66.60 | 1 lot (65) | −₹44.85; neither PT (≤33.30) nor SL (≥133.20) hit in final hour → index force-close`
+
+- **Position to manage:** Position G (NIFTY iron condor, opened this morning, DTE 5 into Aug 4). The only open position — an INDEX condor, intraday by design → force-close at EOD unless all three carry-forward conditions met. Not met (no explicit justification, mild upward drift, same-day intraday) → **force-close.**
+- **Final-hour candle check (spot-range NIFTY):** high 24,318.75 / low 24,308.45 / close 24,309.65. Cost-to-close via Black-Scholes (VIX/IV 12.19, DTE 5): buy-back SP24150PE + SC24350CE − sell LP24050PE − LC24450CE = **67.29 @current / 67.48 @high / 67.26 @low**. worst-cost 67.48 < SL 133.20 AND best-cost 67.26 > PT 33.30 → **no intra-hour trigger** → exit at current cost-to-close 67.29/unit, reason EOD_SQUAREOFF.
+- **Realized = (66.60 − 67.29) × 65 = −₹44.85.** NIFTY drifted up ~43 pts from the 24,267 entry toward but NOT through the 24350 short call (spot 24,309.65 still 40 pts below the upper short) — a textbook range-bound hold; the small loss is residual time value on the buy-back after a mild upward drift, deep inside SL, not a directional breach.
+- **Broker:** ✅ Dhan token valid (`funds` availBal ₹65,301.12). Broker close n/a — Position G was DH-905 REJECTED at entry (never a live leg); EOD `square-off-all` fired only on the stale sid=71472 Jun2026 artifact (not a strategy leg). Paper close authoritative per `TRADING_MODE: paper`.
+- **Stocks:** none held (nothing carried; earnings-blocked all cycle). Nothing to carry forward.
+- **Day realized −₹44.85; cumulative from reset −₹164.80; capital ₹3,99,835.20.** Now **FLAT — 0 open positions** into 2026-07-31 (Fri). EOD Telegram summary sent. Nothing contradicted backtest (small-loss range-bound hold is the expected condor outcome) → no signals-learnings entry.
+
+---
+
 ## 2026-07-30 intraday-monitor — **TRADE OPENED: Position G, NIFTY iron condor** (first entry in 9 sessions); NIFTY ADX 17.31<18 held; SENSEX qualified but skipped on DTE; BANKNIFTY trending; VIX 12.15
 
 `2026-07-30 ~intraday IST | NIFTY | DTE 5 | OPEN iron condor | 24150 PE / 24050 PE / 24350 CE / 24450 CE | net credit 66.60/unit (₹4,329) | 1 lot (65) | scan ADX 17.60 + re-check 17.31 < 18, range_bound; broker REJECTED DH-905, paper authoritative`
