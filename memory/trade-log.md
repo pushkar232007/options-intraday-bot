@@ -2134,3 +2134,22 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at dce7733 on read.
+
+## 2026-07-30 intraday-monitor (latest+1)
+
+`2026-07-30 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three (24/33/25); stocks DTE-0 on July expiry day + earnings-blocked`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — 0 open positions.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check:** fresh `scan` (VIX **12.1**) — NIFTY spot 24,269.65 ADX **24.44**
+  `range_bound: false`; BANKNIFTY 56,895.95 ADX **32.94** `range_bound: false`; SENSEX 77,695.03
+  ADX **25.23** `range_bound: false`. vs the prior intraday board (30.97/33.38/30.87) NIFTY eased
+  (30.97→24.44) and SENSEX eased (30.87→25.23) while BANKNIFTY near-flat (33.38→32.94) on a
+  near-flat/slightly firmer spot — all three still firmly trending, NIFTY nearest at 24.44 (~6.4
+  above the 18 gate). **No index qualifier → no entry.**
+- **Stocks:** today (Thu 2026-07-30) is the **July-monthly expiry day** — only in-range stock
+  expiry is DTE 0 (a fresh condor captures ~no theta and carries max pin/gamma into the close), and
+  stocks remain earnings-blocked (peak Q1) pending Pushkar's steer. Morning scan static, no mid-day
+  re-scan per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 9fad876 on read.
