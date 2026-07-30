@@ -5,6 +5,12 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-30 (pre-market re-run) — routine re-fired; scans IDENTICAL, conclusion unchanged: no index setup, stocks DTE-0 + earnings-blocked; draft only
+
+The pre-market routine fired a second time today. Re-ran both scans — results are identical to the entry below (daily ADX is a static last-completed-candle read, so a same-day re-run returns the same figures). **Index `scan` (VIX 12.01):** NIFTY spot 24,250.2 ADX **41.79**, BANKNIFTY spot 57,205.9 ADX **23.57**, SENSEX spot 77,654.6 ADX **39.95** — all `range_bound: false`, all trending, no index qualifier (BANKNIFTY nearest at 23.57, ~5.6 above the 18 gate). **`scan-stocks`:** 20 qualifiers (HDFCLIFE 8.9, ULTRACEMCO 12.13, JSWSTEEL 12.56, GRASIM 12.58, SBIN 12.68, CANBK 12.7, BPCL 13.03, INFY 13.36, ADANIPORTS 13.66, POWERGRID 13.75, HINDUNILVR 13.91, HINDZINC 14.35, MARUTI 14.58, EICHERMOT 14.69, BEL 15.35, WIPRO 16.66, HEROMOTOCO 17.37, ASIANPAINT 17.5, PNB 17.65, KOTAKBANK 17.7; TATAMOTORS errored) — 20 vs the 18 in the prior run only because Yahoo's intraday data refresh nudged a couple names across the gate; picture is unchanged. The only in-range stock expiry remains the **Jul 30 monthly = DTE 0 (expiry day itself)** — a fresh condor captures essentially no theta and carries max pin/gamma risk, and stocks stay **earnings-blocked** (peak Q1; SBIN/MARUTI ~Jul 31 within 5d of expiry, outright-banned) pending Pushkar's steer. **No-trade day by default, draft only.** No broker calls made (pre-market); Dhan token was expired (401 DH-901) all of 07-29, already alerted (Telegram msg 551), no re-alert. **Git clean:** on read, local HEAD and `origin/main` both at 4e669ac after `git fetch origin main` — prior memory (incl. today's first pre-market entry) on `main`, no stranding.
+
+---
+
 ## 2026-07-30 — pre-market scan: all three indices trending (ADX 42/24/40), no index setup; VIX 12.01; 18 stock qualifiers but Jul 30 monthly = DTE 0 (expiry day) and still earnings-blocked
 
 India VIX **12.01** (low — the low-vol backdrop credit spreads like). Draft only, no trade placed per protocol. Today is the **July monthly expiry day (Thu 2026-07-30)**. Fresh `scan`:
