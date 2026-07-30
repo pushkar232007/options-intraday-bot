@@ -2153,3 +2153,23 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   re-scan per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 9fad876 on read.
+
+## 2026-07-30 intraday-monitor (latest+2)
+
+`2026-07-30 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | — | SKIP (no setup) | ADX>18 all three (24/31/22); stocks DTE-0 on July expiry day + earnings-blocked`
+- **Positions to manage:** none. Flat (portfolio authoritative in paper mode; last position was
+  Position F closed 2026-07-21). `/monitor` a no-op — 0 open positions.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Dhan token:** valid — `funds` availBal ₹65,301.12 (401 DH-901 from 07-29 stays resolved).
+- **New-entry check:** fresh `scan` (VIX **12.19**) — NIFTY spot 24,316.25 ADX **23.99**
+  `range_bound: false`; BANKNIFTY 57,051.6 ADX **30.61** `range_bound: false`; SENSEX 77,698.92
+  ADX **21.80** `range_bound: false`. vs the prior intraday board (24.44/32.94/25.23) NIFTY eased
+  a touch (24.44→23.99), SENSEX eased (25.23→21.80 — nearest the gate at ~3.8 above 18) while
+  BANKNIFTY eased (32.94→30.61) on a firmer spot (NIFTY 24,270→24,316) — all three still trending,
+  none crossed the 18 gate. **No index qualifier → no entry.**
+- **Stocks:** today (Thu 2026-07-30) is the **July-monthly expiry day** — only in-range stock
+  expiry is DTE 0 (a fresh condor captures ~no theta and carries max pin/gamma into the close), and
+  stocks remain earnings-blocked (peak Q1) pending Pushkar's steer. Morning scan static, no mid-day
+  re-scan per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
+  −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at eda65bc on read.
