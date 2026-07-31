@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-31 intraday-monitor (latest+2) — flat, NO trade; routine re-fired again; all three indices still trending (NIFTY 20.36, BANKNIFTY 25.46, SENSEX 19.84), board firmed further above the 18 gate; VIX 11.81; stocks earnings-blocked; nothing to manage
+
+`2026-07-31 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false); stocks earnings-blocked pending steer`
+
+- **Positions to manage on entry:** none — flat (0 open positions). `/monitor` a no-op.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Index new-entry check:** fresh `scan` (VIX **11.81**, down from 11.86 — lowest of the day) — NIFTY spot 24,362.6 ADX **20.36** `range_bound: false`; BANKNIFTY spot 57,178.05 ADX **25.46** `range_bound: false`; SENSEX spot 78,041.18 ADX **19.84** `range_bound: false`. vs the prior read (19.31/26.35/18.43) NIFTY firmed further (19.31→20.36), SENSEX firmed (18.43→19.84, now ~1.8 over the gate), BANKNIFTY eased a touch (26.35→25.46). Morning's pre-market qualifiers (NIFTY 17.41, SENSEX 17.13) firmed away all session and keep drifting further above the gate. No `range_bound: true` on any index → per the routine, no `/trade`. **No index qualifier → no index entry.**
+- **Stocks:** morning's 16 qualifiers stand (daily ADX static, no mid-day re-scan). DTE fine (Aug 27 ≈ DTE 27) but earnings-blocked (peak Q1) pending Pushkar's steer → no stock entry.
+- **Broker:** ✅ Dhan token valid — `funds` availBal ₹65,301.12 (util ₹934,698 = stale sid=71472 Jun2026 artifact) → confirms FLAT.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 104a0ec on read.
+
 ## 2026-07-31 intraday-monitor (latest+1) — flat, NO trade; routine re-fired; all three indices still trending (NIFTY 19.31, BANKNIFTY 26.35, SENSEX 18.43), gate-huggers drifting further above the 18 gate; VIX 11.86; stocks earnings-blocked; nothing to manage
 
 `2026-07-31 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false); stocks earnings-blocked pending steer`
