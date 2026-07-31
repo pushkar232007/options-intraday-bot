@@ -11,6 +11,19 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-31 intraday-monitor (latest+1) — flat, NO trade; routine re-fired; all three indices still trending (NIFTY 19.31, BANKNIFTY 26.35, SENSEX 18.43), gate-huggers drifting further above the 18 gate; VIX 11.86; stocks earnings-blocked; nothing to manage
+
+`2026-07-31 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false); stocks earnings-blocked pending steer`
+
+- **Positions to manage on entry:** none — flat (0 open positions). `/monitor` a no-op.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Index new-entry check:** fresh `scan` (VIX **11.86**, down from 12.02) — NIFTY spot 24,350.4 ADX **19.31** `range_bound: false`; BANKNIFTY spot 57,213.4 ADX **26.35** `range_bound: false`; SENSEX spot 77,968.25 ADX **18.43** `range_bound: false`. vs the open read (18.51/25.48/18.86) both gate-huggers drifted a touch further from the gate on a firmer NIFTY spot (24,306→24,350) — NIFTY **18.51 → 19.31**, SENSEX eased slightly **18.86 → 18.43** (still 0.43 above, closest of the trio but still over). The morning's pre-market qualifiers (NIFTY 17.41, SENSEX 17.13) never came back under the gate today — the gate-hugger firm-away has held all session. No `range_bound: true` on any index → per the routine, no `/trade`. **No index qualifier → no index entry.**
+- **Stocks:** this morning's 16 qualifiers stand (daily ADX static, no mid-day re-scan per protocol). DTE fine (Aug 27 monthly ≈ DTE 27, in-window) but **peak Q1 earnings continues** → all 16 **earnings-blocked** pending Pushkar's steer (standing rule, signals-learnings 2026-07-07). No stock entry.
+- **Broker:** ✅ Dhan token valid (`funds` availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact, not a strategy leg) → broker confirms FLAT.
+- **No trade placed or closed → no Telegram.** Day realized ₹0; cumulative from reset −₹164.80; capital ₹3,99,835.20. Flat — 0 open positions. Nothing contradicted backtest → no signals-learnings entry. **Git clean:** local HEAD and `origin/main` both at 96c7555 on read; committing this run to `main`.
+
+---
+
 ## 2026-07-31 intraday-monitor — flat, NO trade; both pre-market gate-huggers firmed away at the open (NIFTY 17.41→18.51, SENSEX 17.13→18.86), all three indices trending; VIX 12.02; stocks earnings-blocked; nothing to manage
 
 `2026-07-31 ~intraday IST | — | — | NO TRADE | — | — | — | both index candidates firmed above the 18 ADX gate at the open; stocks earnings-blocked pending steer`

@@ -5,6 +5,16 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-07-31 (intraday-monitor, latest+1) — routine re-fired; all three indices still trending (ADX 19/26/18), gate-huggers drifting further above the 18 gate; VIX 11.86; no index setup; stocks earnings-blocked; flat, nothing to manage
+
+Fresh `scan` (VIX **11.86**, down from 12.02): NIFTY spot 24,350.4 ADX **19.31** → `range_bound: false`; BANKNIFTY spot 57,213.4 ADX **26.35** → `range_bound: false`; SENSEX spot 77,968.25 ADX **18.43** → `range_bound: false`. vs the open read (18.51/25.48/18.86) NIFTY firmed further (18.51→19.31) on a rising spot (24,306→24,350, +0.18%) while SENSEX eased a touch (18.86→18.43) but stayed just over the gate (0.43 above, closest of the trio), BANKNIFTY firmed (25.48→26.35). **This morning's pre-market qualifiers (NIFTY 17.41, SENSEX 17.13) never returned below the 18 gate at any point today** — the recurring gate-hugger "firms away at the open" pattern has held the full session (as it did 07-27, 07-29). No index has `range_bound: true` → per the routine, no `/trade`. **No index qualifier → no entry.**
+
+**Stocks:** this morning's 16 qualifiers stand (daily ADX static, no mid-day re-scan per protocol). DTE is fine (nearest expiry Aug 27 monthly ≈ DTE 27, inside validated DTE 2–30) so **earnings remains the binding constraint** — peak Q1 FY26 season continues (results into mid-Aug), so all 16 stay **earnings-blocked** pending Pushkar's steer (standing operating rule, signals-learnings 2026-07-07). No stock entry.
+
+**Broker:** ✅ Dhan token valid (`funds` availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact) → confirms FLAT. Flat — `/monitor` a no-op (0 open positions). No trade placed or closed → no Telegram. **Git clean:** on read, local HEAD and `origin/main` both at 96c7555 after `git fetch origin main` — prior memory on `main`, no stranding.
+
+---
+
 ## 2026-07-31 (intraday-monitor) — both pre-market gate-huggers FIRMED AWAY at the open (NIFTY 17.41→18.51, SENSEX 17.13→18.86); all three indices trending; VIX 12.02; no index setup; stocks earnings-blocked; flat, nothing to manage
 
 Fresh open `scan` (VIX **12.02**, down from pre-market 12.15): NIFTY spot 24,305.5 ADX **18.51** → `range_bound: false`; BANKNIFTY spot 57,211.45 ADX **25.48** → `range_bound: false`; SENSEX spot 77,978.56 ADX **18.86** → `range_bound: false`. **Both of this morning's pre-market qualifiers firmed back above the 18 gate at the open** — NIFTY **17.41 → 18.51** (+0.51 over) and SENSEX **17.13 → 18.86** (+0.86 over), on a ~flat-to-up spot (NIFTY 24,317→24,306, SENSEX 77,928→77,979) and a slipping VIX (12.15→12.02). The recurring gate-hugger "firms away at the open" pattern bit both (as it did 07-27 NIFTY 15.6→21.24, 07-29 NIFTY 16.6→25.82); yesterday's encouraging counter-example (NIFTY 17.60→17.31 held into Position G) did **not** repeat today. Both are only marginally over the gate now — genuine re-check candidates if they ease on a later run, but as of this run neither is `range_bound: true`, so per the routine no `/trade` is run. BANKNIFTY 25.48 firmly trending. **No index qualifier → no entry.**
