@@ -11,6 +11,19 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-31 intraday-monitor — flat, NO trade; both pre-market gate-huggers firmed away at the open (NIFTY 17.41→18.51, SENSEX 17.13→18.86), all three indices trending; VIX 12.02; stocks earnings-blocked; nothing to manage
+
+`2026-07-31 ~intraday IST | — | — | NO TRADE | — | — | — | both index candidates firmed above the 18 ADX gate at the open; stocks earnings-blocked pending steer`
+
+- **Positions to manage on entry:** none — flat into today (Position G EOD-closed 2026-07-30). `/monitor` a no-op (0 open positions).
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Index new-entry check:** fresh `scan` (VIX **12.02**) — NIFTY spot 24,305.5 ADX **18.51** `range_bound: false`; BANKNIFTY spot 57,211.45 ADX **25.48** `range_bound: false`; SENSEX spot 77,978.56 ADX **18.86** `range_bound: false`. **Both pre-market qualifiers FIRMED AWAY at the open** — NIFTY **17.41 → 18.51** and SENSEX **17.13 → 18.86**, both crossing back above the 18 gate as spot ticked up (NIFTY 24,317→24,306 ~flat, SENSEX 77,928→77,979) and VIX slipped 12.15→12.02. This is the recurring gate-hugger "firms away at the open" pattern (07-27 NIFTY 15.6→21.24, 07-29 NIFTY 16.6→25.82); yesterday's counter-example (NIFTY 17.60→17.31 held into Position G) did not repeat — both are now just above the gate (NIFTY +0.51, SENSEX +0.86). Neither has `range_bound: true` → per the routine, no `/trade` for either. BANKNIFTY 25.48 trending, nearest expiry Aug 25 ~DTE 25 anyway. **No index qualifier survived → no index entry.**
+- **Stocks:** this morning's 16 qualifiers (HDFCLIFE 9.34 … PNB 17.96; daily ADX static, no mid-day re-scan per protocol). DTE now fine (nearest expiry Aug 27 monthly ≈ DTE 27, in the validated DTE 2–30 range — the July-monthly DTE-0 blocker cleared), but **peak Q1 earnings season continues** (busiest week Jul 27–Aug 1, results into mid-Aug) → all 16 **earnings-blocked** pending Pushkar's steer (enter-after-report vs hold-through vs stand-aside — standing rule, signals-learnings 2026-07-07). No stock entry.
+- **Broker:** ✅ Dhan token valid (`funds` availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact, not a strategy leg) → broker confirms FLAT.
+- **No trade placed or closed → no Telegram.** Day realized ₹0; cumulative from reset −₹164.80; capital ₹3,99,835.20. Flat — 0 open positions. Nothing contradicted backtest (gate-hugger firm-away already well-documented) → no signals-learnings entry. **Git clean:** local HEAD and `origin/main` both at ea11f04 on read; committing this run to `main`.
+
+---
+
 ## 2026-07-30 EOD square-off — **Position G (NIFTY iron condor, DTE 5) EOD force-closed for −₹44.85**; index intraday-only rule, no PT/SL trigger; flat into 2026-07-31; VIX 12.19
 
 `2026-07-30 EOD IST | NIFTY | DTE 5 | CLOSE iron condor (EOD_SQUAREOFF) | 24150/24050/24350/24450 | exit cost 67.29/unit vs credit 66.60 | 1 lot (65) | −₹44.85; neither PT (≤33.30) nor SL (≥133.20) hit in final hour → index force-close`
