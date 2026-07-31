@@ -2293,3 +2293,27 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   re-scan per protocol → skip all. Next stock expiry is the Aug monthly (~DTE 28).
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,880.05 unchanged; realized from reset
   −₹119.95. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at ef1b645 on read.
+
+## 2026-07-31 EOD square-off
+
+`2026-07-31 EOD IST | NIFTY/BANKNIFTY/SENSEX | — | NO-OP (flat all day) | 0 open positions; every intraday run found all three indices trending above the 18 gate`
+- **Positions to manage:** none. Entered EOD **flat — 0 open positions** (last position was Position
+  G, NIFTY, EOD force-closed 2026-07-30 for −₹44.85). Nothing to force-close (index) or carry
+  forward (stock). `/squareoff` a clean no-op.
+- **How the day played out:** morning pre-market flagged two index qualifiers (NIFTY ADX 17.41,
+  SENSEX ADX 17.13, both `range_bound: true`, both with valid in-window expiries) — the first clean
+  two-index setup since 07-21. **Both firmed away at the open** (NIFTY 17.41→18.51, SENSEX
+  17.13→18.86) and kept drifting further into trend all session — the recurring gate-hugger
+  "firms away at the open" pattern held the full day, deepening into the mid-20s/low-30s across six
+  intraday-monitor runs. No `range_bound: true` ever returned → no `/trade` → no index entry.
+- **EOD board** (VIX **11.76**, lowest of the day): NIFTY spot 24,386.65 ADX **21.62**, BANKNIFTY
+  57,257.2 ADX **29.79**, SENSEX 78,084.92 ADX **22.54** — all `range_bound: false`. Eased a touch
+  vs the last intraday read (24.5/32.34/29.54) but all still firmly trending, none crossed the gate.
+- **Index force-close:** N/A (nothing held). **Stock carry-forward:** N/A (nothing held).
+- **Stocks:** 16 morning qualifiers stayed earnings-blocked all day (peak Q1; nearest expiry Aug 27
+  monthly ≈ DTE 27, DTE-fine but held through results) pending Pushkar's steer → no stock entry.
+- **Dhan token:** valid — `funds` availBal ₹65,301.12; `orders` shows only the stale sid=71472
+  Jun2026 test artifact (util ₹934,698) → broker confirms FLAT.
+- **Day realized ₹0; cumulative from reset −₹164.80; capital ₹3,99,835.20.** Flat into 2026-08-03
+  (Mon; 08-01 was Sat). **EOD Telegram summary sent.** Nothing contradicted backtest → no
+  signals-learnings entry.
