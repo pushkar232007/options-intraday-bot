@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-07-31 intraday-monitor (latest+3) — flat, NO trade; routine re-fired again; all three indices still trending (NIFTY 24.05, BANKNIFTY 26.21, SENSEX 23.56), board firmed further into trend on a rising spot; VIX 11.88; stocks earnings-blocked; nothing to manage
+
+`2026-07-31 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false); stocks earnings-blocked pending steer`
+
+- **Positions to manage on entry:** none — flat (0 open positions). `/monitor` a no-op.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Index new-entry check:** fresh `scan` (VIX **11.88**, up a touch from 11.81) — NIFTY spot 24,391.35 ADX **24.05** `range_bound: false`; BANKNIFTY spot 57,248.35 ADX **26.21** `range_bound: false`; SENSEX spot 78,094.44 ADX **23.56** `range_bound: false`. vs the prior read (20.36/25.46/19.84) NIFTY firmed further (20.36→24.05), SENSEX firmed decisively (19.84→23.56, now ~5.6 over the gate), BANKNIFTY firmed a touch (25.46→26.21), all on a rising spot. Morning's pre-market qualifiers (NIFTY 17.41, SENSEX 17.13) have kept drifting further above the gate all session and are now solidly trending (24/24). No `range_bound: true` on any index → per the routine, no `/trade`. **No index qualifier → no index entry.**
+- **Stocks:** morning's 16 qualifiers stand (daily ADX static, no mid-day re-scan). DTE fine (Aug 27 ≈ DTE 27) but earnings-blocked (peak Q1) pending Pushkar's steer → no stock entry.
+- **Broker:** ✅ Dhan token valid — `funds` availBal ₹65,301.12 (util ₹934,698 = stale sid=71472 Jun2026 artifact) → confirms FLAT.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 90345fb on read.
+
 ## 2026-07-31 intraday-monitor (latest+2) — flat, NO trade; routine re-fired again; all three indices still trending (NIFTY 20.36, BANKNIFTY 25.46, SENSEX 19.84), board firmed further above the 18 gate; VIX 11.81; stocks earnings-blocked; nothing to manage
 
 `2026-07-31 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false); stocks earnings-blocked pending steer`
