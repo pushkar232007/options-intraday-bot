@@ -2356,3 +2356,21 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   standing rule, unanswered) → no stock entry.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset
   −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at a414986 on read.
+
+## 2026-08-03 intraday-monitor (latest+3) — flat, NO trade; all three indices still trending (NIFTY 45.9, BANKNIFTY 45.41, SENSEX 47.78), board holding deep in trend; VIX 11.95; 15 stock qualifiers earnings-blocked; nothing to manage
+
+`2026-08-03 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | ADX 45.9/45.41/47.78 | NO ENTRY (all trending, no range_bound) | flat, /monitor no-op`
+- **Positions to manage:** none. Flat — 0 open positions (last position was Position G, NIFTY, EOD
+  force-closed 2026-07-30 for −₹44.85). `/monitor` a no-op.
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **New-entry check — no index qualifier:** fresh `scan` (VIX **11.95**) — NIFTY spot 24,586.3 ADX
+  **45.9** `range_bound: false`; BANKNIFTY 57,714.0 ADX **45.41** `range_bound: false`; SENSEX
+  78,775.34 ADX **47.78** `range_bound: false`. vs the prior read this session (43.26/46.44/44.67)
+  the board is holding deep in trend on a near-flat spot — all three in the mid/high-40s, none within
+  ~27 of the 18 gate. No `range_bound: true` → no `/trade` → **no index entry.**
+- **Stocks:** this morning's 15 qualifiers stand (daily ADX static, no mid-day re-scan per protocol).
+  DTE fine (nearest expiry Aug 27 monthly ≈ DTE 24, in validated DTE 2–30) but all 15 remain
+  **earnings-blocked** (tail of peak Q1) pending Pushkar's steer (2026-07-07 standing rule,
+  unanswered) → no stock entry.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset
+  −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at ac8b291 on read.
