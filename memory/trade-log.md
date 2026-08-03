@@ -11,6 +11,18 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-08-03 EOD square-off — flat all day, NO trade, clean no-op square-off; nothing to force-close (index) or carry forward (stock); all three indices trended above the 18 gate all session (NIFTY 42.69, BANKNIFTY 37.01, SENSEX 45.08); VIX 12.04; stocks earnings-blocked; flat into 2026-08-04
+
+`2026-08-03 15:20 IST | — | — | NO TRADE / NO-OP SQUAREOFF | — | — | — | 0 open positions entering EOD; index force-close N/A, stock carry-forward N/A; all indices range_bound: false all day; stocks earnings-blocked pending steer`
+
+- **Positions to process:** none — flat (0 open positions) entering EOD. Index force-close N/A, stock carry-forward N/A. Last position was G (NIFTY, force-closed 07-30 for −₹44.85).
+- **Index (intraday-only):** all three trended above the 18 ADX gate the entire session — no `range_bound: true` at any intraday run, so nothing ever opened. Final board (VIX 12.04): NIFTY spot 24,594.95 ADX **42.69**, BANKNIFTY spot 57,750.0 ADX **37.01**, SENSEX spot 78,714.01 ADX **45.08**, all `range_bound: false` — deep in trend all day, none within ~19 of the gate. No final-hour candle check needed (nothing held).
+- **Stocks (carry-forward strategy):** nothing held to carry. 15 morning qualifiers DTE-fine (Aug 27 ≈ DTE 24, in DTE 2–30) but earnings-blocked all day (tail of peak Q1) pending Pushkar's steer (2026-07-07 question unanswered) → never entered.
+- **Broker:** ✅ Dhan token valid (funds availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun artifact) → confirms FLAT.
+- **P&L:** Day realized **₹0**; cumulative from reset **−₹164.80**; capital **₹3,99,835.20**. Flat into 2026-08-04 (Tue). EOD Telegram summary sent (always, per protocol). Nothing contradicted backtest → no signals-learnings entry.
+
+---
+
 ## 2026-08-03 intraday-monitor (latest+5) — flat, NO trade; routine re-fired again; all three indices still trending, board holding deep in trend on a ~flat spot (NIFTY 42.69, BANKNIFTY 37.01, SENSEX 45.08); VIX 12.04; stocks earnings-blocked; nothing to manage
 
 `2026-08-03 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false, ADX 43/37/45); stocks earnings-blocked pending steer`
