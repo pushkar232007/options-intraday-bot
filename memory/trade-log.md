@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-08-04 intraday-monitor — flat, NO trade; all three indices trending (NIFTY 45.24, BANKNIFTY 39.24, SENSEX 41.57), firmed a touch further from pre-market on a rising spot; VIX 11.89; stocks earnings-blocked; nothing to manage
+
+`2026-08-04 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false, ADX 45/39/42); stocks earnings-blocked pending steer`
+
+- **Positions to manage on entry:** none — flat (0 open positions). `/monitor` a no-op.
+- **Index (fresh scan, VIX 11.89):** NIFTY spot 24,609.7 ADX **45.24** `range_bound: false`; BANKNIFTY spot 57,799.4 ADX **39.24** `range_bound: false`; SENSEX spot 78,797.66 ADX **41.57** `range_bound: false`. vs this morning's pre-market (42.99/37.79/37.72 on NIFTY 24,774) all three firmed a touch further into trend; none within ~21 of the 18 gate. No `range_bound: true` → no `/trade` → no index entry. The late-July/into-Aug trend regime persists.
+- **Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol). DTE fine (nearest expiry Aug 27 ≈ DTE 23, in DTE 2–30) but earnings-blocked (tail of peak Q1) pending Pushkar's steer (2026-07-07 question unanswered) → no stock entry.
+- **P&L:** Day realized **₹0**; cumulative from reset **−₹164.80**; capital **₹3,99,835.20**. No trade placed/closed → no Telegram.
+
+---
+
 ## 2026-08-03 EOD square-off — flat all day, NO trade, clean no-op square-off; nothing to force-close (index) or carry forward (stock); all three indices trended above the 18 gate all session (NIFTY 42.69, BANKNIFTY 37.01, SENSEX 45.08); VIX 12.04; stocks earnings-blocked; flat into 2026-08-04
 
 `2026-08-03 15:20 IST | — | — | NO TRADE / NO-OP SQUAREOFF | — | — | — | 0 open positions entering EOD; index force-close N/A, stock carry-forward N/A; all indices range_bound: false all day; stocks earnings-blocked pending steer`
