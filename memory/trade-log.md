@@ -2501,3 +2501,28 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   unanswered) → no stock entry.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset
   −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 9026efe on read.
+
+## 2026-08-04 EOD square-off — flat all day, NO trade, clean no-op; BANKNIFTY finally eased under the 18 gate at the EOD board (ADX 17.55, range_bound: true) but at EOD → no entry; VIX 12.18; 14 stock qualifiers earnings-blocked; broker FLAT
+
+`2026-08-04 EOD IST | NIFTY/BANKNIFTY/SENSEX | ADX 26.04/17.55/27.33 | NO ENTRY / NO CLOSE (flat all day) | day realized ₹0`
+- **Positions entering EOD:** none. Flat — 0 open positions (last position was Position G, NIFTY,
+  EOD force-closed 2026-07-30 for −₹44.85). Nothing to force-close (index) or carry forward (stock).
+- **Index force-close:** N/A — nothing held.
+- **Stock carry-forward:** N/A — nothing held.
+- **EOD index board** (fresh `scan`, VIX **12.18**): NIFTY spot 24,463.45 ADX **26.04**
+  `range_bound: false`; BANKNIFTY 57,492.75 ADX **17.55** `range_bound: true`; SENSEX 78,299.06
+  ADX **27.33** `range_bound: false`. **BANKNIFTY finally crossed under the 18 gate** — the first
+  index qualifier this session after a full day of all-trending reads (it was the persistent
+  near-gate hugger, 19.68 at latest+5). But it printed at EOD square-off time: index condors are
+  intraday-only, so a fresh condor opened now would have no theta window and would need immediate
+  force-close → **NO entry** (disciplined; not an entry routine, and no time to work). Noted for
+  tomorrow's pre-market — BANKNIFTY worth watching as it's edged into range at the close.
+- **Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol).
+  DTE fine (nearest expiry Aug 27 monthly ≈ DTE 23, in validated DTE 2–30) but all 14 remain
+  **earnings-blocked** (tail of peak Q1) pending Pushkar's steer (2026-07-07 standing rule,
+  unanswered) → no stock entry.
+- **Broker:** ✅ Dhan token valid — `funds` availBal ₹65,301.12 (util ₹934,698 = stale sid=71472
+  Jun2026 artifact) → broker confirms FLAT.
+- **P&L:** day realized **₹0**; cumulative from reset **−₹164.80**; capital **₹3,99,835.20**.
+  Flat into 2026-08-05 (Wed). EOD Telegram summary sent. Nothing contradicted backtest → no
+  signals-learnings entry. **Git:** committing EOD close to `main`.
