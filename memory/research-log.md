@@ -1437,3 +1437,13 @@ Aug 27 expiry (5-day proximity rule) before any entry.
 **News/context:** VIX 11.93 (still very low, complacent). Both scans clean (no Yahoo egress 403).
 Draft only, no trade, no broker calls (pre-market). Nothing to manage (flat). No Telegram (draft
 scan). Git: on read, local HEAD and origin/main both at 1cb1af7.
+
+---
+
+## 2026-08-04 (intraday-monitor, latest+2) — all three indices still trending (ADX 40/33/34), eased a touch but deep in trend; VIX 12.06; no index setup; 14 stock qualifiers earnings-blocked; flat, nothing to manage
+
+Fresh `scan` (VIX **12.06**, +0.06 vs earlier read): NIFTY spot 24,557.7 ADX **39.74** → `range_bound: false`; BANKNIFTY spot 57,582.2 ADX **33.43** → `range_bound: false`; SENSEX spot 78,685.0 ADX **33.93** → `range_bound: false`. vs the prior intraday read (44.43/40.2/40.28) all three eased a touch on a ~flat spot (NIFTY 24,580→24,558) but remain deep in trend — none within ~15 of the 18 gate. No index has `range_bound: true` → per the routine, no `/trade`. **No index qualifier → no entry.**
+
+**Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol). DTE fine (nearest expiry Aug 27 monthly ≈ DTE 23, inside validated DTE 2–30) so **earnings remains the binding constraint** — tail of peak Q1 FY26 season, results still landing, so all 14 stay **earnings-blocked** pending Pushkar's steer (the 2026-07-07 enter-after-report vs hold-through vs stand-aside question is still unanswered — standing operating rule). No stock entry.
+
+Flat — `/monitor` a no-op (0 open positions). No trade placed or closed → no Telegram. **Git clean:** on read, local HEAD and `origin/main` both at a450015 after `git fetch origin main` — prior memory on `main`, no stranding.
