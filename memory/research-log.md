@@ -1368,3 +1368,52 @@ Fresh `scan` (VIX **11.69**, down a touch from pre-market 11.76): NIFTY spot 24,
 **Stocks:** this morning's 15 qualifiers stand (daily ADX static, no mid-day re-scan per protocol). DTE fine (nearest expiry Aug 27 monthly ≈ DTE 24, inside validated DTE 2–30) so **earnings remains the binding constraint** — tail of peak Q1 FY26 season, results still landing, so all 15 stay **earnings-blocked** pending Pushkar's steer (the 2026-07-07 enter-after-report vs hold-through vs stand-aside question is still unanswered — standing operating rule). No stock entry.
 
 **Broker:** ✅ Dhan token valid (`funds` availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact) → confirms FLAT. Flat — `/monitor` a no-op (0 open positions). No trade placed or closed → no Telegram. **Git clean:** on read, local HEAD and `origin/main` both at a414986 after `git fetch origin main` — prior memory (incl. today's pre-market) on `main`, no stranding.
+
+---
+
+## 2026-08-04 (pre-market) — all three indices trending (ADX 43/38/38); VIX 11.93; no index setup; 14 stock qualifiers earnings-blocked; flat, draft-only, no trade
+
+**INDEX SCAN (`scan`), VIX 11.93 (very low, +0.17 vs Fri/Mon 11.76):**
+- NIFTY: spot 24,774.3, ADX(14) **42.99** → `range_bound: false`
+- BANKNIFTY: spot 58,247.95, ADX(14) **37.79** → `range_bound: false`
+- SENSEX: spot 78,639.03, ADX(14) **37.72** → `range_bound: false`
+
+All three deep in trend above the 18 gate — **no index qualifier, no setup**. The trend regime
+that held all of last week and Monday firmed further overnight on a rising spot (NIFTY 24,594→24,774
+vs Mon EOD, +0.7%; BANKNIFTY 57,750→58,248; SENSEX ~flat 78,714→78,639). NIFTY nearest to nothing —
+all three in the high-30s/low-40s, none within ~20 of the gate. No range-bound index to draft off.
+
+**STOCK SCAN (`scan-stocks`), 14 qualifiers (ADX(14) daily < 18), sorted lowest-ADX first:**
+| Symbol | ADX | hist_vol% | spot |
+|---|---|---|---|
+| HDFCLIFE | 9.53 | 20.68 | 548.5 |
+| GRASIM | 10.73 | 15.97 | 3100.8 |
+| ULTRACEMCO | 11.22 | 18.7 | 11903.0 |
+| CANBK | 11.66 | 25.44 | 124.98 |
+| SBIN | 12.48 | 17.86 | 1027.4 |
+| HINDZINC | 12.79 | 25.13 | 539.2 |
+| BPCL | 13.52 | 22.1 | 319.75 |
+| POWERGRID | 13.82 | 14.93 | 284.25 |
+| INFY | 14.33 | 35.01 | 1130.1 |
+| HINDALCO | 16.08 | 20.34 | 974.45 |
+| JSWSTEEL | 16.08 | 18.13 | 1270.0 |
+| MARUTI | 16.22 | 28.0 | 14234.0 |
+| EICHERMOT | 17.31 | 23.11 | 7833.5 |
+| NMDC | 17.32 | 16.27 | 85.04 |
+
+(TATAMOTORS errored in the scan — Yahoo data glitch, not a signal.) None on the AXISBANK/BHARTIARTL
+blocklist. vs Mon's 15: NMDC entered; BEL (17.75→18.98) and HINDUNILVR (16.79→18.19) firmed out over
+the gate. Nearest stock expiry is the **Aug 27 monthly ≈ DTE 23** — inside the validated DTE 2–30
+window, so the DTE gate is clear.
+
+**Binding constraint is still the earnings-policy decision, not DTE.** Today is Aug 4, tail of peak
+Q1 (June-qtr) season (~Jul 16–Aug 8) — most large caps here (HDFCLIFE, MARUTI, SBIN, INFY, etc.)
+have reported this cycle, but the standing guardrail question from 2026-07-07 — enter-after-report
+name-by-name vs hold-through vs stand-aside — remains **unanswered by Pushkar**, so all 14 stay
+earnings-blocked by default pending his steer, consistent with every run since early July. No
+unilateral loosening. If green-lit for enter-after-report, re-verify each name's Q1 date against the
+Aug 27 expiry (5-day proximity rule) before any entry.
+
+**News/context:** VIX 11.93 (still very low, complacent). Both scans clean (no Yahoo egress 403).
+Draft only, no trade, no broker calls (pre-market). Nothing to manage (flat). No Telegram (draft
+scan). Git: on read, local HEAD and origin/main both at 1cb1af7.
