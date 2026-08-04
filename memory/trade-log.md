@@ -11,6 +11,17 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-08-04 intraday-monitor (latest+1) — routine re-fired; flat, NO trade; all three indices still trending (NIFTY 44.43, BANKNIFTY 40.2, SENSEX 40.28), board holding deep in trend on a ~flat spot; VIX 12.0; stocks earnings-blocked; nothing to manage
+
+`2026-08-04 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false, ADX 44/40/40); stocks earnings-blocked pending steer`
+
+- **Positions to manage on entry:** none — flat (0 open positions). `/monitor` a no-op.
+- **Index (fresh scan, VIX 12.0):** NIFTY spot 24,580.8 ADX **44.43** `range_bound: false`; BANKNIFTY spot 57,746.0 ADX **40.2** `range_bound: false`; SENSEX spot 78,733.92 ADX **40.28** `range_bound: false`. vs the earlier read this session (45.24/39.24/41.57) the board is near-identical on a ~flat spot — all three hold deep in trend in the low/mid-40s, none within ~22 of the 18 gate. No `range_bound: true` → no `/trade` → no index entry. The late-July/into-Aug trend regime persists.
+- **Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol). DTE fine (nearest expiry Aug 27 ≈ DTE 23, in DTE 2–30) but earnings-blocked (tail of peak Q1) pending Pushkar's steer (2026-07-07 question unanswered) → no stock entry.
+- **P&L:** Day realized **₹0**; cumulative from reset **−₹164.80**; capital **₹3,99,835.20**. No trade placed/closed → no Telegram.
+
+---
+
 ## 2026-08-04 intraday-monitor — flat, NO trade; all three indices trending (NIFTY 45.24, BANKNIFTY 39.24, SENSEX 41.57), firmed a touch further from pre-market on a rising spot; VIX 11.89; stocks earnings-blocked; nothing to manage
 
 `2026-08-04 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false, ADX 45/39/42); stocks earnings-blocked pending steer`
