@@ -2480,3 +2480,24 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   unanswered) → no stock entry.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset
   −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 5c63408 on read.
+
+## 2026-08-04 intraday-monitor (latest+5) — flat, NO trade; all three indices still trending (NIFTY 26.92, BANKNIFTY 19.68, SENSEX 28.13), board eased further, BANKNIFTY closest to gate but none crossed; VIX 12.36; 14 stock qualifiers earnings-blocked; nothing to manage
+
+`2026-08-04 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | ADX 26.92/19.68/28.13 | NO ENTRY (all trending, no range_bound) | flat, /monitor no-op`
+- **Positions to manage:** none. Flat — 0 open positions (last position was Position G, NIFTY, EOD
+  force-closed 2026-07-30 for −₹44.85). `/monitor` a no-op. Broker `funds` confirms FLAT
+  (availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact).
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Dhan token:** valid — `funds` returned availBal ₹65,301.12.
+- **New-entry check — no index qualifier:** fresh `scan` (VIX **12.36**) — NIFTY spot 24,463.25 ADX
+  **26.92** `range_bound: false`; BANKNIFTY 57,492.85 ADX **19.68** `range_bound: false`; SENSEX
+  78,368.67 ADX **28.13** `range_bound: false`. vs the prior read this session (28.44/23.98/27.38)
+  all three eased further on a ~flat spot — BANKNIFTY now nearest at 19.68 (~1.7 above the 18 gate,
+  the closest any index has come this session) but still not under. No `range_bound: true` →
+  no `/trade` → **no index entry.**
+- **Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol).
+  DTE fine (nearest expiry Aug 27 monthly ≈ DTE 23, in validated DTE 2–30) but all 14 remain
+  **earnings-blocked** (tail of peak Q1) pending Pushkar's steer (2026-07-07 standing rule,
+  unanswered) → no stock entry.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset
+  −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 9026efe on read.
