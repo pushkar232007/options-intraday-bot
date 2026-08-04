@@ -5,6 +5,16 @@ strike, anything news-driven that might affect the day. Keep entries short. Tail
 entries when reading this file in a routine.
 
 
+## 2026-08-04 (intraday-monitor, latest+4) — routine re-fired; all three indices still trending, board eased a touch further (ADX 28/24/27), none yet crossed the 18 gate; VIX 12.42; no index setup; stocks earnings-blocked; flat, nothing to manage
+
+Fresh `scan` (VIX **12.42**, up from 12.31): NIFTY spot 24,459.85 ADX **28.44** → `range_bound: false`; BANKNIFTY spot 57,402.45 ADX **23.98** → `range_bound: false`; SENSEX spot 78,331.47 ADX **27.38** → `range_bound: false`. vs the prior read this session (30.51/25.66/27.7) all three eased a touch further on a softer spot (NIFTY 24,494→24,460, BANKNIFTY 57,483→57,402, SENSEX 78,472→78,331) — now in the mid/high-20s, BANKNIFTY nearest the gate at 23.98 (~6 above 18). The early-August trend regime continues its slow relaxation (44/40/40 several runs ago → 31/26/28 last run → 28/24/27 now) but no index has crossed under the 18 gate, so none is `range_bound: true`. Still worth watching on later runs — the drift has been consistently downward all session. Per the routine, no `range_bound: true` → no `/trade`. **No index qualifier → no entry.**
+
+**Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol; HDFCLIFE 9.53 … NMDC 17.32; TATAMOTORS errored). DTE fine (nearest expiry Aug 27 monthly ≈ DTE 23, inside validated DTE 2–30) so **earnings remains the binding constraint** — tail of peak Q1 FY26 season, so all 14 stay **earnings-blocked** pending Pushkar's steer (standing operating rule, signals-learnings 2026-07-07; the 2026-07-07 question remains unanswered). No stock entry.
+
+**Broker:** ✅ Dhan token valid (`funds` availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact) → confirms FLAT. Flat — `/monitor` a no-op (0 open positions). No trade placed or closed → no Telegram. **Git clean:** on read, local HEAD and `origin/main` both at 5c63408 after `git fetch origin main` — prior memory on `main`, no stranding; committing this run to `main`.
+
+---
+
 ## 2026-08-04 (intraday-monitor, latest+3) — routine re-fired; all three indices still trending but board EASED notably (ADX 31/26/28), none yet crossed the 18 gate; VIX 12.31; no index setup; stocks earnings-blocked; flat, nothing to manage
 
 Fresh `scan` (VIX **12.31**, up from 12.06): NIFTY spot 24,494.1 ADX **30.51** → `range_bound: false`; BANKNIFTY spot 57,482.85 ADX **25.66** → `range_bound: false`; SENSEX spot 78,471.54 ADX **27.7** → `range_bound: false`. vs the prior read this session (39.74/33.43/33.93 — itself down from 44/40/40) all three eased further into the mid-20s/low-30s on a softer spot (NIFTY 24,558→24,494, BANKNIFTY 57,582→57,483, SENSEX 78,685→78,472). BANKNIFTY nearest the gate at 25.66 (~7.7 above 18) — the trend regime is genuinely relaxing off its early-August peak (44/40/40 two runs ago → 31/26/28 now) but no index has yet crossed under the 18 gate, so none is `range_bound: true`. Worth watching on later runs: at this rate of decay a gate-cross is plausible before EOD. Per the routine, no `range_bound: true` → no `/trade`. **No index qualifier → no entry.**

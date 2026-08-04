@@ -2460,3 +2460,23 @@ Flat into today (0 open positions after the 07-21 EOD force-closes of E+F). `/mo
   unanswered) → no stock entry.
 - **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset
   −₹164.80. 0 open positions — flat. **Git:** on read local HEAD and `origin/main` both at a450015.
+
+## 2026-08-04 intraday-monitor (latest+4) — flat, NO trade; all three indices still trending (NIFTY 28.44, BANKNIFTY 23.98, SENSEX 27.38), board eased a touch further, none crossed the 18 gate; VIX 12.42; 14 stock qualifiers earnings-blocked; nothing to manage
+
+`2026-08-04 ~intraday IST | NIFTY/BANKNIFTY/SENSEX | ADX 28.44/23.98/27.38 | NO ENTRY (all trending, no range_bound) | flat, /monitor no-op`
+- **Positions to manage:** none. Flat — 0 open positions (last position was Position G, NIFTY, EOD
+  force-closed 2026-07-30 for −₹44.85). `/monitor` a no-op. Broker `funds` confirms FLAT
+  (availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun2026 artifact).
+- **Circuit breaker:** DISABLED in paper mode — N/A.
+- **Dhan token:** valid — `funds` returned availBal ₹65,301.12.
+- **New-entry check — no index qualifier:** fresh `scan` (VIX **12.42**) — NIFTY spot 24,459.85 ADX
+  **28.44** `range_bound: false`; BANKNIFTY 57,402.45 ADX **23.98** `range_bound: false`; SENSEX
+  78,331.47 ADX **27.38** `range_bound: false`. vs the prior read this session (30.51/25.66/27.7) all
+  three eased a touch further on a softer spot — now mid/high-20s, BANKNIFTY nearest at 23.98 (~6
+  above the 18 gate) but none under. No `range_bound: true` → no `/trade` → **no index entry.**
+- **Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol).
+  DTE fine (nearest expiry Aug 27 monthly ≈ DTE 23, in validated DTE 2–30) but all 14 remain
+  **earnings-blocked** (tail of peak Q1) pending Pushkar's steer (2026-07-07 standing rule,
+  unanswered) → no stock entry.
+- **No trade placed or closed** → no Telegram. Capital ₹3,99,835.20 unchanged; realized from reset
+  −₹164.80. 0 open positions — flat. **Git clean:** local HEAD and `origin/main` both at 5c63408 on read.
