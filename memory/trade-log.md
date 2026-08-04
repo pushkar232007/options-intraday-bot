@@ -11,6 +11,18 @@ memory/strategy.md and memory/signals-learnings.md) and its results must be asse
 from NIFTY/SENSEX, which needs DTE visible per trade, not just instrument name.
 
 
+## 2026-08-04 intraday-monitor (latest+3) — routine re-fired; flat, NO trade; all three indices still trending but board EASED notably (NIFTY 30.51, BANKNIFTY 25.66, SENSEX 27.7), all still over the 18 gate; VIX 12.31; stocks earnings-blocked; nothing to manage
+
+`2026-08-04 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false, ADX 31/26/28); stocks earnings-blocked pending steer`
+
+- **Positions to manage on entry:** none — flat (0 open positions). `/monitor` a no-op.
+- **Index (fresh scan, VIX 12.31):** NIFTY spot 24,494.1 ADX **30.51** `range_bound: false`; BANKNIFTY spot 57,482.85 ADX **25.66** `range_bound: false`; SENSEX spot 78,471.54 ADX **27.7** `range_bound: false`. vs the prior read this session (44.43/40.2/40.28) all three eased notably into the mid-20s/low-30s on a softer spot (NIFTY 24,581→24,494), BANKNIFTY nearest at 25.66 (~7.7 above the gate) — but all three still clearly over the 18 gate, none `range_bound: true`. No `/trade` → no index entry. The trend regime is relaxing but hasn't yet crossed the gate.
+- **Stocks:** this morning's 14 qualifiers stand (daily ADX static, no mid-day re-scan per protocol). DTE fine (nearest expiry Aug 27 ≈ DTE 23, in DTE 2–30) but earnings-blocked (tail of peak Q1) pending Pushkar's steer (2026-07-07 question unanswered) → no stock entry.
+- **Broker:** ✅ Dhan token valid (funds availBal ₹65,301.12; util ₹934,698 = stale sid=71472 Jun artifact) → confirms FLAT.
+- **P&L:** Day realized **₹0**; cumulative from reset **−₹164.80**; capital **₹3,99,835.20**. No trade placed/closed → no Telegram.
+
+---
+
 ## 2026-08-04 intraday-monitor (latest+1) — routine re-fired; flat, NO trade; all three indices still trending (NIFTY 44.43, BANKNIFTY 40.2, SENSEX 40.28), board holding deep in trend on a ~flat spot; VIX 12.0; stocks earnings-blocked; nothing to manage
 
 `2026-08-04 ~intraday IST | — | — | NO TRADE | — | — | — | no index qualifier (all range_bound: false, ADX 44/40/40); stocks earnings-blocked pending steer`
