@@ -18,9 +18,10 @@ Default mode is **paper trading via Dhan Sandbox** until the human explicitly fl
    - `memory/strategy.md` (guardrails + current mode — this is the law, not a suggestion)
    - `memory/portfolio.md` (current virtual cash + open positions)
    - `memory/signals-learnings.md` (lessons learned so far)
-   - `memory/trade-log.md` (today's entries plus the last ~20 — don't re-read the whole history,
-     that burns context budget)
-   - `memory/research-log.md` (today's entry, written by the pre-market routine)
+   - `memory/trade-log-YYYY-MM.md` — use the **current month's file** (e.g. `memory/trade-log-2026-08.md`
+     for August 2026). Read today's entries plus the last ~20 — don't re-read the whole history.
+   - `memory/research-log-YYYY-MM.md` — use the **current month's file** (e.g. `memory/research-log-2026-08.md`).
+     Read today's entry, written by the pre-market routine.
 2. **Do the job** for whichever routine triggered you (see `routines/*.md` for what each covers).
 3. **Use the scripts, not raw curl, for Dhan, Telegram, and market data.** They already handle
    auth and base URLs:
@@ -35,42 +36,51 @@ Default mode is **paper trading via Dhan Sandbox** until the human explicitly fl
    - `python3 scripts/risk.py <command>` — position sizing, daily-loss circuit breaker check
    - Run any script with `--help` if you forget the exact subcommand syntax.
 4. **Use native WebSearch / WebFetch for research** (India VIX, market-moving news, RBI/Fed
-   events for the day). Cite what you read in `memory/research-log.md`.
+   events for the day). Cite what you read in the current-month `memory/research-log-YYYY-MM.md`.
 5. **Respect every guardrail in `memory/strategy.md` before placing any order.** If a guardrail
-   would be violated, do not place the trade — log why in `memory/trade-log.md` instead. No-trade
-   is always a valid, acceptable outcome.
+   would be violated, do not place the trade — log why in the current-month `memory/trade-log-YYYY-MM.md`
+   instead. No-trade is always a valid, acceptable outcome.
 6. **Every entry order must carry a stop-loss order placed at the same time** — never rely on a
    later routine run to notice a position is underwater. See `scripts/dhan.py place-order --sl`.
 7. **Write last.** Before you finish, update:
-   - `memory/portfolio.md` with the fresh virtual cash/positions snapshot
-   - `memory/trade-log.md` if you placed, closed, or skipped a trade (and why)
-   - `memory/research-log.md` if you did research
+   - `memory/portfolio.md` with the fresh virtual cash/positions snapshot.
+     **Keep it small:** replace the `_Last updated:_` line with just the current run's key facts
+     (capital, realized P&L, open positions, one-line action). Do NOT chain PRIOR entries into it —
+     the full history is in the monthly trade-log. Keep only the latest 5 "Today's P&L" bullets
+     (delete older ones before writing the new entry).
+   - `memory/trade-log-YYYY-MM.md` (current month file) if you placed, closed, or skipped a trade.
+     At month rollover, create a new `memory/trade-log-YYYY-MM.md` file for the new month.
+   - `memory/research-log-YYYY-MM.md` (current month file) if you did research.
+     At month rollover, create a new `memory/research-log-YYYY-MM.md` file for the new month.
    - `memory/signals-learnings.md` if you learned something worth remembering next time
-8. **Commit and push directly to `main` — never a feature branch, never a PR.** This repo is
-   cloned fresh for every remote routine run — if your memory file changes aren't on `main` itself
-   (not a side branch, not an open PR awaiting merge) by the time you finish, the next routine
-   wakes up with no memory of what you just did. **This has actually happened**: one routine run
-   defaulted to pushing to a session-specific branch instead of `main` (a generic safe-git habit
-   that does NOT apply here), silently leaving that day's memory updates off `main` until a human
-   noticed and merged it manually. There is no PR review step in this project's workflow - you are
-   the only one operating on this repo, `main` is the single source of truth, and your last action
-   every run must leave `main` itself updated, confirmed via `git log origin/main` after pushing.
+8. **Push memory updates to `main` using the MCP GitHub connector — not `git push`.**
 
-   If the built-in GitHub integration's `git push` fails with 403 / "Resource not accessible by
-   integration" (same known issue as the `trading-routine` repo), don't retry it — push using the
-   PAT in `GH_TOKEN` instead:
-   ```
-   git config user.name "Claude"
-   git config user.email "noreply@anthropic.com"
-   git add -A && git commit -m "<routine name>: <one-line summary>"
-   git push https://${GH_TOKEN}@github.com/pushkar232007/options-intraday-bot.git HEAD:main
-   ```
-   If that also fails, that's a real, urgent problem — notify via `scripts/telegram.py` and stop.
+   The session-level proxy permanently blocks `git push` with a PAT (`GH_TOKEN`), both via the
+   built-in integration and the raw HTTPS URL. The **only working write channel is the MCP GitHub
+   App connector** (GitHub Integration shown as connected in Connectors settings).
 
-   A push via the PAT will show an "Unverified" badge on GitHub since it bypasses the integration's
-   signature verification. **Leave it as-is — do not amend the commit or force-push to "fix" this.**
-   It's cosmetic, the content is what matters, and force-pushing `main` is not worth the risk for a
-   cosmetic badge.
+   **After writing memory files locally, push them via MCP:**
+   - Read each changed file's full content
+   - Call the MCP GitHub push tool (push_files / create_or_update_file) with `owner="pushkar232007"`,
+     `repo="options-intraday-bot"`, `branch="main"`, and the file content inline
+   - Do this for each changed file: `memory/portfolio.md`, `memory/trade-log-YYYY-MM.md`,
+     `memory/research-log-YYYY-MM.md`, `memory/signals-learnings.md`
+   - Confirm by reading back `git log origin/main` or by checking the commit landed
+
+   **Why monthly files?** The MCP tool sends the full file content inline, so files must stay
+   small (<50KB). Monthly files start fresh each month and stay manageable. Archive files
+   (`trade-log-archive.md`, `research-log-archive.md`) are never pushed by the bot — they only
+   change when a human splits a new month, from local.
+
+   **At month rollover** (first run of a new month):
+   1. Check if `memory/trade-log-YYYY-MM.md` and `memory/research-log-YYYY-MM.md` exist for the
+      new month. If not, create them with the standard header (copy from the previous month's file
+      and clear the entries section).
+   2. Push the new empty monthly files via MCP.
+   3. Continue writing to the new files.
+
+   This repo is cloned fresh for every remote routine run — memory updates must be on `main` by
+   the time you finish or the next routine wakes up stateless. **Never push to a feature branch.**
 9. **Notify sparingly, and only via Telegram.** `scripts/telegram.py` is the only notification
    channel confirmed to reach the human. Only send a message when:
    - A trade was actually placed or closed, or
